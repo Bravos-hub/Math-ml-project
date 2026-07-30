@@ -1,0 +1,21 @@
+# Local environments and generated Python files
+.venv/
+__pycache__/
+*.py[cod]
+
+# Large raw geospatial downloads; keep download/extraction scripts instead
+*.nc
+*.tif
+*.tiff
+
+# Local archive copies of source downloads
+*.zip
+
+# Temporary notebook/runtime figures
+*-ipython-tmp-*.png
+2026*-ipython-tmp-*.png
+
+# Local tool/cache directories
+.mypy_cache/
+.pytest_cache/
+.ipynb_checkpoints/
