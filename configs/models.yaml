@@ -1,0 +1,85 @@
+# Model and validation configuration.
+
+random_seed: 42
+
+target: yield_over_harvested
+sensitivity_target: yield_over_planted
+
+feature_sets:
+  rainfall_only:
+    - MAM
+    - SON
+    - annual_rainfall
+    - rain_cv
+  climate:
+    - MAM
+    - SON
+    - DJF
+    - JJA
+    - annual_rainfall
+    - rain_cv
+    - max_monthly
+    - min_monthly
+    - rainy_months
+  climate_thermal:
+    - MAM
+    - SON
+    - DJF
+    - JJA
+    - annual_rainfall
+    - rain_cv
+    - max_monthly
+    - min_monthly
+    - rainy_months
+    - growing_degree_days
+    - mean_temperature
+    - temperature_range
+    - days_above_30c
+  full_agroecological:
+    - MAM
+    - SON
+    - DJF
+    - JJA
+    - annual_rainfall
+    - rain_cv
+    - max_monthly
+    - min_monthly
+    - rainy_months
+    - growing_degree_days
+    - mean_temperature
+    - temperature_range
+    - days_above_30c
+    - longest_dry_spell_days
+    - dry_spell_count_7d
+    - rain_days_10mm
+    - maximum_5day_rainfall
+    - season_length_days
+    - elevation_m
+
+baselines:
+  - mean_predictor
+  - historical_mean
+  - previous_year_yield
+  - rainfall_only_ols
+
+models:
+  - OLS
+  - Ridge
+  - PCR
+  - PLS
+  - RandomForest
+  - XGBoost
+
+validation_schemes:
+  - random_cv
+  - group_by_subregion
+  - temporal_2018_2020
+  - temporal_2020_2018
+
+cross_validation:
+  n_folds_random: 5
+  n_folds_grouped: 5
+
+uncertainty:
+  conformal_alpha: 0.05
+  bootstrap_n: 200

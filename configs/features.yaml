@@ -1,0 +1,50 @@
+# Feature engineering configuration.
+
+# Calendar windows for each survey season group (month-of-year, 1-based).
+# First rains season ~ March-June, second rains ~ August-November.
+season_windows:
+  first_season: [3, 4, 5, 6]
+  second_season: [8, 9, 10, 11]
+  total: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+rainfall:
+  monthly_features:
+    - MAM
+    - SON
+    - DJF
+    - JJA
+    - annual_rainfall
+    - rain_cv
+    - max_monthly
+    - min_monthly
+    - rainy_months
+  onset:
+    # Operational onset rule: at least 20 mm accumulated over 3 days,
+    # followed by no dry spell of 7+ days in the following 15 days.
+    accumulation_mm: 20
+    accumulation_days: 3
+    dry_spell_days: 7
+    followup_days: 15
+    earliest_onset_doy: 60    # ~1 March (first season)
+    latest_onset_doy: 182     # ~1 July
+  dry_spell_thresholds_days: [7, 10]
+  wet_day_thresholds_mm: [1, 10, 20]
+
+temperature:
+  source: NASA_POWER_daily
+  gdd_base_c: 10.0            # maize base temperature (documented)
+  heat_threshold_c: 30.0
+  extreme_heat_threshold_c: 35.0
+  warm_night_threshold_c: 20.0
+  heatwave_days: 3            # consecutive days >= threshold counts as heatwave
+
+soil:
+  depth_cm: 30                # 0-30 cm mean
+  validate_texture_sum: true  # clay + sand + silt ~ 100
+
+pca:
+  correlation_pca: true       # primary PCA on standardized (correlation) data
+  covariance_pca_comparison: true
+  variance_threshold: 0.85
+  n_bootstrap: 500
+  n_permutations: 200         # parallel analysis

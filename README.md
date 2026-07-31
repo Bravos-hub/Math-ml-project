@@ -1,10 +1,20 @@
 # Uganda Crop Yield Modeling with PCA and Machine Learning
 
-A reproducible agricultural data-science project for building, analyzing, and evaluating crop-yield prediction pipelines for Uganda using official agricultural statistics, climate observations, terrain variables, and soil covariates.
+A reproducible agricultural data-science project for building, analyzing, and
+evaluating crop-yield prediction pipelines for Uganda using official
+agricultural statistics, climate observations, and soil covariates.
 
-The repository currently focuses on district-level and subregion-derived benchmarks for Eastern Uganda, with maize as the primary research crop and beans and groundnuts included as comparative crop benchmarks. It combines data engineering, exploratory analysis, Principal Component Analysis (PCA), and supervised machine-learning evaluation.
+The repository focuses on subregion-level observed yields (14 UBOS AAS
+subregions, crops: maize, beans, groundnuts) built from official UBOS
+Annual Agricultural Survey statistics (AAS 2018, AAS 2020), CHIRPS
+rainfall, NASA POWER temperature, C3S soil-moisture, and ISRIC SoilGrids
+soil properties. It combines data engineering, exploratory analysis,
+Principal Component Analysis (PCA), and supervised machine-learning
+evaluation with grouped (geographic) and temporal validation.
 
-> **Research status:** active undergraduate proof of concept. The current results are computational benchmarks based on secondary data and are not yet field-validated or suitable for operational farmer-level decision-making.
+> **Research status:** active undergraduate proof of concept. The current
+> benchmarks are based on secondary data and are not yet field-validated
+> or suitable for operational farmer-level decision-making.
 
 ---
 
@@ -12,245 +22,169 @@ The repository currently focuses on district-level and subregion-derived benchma
 
 The study is organized around three objectives:
 
-1. **Prepare the data:** acquire, integrate, clean, and explore publicly available Ugandan agricultural and climate data suitable for crop-yield analysis.
-2. **Design and interpret PCA:** mathematically verify PCA and use it to identify latent climatic, thermal, terrain, and soil-related factors.
-3. **Evaluate predictive models:** compare crop-yield models trained on raw features, PCA-reduced features, and selected hybrid feature representations.
+1. **Prepare the data:** acquire, integrate, clean, and explore publicly
+   available Ugandan agricultural and climate data suitable for crop-yield
+   analysis.
+2. **Design and interpret PCA:** mathematically verify PCA and use it to
+   identify latent climatic, thermal, and soil-related factors.
+3. **Evaluate predictive models:** compare crop-yield models trained on
+   raw features, PCA-reduced features, and hybrid feature representations.
 
 The corresponding research questions are:
 
-1. How can publicly available agricultural and climate datasets be integrated and prepared for crop-yield analysis in Uganda?
-2. What latent agroclimatic factors can be identified and interpreted using PCA?
-3. How does predictive performance differ across algorithms and feature representations?
+1. How can publicly available agricultural and climate datasets be
+   integrated and prepared for crop-yield analysis in Uganda?
+2. What latent agroclimatic factors can be identified and interpreted
+   using PCA?
+3. How does predictive performance differ across algorithms and feature
+   representations under honest (geographic/temporal) validation?
 
 ---
 
-## Current analytical scope
+## Scientific validity and status of results
 
-### Primary unit of analysis
+The project separates research stages explicitly (observed / assigned /
+proxy / synthetic data, grades A-F) and records provenance for every
+variable group. Two rules govern interpretation:
 
-The canonical modeling grain is:
+- The five-row 2020 Eastern-Uganda benchmark is a pipeline smoke test
+  (`pipeline_smoke_test_2020`, `evaluation_status = "demonstration_only"`).
+  With n=5 rows and ~3 distinct pseudo-replicated targets it is NOT
+  evidence of district-level predictability.
+- Formal model comparison runs on the honest subregion-level samples —
+  56 rows per crop and 167 rows for the pooled subregion x crop panel —
+  under random and grouped-by-subregion CV plus both temporal splits.
+  Every run is recorded in `reports/tables/experiment_registry.csv`
+  (run id, git commit, sample size, number of unique targets, feature
+  set, representation, small-sample warnings).
 
-```text
-one district × one year
-```
-
-Some 2020 benchmark tables use:
-
-```text
-one district × one crop × one season group
-```
-
-### Current geographic focus
-
-The current Eastern Uganda benchmark includes:
-
-- Iganga
-- Jinja
-- Kapchorwa
-- Mbale
-- Tororo
-
-These districts are mapped to AAS 2020 subregions for benchmark construction. Because the source yield statistics are subregional, districts assigned to the same subregion may share the same benchmark yield value. This is a deliberate approximation and must not be interpreted as independently observed district-level yield.
-
-### Current crop coverage
-
-- Maize
-- Beans
-- Groundnuts
-- Additional AAS 2020 crop tables are included for broader agricultural comparison.
+In the pooled panel, the **hybrid** representation (PC scores + one-hot
+crop indicator) is the only model set that beats the mean predictor
+under grouped-by-subregion CV: XGBoost R² = 0.65 (grouped) / 0.60
+(random CV); the raw and PCA representations do not beat the mean
+baseline.
 
 ---
 
 ## Data sources
 
-| Source | Main contribution | Current role |
+| Source | Contribution | Current role |
 |---|---|---|
-| Uganda Bureau of Statistics Annual Agricultural Survey 2020 | Planted area, harvested area, production, yield, coefficients of variation | Official crop benchmark source |
-| CHIRPS | Seasonal and annual rainfall | Real climate predictor source |
-| ERA5-Land or schema-compatible generated temperature features | Maximum/minimum temperature, growing degree days, thermal stress | Thermal predictor layer |
-| SoilGrids | Soil pH, organic carbon, texture, bulk density, cation exchange capacity | Agroecological predictor layer |
-| District metadata | Coordinates and elevation | Geographic and terrain covariates |
-| Derived project tables | Cleaned, harmonized, and benchmark-ready variables | Modeling inputs and outputs |
+| UBOS AAS 2018 (PDF), AAS 2020 (Excel annex) | Planted/harvested area, production, yield, coefficients of variation | Official crop-yield source (14 subregions, 2018 & 2020) |
+| CHIRPS v2.0 | Seasonal, monthly, and annual rainfall | Real climate predictor source |
+| NASA POWER (MERRA-2) | Daily T2M_MAX/T2M_MIN, growing degree days, thermal stress | Thermal predictor layer |
+| C3S SOILMOISTURE (Copernicus) | Soil moisture | Climate-predictor layer |
+| ISRIC SoilGrids v2.0 | Clay, sand, silt, SOC, bulk density, CEC, pH (0-30 cm) | Agroecological predictor layer |
+| geoBoundaries OCHA ADM2 | District names and centroid geometry | Geographic covariate layer |
 
-See [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) for the canonical variables, units, roles, source notes, and known quality limitations.
+`reports/tables/feature_availability.csv` records `Variable / Source /
+Coverage / Status` for every modeling column, and the soil-loading step
+refuses to build a panel unless at least 80% of soil columns are present
+(`MIN_SOIL_COVERAGE`).
 
 ---
 
-## Core features
+## Repository layout
 
-### Rainfall
-
-- `MAM`
-- `SON`
-- `DJF`
-- `JJA`
-- `annual_rainfall`
-- `rain_cv`
-- `max_monthly`
-- `min_monthly`
-- `rainy_months`
-
-### Temperature and thermal time
-
-- Seasonal `tmax` and `tmin`
-- Seasonal growing degree days
-- Seasonal heat- and cold-stress indicators
-- Annual thermal summaries
-- Elevation
-
-### Soil and terrain
-
-- Soil pH
-- Soil organic carbon
-- Clay, sand, and silt fractions
-- Bulk density
-- Cation exchange capacity
-- Latitude and longitude metadata
-
-### Target
-
-The primary supervised-learning target is:
-
-```text
-yield_tons_ha
+```
+configs/            data.yaml, features.yaml, models.yaml
+data/
+  raw/              original downloads: UBOS, CHIRPS NetCDF, API caches
+  external/         third-party datasets (C3S soil moisture, SoilGrids caches)
+  interim/          partially processed feature and yield tables
+  processed/
+    observed/       official survey estimates at the unit of analysis (grade A)
+    assigned/       official values assigned from larger areas (grade B)
+    proxy/          proxy-based tables (grade D)
+    synthetic/      synthetic/demonstration tables (grade E)
+  public/           model-ready files intended for sharing
+src/cropyield/      the pipeline package (data, features, pca, models, reporting)
+scripts/            pipeline entrypoints; legacy/ holds deprecated scripts
+tests/              data-quality and contract tests (pytest)
+notebooks/          PCA math proof and verification notebooks
+reports/            figures/ and tables/, experiment registry
 ```
 
-For AAS-derived crop tables, yield is calculated from production and harvested area where available.
+## Data classes and quality grades
 
----
+Every modeling table carries provenance columns: `yield_source`,
+`rainfall_source`, `temperature_source`, `soil_source`,
+`soil_moisture_source`, `yield_granularity`, `is_proxy`, `is_imputed`,
+`data_quality_score`, `data_quality_note`.
 
-## Repository contents
-
-### Documentation
-
-| File | Purpose |
+| Grade | Meaning |
 |---|---|
-| `README.md` | Project overview, setup, workflow, limitations, and reproducibility guide |
-| `DATA_DICTIONARY.md` | Canonical schema, variable definitions, data quality notes, and file mapping |
-
-### Data-construction scripts
-
-| Script | Purpose |
-|---|---|
-| `build_modeling_dataset.py` | Builds the canonical district-year modeling table from climate, soil, and yield inputs |
-| `build_eastern_2020_yield_from_aas.py` | Builds the Eastern Uganda maize yield benchmark from AAS 2020 |
-| `build_eastern_2020_beans_yield_from_aas.py` | Builds the beans benchmark |
-| `build_eastern_2020_groundnuts_yield_from_aas.py` | Builds the groundnuts benchmark |
-
-### Benchmark and evaluation scripts
-
-| Script | Purpose |
-|---|---|
-| `build_real_2020_benchmark.py` | Builds and evaluates the maize benchmark |
-| `build_real_2020_beans_benchmark.py` | Builds and evaluates the beans benchmark |
-| `build_real_2020_groundnuts_benchmark.py` | Builds and evaluates the groundnuts benchmark |
-| `compare_real_2020_crop_benchmarks.py` | Compares maize, beans, and groundnuts benchmark results |
-
-### Important generated datasets
-
-| File | Grain | Description |
-|---|---|---|
-| `uganda_rainfall_features.csv` | district-year | CHIRPS-derived rainfall features |
-| `uganda_temperature_features.csv` | district-year | Seasonal and annual thermal features |
-| `uganda_soil_features.csv` | district | Soil and extraction-status variables |
-| `uganda_rainfall_temperature_soil_features.csv` | district-year | Integrated climate and soil table |
-| `uganda_full_modeling_dataset.csv` | district-year | Canonical model-ready dataset where yield is available |
-| `eastern_uganda_maize_modeling_dataset.csv` | district-year | Eastern Uganda maize modeling panel |
-| `aas2020_eastern_district_yield.csv` | district-season | Maize benchmark assigned from AAS subregions |
-| `aas2020_eastern_district_beans_yield.csv` | district-season | Beans benchmark |
-| `aas2020_eastern_district_groundnuts_yield.csv` | district-season | Groundnuts benchmark |
-
-The repository also contains subregion-level AAS crop tables and generated benchmark figures.
+| A | Directly observed at the matching subregion-year level (official estimate) |
+| B | Official value assigned from a larger area (subregion -> district) |
+| C | Derived from official totals |
+| D | Proxy value (station or satellite proxy) |
+| E | Synthetic or demonstration value (pipeline testing only) |
+| F | Failed or missing extraction — never used |
 
 ---
 
-## Analytical workflow
+## Panels
 
-```text
-Official and remote-sensing data
-        ↓
-Source-specific extraction and cleaning
-        ↓
-District and year harmonization
-        ↓
-Feature engineering
-        ↓
-Rainfall + temperature + terrain + soil integration
-        ↓
-AAS crop-yield benchmark construction
-        ↓
-Missing-data and quality checks
-        ↓
-Feature standardization
-        ↓
-Principal Component Analysis
-        ↓
-Raw-feature, PCA, and hybrid model comparisons
-        ↓
-Cross-validation and diagnostic visualizations
-```
+| File | Rows (maize) | Grain | Grade | Content |
+|---|---|---|---|---|
+| `data/processed/observed/maize_subregion_panel.csv` | 56 | subregion x 2020 (3 seasons) + 2018 annual | A | AAS 2018 + 2020 official estimates + CHIRPS/POWER climate |
+| `data/processed/assigned/maize_district_assigned_panel.csv` | 456 | district x 2020 (3 seasons) + 2018 annual | B | subregion values assigned to 114 members districts |
+| `data/processed/observed/crop_pooled_subregion_panel.csv` | 167 (all crops) | subregion x crop x season x year | A | pooled panel with `crop` as a hybrid predictor |
+
+Targets: `yield_over_harvested` (primary, t/ha = production / harvested
+area), `yield_over_planted` (sensitivity), `production_mt`,
+`area_harvested_ha`, plus ~46 climate features (`rain_*`, `daily_*`,
+`temp_*`, `soil_*`).
 
 ---
 
-## PCA methodology
+## Validation design
 
-For a centered data matrix \(X_c\), the sample covariance matrix is:
+Out-of-sample validation runs on the honest subregion-level samples with
+two schemes — random CV and grouped-by-subregion CV (geographic
+generalization), plus both temporal splits (train 2018 / test 2020 and
+vice versa). Baselines are mean predictor, historical mean, and
+previous-year yield; conformal prediction intervals are reported. Results
+in `reports/tables/validation_all.csv`.
 
-```text
-S = (X_cᵀ X_c) / (n - 1)
-```
+### Feature representations
 
-The project verifies that the covariance matrix is symmetric and positive semi-definite, then compares manually derived eigenvalues for a two-feature subset with `numpy.linalg.eigh()`.
+`make models` compares three feature representations at the modeling step:
 
-For a two-dimensional covariance matrix:
+1. **Raw** — cleaned predictors used directly.
+2. **PCA-reduced** — retained principal-component scores (correlation-matrix PCA).
+3. **Hybrid** — PC scores plus contextual variables not included in the PCA
+   transformation (e.g. one-hot `crop` in the pooled panel).
 
-```text
-S = [[a, c],
-     [c, b]]
-```
+All preprocessing (imputation, scaling, PCA) is fitted inside each
+training fold only, to prevent leakage. Model matrix: OLS, Ridge, PCR,
+PLS, Random Forest, XGBoost + 3 baselines in `scripts/run_models.py`.
 
-the characteristic equation is:
+### Experiment registry
 
-```text
-λ² - (a + b)λ + (ab - c²) = 0
-```
-
-PCA is then applied to standardized numerical predictors. Component retention should be justified using explained variance, scree-plot structure, stability, and interpretability rather than a threshold alone.
-
-Important methodological rule:
-
-> The yield target and variables directly used to calculate it must never be included in the PCA predictor matrix.
+Each model run records an experiment row in
+`reports/tables/experiment_registry.csv`: `run_id`, timestamp, git commit,
+sample size, number of unique targets, `n_features`, `feature_set`,
+`representation`, and small-sample warnings (sample < 100 or too few
+unique targets).
 
 ---
 
-## Predictive modeling plan
+## PCA and representations
 
-The intended comparison includes:
-
-- Ordinary Least Squares
-- Ridge Regression
-- Random Forest
-- XGBoost
-
-Each model should be evaluated using three feature representations:
-
-1. **Raw:** original cleaned predictors.
-2. **PCA-reduced:** retained principal-component scores.
-3. **Hybrid:** PCA scores plus contextual variables that were not included in the PCA transformation.
-
-Recommended evaluation metrics:
-
-- Root Mean Squared Error (RMSE)
-- Coefficient of determination (`R²`)
-- Mean and standard deviation across cross-validation folds
-
-All preprocessing steps must be fitted inside each training fold to prevent leakage.
+`make pca` runs a rigorous PCA of the 65-feature district-year climate matrix
+(1019 rows): correlation-matrix PCA with covariance comparison, component
+retention by Kaiser, cumulative variance (0.85), and parallel analysis
+(95th percentile), plus bootstrap confidence intervals for eigenvalues and
+loadings. Results in `reports/tables/pca_v2_*` and `reports/figures/`. The
+underlying SVD implementation is verified against a hand-computed
+eigendecomposition and sklearn in `notebooks/01_pca_math.ipynb`.
 
 ---
 
 ## Installation
 
-### 1. Clone the repository
+### 1. Clone
 
 ```bash
 git clone https://github.com/Bravos-hub/Math-ml-project.git
@@ -264,87 +198,51 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### 3. Install the scientific Python dependencies
-
-A pinned `requirements.txt` is not yet present. The current scripts are expected to require packages similar to:
+### 3. Install dependencies
 
 ```bash
-pip install numpy pandas scipy scikit-learn matplotlib openpyxl xgboost
-```
-
-Depending on the extraction workflow, geospatial processing may additionally require:
-
-```bash
-pip install geopandas rasterio xarray netCDF4 requests
-```
-
-Create and commit a pinned dependency file after validating the complete environment:
-
-```bash
-pip freeze > requirements.txt
+pip install -r requirements.txt   # or make setup
 ```
 
 ---
 
 ## Running the pipeline
 
-Run scripts from the repository root so that relative paths resolve consistently.
-
-### Build crop benchmarks
-
 ```bash
-python build_eastern_2020_yield_from_aas.py
-python build_eastern_2020_beans_yield_from_aas.py
-python build_eastern_2020_groundnuts_yield_from_aas.py
+make data                    # build all real-data panels (grade A/B)
+make validate                # run pytest contract tests (35 tests)
+make pca                     # PCA retention + stability analysis
+make models                  # model comparison (raw/pca/hybrid, grouped CV)
+make figures
+make report
+make all
 ```
 
-### Build the integrated modeling dataset
+`make data` -> `scripts/build_panels.py` (builds observed/assigned panels
+plus the pooled subregion x crop panel).
+`make models` -> `scripts/run_models.py`. Default scope is the pooled
+panel x `full_agroecological` features x raw/pca/hybrid representations
+(~2 min). Add `--full` to run all crops x feature sets (raw).
 
-```bash
-python build_modeling_dataset.py
-```
-
-### Build and evaluate 2020 crop benchmarks
-
-```bash
-python build_real_2020_benchmark.py
-python build_real_2020_beans_benchmark.py
-python build_real_2020_groundnuts_benchmark.py
-```
-
-### Compare crop benchmarks
-
-```bash
-python compare_real_2020_crop_benchmarks.py
-```
-
-Before running a script, inspect its input-path constants or command-line options and confirm that the required source tables exist.
+Inspect input-path constants and confirm that required source tables exist
+before running a script.
 
 ---
 
 ## Data management
 
-Large climate and geospatial source files must not be committed to ordinary Git history.
-
-The repository ignores formats such as:
-
-```text
-*.nc
-*.tif
-*.tiff
-*.zip
-```
-
-The 7+ GiB CHIRPS NetCDF source should remain outside Git and be recreated or downloaded using documented scripts. GitHub should store code, metadata, lightweight derived tables, documentation, and publication-ready outputs—not unrestricted raw archives.
-
-Recommended local structure:
+Large climate and geospatial source files must not live in Git history.
+The repository ignores formats such as `*.nc`, `*.tif`, `*.tiff`, `*.zip`.
+The 7+ GiB CHIRPS NetCDF source stays outside Git and is regenerated with
+documented scripts. GitHub stores code, metadata, lightweight derived
+tables, documentation, and publication-ready outputs.
 
 ```text
 data/
 ├── raw/          # ignored
 ├── external/     # ignored where licensing requires
-├── interim/      # ignored
-├── processed/    # publish only when permitted
+├── interim/
+├── processed/    # publish when permitted
 └── public/       # dictionaries, schemas, and small shareable examples
 ```
 
@@ -352,28 +250,19 @@ data/
 
 ## Reproducibility requirements
 
-A reproducible research run should record:
+A reproducible run should record source URLs and retrieval dates, dataset
+versions, script/commit version, unit-conversion rules, district/subregion
+mapping rules, missing-data decisions, standardization parameters,
+PCA feature list and retained components, CV folds and random seeds,
+model hyperparameters, and output paths.
 
-- Source URLs and retrieval dates
-- Dataset versions
-- Script and commit version
-- Unit-conversion rules
-- District/subregion mapping rules
-- Missing-data decisions
-- Standardization parameters
-- PCA feature list and retained components
-- Cross-validation folds and random seeds
-- Model hyperparameters
-- Output metrics and figure paths
+Recommended automated checks (in `tests/`):
 
-Recommended automated checks include:
-
-- Unique district-year keys
+- Unique subregion-season-year keys
 - Nonnegative crop yield
-- Positive harvested area where yield is calculated
+- Positive harvested area where yield is computed
 - No target leakage into PCA
-- Symmetric covariance matrix
-- Nonnegative covariance eigenvalues within numerical tolerance
+- Symmetric covariance matrix, nonnegative eigenvalues within tolerance
 - Agreement between manual eigenvalues and `numpy.linalg.eigh()`
 - No overlap between grouped training and test entities
 
@@ -381,113 +270,40 @@ Recommended automated checks include:
 
 ## Known limitations
 
-The current repository should be interpreted with the following limitations:
-
-1. The project is based on secondary data and has not yet been validated through field measurements.
-2. Several benchmarks contain only five Eastern Uganda districts, which is insufficient for strong generalization claims.
-3. AAS 2020 yield statistics are subregional and are assigned to selected districts for comparison; they are not independent district observations.
-4. Some temperature or yield tables may be synthetic, proxy-based, or schema-compatible placeholders. Every result must identify the actual source used.
-5. SoilGrids extraction records may contain `request_failed` or missing values and require quality checks before production analysis.
-6. SoilGrids units must be confirmed against the exact source metadata before publication.
-7. Static soil values repeated across years do not represent annual soil change.
-8. PCA maximizes predictor variance, not yield-prediction accuracy.
-9. The present framework supports association and prediction, not causal inference.
-10. Current outputs are not suitable for operational farm recommendations or national deployment.
-
----
-
-## Roadmap
-
-### Phase 1 — Mathematical and data foundation
-
-- Complete the handwritten PCA derivation
-- Add an executable PCA verification notebook
-- Pin Python dependencies
-- Add automated data-contract tests
-
-### Phase 2 — Stronger real-data integration
-
-- Replace all proxy yield fields with documented official observations
-- Replace schema-compatible synthetic thermal data with fully documented ERA5-Land extraction
-- Repair and validate SoilGrids ingestion
-- Add UNPS household/plot features where licensing and identifiers permit
-
-### Phase 3 — Robust modeling
-
-- Implement leakage-safe pipelines
-- Add grouped five-fold cross-validation
-- Compare OLS, Ridge, Random Forest, and XGBoost
-- Evaluate raw, PCA, and hybrid representations
-- Add uncertainty and sensitivity analysis
-
-### Phase 4 — External validation
-
-Subject to institutional approval and partnership:
-
-- Collect primary plot-level observations
-- Measure true plot area and harvested yield
-- Validate satellite and survey predictors
-- Test transferability across districts and seasons
-- Recalibrate the final model
+1. The project is based on secondary data and is not yet field validated.
+2. The 5-row benchmark is a smoke test, not a generalization claim.
+3. AAS yield statistics are subregional and assigned to districts for
+   district tables; they are not independent district-level attributes.
+4. AAS 2018 annual-crop rows publish total production with second-season
+   harvested area; kept with an explicit `yield_consistency_ok` flag.
+5. Soil values are static across years; they do not represent annual change.
+6. PCA maximizes explained variance, not yield-prediction accuracy.
+7. The framework supports association and prediction, not causal inference.
+8. Outputs are not suitable for operational farm recommendations yet.
 
 ---
 
 ## Research ethics and responsible use
 
-This phase uses secondary data only. No direct farmer recruitment, interviews, or field measurements are included.
-
-When using restricted household or survey data:
-
-- Follow the provider's access conditions.
-- Do not publish direct household identifiers.
-- Do not publish precise protected coordinates.
-- Keep restricted source files outside the public repository.
-- Publish reproducible code and aggregate outputs where licensing permits.
-- Clearly distinguish observed, derived, assigned, proxy, and synthetic values.
-
----
-
-## Contributing
-
-Contributions should preserve data provenance and research reproducibility.
-
-Before submitting changes:
-
-1. Document new data sources and licenses.
-2. Update `DATA_DICTIONARY.md` for every added field.
-3. Avoid committing large raw files.
-4. Add or update quality checks.
-5. Use clear commit messages.
-6. State whether results use real, proxy, assigned, or synthetic data.
+This phase uses secondary data only; no farmer recruitment, interviews, or
+field measurements. When using restricted data: follow the provider's access
+conditions, do not publish direct identifiers or protected coordinates,
+keep restricted sources outside the public repository, and clearly
+distinguish observed, derived, assigned, surrogate, and synthetic values.
 
 ---
 
 ## Citation
 
-When citing this repository, use a form similar to:
-
 ```text
-Olimi, B. (2026). Uganda Crop Yield Modeling with PCA and Machine Learning: An undergraduate computational research project. GitHub repository.
+Olimi, B. (2026). Uganda Crop-Yield Prediction with PCA and Machine Learning. GitHub repository.
 ```
 
-A formal `CITATION.cff` file should be added before publication or archival release.
-
----
-
-## Author
-
-**Olimi Brave**  
-Undergraduate researcher and software engineer  
-Uganda
+A formal `CITATION.cff` is present at the repository root.
 
 ---
 
 ## License
 
-No license file is currently present. Until a license is added, the repository remains protected by default copyright rules. Add an explicit software and data license only after reviewing the licenses and redistribution conditions of all upstream datasets.
-
----
-
-## Disclaimer
-
-This repository is an academic proof of concept. Its predictions, derived statistics, and visualizations must not be used as a substitute for official agricultural statistics, agronomic advice, field inspection, or validated operational forecasting.
+MIT — see `LICENSE`. Data remain the property of their respective providers
+(UB, CHC/UCSB, NASA, Copernicus, ISRIC).

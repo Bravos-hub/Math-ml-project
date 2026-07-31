@@ -1,0 +1,57 @@
+# Data configuration: crops, years, geography, and target definitions.
+# One row of analysis = district-year-season (assigned panel)
+# or subregion-year-season (observed panel).
+
+primary_crop: maize
+secondary_crops:
+  - beans
+  - groundnuts
+
+survey_years: [2018, 2020]
+season_groups: [first_season, second_season, total]
+
+# Official AAS sub-regions (14) as printed in AAS 2020 Chapter 1 Table 1-2.
+subregions:
+  - South Buganda
+  - North Buganda
+  - West Nile
+  - Lango
+  - Acholi
+  - Kigezi
+  - Bunyoro
+  - Tooro
+  - Busoga
+  - Teso
+  - Bukedi
+  - Elgon
+  - Karamoja
+  - Ankole
+
+# Target definitions (all derived from official totals where available).
+target:
+  primary: yield_over_harvested      # production_mt / area_harvested_ha
+  sensitivity: yield_over_planted    # production_mt / area_planted_ha
+  anomaly_scope: subregion           # anomalies computed within this unit
+
+# Rainfall features marked as requiring DAILY data (not derivable from the
+# monthly CHIRPS NetCDF that is already in data/raw/).
+daily_required_features:
+  - longest_dry_spell_days
+  - dry_spell_count_7d
+  - dry_spell_count_10d
+  - rain_days_1mm
+  - rain_days_10mm
+  - rain_days_20mm
+  - mean_wet_day_rainfall
+  - maximum_5day_rainfall
+  - season_onset_day
+  - season_cessation_day
+  - season_length_days
+  - false_onset_flag
+
+# Climatological baseline period for anomalies (CHIRPS full history is
+# available in the local global NetCDF).
+climatology_period: [1981, 2010]
+
+district_geometry_source: geoBoundaries_ADM2
+district_geometry_url: "https://www.geoboundaries.org/api/current/gbOpen/UGA/ADM2/"

@@ -7,8 +7,6 @@ __pycache__/
 *.nc
 *.tif
 *.tiff
-
-# Local archive copies of source downloads
 *.zip
 
 # Temporary notebook/runtime figures
@@ -20,6 +18,6 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 
-# Large climate datasets
-chirps-v2.0.monthly.nc
-*.nc
+# Runtime API caches are committed (small, reproducibility-critical);
+# exceptions go here:
+data/raw/climate_cache/.keep

@@ -1,0 +1,20 @@
+Uganda Yield Modeling Training Summary
+========================================
+Input dataset: eastern_uganda_maize_modeling_dataset_2020_2023.csv
+Rows used: 20
+Predictor count: 38
+Predictors: MAM, SON, DJF, JJA, annual_rainfall, rain_cv, max_monthly, min_monthly, rainy_months, MAM_tmax, MAM_tmin, MAM_gdd, MAM_heat_stress, MAM_cold_stress, SON_tmax, SON_tmin, SON_gdd, SON_heat_stress, SON_cold_stress, DJF_tmax, DJF_tmin, DJF_gdd, DJF_heat_stress, DJF_cold_stress, JJA_tmax, JJA_tmin, JJA_gdd, JJA_heat_stress, JJA_cold_stress, annual_tmax, annual_tmin, annual_gdd, annual_heat_stress, annual_cold_stress, elevation_m, lat, lon, soil_moisture_index
+PCA components evaluated: 6
+Variance explained by 6 PCs: 0.9361
+
+Best model:
+  SVR (raw)
+  R2 = 0.3241
+  RMSE = 0.2628
+
+Top 5 model results:
+  SVR (raw): R2=0.3241, RMSE=0.2628, features=38
+  SVR (PCA): R2=0.2773, RMSE=0.2717, features=6
+  Random Forest (raw): R2=0.1417, RMSE=0.2961, features=38
+  Random Forest (PCA): R2=0.0536, RMSE=0.3110, features=6
+  Ridge (PCA): R2=-0.4246, RMSE=0.3815, features=6

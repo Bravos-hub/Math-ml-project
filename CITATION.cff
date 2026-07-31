@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or its data products, please cite it as below."
+title: "cropyield-uganda: crop-yield prediction from agroclimatic factors in Uganda"
+abstract: >-
+  District- and subregion-level crop-yield prediction for Uganda built on
+  UBOS Annual Agricultural Survey statistics (AAS 2018, AAS 2020), CHIRPS
+  rainfall, NASA POWER temperature, and C3S soil-moisture data, with PCA and
+  regression comparisons under spatial and temporal validation.
+type: software
+authors:
+  - name: "Uganda Crop-Yield Research Project"
+date-released: "2026-07-31"
+license: MIT
+repository-code: "https://example.invalid/cropyield-uganda"
+keywords:
+  - crop yield
+  - Uganda
+  - AAS
+  - CHIRPS
+  - PCA
+  - remote sensing
