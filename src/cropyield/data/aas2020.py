@@ -80,12 +80,37 @@ def load_aas2020_subregion() -> pd.DataFrame:
         ["crop", "sub_region", "season_group"]
     ).reset_index(drop=True)
 
-    return add_provenance(
+    panel = add_provenance(
         panel,
         yield_source=YIELD_AAS2020_SUBREGION,
         yield_granularity=GRANULARITY_SUBREGION,
         quality_note="Official AAS 2020 Chapter 6 sub-region estimates, survey-weighted with published CVs.",
     )
+
+    # Recover OCR junk in the source yields (e.g. a stray backtick in
+    # Table 6-19 groundnuts, South Buganda, second season 2020): recompute
+    # from production/area and flag the cell (grade C) AFTER provenance, so
+    # the flags are not overwritten.
+    for col in ("yield_over_harvested", "yield_over_planted"):
+        junk = pd.to_numeric(panel[col], errors="coerce").isna() \
+            & panel[col].notna()
+        panel[col] = pd.to_numeric(panel[col], errors="coerce")
+        if col == "yield_over_harvested" and junk.any():
+            panel.loc[junk, col] = (
+                panel["production_mt"] / panel["area_harvested_ha"]
+            ).loc[junk]
+        if col == "yield_over_planted" and junk.any():
+            panel.loc[junk, col] = (
+                panel["production_mt"] / panel["area_planted_ha"]
+            ).loc[junk]
+        panel.loc[junk, "is_imputed"] = True
+        panel.loc[junk, "data_quality_score"] = "C"
+        panel.loc[junk, "data_quality_note"] = (
+            "Yield not legible in source table; recomputed as "
+            "production / area and flagged as derived."
+        )
+
+    return panel
 
 
 def save_aas2020_subregion(output: Path | None = None) -> pd.DataFrame:

@@ -150,36 +150,31 @@ def run_scheme(df: pd.DataFrame, scheme: str, feature_cols: list[str],
                 continue
             model.fit(X.iloc[tr], y[tr])
             pred = np.clip(model.predict(X.iloc[te]), 0.0, None)
-            rows.append({
-                "scheme": scheme, "fold": fold, "model": name,
-                "sub_region": groups[te], "year": years[te],
-                "y_true": y[te], "y_pred": pred,
-            })
+            _append(rows, scheme, fold, name, groups[te], years[te],
+                    y[te], pred)
         # baselines
         train_y, test_y = y[tr], y[te]
-        rows.append({
-            "scheme": scheme, "fold": fold, "model": "mean_predictor",
-            "sub_region": groups[te], "year": years[te],
-            "y_true": test_y,
-            "y_pred": np.full(len(te), train_y.mean()),
-        })
+        _append(rows, scheme, fold, "mean_predictor", groups[te], years[te],
+                test_y, np.full(len(te), train_y.mean()))
         hist = pd.Series(train_y).groupby(groups[tr]).mean()
-        rows.append({
-            "scheme": scheme, "fold": fold, "model": "historical_mean",
-            "sub_region": groups[te], "year": years[te],
-            "y_true": test_y,
-            "y_pred": hist.reindex(groups[te]).fillna(train_y.mean()).to_numpy(),
-        })
+        _append(rows, scheme, fold, "historical_mean", groups[te], years[te],
+                test_y, hist.reindex(groups[te]).fillna(train_y.mean()).to_numpy())
         if scheme.startswith("temporal"):
-            rows.append({
-                "scheme": scheme, "fold": fold, "model": "previous_year_yield",
-                "sub_region": groups[te], "year": years[te],
-                "y_true": test_y,
-                "y_pred": np.nan_to_num(
-                    _previous_year(df, groups[te], years[te], target),
-                    nan=train_y.mean()),
-            })
+            _append(rows, scheme, fold, "previous_year_yield", groups[te],
+                    years[te], test_y, np.nan_to_num(
+                        _previous_year(df, groups[te], years[te], target),
+                        nan=train_y.mean()))
     return pd.DataFrame(rows)
+
+
+def _append(rows: list, scheme: str, fold: int, model: str,
+            subregions: np.ndarray, years: np.ndarray,
+            y_true: np.ndarray, y_pred: np.ndarray) -> None:
+    """Expand one fold's predictions into long-form rows."""
+    for sub, year, yt, yp in zip(subregions, years, y_true, y_pred):
+        rows.append({"scheme": scheme, "fold": fold, "model": model,
+                     "sub_region": sub, "year": year,
+                     "y_true": yt, "y_pred": yp})
 
 
 def _previous_year(df: pd.DataFrame, subregions: np.ndarray,
@@ -203,9 +198,9 @@ def summarize(pred_df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
     alpha = cfg["uncertainty"]["conformal_alpha"]
     out = []
     for (scheme, model), g in pred_df.groupby(["scheme", "model"]):
-        yt = np.concatenate(g["y_true"].to_numpy())
-        yp = np.concatenate(g["y_pred"].to_numpy())
-        groups = np.concatenate(g["sub_region"].to_numpy())
+        yt = g["y_true"].to_numpy(dtype=float)
+        yp = g["y_pred"].to_numpy(dtype=float)
+        groups = g["sub_region"].to_numpy()
         resid = np.abs(yt - yp)
         quantile = np.quantile(resid, 1 - alpha)
         coverage = float(np.mean(resid <= quantile))
