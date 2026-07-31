@@ -21,3 +21,4 @@ __pycache__/
 # Runtime API caches are committed (small, reproducibility-critical);
 # exceptions go here:
 data/raw/climate_cache/.keep
+data/interim/.aas2018_layout.txt
