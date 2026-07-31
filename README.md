@@ -467,7 +467,7 @@ Before submitting changes:
 When citing this repository, use a form similar to:
 
 ```text
-Kubanja, E. E. (2026). Uganda Crop Yield Modeling with PCA and Machine Learning: An undergraduate computational research project. GitHub repository.
+Olimi, B. (2026). Uganda Crop Yield Modeling with PCA and Machine Learning: An undergraduate computational research project. GitHub repository.
 ```
 
 A formal `CITATION.cff` file should be added before publication or archival release.
@@ -476,7 +476,7 @@ A formal `CITATION.cff` file should be added before publication or archival rele
 
 ## Author
 
-**Kubanja Elijah Eldred**  
+**Olimi Brave**  
 Undergraduate researcher and software engineer  
 Uganda
 
