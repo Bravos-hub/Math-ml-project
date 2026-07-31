@@ -19,3 +19,7 @@ __pycache__/
 .mypy_cache/
 .pytest_cache/
 .ipynb_checkpoints/
+
+# Large climate datasets
+chirps-v2.0.monthly.nc
+*.nc
