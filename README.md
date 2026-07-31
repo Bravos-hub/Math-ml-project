@@ -121,20 +121,62 @@ Every modeling table carries provenance columns: `yield_source`,
 | E | Synthetic or demonstration value (pipeline testing only) |
 | F | Failed or missing extraction — never used |
 
+<<<<<<< HEAD
 ---
+=======
+Known data-quality decisions (see `CHANGELOG.md`):
+
+- The legacy 15-district temperature/synthetic tables are superseded by
+  NASA POWER daily temperatures; synthetic tables live only in
+  `data/processed/synthetic/` and are never used in modeling.
+- SoilGrids extraction repaired (single-property API workaround + jitter
+  for mosaic holes); soil properties are complete for all 114 districts
+  with grade A provenance.
+- AAS 2019 PDF is corrupt; the survey panel covers **2018 and 2020**.
+- One OCR-damaged cell in the AAS 2020 groundnuts table (South Buganda
+  second season) was recomputed from official totals and flagged
+  `is_imputed=True`.
+>>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 ## Panels
 
 | File | Rows (maize) | Grain | Grade | Content |
 |---|---|---|---|---|
 | `data/processed/observed/maize_subregion_panel.csv` | 56 | subregion x 2020 (3 seasons) + 2018 annual | A | AAS 2018 + 2020 official estimates + CHIRPS/POWER climate |
+<<<<<<< HEAD
 | `data/processed/assigned/maize_district_assigned_panel.csv` | 456 | district x 2020 (3 seasons) + 2018 annual | B | subregion values assigned to 114 members districts |
 | `data/processed/observed/crop_pooled_subregion_panel.csv` | 167 (all crops) | subregion x crop x season x year | A | pooled panel with `crop` as a hybrid predictor |
+=======
+| `data/processed/assigned/maize_district_assigned_panel.csv` | 456 | district x 2020 (3 seasons) + 2018 annual | B | subregion values assigned to 114 member districts |
+>>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 Targets: `yield_over_harvested` (primary, t/ha = production / harvested
 area), `yield_over_planted` (sensitivity), `production_mt`,
 `area_harvested_ha`, plus ~46 climate features (`rain_*`, `daily_*`,
 `temp_*`, `soil_*`).
+<<<<<<< HEAD
+=======
+
+## Validation design
+
+Out-of-sample validation runs on 56 honest samples (14 subregions x
+4 season groups), with four schemes: random CV, grouped-by-subregion CV
+(geographic generalization), and both temporal splits (train 2018 /
+test 2020 and vice versa). Baselines are mean predictor, historical mean
+and previous-year yield; conformal prediction intervals are reported.
+Results in `reports/tables/validation_all.csv`.
+
+## PCA analysis
+
+`make pca` runs a rigorous PCA of the 65-feature district-year climate
+matrix (1019 rows): correlation-matrix PCA with covariance comparison,
+component retention by Kaiser, cumulative variance (0.85) and parallel
+analysis (95th percentile), plus bootstrap confidence intervals for
+eigenvalues and loadings. Results in `reports/tables/pca_v2_*` and
+`reports/figures/pca_v2_scree.png`. The underlying SVD implementation is
+verified against a hand-computed eigendecomposition and sklearn in
+`notebooks/01_pca_math.ipynb`.
+>>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 ---
 
@@ -193,6 +235,7 @@ cd Math-ml-project
 
 ### 2. Create a virtual environment
 
+<<<<<<< HEAD
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -302,6 +345,16 @@ Olimi, B. (2026). Uganda Crop-Yield Prediction with PCA and Machine Learning. Gi
 A formal `CITATION.cff` is present at the repository root.
 
 ---
+=======
+| Data | Source | Access | Coverage |
+|---|---|---|---|
+| Crop area/production/yield | UBOS AAS 2018 (PDF), AAS 2020 (Excel annex) | local files | 14 sub-regions, 2018 & 2020 |
+| Rainfall (monthly) | CHIRPS v2.0 (`chirps-v2.0.monthly.nc`) | local NetCDF | 1981-2026, global 0.05 deg |
+| Rainfall (daily) | CHIRPS v2.0 via ClimateSERV API | API, cached | 2015-2023 |
+| Temperature (daily) | NASA POWER | API, cached | 2015-2023 |
+| Soil moisture | C3S SOILMOISTURE (Copernicus) | local NetCDF | 2020-2024 |
+| Soil properties | ISRIC SoilGrids v2.0 | API, cached | 0-30 cm, 114 districts |
+>>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 ## License
 

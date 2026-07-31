@@ -52,14 +52,53 @@ data version.
   publishes second-season yields for annual crops and totals for perennials
   (documented in the source parser).
 
+### Added (Phase 2 - SoilGrids)
+
+- `src/cropyield/data/soilgrids.py`: ISRIC SoilGrids v2.0 extraction
+  (clay, sand, silt, SOC, bulk density, CEC, pH) for all 114 district
+  centroids, 0-30 cm depth-weighted (0-5/5-15/15-30). The API only accepts
+  one property + one depth per request; `d_factor` conversion applied per
+  property; jitter retries (2.2/4.4/8.9 km, 8 directions) fill mosaic
+  holes (Kalangala/Wakiso centroids). Result: 0 missing values across all
+  114 districts (`uganda_soil_features_114.csv`).
+
+### Added (Phase 3 - honest validation)
+
+- `src/cropyield/models/validate.py` + `configs/models.yaml`: validation
+  matrix over 3 crops x 4 feature sets (rainfall-only, climate,
+  climate+thermal, full+soil) x 4 schemes (random CV, group-by-subregion
+  CV, temporal 2018->2020, temporal 2020->2018) x 6 models (OLS, Ridge,
+  PCR, PLS, RF, XGBoost) + 3 baselines (mean, historical mean,
+  previous-year yield). Conformal prediction intervals; negative
+  predictions clipped at 0; zero-variance features filtered.
+- Results in `reports/tables/validation_all.csv` (plus per-crop/per-scheme
+  tables and long-form prediction CSVs). Best genuine signal: beans
+  XGBoost under random CV (R2 = 0.613, fold-verified); no model beats
+  previous-year yield under temporal validation for maize.
+
+### Added (Phase 4 - PCA)
+
+- `src/cropyield/pca/pca_analysis.py` + `scripts/run_pca.py`: PCA of the
+  65-feature district-year climate matrix (1019 rows). Correlation-matrix
+  PCA (SVD) with covariance comparison; retention via Kaiser-Guttman
+  (12 components), cumulative variance 0.85 (13), and parallel analysis
+  95th percentile (10); 500-bootstrap confidence intervals for
+  eigenvalues and loadings; scree plot + loadings heatmap.
+- `notebooks/01_pca_math.ipynb`: hand-computed eigendecomposition
+  verified against the pipeline SVD and sklearn to machine precision.
+- `tests/test_data_quality.py`: 20 schema/data-quality tests (district
+  count, DOY windows, texture sums, yield plausibility, provenance
+  columns, no-NaN feature panels); all pass.
+
 ### Data quality decisions
 
 - `uganda_temperature_features.csv` is flagged SYNTHETIC (generator-based);
   replaced by NASA POWER daily temperatures for new panels.
 - `uganda_full_pipeline_data.csv` and `*_hybrid_yield.csv` moved to
   `data/processed/synthetic/` and are NOT used in modeling.
-- SoilGrids extraction failed (`request_failed`); soil properties are
-  excluded from PCA/modeling until repaired (quality grade F).
+- SoilGrids extraction succeeded after the single-property API workaround;
+  soil properties are complete (grade A) and included in PCA/modeling.
+  (`uganda_temperature_features.csv` remains synthetic and is never used.)
 - AAS 2019 PDF in `data/raw/` is corrupt; 2019 is not used. Panel years are
   2018 and 2020.
 
