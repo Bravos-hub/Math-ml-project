@@ -53,10 +53,12 @@ _ADDITIVE = [
     "season_total_mm", "rain_days_1mm", "rain_days_10mm", "rain_days_20mm",
     "dry_spell_count_7d", "dry_spell_count_10d",
 ]
-_EXTREME = ["longest_dry_spell_days", "maximum_5day_rainfall"]
+_EXTREME = ["longest_dry_spell_days", "maximum_5day_rainfall", "false_onset_flag"]
+# Features that cannot be naively summed across seasons; handled explicitly
+# in climate_for_season for 'total' season groups.
 _DROP_FOR_TOTAL = [
     "season_onset_day", "season_cessation_day", "season_length_days",
-    "false_onset_flag", "mean_wet_day_rainfall",
+    "mean_wet_day_rainfall",
 ]
 _TEMP_ADDITIVE = [
     "season_gdd", "heat_days", "extreme_heat_days", "warm_night_days",
@@ -74,6 +76,12 @@ def load_climate() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFra
     drop = [c for c in PROVENANCE_COLUMNS if c in temp.columns]
     temp = temp.drop(columns=drop)
     return districts, monthly, daily, temp
+
+
+def load_soil() -> pd.DataFrame:
+    soil = pd.read_csv(INTERIM / "uganda_soil_features_114.csv")
+    drop = [c for c in PROVENANCE_COLUMNS if c in soil.columns]
+    return soil.drop(columns=drop)
 
 
 def climate_for_season(district_climate: pd.DataFrame,
@@ -107,7 +115,25 @@ def climate_for_season(district_climate: pd.DataFrame,
             combined[col] = a.combine(b, max)
         else:
             combined[col] = a + b.fillna(0)
-    return combined.drop(columns=drop_cols).reset_index()
+    # Carry meaningful values for the features that were dropped above.
+    if "season_onset_day" in drop_cols:
+        combined["season_onset_day"] = combined["season_onset_day"] \
+            .combine(second["season_onset_day"].reindex(combined.index), min)
+    if "season_cessation_day" in drop_cols:
+        combined["season_cessation_day"] = combined["season_cessation_day"] \
+            .combine(second["season_cessation_day"].reindex(combined.index), max)
+    if "season_length_days" in drop_cols:
+        on = combined["season_onset_day"]
+        ce = combined["season_cessation_day"]
+        combined["season_length_days"] = ce - on + 1
+    if "mean_wet_day_rainfall" in drop_cols:
+        w1 = combined["rain_days_1mm"]
+        w2 = second["rain_days_1mm"].reindex(combined.index)
+        m1 = combined["mean_wet_day_rainfall"]
+        m2 = second["mean_wet_day_rainfall"].reindex(combined.index)
+        combined["mean_wet_day_rainfall"] = \
+            (m1 * w1 + m2 * w2) / (w1 + w2).replace(0, pd.NA)
+    return combined.drop(columns=[c for c in drop_cols if c not in combined]).reset_index()
 
 
 def subregion_climate(df: pd.DataFrame, districts: pd.DataFrame,
@@ -173,15 +199,27 @@ def build_panel(crop: str) -> tuple[pd.DataFrame, pd.DataFrame]:
 
     panel = yields.merge(pd.DataFrame(climate_rows),
                          on=["sub_region", "year", "season_group"], how="left")
+    soil = load_soil()
+    soil_subregion = subregion_climate(
+        soil, districts, district_col="district"
+    ).rename(columns={c: f"soil_{c}" for c in soil.columns
+                      if c not in ("district", "sub_region")})
+    panel = panel.merge(soil_subregion, on="sub_region", how="left")
     return panel, districts
 
 
 def assigned_from_subregion(panel: pd.DataFrame,
                             districts: pd.DataFrame) -> pd.DataFrame:
     """Assign subregion yields and climate to districts (grade B)."""
-    climate_cols = [c for c in panel.columns
-                    if c.startswith(("daily_", "temp_", "rain_"))]
+    panel = panel.drop(columns=[c for c in panel.columns
+                                if c.startswith("soil_")])
     merged = panel.merge(districts, on="sub_region", how="inner")
+    soil = load_soil()
+    merged = merged.merge(
+        soil.rename(columns={c: f"soil_{c}" for c in soil.columns
+                             if c not in ("district", "lat", "lon")}),
+        on="district", how="left",
+    )
     return merged
 
 

@@ -1,4 +1,9 @@
 # Model and validation configuration.
+#
+# Feature names refer to columns of the observed subregion panel
+# (data/processed/observed/{crop}_subregion_panel.csv), which carries
+# prefixes: rain_ (CHIRPS monthly), daily_ (CHIRPS daily via ClimateSERV),
+# temp_ (NASA POWER), soil_ (SoilGrids).
 
 random_seed: 42
 
@@ -7,60 +12,75 @@ sensitivity_target: yield_over_planted
 
 feature_sets:
   rainfall_only:
-    - MAM
-    - SON
-    - annual_rainfall
-    - rain_cv
+    - rain_MAM
+    - rain_SON
+    - rain_annual_rainfall
+    - rain_rain_cv
   climate:
-    - MAM
-    - SON
-    - DJF
-    - JJA
-    - annual_rainfall
-    - rain_cv
-    - max_monthly
-    - min_monthly
-    - rainy_months
+    - rain_MAM
+    - rain_SON
+    - rain_DJF
+    - rain_JJA
+    - rain_annual_rainfall
+    - rain_rain_cv
+    - rain_max_monthly
+    - rain_min_monthly
+    - rain_rainy_months
   climate_thermal:
-    - MAM
-    - SON
-    - DJF
-    - JJA
-    - annual_rainfall
-    - rain_cv
-    - max_monthly
-    - min_monthly
-    - rainy_months
-    - growing_degree_days
-    - mean_temperature
-    - temperature_range
-    - days_above_30c
+    - rain_MAM
+    - rain_SON
+    - rain_DJF
+    - rain_JJA
+    - rain_annual_rainfall
+    - rain_rain_cv
+    - rain_max_monthly
+    - rain_min_monthly
+    - rain_rainy_months
+    - temp_season_gdd
+    - temp_heat_days
+    - temp_extreme_heat_days
+    - temp_warm_night_days
+    - temp_heatwave_count
   full_agroecological:
-    - MAM
-    - SON
-    - DJF
-    - JJA
-    - annual_rainfall
-    - rain_cv
-    - max_monthly
-    - min_monthly
-    - rainy_months
-    - growing_degree_days
-    - mean_temperature
-    - temperature_range
-    - days_above_30c
-    - longest_dry_spell_days
-    - dry_spell_count_7d
-    - rain_days_10mm
-    - maximum_5day_rainfall
-    - season_length_days
-    - elevation_m
+    - rain_MAM
+    - rain_SON
+    - rain_DJF
+    - rain_JJA
+    - rain_annual_rainfall
+    - rain_rain_cv
+    - rain_max_monthly
+    - rain_min_monthly
+    - rain_rainy_months
+    - rain_rainfall_zscore
+    - rain_MAM_zscore
+    - rain_SON_zscore
+    - temp_season_gdd
+    - temp_heat_days
+    - temp_extreme_heat_days
+    - temp_warm_night_days
+    - temp_heatwave_count
+    - daily_longest_dry_spell_days
+    - daily_dry_spell_count_7d
+    - daily_dry_spell_count_10d
+    - daily_rain_days_1mm
+    - daily_rain_days_10mm
+    - daily_rain_days_20mm
+    - daily_mean_wet_day_rainfall
+    - daily_maximum_5day_rainfall
+    - daily_season_length_days
+    - daily_false_onset_flag
+    - soil_clay
+    - soil_sand
+    - soil_silt
+    - soil_soc
+    - soil_bdod
+    - soil_cec
+    - soil_phh2o
 
 baselines:
   - mean_predictor
   - historical_mean
   - previous_year_yield
-  - rainfall_only_ols
 
 models:
   - OLS
