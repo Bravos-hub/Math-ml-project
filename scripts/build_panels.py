@@ -48,6 +48,14 @@ SEASON_MAP = {
     "total_2020": ("total", 2020),
 }
 
+# CV (coefficient of variation, %) above this marks a target estimate as
+# low-reliability (kept in the dataset but flagged for sensitivity analysis).
+HIGH_CV_THRESHOLD_PCT = 30.0
+
+# SoilGrids properties must be available for at least this share of units
+# before soil features are allowed into the modeling dataset (review P0 #8).
+MIN_SOIL_COVERAGE = 0.80
+
 # Feature columns that are additive across the two rains seasons.
 _ADDITIVE = [
     "season_total_mm", "rain_days_1mm", "rain_days_10mm", "rain_days_20mm",
@@ -81,7 +89,18 @@ def load_climate() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFra
 def load_soil() -> pd.DataFrame:
     soil = pd.read_csv(INTERIM / "uganda_soil_features_114.csv")
     drop = [c for c in PROVENANCE_COLUMNS if c in soil.columns]
-    return soil.drop(columns=drop)
+    soil = soil.drop(columns=drop)
+    value_cols = [c for c in soil.columns if c in
+                  ("clay", "sand", "silt", "soc", "bdod", "cec", "phh2o")]
+    if not value_cols:
+        raise ValueError("soil table carries no SoilGrids property columns")
+    coverage = soil[value_cols].notna().mean().min()
+    if coverage < MIN_SOIL_COVERAGE:
+        raise ValueError(
+            f"SoilGrids coverage below threshold: {coverage:.2f} < "
+            f"{MIN_SOIL_COVERAGE}; exclude soil from modeling or re-extract."
+        )
+    return soil
 
 
 def climate_for_season(district_climate: pd.DataFrame,
@@ -146,6 +165,41 @@ def subregion_climate(df: pd.DataFrame, districts: pd.DataFrame,
     return m.groupby("sub_region")[feat_cols].mean().reset_index()
 
 
+def add_reliability(df: pd.DataFrame) -> pd.DataFrame:
+    """Derive survey uncertainty fields from the stored production CV.
+
+    AAS tables report coefficient-of-variation percentages for area and
+    production. ``cv_production_pct`` is carried through as ``target_cv``
+    (percent); ``target_reliability_weight`` is an inverse-CV weight suitable
+    for weighted regression; ``high_uncertainty_flag`` marks estimates whose
+    CV exceeds ``HIGH_CV_THRESHOLD_PCT``.
+
+    ``yield_consistency_ok`` records whether ``production / harvested
+    area`` reproduces the published ``yield_over_harvested``. AAS 2018
+    publishes total production with second-season harvested yield for annual
+    crops, so its 2018 total rows legitimately fail this check and must be
+    documented rather than silently removed.
+    """
+    df = df.copy()
+    cv = df.get("cv_production_pct")
+    if cv is None or cv.isna().all():
+        df["target_cv"] = pd.NA
+        df["target_reliability_weight"] = pd.NA
+        df["high_uncertainty_flag"] = pd.NA
+    else:
+        cv = pd.to_numeric(cv, errors="coerce")
+        df["target_cv"] = cv
+        eps = 1.0
+        df["target_reliability_weight"] = (eps / (cv / 100.0)).clip(upper=10.0)
+        df["high_uncertainty_flag"] = (cv >= HIGH_CV_THRESHOLD_PCT).map({True: 1, False: 0})
+
+    calc = df["production_mt"] / df["area_harvested_ha"]
+    df["yield_consistency_ok"] = (calc == 0) | (
+        (calc - df["yield_over_harvested"]).abs() <= 0.02 * df["yield_over_harvested"].abs()
+    )
+    return df
+
+
 def build_panel(crop: str) -> tuple[pd.DataFrame, pd.DataFrame]:
     aas20 = pd.read_csv(INTERIM / "aas2020_subregion_consolidated.csv")
     aas18 = pd.read_csv(INTERIM / "aas2018_subregion_consolidated.csv")
@@ -205,7 +259,7 @@ def build_panel(crop: str) -> tuple[pd.DataFrame, pd.DataFrame]:
     ).rename(columns={c: f"soil_{c}" for c in soil.columns
                       if c not in ("district", "sub_region")})
     panel = panel.merge(soil_subregion, on="sub_region", how="left")
-    return panel, districts
+    return add_reliability(panel), districts
 
 
 def assigned_from_subregion(panel: pd.DataFrame,
@@ -242,25 +296,56 @@ def add_panel_provenance(df: pd.DataFrame, *, assigned: bool) -> pd.DataFrame:
     )
 
 
+def build_pooled_panel() -> pd.DataFrame:
+    """Stack the three crop panels into one subregion x crop x season x year
+    table so that the analysis has more than 100 genuinely distinct
+    analytical units (review P0 #3). ``crop`` becomes an explicit predictor."""
+    parts = []
+    for crop in ("maize", "beans", "groundnuts"):
+        panel = pd.read_csv(OBSERVED / f"{crop}_subregion_panel.csv")
+        parts.append(panel.assign(crop=crop))
+    pooled = pd.concat(parts, ignore_index=True)
+    return pooled.reindex(columns=["crop"] + [c for c in pooled.columns
+                                              if c != "crop"])
+
+
 def main() -> None:
     crop = sys.argv[1] if len(sys.argv) > 1 else "maize"
-    panel, districts = build_panel(crop)
-    OBSERVED.mkdir(parents=True, exist_ok=True)
-    ASSIGNED.mkdir(parents=True, exist_ok=True)
+    for c in ("maize", "beans", "groundnuts"):
+        panel, districts = build_panel(c)
 
-    observed = add_panel_provenance(panel, assigned=False)
-    observed_out = OBSERVED / f"{crop}_subregion_panel.csv"
-    observed_out.parent.mkdir(parents=True, exist_ok=True)
-    observed.to_csv(observed_out, index=False)
+        observed = add_panel_provenance(panel, assigned=False)
+        observed_out = OBSERVED / f"{c}_subregion_panel.csv"
+        observed_out.parent.mkdir(parents=True, exist_ok=True)
+        observed.to_csv(observed_out, index=False)
 
-    assigned = add_panel_provenance(assigned_from_subregion(panel, districts),
-                                    assigned=True)
-    assigned_out = ASSIGNED / f"{crop}_district_assigned_panel.csv"
-    assigned_out.parent.mkdir(parents=True, exist_ok=True)
-    assigned.to_csv(assigned_out, index=False)
+        assigned = add_panel_provenance(assigned_from_subregion(panel, districts),
+                                        assigned=True)
+        assigned_out = ASSIGNED / f"{c}_district_assigned_panel.csv"
+        assigned_out.parent.mkdir(parents=True, exist_ok=True)
+        assigned.to_csv(assigned_out, index=False)
 
-    print(f"[{crop}] observed panel: {len(observed)} rows -> {observed_out}")
-    print(f"[{crop}] assigned panel: {len(assigned)} rows -> {assigned_out}")
+        print(f"[{c}] observed panel: {len(observed)} rows -> {observed_out}")
+        print(f"[{c}] assigned panel: {len(assigned)} rows -> {assigned_out}")
+
+    pooled = add_panel_provenance(build_pooled_panel(), assigned=False)
+    pooled_out = OBSERVED / "crop_pooled_subregion_panel.csv"
+    pooled.to_csv(pooled_out, index=False)
+    print(f"[pooled] subregion x crop x season x year: {len(pooled)} rows -> "
+          f"{pooled_out}")
+
+    from cropyield.reporting.feature_availability import write_availability_report
+    planned = []
+    try:
+        from cropyield.config import load_features_config
+        planned = load_features_config().get("daily_required_features", [])
+    except Exception:
+        pass
+    write_availability_report(
+        pooled,
+        provenance_columns=tuple(PROVENANCE_COLUMNS) +
+        ("crop", "sub_region", "season_group", "year", "district"),
+        planned=planned)
 
 
 if __name__ == "__main__":

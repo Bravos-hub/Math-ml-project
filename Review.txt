@@ -1,0 +1,993 @@
+BRAVE OLIMI, after re-studying the repository, my conclusion is:
+
+> The project has a useful data-engineering prototype, but it is not yet scientifically ready for final undergraduate model evaluation.
+
+The main problem is not missing algorithms. It is that the current repository mixes different research stages—synthetic experimentation, proxy modeling, official AAS benchmarks, incomplete soil extraction, and final-looking performance results—without sufficiently isolating them.
+
+# Executive assessment
+
+## What is already strong
+
+The repository now has:
+
+* A documented research purpose and limitations.
+* CHIRPS rainfall extraction.
+* Seasonal rainfall engineering.
+* Temperature and growing-degree-day features.
+* SoilGrids integration attempts.
+* A canonical district–year dataset builder.
+* Official AAS 2020 crop tables.
+* Maize, beans, and groundnuts benchmark scripts.
+* Manual PCA implementation.
+* Raw-versus-PCA model comparisons.
+* Clear acknowledgment that the work is not field-validated.
+
+These are valuable foundations.
+
+## What currently prevents strong research conclusions
+
+The current “real-data benchmark” contains only five rows, while two pairs of districts share exactly the same target because the target was assigned from their common AAS subregion. The script explicitly maps Mbale and Kapchorwa to Elgon and Iganga and Jinja to Busoga.
+
+The resulting benchmark reports approximately:
+
+```text
+Ridge raw R² = 0.968
+Ridge PCA R² = 0.968
+```
+
+but this is based on five observations and only three effectively distinct target values.
+
+That result should not be treated as evidence that the model predicts district maize yield with 96.8% accuracy.
+
+---
+
+# Required refinements
+
+## P0 — Must be corrected before writing the final research report
+
+## 1. Stop treating assigned subregional values as district observations
+
+The current process copies one subregional yield value to every selected district within that subregion. The source is correctly marked as:
+
+```text
+sub_region_assigned_to_district
+```
+
+but the copied values are still being used as separate target observations in model evaluation.
+
+This creates **pseudo-replication**.
+
+For example:
+
+```text
+Iganga     → Busoga yield
+Jinja      → Busoga yield
+
+Mbale      → Elgon yield
+Kapchorwa  → Elgon yield
+```
+
+The rainfall predictors differ, but the outcome is duplicated. This can produce apparently strong relationships that are actually driven by the subregion mapping.
+
+### Required correction
+
+Choose one of these designs:
+
+**Preferred design: subregion–season–year analysis**
+
+```text
+unit of analysis = subregion × season × year
+```
+
+Aggregate climate variables to the same subregional level as the AAS target.
+
+**Alternative design: district–year analysis**
+
+Use genuine district-level crop yield observations from a source that actually reports district yield.
+
+Do not use:
+
+```text
+subregional target + district-level predictors
+```
+
+as the main final model.
+
+---
+
+## 2. Remove the five-row benchmark from formal model comparison
+
+The benchmark script itself acknowledges that it contains only five rows and is not intended for generalization.
+
+However, it still:
+
+* Fits six models.
+* Uses seven predictors.
+* Retains three principal components.
+* Calculates leave-one-out predictions.
+* Ranks a “best model.”
+* Writes formal RMSE and (R^2) results.
+
+With (n=5), seven predictors, and only three unique outcomes, these metrics are highly unstable.
+
+### Required correction
+
+Rename the current benchmark as:
+
+```text
+pipeline_smoke_test_2020
+```
+
+Its purpose should be limited to confirming that:
+
+* Data load successfully.
+* PCA runs.
+* Models execute.
+* Output files are produced.
+
+Do not call it a performance benchmark.
+
+Add an explicit field:
+
+```text
+evaluation_status = "demonstration_only"
+```
+
+---
+
+## 3. Build an analytically valid sample
+
+The final dataset should contain at least 100 genuinely distinct analytical units, preferably more.
+
+Suitable structures include:
+
+```text
+subregion × crop × season × year
+```
+
+or:
+
+```text
+district × crop × season × year
+```
+
+or, if UNPS access and matching are successful:
+
+```text
+household × plot × crop × season
+```
+
+The best choice for the current AAS pipeline is probably:
+
+```text
+subregion × crop × season × survey year
+```
+
+because AAS yield values are currently available at subregional level.
+
+A strong target would be:
+
+* Multiple years.
+* Two agricultural seasons.
+* All available subregions.
+* Maize as the primary crop.
+* Beans and groundnuts as secondary validation crops.
+
+---
+
+## 4. Separate real, assigned, proxy, and synthetic pipelines
+
+The repository currently contains:
+
+* Real CHIRPS rainfall.
+* AAS-derived yield.
+* Subregion-assigned district yield.
+* Proxy yield.
+* Synthetic temperature.
+* Synthetic yield generation.
+* Failed and empty soil values.
+
+For example, `chirps_pca_full_pipeline.py` still contains a synthetic-yield generator where yield is mathematically constructed from rainfall variables.
+
+`uganda_full_pipeline.py` also explicitly states that temperature is synthetic and yield is proxy-based.
+
+These files are useful for software testing but dangerous if their outputs become mixed with real-data results.
+
+### Required structure
+
+```text
+src/
+├── demonstration/
+│   ├── synthetic_yield_pipeline.py
+│   └── synthetic_temperature_pipeline.py
+├── data/
+│   ├── build_chirps_features.py
+│   ├── build_aas_targets.py
+│   └── build_modeling_dataset.py
+├── analysis/
+│   ├── pca_math.py
+│   ├── pca_analysis.py
+│   └── model_evaluation.py
+```
+
+Datasets should include:
+
+```text
+target_source
+target_granularity
+feature_source
+is_synthetic
+is_proxy
+is_geographically_assigned
+data_quality_grade
+```
+
+The modeling program should refuse to run a “final” experiment when:
+
+```python
+is_synthetic == True
+```
+
+or:
+
+```python
+is_proxy == True
+```
+
+unless explicitly running in demonstration mode.
+
+---
+
+## 5. Fix preprocessing leakage in older modeling pipelines
+
+In `uganda_full_pipeline.py`, the complete dataset is standardized before cross-validation:
+
+```python
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+```
+
+PCA is also calculated on all observations before cross-validation, after which cross-validation is performed on the already transformed values.
+
+The same pattern appears in `chirps_pca_full_pipeline.py`: scaling and PCA occur before model cross-validation.
+
+This allows information from test folds to influence:
+
+* Feature means.
+* Standard deviations.
+* Covariance structure.
+* Eigenvectors.
+* Component scores.
+
+### Required correction
+
+Put every transformation inside a `Pipeline`:
+
+```python
+Pipeline(
+    steps=[
+        ("imputer", SimpleImputer(strategy="median")),
+        ("scaler", StandardScaler()),
+        ("pca", PCA(n_components=...)),
+        ("model", Ridge())
+    ]
+)
+```
+
+The newer five-row benchmark already uses this pattern for predictive modeling, although its sample is still inadequate.
+
+---
+
+## 6. Stop automatically choosing the first available yield file
+
+The canonical dataset builder searches the following sequence:
+
+```python
+YIELD_FILES = [
+    "ubos_maize_yield_district.csv",
+    "ubos_district_yield_proxy.csv",
+    "uganda_full_pipeline_data.csv",
+]
+```
+
+It uses the first compatible file it finds.
+
+This means a proxy or older generated file can silently become the target source depending on what files exist locally.
+
+### Required correction
+
+Require the target source explicitly:
+
+```bash
+python build_modeling_dataset.py \
+  --yield-source aas2020 \
+  --target-granularity subregion \
+  --crop maize
+```
+
+The generated dataset should record:
+
+```text
+target_source_file
+target_source_type
+target_geographic_level
+target_year
+target_crop
+target_definition
+```
+
+The script should fail rather than silently fall back to proxy yield.
+
+---
+
+## 7. Do not create empty “model-ready” columns
+
+The canonical builder adds missing variables as `pd.NA`, including:
+
+* Fertilizer.
+* Planting density.
+* NDVI.
+* EVI.
+* Solar radiation.
+* Several soil variables.
+
+This creates a table that looks feature-complete even when many columns contain no observations.
+
+### Required correction
+
+Separate columns into:
+
+```text
+available_features
+planned_features
+```
+
+The processed modeling dataset should contain only variables with usable data.
+
+A separate schema file can list planned variables.
+
+Add a validation rule:
+
+```python
+if df[column].isna().mean() == 1:
+    exclude column
+```
+
+Also generate a feature-availability report:
+
+| Variable            | Source                     | Coverage | Status      |
+| ------------------- | -------------------------- | -------: | ----------- |
+| annual_rainfall     | CHIRPS                     |     100% | usable      |
+| soil_moisture_index | generated/source dependent |       0% | unavailable |
+| fertilizer_kg_ha    | not yet integrated         |       0% | planned     |
+
+---
+
+## 8. Repair SoilGrids ingestion before including soil in PCA
+
+The soil script can proceed even when every SoilGrids request fails and every soil value is missing. It may then generate and merge all-NaN columns into the modeling dataset.
+
+This is acceptable for pipeline development but not final analysis.
+
+### Required correction
+
+The build should fail when soil is requested but valid coverage is below a threshold:
+
+```python
+MIN_SOIL_COVERAGE = 0.80
+```
+
+Add validation for:
+
+* Correct SoilGrids units and scale factors.
+* Selected depth interval.
+* Number of successful districts.
+* Percentage missing by property.
+* Texture consistency:
+
+[
+\text{clay}+\text{sand}+\text{silt}\approx100
+]
+
+Create:
+
+```text
+soil_depth
+soil_unit
+soil_scale_factor
+soil_source_version
+soil_extraction_date
+soil_quality_flag
+```
+
+Until this is completed, exclude soil variables from the primary PCA.
+
+---
+
+# P1 — Required for a defensible undergraduate analysis
+
+## 9. Match predictor and outcome geography
+
+Every model input must use the same geographical grain as its target.
+
+If target yield is subregional:
+
+* Aggregate CHIRPS rainfall across the subregion.
+* Aggregate temperature across the subregion.
+* Aggregate soil characteristics across the subregion.
+* Do not use a single district centroid.
+
+If target yield is district-level:
+
+* Use district boundaries or a representative spatial average.
+* Avoid relying only on one centroid cell.
+
+This is especially important because the current rainfall pipeline extracts a nearest CHIRPS point for each district centroid rather than a district polygon average.
+
+### Refinement
+
+Use administrative boundaries and compute:
+
+```text
+mean rainfall
+median rainfall
+within-area rainfall SD
+percentage area under drought
+```
+
+for each spatial unit.
+
+---
+
+## 10. Replace monthly rainfall with daily agronomic indicators
+
+The current rainfall pipeline is based on monthly CHIRPS and defines rainy months as months exceeding 50 mm.
+
+This is not sufficient for meaningful dry-spell analysis.
+
+Use daily CHIRPS to derive:
+
+```text
+rainy_days_1mm
+rainy_days_5mm
+maximum_5day_rainfall
+longest_dry_spell
+number_of_7day_dry_spells
+season_onset
+season_cessation
+season_length
+rainfall_anomaly
+extreme_rainfall_days
+```
+
+For maize, rainfall timing during:
+
+* Planting.
+* Vegetative growth.
+* Flowering.
+* Grain filling.
+
+may be more informative than total annual rainfall.
+
+---
+
+## 11. Define one primary yield target
+
+The AAS data provide two possible yield calculations:
+
+[
+Y_h=\frac{\text{production}}{\text{harvested area}}
+]
+
+and:
+
+[
+Y_p=\frac{\text{production}}{\text{planted area}}
+]
+
+Your current builder retains both but uses harvested-area yield as `yield_tons_ha`.
+
+### Required decision
+
+Use:
+
+```text
+Primary target:
+yield_mt_per_ha_production_over_harvested
+```
+
+and treat planted-area yield as a sensitivity target.
+
+Document why.
+
+Also examine:
+
+```text
+harvested_fraction =
+area_harvested_ha / area_planted_ha
+```
+
+This can capture crop failure and abandonment.
+
+---
+
+## 12. Use survey uncertainty in the analysis
+
+AAS tables include coefficients of variation for area and production. The repository already preserves these fields.
+
+They are currently stored but not used.
+
+### Refinement
+
+Create a reliability score:
+
+```text
+target_cv
+target_reliability_weight
+high_uncertainty_flag
+```
+
+Possible analyses:
+
+* Exclude estimates with very high CV.
+* Run weighted regression.
+* Compare results with and without low-reliability targets.
+* Report model results stratified by target reliability.
+
+Do not treat a highly uncertain survey estimate as equally reliable as a low-CV estimate.
+
+---
+
+## 13. Add valid baselines
+
+Before Random Forest or XGBoost, compare against:
+
+1. Global mean yield.
+2. Crop mean yield.
+3. Subregion historical mean.
+4. Previous-year yield.
+5. Rainfall-only OLS.
+6. Ridge without PCA.
+
+A complex model must outperform these baselines.
+
+Add:
+
+```python
+DummyRegressor(strategy="mean")
+DummyRegressor(strategy="median")
+```
+
+Without a baseline, RMSE has limited meaning.
+
+---
+
+## 14. Add geographically and temporally appropriate validation
+
+Random five-fold cross-validation is not enough for spatial agricultural data.
+
+Implement three evaluation schemes:
+
+### Temporal holdout
+
+```text
+Train: earlier years
+Test: latest year
+```
+
+### Spatial group validation
+
+```text
+GroupKFold(groups=subregion)
+```
+
+### Leave-one-region-out validation
+
+Train on all but one geographical region and test on the excluded region.
+
+Report all three because they answer different questions:
+
+| Validation      | Research meaning                         |
+| --------------- | ---------------------------------------- |
+| Random CV       | Interpolation among similar observations |
+| Time holdout    | Prediction of a future season/year       |
+| Spatial holdout | Prediction in an unseen location         |
+
+---
+
+## 15. Add PCA retention and stability analysis
+
+The current scripts frequently choose a fixed number of components, such as three, or iterate through arbitrary values.
+
+The final project should determine component count using:
+
+* Scree plot.
+* Cumulative variance.
+* Kaiser criterion.
+* Parallel analysis.
+* Cross-validated prediction.
+* Bootstrap loading stability.
+
+Add bootstrap confidence intervals for loadings.
+
+A component should only receive a substantive name such as “rainfall intensity” or “thermal stress” when its dominant loadings are stable.
+
+---
+
+## 16. Correct the definition of PCA loadings
+
+Some repository outputs label `pca.components_.T` directly as loadings.
+
+Those are eigenvector coefficients. Correlation loadings for standardized PCA are commonly calculated as:
+
+[
+L_{jk}=v_{jk}\sqrt{\lambda_k}
+]
+
+### Refinement
+
+Store both:
+
+```text
+eigenvector_coefficient
+correlation_loading
+variable_contribution
+cos2
+```
+
+This will improve biplots and component interpretation.
+
+---
+
+## 17. Implement the exact required models
+
+The research plan specifies:
+
+* OLS.
+* Ridge.
+* Random Forest.
+* XGBoost.
+
+The current real benchmark uses:
+
+* Ridge.
+* SVR.
+* Random Forest.
+
+It does not include OLS or XGBoost.
+
+### Required final comparison
+
+```text
+Dummy baseline
+OLS
+Ridge
+Random Forest
+XGBoost
+```
+
+Optional:
+
+```text
+PLS Regression
+```
+
+PLS would provide a valuable comparison because PCA ignores the outcome while PLS derives components with reference to the target.
+
+---
+
+## 18. Add the hybrid feature representation correctly
+
+The README states that the project will compare:
+
+* Raw.
+* PCA-reduced.
+* Hybrid features.
+
+But the current benchmark compares only raw and PCA.
+
+The hybrid model should include:
+
+```text
+PCA scores from continuous climate features
++
+original variables not included in PCA
+```
+
+For example:
+
+```text
+PC1, PC2, PC3
+crop
+season
+subregion
+survey reliability
+```
+
+Do not combine every original PCA input with its PCs in OLS because that creates exact linear dependence.
+
+---
+
+# P2 — Software and reproducibility refinements
+
+## 19. Reorganize the repository
+
+The repository currently behaves like an experimental workspace with many scripts, CSVs, archives, and generated figures at the root.
+
+Use:
+
+```text
+Math-ml-project/
+├── README.md
+├── pyproject.toml
+├── requirements.lock
+├── CITATION.cff
+├── LICENSE
+├── configs/
+├── data/
+│   ├── raw/
+│   ├── external/
+│   ├── interim/
+│   ├── processed/
+│   └── public/
+├── notebooks/
+├── src/
+│   └── uganda_crop_model/
+│       ├── data/
+│       ├── features/
+│       ├── pca/
+│       ├── models/
+│       └── visualization/
+├── scripts/
+├── tests/
+├── reports/
+│   ├── figures/
+│   └── tables/
+└── artifacts/
+```
+
+---
+
+## 20. Add a pinned environment
+
+The README confirms that there is no pinned `requirements.txt`.
+
+Add either:
+
+```text
+pyproject.toml
+uv.lock
+```
+
+or:
+
+```text
+requirements.txt
+requirements-dev.txt
+```
+
+Pin:
+
+* Python version.
+* NumPy.
+* pandas.
+* scikit-learn.
+* XGBoost.
+* xarray.
+* NetCDF4.
+* GeoPandas.
+* Rasterio.
+* Matplotlib.
+* pytest.
+* Pandera.
+
+---
+
+## 21. Add configuration rather than hardcoded constants
+
+Files currently hardcode:
+
+* Input paths.
+* Districts.
+* Years.
+* Model features.
+* Output files.
+* Random seeds.
+* Subregion mappings.
+
+Move these into YAML:
+
+```yaml
+project:
+  crop: maize
+  target_level: subregion
+  years: [2018, 2019, 2020]
+  seasons:
+    - first_season
+    - second_season
+
+pca:
+  standardize: true
+  retention:
+    method: parallel_analysis
+
+validation:
+  methods:
+    - temporal
+    - spatial_grouped
+
+random_seed: 42
+```
+
+---
+
+## 22. Add automated data contracts
+
+Create tests for:
+
+```text
+Unique spatial-unit × year × season × crop key
+Nonnegative rainfall
+Nonnegative production
+Positive harvested area
+Yield calculation consistency
+No synthetic target in final experiments
+No proxy fallback without explicit permission
+No all-null model features
+No target leakage
+No overlap between train and test groups
+PCA eigenvalue agreement
+Reproducible model outputs
+```
+
+A particularly important test is:
+
+```python
+assert np.allclose(
+    production_mt / area_harvested_ha,
+    yield_tons_ha,
+    rtol=...
+)
+```
+
+---
+
+## 23. Add experiment tracking
+
+Every model run should write:
+
+```text
+run_id
+timestamp
+git_commit
+dataset_version
+target_source
+target_granularity
+sample_size
+number_of_unique_targets
+feature_set
+validation_scheme
+model
+hyperparameters
+rmse
+r2
+mae
+random_seed
+```
+
+Add an explicit warning when:
+
+```text
+number_of_unique_targets < 10
+```
+
+or:
+
+```text
+sample_size < 100
+```
+
+---
+
+## 24. Do not commit generated binary and source archives
+
+The repository size is approximately 18 MB now, but it still includes source spreadsheets and archives.
+
+The earlier 7.2 GiB NetCDF issue was solved, but the data policy should be clearer:
+
+* Raw large files stay outside Git.
+* Download scripts stay in Git.
+* Derived lightweight CSVs may stay when licensing permits.
+* Restricted survey data must not be published.
+* Generated figures can be versioned selectively.
+
+Use DVC only if data versioning becomes necessary.
+
+---
+
+# Recommended revised analytical architecture
+
+```text
+AAS target at subregion–season–year level
+                  +
+CHIRPS aggregated to subregion–season–year
+                  +
+ERA5-Land aggregated to same grain
+                  +
+SoilGrids aggregated to subregion
+                  +
+Survey uncertainty indicators
+                  ↓
+Validated analytical dataset
+                  ↓
+EDA and missingness analysis
+                  ↓
+Standardization inside each training fold
+                  ↓
+PCA inside each training fold
+                  ↓
+Raw vs PCA vs hybrid
+                  ↓
+Dummy / OLS / Ridge / RF / XGBoost
+                  ↓
+Temporal and spatial validation
+                  ↓
+RMSE, MAE, R² and uncertainty intervals
+```
+
+# Recommended implementation sequence
+
+## Phase 1: Scientific repair
+
+1. Select one analytical geographical level.
+2. Rebuild targets without pseudo-replicating subregional values.
+3. Separate synthetic, proxy, assigned, and observed datasets.
+4. Replace automatic target fallback with explicit configuration.
+5. Exclude all-null and failed features.
+6. Create a dataset-quality report.
+
+## Phase 2: Expand the sample
+
+1. Add available AAS years.
+2. Retain first and second seasons separately.
+3. Include all available subregions.
+4. Aggregate climate variables to matching boundaries.
+5. Produce at least 100 independent observations.
+
+## Phase 3: PCA analysis
+
+1. Complete the handwritten (2\times2) derivation.
+2. Add a verification notebook.
+3. Add parallel analysis.
+4. Add bootstrap stability.
+5. Generate scree, biplot, loading, contribution, and reconstruction figures.
+
+## Phase 4: Predictive evaluation
+
+1. Add Dummy, OLS, Ridge, RF, and XGBoost.
+2. Implement raw, PCA, and hybrid representations.
+3. Add temporal validation.
+4. Add spatial grouped validation.
+5. Add uncertainty intervals.
+6. Compare performance with simple baselines.
+
+## Phase 5: Research presentation
+
+1. Generate publication-quality figures.
+2. Create one final model-results table.
+3. Create one data-provenance table.
+4. Create one limitations table.
+5. Produce the Bugema concept note and final technical report.
+6. Retain field validation as the future phase.
+
+# Most important final recommendation
+
+Do not try to improve the current (R^2=0.968) result.
+
+That result should be retired as a five-row pipeline demonstration, not optimized or highlighted. Its apparent strength comes from an extremely small dataset with replicated subregional targets.
+
+The strongest final project will be one that honestly concludes:
+
+> PCA and the predictive models were evaluated on a geographically and temporally aligned secondary dataset using leakage-safe spatial and temporal validation.
+
+That would be much more credible to Bugema University, UBOS, NARO, or the Ministry of Agriculture than a high accuracy score produced from five assigned target values.

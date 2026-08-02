@@ -1,0 +1,1376 @@
+scheme,fold,model,sub_region,year,y_true,y_pred,representation,crop
+random_cv,0,OLS,Ankole,2020,0.9814360581560068,0.8837828933480194,pca,beans
+random_cv,0,OLS,Busoga,2020,0.6401206168693183,0.63742317018618,pca,beans
+random_cv,0,OLS,Busoga,2020,0.8018694899438292,0.63742317018618,pca,beans
+random_cv,0,OLS,Karamoja,2020,0.5422885207412549,0.7283749270973648,pca,beans
+random_cv,0,OLS,North Buganda,2020,0.6433017110440628,0.7393657134101098,pca,beans
+random_cv,0,OLS,South Buganda,2020,0.8632751628341233,0.6533402159343038,pca,beans
+random_cv,0,OLS,Teso,2020,0.4787820909269001,0.6987654224114236,pca,beans
+random_cv,0,OLS,Acholi,2018,0.7,0.6444378110045835,pca,beans
+random_cv,0,OLS,Bukedi,2018,0.4,0.5388696070150538,pca,beans
+random_cv,0,OLS,Lango,2018,0.3,0.6308668287929058,pca,beans
+random_cv,0,OLS,Teso,2018,0.4,0.5197687027225313,pca,beans
+random_cv,0,Ridge,Ankole,2020,0.9814360581560068,0.880694726633659,pca,beans
+random_cv,0,Ridge,Busoga,2020,0.6401206168693183,0.639809663986527,pca,beans
+random_cv,0,Ridge,Busoga,2020,0.8018694899438292,0.639809663986527,pca,beans
+random_cv,0,Ridge,Karamoja,2020,0.5422885207412549,0.7287402707441301,pca,beans
+random_cv,0,Ridge,North Buganda,2020,0.6433017110440628,0.7394868173610363,pca,beans
+random_cv,0,Ridge,South Buganda,2020,0.8632751628341233,0.6553729976069147,pca,beans
+random_cv,0,Ridge,Teso,2020,0.4787820909269001,0.6997887550512095,pca,beans
+random_cv,0,Ridge,Acholi,2018,0.7,0.6466684238978548,pca,beans
+random_cv,0,Ridge,Bukedi,2018,0.4,0.5434461799969813,pca,beans
+random_cv,0,Ridge,Lango,2018,0.3,0.6333990190686588,pca,beans
+random_cv,0,Ridge,Teso,2018,0.4,0.5247697402442927,pca,beans
+random_cv,0,PCR,Ankole,2020,0.9814360581560068,0.8837828933480196,pca,beans
+random_cv,0,PCR,Busoga,2020,0.6401206168693183,0.6374231701861801,pca,beans
+random_cv,0,PCR,Busoga,2020,0.8018694899438292,0.6374231701861801,pca,beans
+random_cv,0,PCR,Karamoja,2020,0.5422885207412549,0.728374927097365,pca,beans
+random_cv,0,PCR,North Buganda,2020,0.6433017110440628,0.7393657134101098,pca,beans
+random_cv,0,PCR,South Buganda,2020,0.8632751628341233,0.6533402159343037,pca,beans
+random_cv,0,PCR,Teso,2020,0.4787820909269001,0.6987654224114235,pca,beans
+random_cv,0,PCR,Acholi,2018,0.7,0.6444378110045834,pca,beans
+random_cv,0,PCR,Bukedi,2018,0.4,0.5388696070150537,pca,beans
+random_cv,0,PCR,Lango,2018,0.3,0.6308668287929056,pca,beans
+random_cv,0,PCR,Teso,2018,0.4,0.5197687027225313,pca,beans
+random_cv,0,PLS,Ankole,2020,0.9814360581560068,0.8837828933480194,pca,beans
+random_cv,0,PLS,Busoga,2020,0.6401206168693183,0.6374231701861801,pca,beans
+random_cv,0,PLS,Busoga,2020,0.8018694899438292,0.6374231701861801,pca,beans
+random_cv,0,PLS,Karamoja,2020,0.5422885207412549,0.7283749270973648,pca,beans
+random_cv,0,PLS,North Buganda,2020,0.6433017110440628,0.7393657134101098,pca,beans
+random_cv,0,PLS,South Buganda,2020,0.8632751628341233,0.6533402159343038,pca,beans
+random_cv,0,PLS,Teso,2020,0.4787820909269001,0.6987654224114235,pca,beans
+random_cv,0,PLS,Acholi,2018,0.7,0.6444378110045835,pca,beans
+random_cv,0,PLS,Bukedi,2018,0.4,0.5388696070150538,pca,beans
+random_cv,0,PLS,Lango,2018,0.3,0.6308668287929058,pca,beans
+random_cv,0,PLS,Teso,2018,0.4,0.5197687027225314,pca,beans
+random_cv,0,RandomForest,Ankole,2020,0.9814360581560068,0.9411938556856774,pca,beans
+random_cv,0,RandomForest,Busoga,2020,0.6401206168693183,0.6554118231106766,pca,beans
+random_cv,0,RandomForest,Busoga,2020,0.8018694899438292,0.6554118231106766,pca,beans
+random_cv,0,RandomForest,Karamoja,2020,0.5422885207412549,0.6585599893547046,pca,beans
+random_cv,0,RandomForest,North Buganda,2020,0.6433017110440628,0.7579084356891134,pca,beans
+random_cv,0,RandomForest,South Buganda,2020,0.8632751628341233,0.744025652101799,pca,beans
+random_cv,0,RandomForest,Teso,2020,0.4787820909269001,0.704539504770082,pca,beans
+random_cv,0,RandomForest,Acholi,2018,0.7,0.6820572335382179,pca,beans
+random_cv,0,RandomForest,Bukedi,2018,0.4,0.5284118407425515,pca,beans
+random_cv,0,RandomForest,Lango,2018,0.3,0.679970458862162,pca,beans
+random_cv,0,RandomForest,Teso,2018,0.4,0.5416297937610134,pca,beans
+random_cv,0,XGBoost,Ankole,2020,0.9814360581560068,1.0038082599639893,pca,beans
+random_cv,0,XGBoost,Busoga,2020,0.6401206168693183,0.6210735440254211,pca,beans
+random_cv,0,XGBoost,Busoga,2020,0.8018694899438292,0.6210735440254211,pca,beans
+random_cv,0,XGBoost,Karamoja,2020,0.5422885207412549,0.587911069393158,pca,beans
+random_cv,0,XGBoost,North Buganda,2020,0.6433017110440628,0.8379812240600586,pca,beans
+random_cv,0,XGBoost,South Buganda,2020,0.8632751628341233,0.8261669278144836,pca,beans
+random_cv,0,XGBoost,Teso,2020,0.4787820909269001,0.6808081865310669,pca,beans
+random_cv,0,XGBoost,Acholi,2018,0.7,0.8012450933456421,pca,beans
+random_cv,0,XGBoost,Bukedi,2018,0.4,0.5101280212402344,pca,beans
+random_cv,0,XGBoost,Lango,2018,0.3,0.6077069640159607,pca,beans
+random_cv,0,XGBoost,Teso,2018,0.4,0.5831300616264343,pca,beans
+random_cv,0,mean_predictor,Ankole,2020,0.9814360581560068,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Busoga,2020,0.6401206168693183,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Busoga,2020,0.8018694899438292,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Karamoja,2020,0.5422885207412549,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,North Buganda,2020,0.6433017110440628,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,South Buganda,2020,0.8632751628341233,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Teso,2020,0.4787820909269001,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Acholi,2018,0.7,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Bukedi,2018,0.4,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Lango,2018,0.3,0.7448153912017964,pca,beans
+random_cv,0,mean_predictor,Teso,2018,0.4,0.7448153912017964,pca,beans
+random_cv,0,historical_mean,Ankole,2020,0.9814360581560068,0.9172909475139663,pca,beans
+random_cv,0,historical_mean,Busoga,2020,0.6401206168693183,0.5452234483852698,pca,beans
+random_cv,0,historical_mean,Busoga,2020,0.8018694899438292,0.5452234483852698,pca,beans
+random_cv,0,historical_mean,Karamoja,2020,0.5422885207412549,0.47114426037062745,pca,beans
+random_cv,0,historical_mean,North Buganda,2020,0.6433017110440628,0.792845815841653,pca,beans
+random_cv,0,historical_mean,South Buganda,2020,0.8632751628341233,0.7869545887619479,pca,beans
+random_cv,0,historical_mean,Teso,2020,0.4787820909269001,0.6380061465481578,pca,beans
+random_cv,0,historical_mean,Acholi,2018,0.7,0.8672458425993027,pca,beans
+random_cv,0,historical_mean,Bukedi,2018,0.4,0.5988020031049393,pca,beans
+random_cv,0,historical_mean,Lango,2018,0.3,0.6670865210812075,pca,beans
+random_cv,0,historical_mean,Teso,2018,0.4,0.6380061465481578,pca,beans
+random_cv,1,OLS,Ankole,2020,0.7107039593083359,0.830793720409971,pca,beans
+random_cv,1,OLS,Ankole,2020,1.3411688832335629,0.830793720409971,pca,beans
+random_cv,1,OLS,Bukedi,2020,0.5175817230094645,0.6771153122292143,pca,beans
+random_cv,1,OLS,Bukedi,2020,0.5731757916040728,0.6771153122292143,pca,beans
+random_cv,1,OLS,Elgon,2020,0.6636769574159984,0.6912435487040017,pca,beans
+random_cv,1,OLS,North Buganda,2020,0.9823435270848496,0.7367487517446095,pca,beans
+random_cv,1,OLS,Teso,2020,0.7279249098775472,0.7018635083043829,pca,beans
+random_cv,1,OLS,Teso,2020,0.5480873832187684,0.7018635083043829,pca,beans
+random_cv,1,OLS,Busoga,2018,0.4,0.45379526300081985,pca,beans
+random_cv,1,OLS,Elgon,2018,0.5,0.36231273151261634,pca,beans
+random_cv,1,OLS,Karamoja,2018,0.4,0.3598189490593962,pca,beans
+random_cv,1,Ridge,Ankole,2020,0.7107039593083359,0.828573197193104,pca,beans
+random_cv,1,Ridge,Ankole,2020,1.3411688832335629,0.828573197193104,pca,beans
+random_cv,1,Ridge,Bukedi,2020,0.5175817230094645,0.6783098647496973,pca,beans
+random_cv,1,Ridge,Bukedi,2020,0.5731757916040728,0.6783098647496973,pca,beans
+random_cv,1,Ridge,Elgon,2020,0.6636769574159984,0.6921241404139339,pca,beans
+random_cv,1,Ridge,North Buganda,2020,0.9823435270848496,0.736618116720306,pca,beans
+random_cv,1,Ridge,Teso,2020,0.7279249098775472,0.7025081009120845,pca,beans
+random_cv,1,Ridge,Teso,2020,0.5480873832187684,0.7025081009120845,pca,beans
+random_cv,1,Ridge,Busoga,2018,0.4,0.45995248328193394,pca,beans
+random_cv,1,Ridge,Elgon,2018,0.5,0.37050289693791266,pca,beans
+random_cv,1,Ridge,Karamoja,2018,0.4,0.36806453187254196,pca,beans
+random_cv,1,PCR,Ankole,2020,0.7107039593083359,0.8307937204099711,pca,beans
+random_cv,1,PCR,Ankole,2020,1.3411688832335629,0.8307937204099711,pca,beans
+random_cv,1,PCR,Bukedi,2020,0.5175817230094645,0.6771153122292143,pca,beans
+random_cv,1,PCR,Bukedi,2020,0.5731757916040728,0.6771153122292143,pca,beans
+random_cv,1,PCR,Elgon,2020,0.6636769574159984,0.6912435487040017,pca,beans
+random_cv,1,PCR,North Buganda,2020,0.9823435270848496,0.7367487517446095,pca,beans
+random_cv,1,PCR,Teso,2020,0.7279249098775472,0.7018635083043829,pca,beans
+random_cv,1,PCR,Teso,2020,0.5480873832187684,0.7018635083043829,pca,beans
+random_cv,1,PCR,Busoga,2018,0.4,0.45379526300081985,pca,beans
+random_cv,1,PCR,Elgon,2018,0.5,0.36231273151261634,pca,beans
+random_cv,1,PCR,Karamoja,2018,0.4,0.3598189490593964,pca,beans
+random_cv,1,PLS,Ankole,2020,0.7107039593083359,0.830793720409971,pca,beans
+random_cv,1,PLS,Ankole,2020,1.3411688832335629,0.830793720409971,pca,beans
+random_cv,1,PLS,Bukedi,2020,0.5175817230094645,0.6771153122292143,pca,beans
+random_cv,1,PLS,Bukedi,2020,0.5731757916040728,0.6771153122292143,pca,beans
+random_cv,1,PLS,Elgon,2020,0.6636769574159984,0.6912435487040016,pca,beans
+random_cv,1,PLS,North Buganda,2020,0.9823435270848496,0.7367487517446094,pca,beans
+random_cv,1,PLS,Teso,2020,0.7279249098775472,0.7018635083043829,pca,beans
+random_cv,1,PLS,Teso,2020,0.5480873832187684,0.7018635083043829,pca,beans
+random_cv,1,PLS,Busoga,2018,0.4,0.45379526300081985,pca,beans
+random_cv,1,PLS,Elgon,2018,0.5,0.36231273151261634,pca,beans
+random_cv,1,PLS,Karamoja,2018,0.4,0.3598189490593962,pca,beans
+random_cv,1,RandomForest,Ankole,2020,0.7107039593083359,0.9042160990190867,pca,beans
+random_cv,1,RandomForest,Ankole,2020,1.3411688832335629,0.9042160990190867,pca,beans
+random_cv,1,RandomForest,Bukedi,2020,0.5175817230094645,0.6737477499049119,pca,beans
+random_cv,1,RandomForest,Bukedi,2020,0.5731757916040728,0.6737477499049119,pca,beans
+random_cv,1,RandomForest,Elgon,2020,0.6636769574159984,0.6867828651140074,pca,beans
+random_cv,1,RandomForest,North Buganda,2020,0.9823435270848496,0.701147448119682,pca,beans
+random_cv,1,RandomForest,Teso,2020,0.7279249098775472,0.6658281946672732,pca,beans
+random_cv,1,RandomForest,Teso,2020,0.5480873832187684,0.6658281946672732,pca,beans
+random_cv,1,RandomForest,Busoga,2018,0.4,0.43726665521095776,pca,beans
+random_cv,1,RandomForest,Elgon,2018,0.5,0.43530404159513886,pca,beans
+random_cv,1,RandomForest,Karamoja,2018,0.4,0.5623377579124024,pca,beans
+random_cv,1,XGBoost,Ankole,2020,0.7107039593083359,0.9579555988311768,pca,beans
+random_cv,1,XGBoost,Ankole,2020,1.3411688832335629,0.9579555988311768,pca,beans
+random_cv,1,XGBoost,Bukedi,2020,0.5175817230094645,0.6760122776031494,pca,beans
+random_cv,1,XGBoost,Bukedi,2020,0.5731757916040728,0.6760122776031494,pca,beans
+random_cv,1,XGBoost,Elgon,2020,0.6636769574159984,0.6655209064483643,pca,beans
+random_cv,1,XGBoost,North Buganda,2020,0.9823435270848496,0.7131556868553162,pca,beans
+random_cv,1,XGBoost,Teso,2020,0.7279249098775472,0.5280555486679077,pca,beans
+random_cv,1,XGBoost,Teso,2020,0.5480873832187684,0.5280555486679077,pca,beans
+random_cv,1,XGBoost,Busoga,2018,0.4,0.4055902659893036,pca,beans
+random_cv,1,XGBoost,Elgon,2018,0.5,0.34729287028312683,pca,beans
+random_cv,1,XGBoost,Karamoja,2018,0.4,0.5840731859207153,pca,beans
+random_cv,1,mean_predictor,Ankole,2020,0.7107039593083359,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Ankole,2020,1.3411688832335629,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Bukedi,2020,0.5175817230094645,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Bukedi,2020,0.5731757916040728,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Elgon,2020,0.6636769574159984,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,North Buganda,2020,0.9823435270848496,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Teso,2020,0.7279249098775472,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Teso,2020,0.5480873832187684,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Busoga,2018,0.4,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Elgon,2018,0.5,0.7308701756509529,pca,beans
+random_cv,1,mean_predictor,Karamoja,2018,0.4,0.7308701756509529,pca,beans
+random_cv,1,historical_mean,Ankole,2020,0.7107039593083359,0.8407180290780034,pca,beans
+random_cv,1,historical_mean,Ankole,2020,1.3411688832335629,0.8407180290780034,pca,beans
+random_cv,1,historical_mean,Bukedi,2020,0.5175817230094645,0.5528242473506402,pca,beans
+random_cv,1,historical_mean,Bukedi,2020,0.5731757916040728,0.5528242473506402,pca,beans
+random_cv,1,historical_mean,Elgon,2020,0.6636769574159984,0.6619210282549597,pca,beans
+random_cv,1,historical_mean,North Buganda,2020,0.9823435270848496,0.6798318771613907,pca,beans
+random_cv,1,historical_mean,Teso,2020,0.7279249098775472,0.4393910454634501,pca,beans
+random_cv,1,historical_mean,Teso,2020,0.5480873832187684,0.4393910454634501,pca,beans
+random_cv,1,historical_mean,Busoga,2018,0.4,0.7108123345278957,pca,beans
+random_cv,1,historical_mean,Elgon,2018,0.5,0.6619210282549597,pca,beans
+random_cv,1,historical_mean,Karamoja,2018,0.4,0.5422885207412549,pca,beans
+random_cv,2,OLS,Acholi,2020,0.8570862730857126,0.7920898708054761,pca,beans
+random_cv,2,OLS,Bunyoro,2020,0.826094714383351,0.8211626523077155,pca,beans
+random_cv,2,OLS,Bunyoro,2020,0.98602045418736,0.8211626523077155,pca,beans
+random_cv,2,OLS,Elgon,2020,0.6700120852270204,0.6288817410189899,pca,beans
+random_cv,2,OLS,Elgon,2020,0.653829971282899,0.6288817410189899,pca,beans
+random_cv,2,OLS,Lango,2020,0.997989808692561,0.7788249640373598,pca,beans
+random_cv,2,OLS,Lango,2020,0.5494183061851179,0.7788249640373598,pca,beans
+random_cv,2,OLS,South Buganda,2020,1.1321807165247717,0.5987125606973154,pca,beans
+random_cv,2,OLS,Tooro,2020,0.8099944456086376,0.8626260937405794,pca,beans
+random_cv,2,OLS,Kigezi,2018,0.6,0.5958041835093394,pca,beans
+random_cv,2,OLS,Tooro,2018,0.7,0.7687366152659549,pca,beans
+random_cv,2,Ridge,Acholi,2020,0.8570862730857126,0.7900132898826357,pca,beans
+random_cv,2,Ridge,Bunyoro,2020,0.826094714383351,0.8184400095737142,pca,beans
+random_cv,2,Ridge,Bunyoro,2020,0.98602045418736,0.8184400095737142,pca,beans
+random_cv,2,Ridge,Elgon,2020,0.6700120852270204,0.6304320074247383,pca,beans
+random_cv,2,Ridge,Elgon,2020,0.653829971282899,0.6304320074247383,pca,beans
+random_cv,2,Ridge,Lango,2020,0.997989808692561,0.7770431588204776,pca,beans
+random_cv,2,Ridge,Lango,2020,0.5494183061851179,0.7770431588204776,pca,beans
+random_cv,2,Ridge,South Buganda,2020,1.1321807165247717,0.6009332533324342,pca,beans
+random_cv,2,Ridge,Tooro,2020,0.8099944456086376,0.8589820411969589,pca,beans
+random_cv,2,Ridge,Kigezi,2018,0.6,0.5980895067486354,pca,beans
+random_cv,2,Ridge,Tooro,2018,0.7,0.767178995577326,pca,beans
+random_cv,2,PCR,Acholi,2020,0.8570862730857126,0.7920898708054761,pca,beans
+random_cv,2,PCR,Bunyoro,2020,0.826094714383351,0.8211626523077153,pca,beans
+random_cv,2,PCR,Bunyoro,2020,0.98602045418736,0.8211626523077153,pca,beans
+random_cv,2,PCR,Elgon,2020,0.6700120852270204,0.6288817410189899,pca,beans
+random_cv,2,PCR,Elgon,2020,0.653829971282899,0.6288817410189899,pca,beans
+random_cv,2,PCR,Lango,2020,0.997989808692561,0.7788249640373598,pca,beans
+random_cv,2,PCR,Lango,2020,0.5494183061851179,0.7788249640373598,pca,beans
+random_cv,2,PCR,South Buganda,2020,1.1321807165247717,0.5987125606973154,pca,beans
+random_cv,2,PCR,Tooro,2020,0.8099944456086376,0.8626260937405793,pca,beans
+random_cv,2,PCR,Kigezi,2018,0.6,0.5958041835093394,pca,beans
+random_cv,2,PCR,Tooro,2018,0.7,0.7687366152659548,pca,beans
+random_cv,2,PLS,Acholi,2020,0.8570862730857126,0.792089870805476,pca,beans
+random_cv,2,PLS,Bunyoro,2020,0.826094714383351,0.8211626523077153,pca,beans
+random_cv,2,PLS,Bunyoro,2020,0.98602045418736,0.8211626523077153,pca,beans
+random_cv,2,PLS,Elgon,2020,0.6700120852270204,0.62888174101899,pca,beans
+random_cv,2,PLS,Elgon,2020,0.653829971282899,0.62888174101899,pca,beans
+random_cv,2,PLS,Lango,2020,0.997989808692561,0.7788249640373598,pca,beans
+random_cv,2,PLS,Lango,2020,0.5494183061851179,0.7788249640373598,pca,beans
+random_cv,2,PLS,South Buganda,2020,1.1321807165247717,0.5987125606973154,pca,beans
+random_cv,2,PLS,Tooro,2020,0.8099944456086376,0.8626260937405794,pca,beans
+random_cv,2,PLS,Kigezi,2018,0.6,0.5958041835093393,pca,beans
+random_cv,2,PLS,Tooro,2018,0.7,0.7687366152659548,pca,beans
+random_cv,2,RandomForest,Acholi,2020,0.8570862730857126,0.7149401601307042,pca,beans
+random_cv,2,RandomForest,Bunyoro,2020,0.826094714383351,0.8784965816071223,pca,beans
+random_cv,2,RandomForest,Bunyoro,2020,0.98602045418736,0.8784965816071223,pca,beans
+random_cv,2,RandomForest,Elgon,2020,0.6700120852270204,0.6825089525289892,pca,beans
+random_cv,2,RandomForest,Elgon,2020,0.653829971282899,0.6825089525289892,pca,beans
+random_cv,2,RandomForest,Lango,2020,0.997989808692561,0.6642052272220942,pca,beans
+random_cv,2,RandomForest,Lango,2020,0.5494183061851179,0.6642052272220942,pca,beans
+random_cv,2,RandomForest,South Buganda,2020,1.1321807165247717,0.679676635751204,pca,beans
+random_cv,2,RandomForest,Tooro,2020,0.8099944456086376,0.9133093567906501,pca,beans
+random_cv,2,RandomForest,Kigezi,2018,0.6,0.5081640073902843,pca,beans
+random_cv,2,RandomForest,Tooro,2018,0.7,0.7322804333233293,pca,beans
+random_cv,2,XGBoost,Acholi,2020,0.8570862730857126,0.8215999007225037,pca,beans
+random_cv,2,XGBoost,Bunyoro,2020,0.826094714383351,1.137199878692627,pca,beans
+random_cv,2,XGBoost,Bunyoro,2020,0.98602045418736,1.137199878692627,pca,beans
+random_cv,2,XGBoost,Elgon,2020,0.6700120852270204,0.7043854594230652,pca,beans
+random_cv,2,XGBoost,Elgon,2020,0.653829971282899,0.7043854594230652,pca,beans
+random_cv,2,XGBoost,Lango,2020,0.997989808692561,0.547839343547821,pca,beans
+random_cv,2,XGBoost,Lango,2020,0.5494183061851179,0.547839343547821,pca,beans
+random_cv,2,XGBoost,South Buganda,2020,1.1321807165247717,0.7042564153671265,pca,beans
+random_cv,2,XGBoost,Tooro,2020,0.8099944456086376,0.8904544711112976,pca,beans
+random_cv,2,XGBoost,Kigezi,2018,0.6,0.46799930930137634,pca,beans
+random_cv,2,XGBoost,Tooro,2018,0.7,0.7210530042648315,pca,beans
+random_cv,2,mean_predictor,Acholi,2020,0.8570862730857126,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Bunyoro,2020,0.826094714383351,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Bunyoro,2020,0.98602045418736,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Elgon,2020,0.6700120852270204,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Elgon,2020,0.653829971282899,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Lango,2020,0.997989808692561,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Lango,2020,0.5494183061851179,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,South Buganda,2020,1.1321807165247717,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Tooro,2020,0.8099944456086376,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Kigezi,2018,0.6,0.6986437292776614,pca,beans
+random_cv,2,mean_predictor,Tooro,2018,0.7,0.6986437292776614,pca,beans
+random_cv,2,historical_mean,Acholi,2020,0.8570862730857126,0.8148837515707319,pca,beans
+random_cv,2,historical_mean,Bunyoro,2020,0.826094714383351,0.9502558524024165,pca,beans
+random_cv,2,historical_mean,Bunyoro,2020,0.98602045418736,0.9502558524024165,pca,beans
+random_cv,2,historical_mean,Elgon,2020,0.6700120852270204,0.5818384787079992,pca,beans
+random_cv,2,historical_mean,Elgon,2020,0.653829971282899,0.5818384787079992,pca,beans
+random_cv,2,historical_mean,Lango,2020,0.997989808692561,0.37692572418297177,pca,beans
+random_cv,2,historical_mean,Lango,2020,0.5494183061851179,0.37692572418297177,pca,beans
+random_cv,2,historical_mean,South Buganda,2020,1.1321807165247717,0.6973194041983986,pca,beans
+random_cv,2,historical_mean,Tooro,2020,0.8099944456086376,0.8774922584437218,pca,beans
+random_cv,2,historical_mean,Kigezi,2018,0.6,0.9494522771470524,pca,beans
+random_cv,2,historical_mean,Tooro,2018,0.7,0.8774922584437218,pca,beans
+random_cv,3,OLS,Acholi,2020,0.879146894389113,0.807240551497633,pca,beans
+random_cv,3,OLS,Acholi,2020,0.8655043603230825,0.807240551497633,pca,beans
+random_cv,3,OLS,Kigezi,2020,1.2309422257456628,0.8524055427652198,pca,beans
+random_cv,3,OLS,Lango,2020,0.4538514483659435,0.796881576546415,pca,beans
+random_cv,3,OLS,South Buganda,2020,0.6286830497610721,0.6237354111320768,pca,beans
+random_cv,3,OLS,Tooro,2020,0.5714159022282193,0.8865657962872042,pca,beans
+random_cv,3,OLS,Tooro,2020,1.1835686146592244,0.8865657962872042,pca,beans
+random_cv,3,OLS,West Nile,2020,0.7559563988183644,0.8786600754327738,pca,beans
+random_cv,3,OLS,West Nile,2020,0.6778710254152407,0.8786600754327738,pca,beans
+random_cv,3,OLS,Bunyoro,2018,0.7,0.692519522638885,pca,beans
+random_cv,3,OLS,North Buganda,2018,0.6,0.579156802457766,pca,beans
+random_cv,3,Ridge,Acholi,2020,0.879146894389113,0.8049463225470233,pca,beans
+random_cv,3,Ridge,Acholi,2020,0.8655043603230825,0.8049463225470233,pca,beans
+random_cv,3,Ridge,Kigezi,2020,1.2309422257456628,0.8491076473419971,pca,beans
+random_cv,3,Ridge,Lango,2020,0.4538514483659435,0.7948175470391656,pca,beans
+random_cv,3,Ridge,South Buganda,2020,0.6286830497610721,0.6255190741895905,pca,beans
+random_cv,3,Ridge,Tooro,2020,0.5714159022282193,0.8825087841190484,pca,beans
+random_cv,3,Ridge,Tooro,2020,1.1835686146592244,0.8825087841190484,pca,beans
+random_cv,3,Ridge,West Nile,2020,0.7559563988183644,0.874778745950272,pca,beans
+random_cv,3,Ridge,West Nile,2020,0.6778710254152407,0.874778745950272,pca,beans
+random_cv,3,Ridge,Bunyoro,2018,0.7,0.6927746498851364,pca,beans
+random_cv,3,Ridge,North Buganda,2018,0.6,0.5819311012635978,pca,beans
+random_cv,3,PCR,Acholi,2020,0.879146894389113,0.8072405514976329,pca,beans
+random_cv,3,PCR,Acholi,2020,0.8655043603230825,0.8072405514976329,pca,beans
+random_cv,3,PCR,Kigezi,2020,1.2309422257456628,0.8524055427652198,pca,beans
+random_cv,3,PCR,Lango,2020,0.4538514483659435,0.796881576546415,pca,beans
+random_cv,3,PCR,South Buganda,2020,0.6286830497610721,0.6237354111320768,pca,beans
+random_cv,3,PCR,Tooro,2020,0.5714159022282193,0.8865657962872042,pca,beans
+random_cv,3,PCR,Tooro,2020,1.1835686146592244,0.8865657962872042,pca,beans
+random_cv,3,PCR,West Nile,2020,0.7559563988183644,0.8786600754327737,pca,beans
+random_cv,3,PCR,West Nile,2020,0.6778710254152407,0.8786600754327737,pca,beans
+random_cv,3,PCR,Bunyoro,2018,0.7,0.692519522638885,pca,beans
+random_cv,3,PCR,North Buganda,2018,0.6,0.5791568024577661,pca,beans
+random_cv,3,PLS,Acholi,2020,0.879146894389113,0.8072405514976329,pca,beans
+random_cv,3,PLS,Acholi,2020,0.8655043603230825,0.8072405514976329,pca,beans
+random_cv,3,PLS,Kigezi,2020,1.2309422257456628,0.8524055427652197,pca,beans
+random_cv,3,PLS,Lango,2020,0.4538514483659435,0.796881576546415,pca,beans
+random_cv,3,PLS,South Buganda,2020,0.6286830497610721,0.6237354111320768,pca,beans
+random_cv,3,PLS,Tooro,2020,0.5714159022282193,0.8865657962872042,pca,beans
+random_cv,3,PLS,Tooro,2020,1.1835686146592244,0.8865657962872042,pca,beans
+random_cv,3,PLS,West Nile,2020,0.7559563988183644,0.8786600754327737,pca,beans
+random_cv,3,PLS,West Nile,2020,0.6778710254152407,0.8786600754327737,pca,beans
+random_cv,3,PLS,Bunyoro,2018,0.7,0.692519522638885,pca,beans
+random_cv,3,PLS,North Buganda,2018,0.6,0.579156802457766,pca,beans
+random_cv,3,RandomForest,Acholi,2020,0.879146894389113,0.725686178269625,pca,beans
+random_cv,3,RandomForest,Acholi,2020,0.8655043603230825,0.725686178269625,pca,beans
+random_cv,3,RandomForest,Kigezi,2020,1.2309422257456628,0.7769443776968014,pca,beans
+random_cv,3,RandomForest,Lango,2020,0.4538514483659435,0.7294335911364898,pca,beans
+random_cv,3,RandomForest,South Buganda,2020,0.6286830497610721,0.7980086277453425,pca,beans
+random_cv,3,RandomForest,Tooro,2020,0.5714159022282193,0.8561778933972917,pca,beans
+random_cv,3,RandomForest,Tooro,2020,1.1835686146592244,0.8561778933972917,pca,beans
+random_cv,3,RandomForest,West Nile,2020,0.7559563988183644,0.7364255453524422,pca,beans
+random_cv,3,RandomForest,West Nile,2020,0.6778710254152407,0.7364255453524422,pca,beans
+random_cv,3,RandomForest,Bunyoro,2018,0.7,0.7557077487904166,pca,beans
+random_cv,3,RandomForest,North Buganda,2018,0.6,0.6398102774238617,pca,beans
+random_cv,3,XGBoost,Acholi,2020,0.879146894389113,0.8090107440948486,pca,beans
+random_cv,3,XGBoost,Acholi,2020,0.8655043603230825,0.8090107440948486,pca,beans
+random_cv,3,XGBoost,Kigezi,2020,1.2309422257456628,0.7923353910446167,pca,beans
+random_cv,3,XGBoost,Lango,2020,0.4538514483659435,0.7731212973594666,pca,beans
+random_cv,3,XGBoost,South Buganda,2020,0.6286830497610721,0.9359299540519714,pca,beans
+random_cv,3,XGBoost,Tooro,2020,0.5714159022282193,0.8353961706161499,pca,beans
+random_cv,3,XGBoost,Tooro,2020,1.1835686146592244,0.8353961706161499,pca,beans
+random_cv,3,XGBoost,West Nile,2020,0.7559563988183644,0.5931512117385864,pca,beans
+random_cv,3,XGBoost,West Nile,2020,0.6778710254152407,0.5931512117385864,pca,beans
+random_cv,3,XGBoost,Bunyoro,2018,0.7,0.6096212267875671,pca,beans
+random_cv,3,XGBoost,North Buganda,2018,0.6,0.4409290552139282,pca,beans
+random_cv,3,mean_predictor,Acholi,2020,0.879146894389113,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,Acholi,2020,0.8655043603230825,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,Kigezi,2020,1.2309422257456628,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,Lango,2020,0.4538514483659435,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,South Buganda,2020,0.6286830497610721,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,Tooro,2020,0.5714159022282193,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,Tooro,2020,1.1835686146592244,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,West Nile,2020,0.7559563988183644,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,West Nile,2020,0.6778710254152407,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,Bunyoro,2018,0.7,0.7040002487201956,pca,beans
+random_cv,3,mean_predictor,North Buganda,2018,0.6,0.7040002487201956,pca,beans
+random_cv,3,historical_mean,Acholi,2020,0.879146894389113,0.7785431365428563,pca,beans
+random_cv,3,historical_mean,Acholi,2020,0.8655043603230825,0.7785431365428563,pca,beans
+random_cv,3,historical_mean,Kigezi,2020,1.2309422257456628,0.7391382018984981,pca,beans
+random_cv,3,historical_mean,Lango,2020,0.4538514483659435,0.6158027049592263,pca,beans
+random_cv,3,historical_mean,South Buganda,2020,0.6286830497610721,0.8651519597862983,pca,beans
+random_cv,3,historical_mean,Tooro,2020,0.5714159022282193,0.7549972228043188,pca,beans
+random_cv,3,historical_mean,Tooro,2020,1.1835686146592244,0.7549972228043188,pca,beans
+random_cv,3,historical_mean,West Nile,2020,0.7559563988183644,0.6125716200447853,pca,beans
+random_cv,3,historical_mean,West Nile,2020,0.6778710254152407,0.6125716200447853,pca,beans
+random_cv,3,historical_mean,Bunyoro,2018,0.7,1.004208957791848,pca,beans
+random_cv,3,historical_mean,North Buganda,2018,0.6,0.8072797195230073,pca,beans
+random_cv,4,OLS,Bukedi,2020,0.7056484947012804,0.6501490669586005,pca,beans
+random_cv,4,OLS,Bunyoro,2020,1.200511704804833,0.8373842838428788,pca,beans
+random_cv,4,OLS,Busoga,2020,0.6904468967705395,0.6706913783455181,pca,beans
+random_cv,4,OLS,Karamoja,2020,0.5422885207412549,0.7376267655659006,pca,beans
+random_cv,4,OLS,Kigezi,2020,0.6821726355797036,0.8749353800308617,pca,beans
+random_cv,4,OLS,Kigezi,2020,0.9352419701157908,0.8749353800308617,pca,beans
+random_cv,4,OLS,North Buganda,2020,0.7961939204401095,0.7384492045884217,pca,beans
+random_cv,4,OLS,West Nile,2020,0.5251432400895707,0.8902614567232308,pca,beans
+random_cv,4,OLS,Ankole,2018,0.7,0.7347709989744223,pca,beans
+random_cv,4,OLS,South Buganda,2018,0.6,0.6400095973932562,pca,beans
+random_cv,4,OLS,West Nile,2018,0.7,0.8013560727962294,pca,beans
+random_cv,4,Ridge,Bukedi,2020,0.7056484947012804,0.6515827763191927,pca,beans
+random_cv,4,Ridge,Bunyoro,2020,1.200511704804833,0.8346572106060429,pca,beans
+random_cv,4,Ridge,Busoga,2020,0.6904468967705395,0.671668591897512,pca,beans
+random_cv,4,Ridge,Karamoja,2020,0.5422885207412549,0.737116526068553,pca,beans
+random_cv,4,Ridge,Kigezi,2020,0.6821726355797036,0.8713738379898485,pca,beans
+random_cv,4,Ridge,Kigezi,2020,0.9352419701157908,0.8713738379898485,pca,beans
+random_cv,4,Ridge,North Buganda,2020,0.7961939204401095,0.7379206886683514,pca,beans
+random_cv,4,Ridge,West Nile,2020,0.5251432400895707,0.8863593352001647,pca,beans
+random_cv,4,Ridge,Ankole,2018,0.7,0.7343242209568854,pca,beans
+random_cv,4,Ridge,South Buganda,2018,0.6,0.6416686282997452,pca,beans
+random_cv,4,Ridge,West Nile,2018,0.7,0.7994296264715414,pca,beans
+random_cv,4,PCR,Bukedi,2020,0.7056484947012804,0.6501490669586003,pca,beans
+random_cv,4,PCR,Bunyoro,2020,1.200511704804833,0.8373842838428789,pca,beans
+random_cv,4,PCR,Busoga,2020,0.6904468967705395,0.670691378345518,pca,beans
+random_cv,4,PCR,Karamoja,2020,0.5422885207412549,0.7376267655659006,pca,beans
+random_cv,4,PCR,Kigezi,2020,0.6821726355797036,0.8749353800308618,pca,beans
+random_cv,4,PCR,Kigezi,2020,0.9352419701157908,0.8749353800308618,pca,beans
+random_cv,4,PCR,North Buganda,2020,0.7961939204401095,0.7384492045884217,pca,beans
+random_cv,4,PCR,West Nile,2020,0.5251432400895707,0.8902614567232308,pca,beans
+random_cv,4,PCR,Ankole,2018,0.7,0.7347709989744223,pca,beans
+random_cv,4,PCR,South Buganda,2018,0.6,0.6400095973932562,pca,beans
+random_cv,4,PCR,West Nile,2018,0.7,0.8013560727962296,pca,beans
+random_cv,4,PLS,Bukedi,2020,0.7056484947012804,0.6501490669586005,pca,beans
+random_cv,4,PLS,Bunyoro,2020,1.200511704804833,0.8373842838428787,pca,beans
+random_cv,4,PLS,Busoga,2020,0.6904468967705395,0.6706913783455181,pca,beans
+random_cv,4,PLS,Karamoja,2020,0.5422885207412549,0.7376267655659006,pca,beans
+random_cv,4,PLS,Kigezi,2020,0.6821726355797036,0.8749353800308617,pca,beans
+random_cv,4,PLS,Kigezi,2020,0.9352419701157908,0.8749353800308617,pca,beans
+random_cv,4,PLS,North Buganda,2020,0.7961939204401095,0.7384492045884217,pca,beans
+random_cv,4,PLS,West Nile,2020,0.5251432400895707,0.8902614567232305,pca,beans
+random_cv,4,PLS,Ankole,2018,0.7,0.7347709989744223,pca,beans
+random_cv,4,PLS,South Buganda,2018,0.6,0.6400095973932562,pca,beans
+random_cv,4,PLS,West Nile,2018,0.7,0.8013560727962294,pca,beans
+random_cv,4,RandomForest,Bukedi,2020,0.7056484947012804,0.6310575326231925,pca,beans
+random_cv,4,RandomForest,Bunyoro,2020,1.200511704804833,0.8231552396712825,pca,beans
+random_cv,4,RandomForest,Busoga,2020,0.6904468967705395,0.6415133103467332,pca,beans
+random_cv,4,RandomForest,Karamoja,2020,0.5422885207412549,0.7005684677094317,pca,beans
+random_cv,4,RandomForest,Kigezi,2020,0.6821726355797036,0.9622955400277727,pca,beans
+random_cv,4,RandomForest,Kigezi,2020,0.9352419701157908,0.9622955400277727,pca,beans
+random_cv,4,RandomForest,North Buganda,2020,0.7961939204401095,0.7206307140489704,pca,beans
+random_cv,4,RandomForest,West Nile,2020,0.5251432400895707,0.7731575166820666,pca,beans
+random_cv,4,RandomForest,Ankole,2018,0.7,0.5847695991673666,pca,beans
+random_cv,4,RandomForest,South Buganda,2018,0.6,0.7748602702333673,pca,beans
+random_cv,4,RandomForest,West Nile,2018,0.7,0.772725243679805,pca,beans
+random_cv,4,XGBoost,Bukedi,2020,0.7056484947012804,0.5794358253479004,pca,beans
+random_cv,4,XGBoost,Bunyoro,2020,1.200511704804833,0.8921502828598022,pca,beans
+random_cv,4,XGBoost,Busoga,2020,0.6904468967705395,0.6869842410087585,pca,beans
+random_cv,4,XGBoost,Karamoja,2020,0.5422885207412549,0.6268605589866638,pca,beans
+random_cv,4,XGBoost,Kigezi,2020,0.6821726355797036,1.1151682138442993,pca,beans
+random_cv,4,XGBoost,Kigezi,2020,0.9352419701157908,1.1151682138442993,pca,beans
+random_cv,4,XGBoost,North Buganda,2020,0.7961939204401095,0.808582603931427,pca,beans
+random_cv,4,XGBoost,West Nile,2020,0.5251432400895707,0.728752613067627,pca,beans
+random_cv,4,XGBoost,Ankole,2018,0.7,0.5404902100563049,pca,beans
+random_cv,4,XGBoost,South Buganda,2018,0.6,0.7433790564537048,pca,beans
+random_cv,4,XGBoost,West Nile,2018,0.7,0.8354285359382629,pca,beans
+random_cv,4,mean_predictor,Bukedi,2020,0.7056484947012804,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,Bunyoro,2020,1.200511704804833,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,Busoga,2020,0.6904468967705395,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,Karamoja,2020,0.5422885207412549,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,Kigezi,2020,0.6821726355797036,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,Kigezi,2020,0.9352419701157908,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,North Buganda,2020,0.7961939204401095,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,West Nile,2020,0.5251432400895707,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,Ankole,2018,0.7,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,South Buganda,2018,0.6,0.7146659881852602,pca,beans
+random_cv,4,mean_predictor,West Nile,2018,0.7,0.7146659881852602,pca,beans
+random_cv,4,historical_mean,Bukedi,2020,0.7056484947012804,0.4969191715378458,pca,beans
+random_cv,4,historical_mean,Bunyoro,2020,1.200511704804833,0.8373717228569036,pca,beans
+random_cv,4,historical_mean,Busoga,2020,0.6904468967705395,0.6139967022710492,pca,beans
+random_cv,4,historical_mean,Karamoja,2020,0.5422885207412549,0.47114426037062745,pca,beans
+random_cv,4,historical_mean,Kigezi,2020,0.6821726355797036,0.9154711128728314,pca,beans
+random_cv,4,historical_mean,Kigezi,2020,0.9352419701157908,0.9154711128728314,pca,beans
+random_cv,4,historical_mean,North Buganda,2020,0.7961939204401095,0.7418817460429707,pca,beans
+random_cv,4,historical_mean,West Nile,2020,0.5251432400895707,0.7169137121168025,pca,beans
+random_cv,4,historical_mean,Ankole,2018,0.7,1.011102966899302,pca,beans
+random_cv,4,historical_mean,South Buganda,2018,0.6,0.8747129763733223,pca,beans
+random_cv,4,historical_mean,West Nile,2018,0.7,0.7169137121168025,pca,beans
+group_by_subregion,0,OLS,Bukedi,2020,0.5175817230094645,0.6866544291252635,pca,beans
+group_by_subregion,0,OLS,Bukedi,2020,0.7056484947012804,0.6866544291252635,pca,beans
+group_by_subregion,0,OLS,Bukedi,2020,0.5731757916040728,0.6866544291252635,pca,beans
+group_by_subregion,0,OLS,Lango,2020,0.4538514483659435,0.8395541573690006,pca,beans
+group_by_subregion,0,OLS,Lango,2020,0.997989808692561,0.8395541573690006,pca,beans
+group_by_subregion,0,OLS,Lango,2020,0.5494183061851179,0.8395541573690006,pca,beans
+group_by_subregion,0,OLS,West Nile,2020,0.5251432400895707,0.9272793197189002,pca,beans
+group_by_subregion,0,OLS,West Nile,2020,0.7559563988183644,0.9272793197189002,pca,beans
+group_by_subregion,0,OLS,West Nile,2020,0.6778710254152407,0.9272793197189002,pca,beans
+group_by_subregion,0,OLS,Bukedi,2018,0.4,0.5078286077660237,pca,beans
+group_by_subregion,0,OLS,Lango,2018,0.3,0.6206266384355055,pca,beans
+group_by_subregion,0,OLS,West Nile,2018,0.7,0.8487141108133587,pca,beans
+group_by_subregion,0,Ridge,Bukedi,2020,0.5175817230094645,0.6881555782659223,pca,beans
+group_by_subregion,0,Ridge,Bukedi,2020,0.7056484947012804,0.6881555782659223,pca,beans
+group_by_subregion,0,Ridge,Bukedi,2020,0.5731757916040728,0.6881555782659223,pca,beans
+group_by_subregion,0,Ridge,Lango,2020,0.4538514483659435,0.8375803126859382,pca,beans
+group_by_subregion,0,Ridge,Lango,2020,0.997989808692561,0.8375803126859382,pca,beans
+group_by_subregion,0,Ridge,Lango,2020,0.5494183061851179,0.8375803126859382,pca,beans
+group_by_subregion,0,Ridge,West Nile,2020,0.5251432400895707,0.9233117213460673,pca,beans
+group_by_subregion,0,Ridge,West Nile,2020,0.7559563988183644,0.9233117213460673,pca,beans
+group_by_subregion,0,Ridge,West Nile,2020,0.6778710254152407,0.9233117213460673,pca,beans
+group_by_subregion,0,Ridge,Bukedi,2018,0.4,0.5133939801193926,pca,beans
+group_by_subregion,0,Ridge,Lango,2018,0.3,0.6236284191827499,pca,beans
+group_by_subregion,0,Ridge,West Nile,2018,0.7,0.8465320853701972,pca,beans
+group_by_subregion,0,PCR,Bukedi,2020,0.5175817230094645,0.6866544291252634,pca,beans
+group_by_subregion,0,PCR,Bukedi,2020,0.7056484947012804,0.6866544291252634,pca,beans
+group_by_subregion,0,PCR,Bukedi,2020,0.5731757916040728,0.6866544291252634,pca,beans
+group_by_subregion,0,PCR,Lango,2020,0.4538514483659435,0.8395541573690006,pca,beans
+group_by_subregion,0,PCR,Lango,2020,0.997989808692561,0.8395541573690006,pca,beans
+group_by_subregion,0,PCR,Lango,2020,0.5494183061851179,0.8395541573690006,pca,beans
+group_by_subregion,0,PCR,West Nile,2020,0.5251432400895707,0.9272793197189002,pca,beans
+group_by_subregion,0,PCR,West Nile,2020,0.7559563988183644,0.9272793197189002,pca,beans
+group_by_subregion,0,PCR,West Nile,2020,0.6778710254152407,0.9272793197189002,pca,beans
+group_by_subregion,0,PCR,Bukedi,2018,0.4,0.5078286077660237,pca,beans
+group_by_subregion,0,PCR,Lango,2018,0.3,0.6206266384355056,pca,beans
+group_by_subregion,0,PCR,West Nile,2018,0.7,0.8487141108133587,pca,beans
+group_by_subregion,0,PLS,Bukedi,2020,0.5175817230094645,0.6866544291252633,pca,beans
+group_by_subregion,0,PLS,Bukedi,2020,0.7056484947012804,0.6866544291252633,pca,beans
+group_by_subregion,0,PLS,Bukedi,2020,0.5731757916040728,0.6866544291252633,pca,beans
+group_by_subregion,0,PLS,Lango,2020,0.4538514483659435,0.8395541573690007,pca,beans
+group_by_subregion,0,PLS,Lango,2020,0.997989808692561,0.8395541573690007,pca,beans
+group_by_subregion,0,PLS,Lango,2020,0.5494183061851179,0.8395541573690007,pca,beans
+group_by_subregion,0,PLS,West Nile,2020,0.5251432400895707,0.9272793197189002,pca,beans
+group_by_subregion,0,PLS,West Nile,2020,0.7559563988183644,0.9272793197189002,pca,beans
+group_by_subregion,0,PLS,West Nile,2020,0.6778710254152407,0.9272793197189002,pca,beans
+group_by_subregion,0,PLS,Bukedi,2018,0.4,0.5078286077660237,pca,beans
+group_by_subregion,0,PLS,Lango,2018,0.3,0.6206266384355055,pca,beans
+group_by_subregion,0,PLS,West Nile,2018,0.7,0.8487141108133588,pca,beans
+group_by_subregion,0,RandomForest,Bukedi,2020,0.5175817230094645,0.6906721465392746,pca,beans
+group_by_subregion,0,RandomForest,Bukedi,2020,0.7056484947012804,0.6906721465392746,pca,beans
+group_by_subregion,0,RandomForest,Bukedi,2020,0.5731757916040728,0.6906721465392746,pca,beans
+group_by_subregion,0,RandomForest,Lango,2020,0.4538514483659435,0.7989738874001315,pca,beans
+group_by_subregion,0,RandomForest,Lango,2020,0.997989808692561,0.7989738874001315,pca,beans
+group_by_subregion,0,RandomForest,Lango,2020,0.5494183061851179,0.7989738874001315,pca,beans
+group_by_subregion,0,RandomForest,West Nile,2020,0.5251432400895707,0.8371107834556841,pca,beans
+group_by_subregion,0,RandomForest,West Nile,2020,0.7559563988183644,0.8371107834556841,pca,beans
+group_by_subregion,0,RandomForest,West Nile,2020,0.6778710254152407,0.8371107834556841,pca,beans
+group_by_subregion,0,RandomForest,Bukedi,2018,0.4,0.5008432437208619,pca,beans
+group_by_subregion,0,RandomForest,Lango,2018,0.3,0.6558527713146843,pca,beans
+group_by_subregion,0,RandomForest,West Nile,2018,0.7,0.8040310484942669,pca,beans
+group_by_subregion,0,XGBoost,Bukedi,2020,0.5175817230094645,0.654365599155426,pca,beans
+group_by_subregion,0,XGBoost,Bukedi,2020,0.7056484947012804,0.654365599155426,pca,beans
+group_by_subregion,0,XGBoost,Bukedi,2020,0.5731757916040728,0.654365599155426,pca,beans
+group_by_subregion,0,XGBoost,Lango,2020,0.4538514483659435,0.7884865999221802,pca,beans
+group_by_subregion,0,XGBoost,Lango,2020,0.997989808692561,0.7884865999221802,pca,beans
+group_by_subregion,0,XGBoost,Lango,2020,0.5494183061851179,0.7884865999221802,pca,beans
+group_by_subregion,0,XGBoost,West Nile,2020,0.5251432400895707,0.8991940021514893,pca,beans
+group_by_subregion,0,XGBoost,West Nile,2020,0.7559563988183644,0.8991940021514893,pca,beans
+group_by_subregion,0,XGBoost,West Nile,2020,0.6778710254152407,0.8991940021514893,pca,beans
+group_by_subregion,0,XGBoost,Bukedi,2018,0.4,0.5359461903572083,pca,beans
+group_by_subregion,0,XGBoost,Lango,2018,0.3,0.5785844326019287,pca,beans
+group_by_subregion,0,XGBoost,West Nile,2018,0.7,0.9427573680877686,pca,beans
+group_by_subregion,0,mean_predictor,Bukedi,2020,0.5175817230094645,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,Bukedi,2020,0.7056484947012804,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,Bukedi,2020,0.5731757916040728,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,Lango,2020,0.4538514483659435,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,Lango,2020,0.997989808692561,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,Lango,2020,0.5494183061851179,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,West Nile,2020,0.5251432400895707,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,West Nile,2020,0.7559563988183644,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,West Nile,2020,0.6778710254152407,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,Bukedi,2018,0.4,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,Lango,2018,0.3,0.7527049913142538,pca,beans
+group_by_subregion,0,mean_predictor,West Nile,2018,0.7,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Bukedi,2020,0.5175817230094645,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Bukedi,2020,0.7056484947012804,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Bukedi,2020,0.5731757916040728,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Lango,2020,0.4538514483659435,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Lango,2020,0.997989808692561,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Lango,2020,0.5494183061851179,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,West Nile,2020,0.5251432400895707,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,West Nile,2020,0.7559563988183644,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,West Nile,2020,0.6778710254152407,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Bukedi,2018,0.4,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,Lango,2018,0.3,0.7527049913142538,pca,beans
+group_by_subregion,0,historical_mean,West Nile,2018,0.7,0.7527049913142538,pca,beans
+group_by_subregion,1,OLS,Ankole,2020,0.7107039593083359,0.6971775722191762,pca,beans
+group_by_subregion,1,OLS,Ankole,2020,1.3411688832335629,0.6971775722191762,pca,beans
+group_by_subregion,1,OLS,Ankole,2020,0.9814360581560068,0.6971775722191762,pca,beans
+group_by_subregion,1,OLS,Kigezi,2020,0.6821726355797036,0.7478446353277757,pca,beans
+group_by_subregion,1,OLS,Kigezi,2020,1.2309422257456628,0.7478446353277757,pca,beans
+group_by_subregion,1,OLS,Kigezi,2020,0.9352419701157908,0.7478446353277757,pca,beans
+group_by_subregion,1,OLS,Tooro,2020,0.5714159022282193,0.8552266312032348,pca,beans
+group_by_subregion,1,OLS,Tooro,2020,1.1835686146592244,0.8552266312032348,pca,beans
+group_by_subregion,1,OLS,Tooro,2020,0.8099944456086376,0.8552266312032348,pca,beans
+group_by_subregion,1,OLS,Ankole,2018,0.7,0.6246455748414128,pca,beans
+group_by_subregion,1,OLS,Kigezi,2018,0.6,0.5769885182973805,pca,beans
+group_by_subregion,1,OLS,Tooro,2018,0.7,0.7544195112504117,pca,beans
+group_by_subregion,1,Ridge,Ankole,2020,0.7107039593083359,0.6967006539122707,pca,beans
+group_by_subregion,1,Ridge,Ankole,2020,1.3411688832335629,0.6967006539122707,pca,beans
+group_by_subregion,1,Ridge,Ankole,2020,0.9814360581560068,0.6967006539122707,pca,beans
+group_by_subregion,1,Ridge,Kigezi,2020,0.6821726355797036,0.7462161928593111,pca,beans
+group_by_subregion,1,Ridge,Kigezi,2020,1.2309422257456628,0.7462161928593111,pca,beans
+group_by_subregion,1,Ridge,Kigezi,2020,0.9352419701157908,0.7462161928593111,pca,beans
+group_by_subregion,1,Ridge,Tooro,2020,0.5714159022282193,0.8511576888285098,pca,beans
+group_by_subregion,1,Ridge,Tooro,2020,1.1835686146592244,0.8511576888285098,pca,beans
+group_by_subregion,1,Ridge,Tooro,2020,0.8099944456086376,0.8511576888285098,pca,beans
+group_by_subregion,1,Ridge,Ankole,2018,0.7,0.6258171110203655,pca,beans
+group_by_subregion,1,Ridge,Kigezi,2018,0.6,0.5792431693977885,pca,beans
+group_by_subregion,1,Ridge,Tooro,2018,0.7,0.7526416397837055,pca,beans
+group_by_subregion,1,PCR,Ankole,2020,0.7107039593083359,0.6971775722191762,pca,beans
+group_by_subregion,1,PCR,Ankole,2020,1.3411688832335629,0.6971775722191762,pca,beans
+group_by_subregion,1,PCR,Ankole,2020,0.9814360581560068,0.6971775722191762,pca,beans
+group_by_subregion,1,PCR,Kigezi,2020,0.6821726355797036,0.7478446353277757,pca,beans
+group_by_subregion,1,PCR,Kigezi,2020,1.2309422257456628,0.7478446353277757,pca,beans
+group_by_subregion,1,PCR,Kigezi,2020,0.9352419701157908,0.7478446353277757,pca,beans
+group_by_subregion,1,PCR,Tooro,2020,0.5714159022282193,0.8552266312032348,pca,beans
+group_by_subregion,1,PCR,Tooro,2020,1.1835686146592244,0.8552266312032348,pca,beans
+group_by_subregion,1,PCR,Tooro,2020,0.8099944456086376,0.8552266312032348,pca,beans
+group_by_subregion,1,PCR,Ankole,2018,0.7,0.6246455748414127,pca,beans
+group_by_subregion,1,PCR,Kigezi,2018,0.6,0.5769885182973805,pca,beans
+group_by_subregion,1,PCR,Tooro,2018,0.7,0.7544195112504117,pca,beans
+group_by_subregion,1,PLS,Ankole,2020,0.7107039593083359,0.6971775722191761,pca,beans
+group_by_subregion,1,PLS,Ankole,2020,1.3411688832335629,0.6971775722191761,pca,beans
+group_by_subregion,1,PLS,Ankole,2020,0.9814360581560068,0.6971775722191761,pca,beans
+group_by_subregion,1,PLS,Kigezi,2020,0.6821726355797036,0.7478446353277757,pca,beans
+group_by_subregion,1,PLS,Kigezi,2020,1.2309422257456628,0.7478446353277757,pca,beans
+group_by_subregion,1,PLS,Kigezi,2020,0.9352419701157908,0.7478446353277757,pca,beans
+group_by_subregion,1,PLS,Tooro,2020,0.5714159022282193,0.8552266312032348,pca,beans
+group_by_subregion,1,PLS,Tooro,2020,1.1835686146592244,0.8552266312032348,pca,beans
+group_by_subregion,1,PLS,Tooro,2020,0.8099944456086376,0.8552266312032348,pca,beans
+group_by_subregion,1,PLS,Ankole,2018,0.7,0.6246455748414128,pca,beans
+group_by_subregion,1,PLS,Kigezi,2018,0.6,0.5769885182973805,pca,beans
+group_by_subregion,1,PLS,Tooro,2018,0.7,0.7544195112504117,pca,beans
+group_by_subregion,1,RandomForest,Ankole,2020,0.7107039593083359,0.634902168641956,pca,beans
+group_by_subregion,1,RandomForest,Ankole,2020,1.3411688832335629,0.634902168641956,pca,beans
+group_by_subregion,1,RandomForest,Ankole,2020,0.9814360581560068,0.634902168641956,pca,beans
+group_by_subregion,1,RandomForest,Kigezi,2020,0.6821726355797036,0.8069625890925772,pca,beans
+group_by_subregion,1,RandomForest,Kigezi,2020,1.2309422257456628,0.8069625890925772,pca,beans
+group_by_subregion,1,RandomForest,Kigezi,2020,0.9352419701157908,0.8069625890925772,pca,beans
+group_by_subregion,1,RandomForest,Tooro,2020,0.5714159022282193,0.9269477590023778,pca,beans
+group_by_subregion,1,RandomForest,Tooro,2020,1.1835686146592244,0.9269477590023778,pca,beans
+group_by_subregion,1,RandomForest,Tooro,2020,0.8099944456086376,0.9269477590023778,pca,beans
+group_by_subregion,1,RandomForest,Ankole,2018,0.7,0.44711471230983135,pca,beans
+group_by_subregion,1,RandomForest,Kigezi,2018,0.6,0.40829356846447784,pca,beans
+group_by_subregion,1,RandomForest,Tooro,2018,0.7,0.7262949977155831,pca,beans
+group_by_subregion,1,XGBoost,Ankole,2020,0.7107039593083359,0.7008492946624756,pca,beans
+group_by_subregion,1,XGBoost,Ankole,2020,1.3411688832335629,0.7008492946624756,pca,beans
+group_by_subregion,1,XGBoost,Ankole,2020,0.9814360581560068,0.7008492946624756,pca,beans
+group_by_subregion,1,XGBoost,Kigezi,2020,0.6821726355797036,0.8479423522949219,pca,beans
+group_by_subregion,1,XGBoost,Kigezi,2020,1.2309422257456628,0.8479423522949219,pca,beans
+group_by_subregion,1,XGBoost,Kigezi,2020,0.9352419701157908,0.8479423522949219,pca,beans
+group_by_subregion,1,XGBoost,Tooro,2020,0.5714159022282193,0.9822623133659363,pca,beans
+group_by_subregion,1,XGBoost,Tooro,2020,1.1835686146592244,0.9822623133659363,pca,beans
+group_by_subregion,1,XGBoost,Tooro,2020,0.8099944456086376,0.9822623133659363,pca,beans
+group_by_subregion,1,XGBoost,Ankole,2018,0.7,0.5304341316223145,pca,beans
+group_by_subregion,1,XGBoost,Kigezi,2018,0.6,0.40072619915008545,pca,beans
+group_by_subregion,1,XGBoost,Tooro,2018,0.7,0.8818564414978027,pca,beans
+group_by_subregion,1,mean_predictor,Ankole,2020,0.7107039593083359,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Ankole,2020,1.3411688832335629,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Ankole,2020,0.9814360581560068,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Kigezi,2020,0.6821726355797036,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Kigezi,2020,1.2309422257456628,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Kigezi,2020,0.9352419701157908,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Tooro,2020,0.5714159022282193,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Tooro,2020,1.1835686146592244,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Tooro,2020,0.8099944456086376,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Ankole,2018,0.7,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Kigezi,2018,0.6,0.6761931667153345,pca,beans
+group_by_subregion,1,mean_predictor,Tooro,2018,0.7,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Ankole,2020,0.7107039593083359,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Ankole,2020,1.3411688832335629,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Ankole,2020,0.9814360581560068,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Kigezi,2020,0.6821726355797036,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Kigezi,2020,1.2309422257456628,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Kigezi,2020,0.9352419701157908,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Tooro,2020,0.5714159022282193,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Tooro,2020,1.1835686146592244,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Tooro,2020,0.8099944456086376,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Ankole,2018,0.7,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Kigezi,2018,0.6,0.6761931667153345,pca,beans
+group_by_subregion,1,historical_mean,Tooro,2018,0.7,0.6761931667153345,pca,beans
+group_by_subregion,2,OLS,Acholi,2020,0.8570862730857126,0.8013171329085645,pca,beans
+group_by_subregion,2,OLS,Acholi,2020,0.879146894389113,0.8013171329085645,pca,beans
+group_by_subregion,2,OLS,Acholi,2020,0.8655043603230825,0.8013171329085645,pca,beans
+group_by_subregion,2,OLS,Elgon,2020,0.6700120852270204,0.6477479410946836,pca,beans
+group_by_subregion,2,OLS,Elgon,2020,0.653829971282899,0.6477479410946836,pca,beans
+group_by_subregion,2,OLS,Elgon,2020,0.6636769574159984,0.6477479410946836,pca,beans
+group_by_subregion,2,OLS,Teso,2020,0.4787820909269001,0.6812392294226525,pca,beans
+group_by_subregion,2,OLS,Teso,2020,0.7279249098775472,0.6812392294226525,pca,beans
+group_by_subregion,2,OLS,Teso,2020,0.5480873832187684,0.6812392294226525,pca,beans
+group_by_subregion,2,OLS,Acholi,2018,0.7,0.6033495405776652,pca,beans
+group_by_subregion,2,OLS,Elgon,2018,0.5,0.3393839792326737,pca,beans
+group_by_subregion,2,OLS,Teso,2018,0.4,0.4588137519936718,pca,beans
+group_by_subregion,2,Ridge,Acholi,2020,0.8570862730857126,0.7997961303835006,pca,beans
+group_by_subregion,2,Ridge,Acholi,2020,0.879146894389113,0.7997961303835006,pca,beans
+group_by_subregion,2,Ridge,Acholi,2020,0.8655043603230825,0.7997961303835006,pca,beans
+group_by_subregion,2,Ridge,Elgon,2020,0.6700120852270204,0.6497171474744807,pca,beans
+group_by_subregion,2,Ridge,Elgon,2020,0.653829971282899,0.6497171474744807,pca,beans
+group_by_subregion,2,Ridge,Elgon,2020,0.6636769574159984,0.6497171474744807,pca,beans
+group_by_subregion,2,Ridge,Teso,2020,0.4787820909269001,0.6824472701586322,pca,beans
+group_by_subregion,2,Ridge,Teso,2020,0.7279249098775472,0.6824472701586322,pca,beans
+group_by_subregion,2,Ridge,Teso,2020,0.5480873832187684,0.6824472701586322,pca,beans
+group_by_subregion,2,Ridge,Acholi,2018,0.7,0.6063278015146674,pca,beans
+group_by_subregion,2,Ridge,Elgon,2018,0.5,0.3483614574729713,pca,beans
+group_by_subregion,2,Ridge,Teso,2018,0.4,0.4650769172166738,pca,beans
+group_by_subregion,2,PCR,Acholi,2020,0.8570862730857126,0.8013171329085644,pca,beans
+group_by_subregion,2,PCR,Acholi,2020,0.879146894389113,0.8013171329085644,pca,beans
+group_by_subregion,2,PCR,Acholi,2020,0.8655043603230825,0.8013171329085644,pca,beans
+group_by_subregion,2,PCR,Elgon,2020,0.6700120852270204,0.647747941094684,pca,beans
+group_by_subregion,2,PCR,Elgon,2020,0.653829971282899,0.647747941094684,pca,beans
+group_by_subregion,2,PCR,Elgon,2020,0.6636769574159984,0.647747941094684,pca,beans
+group_by_subregion,2,PCR,Teso,2020,0.4787820909269001,0.6812392294226526,pca,beans
+group_by_subregion,2,PCR,Teso,2020,0.7279249098775472,0.6812392294226526,pca,beans
+group_by_subregion,2,PCR,Teso,2020,0.5480873832187684,0.6812392294226526,pca,beans
+group_by_subregion,2,PCR,Acholi,2018,0.7,0.6033495405776653,pca,beans
+group_by_subregion,2,PCR,Elgon,2018,0.5,0.33938397923267394,pca,beans
+group_by_subregion,2,PCR,Teso,2018,0.4,0.45881375199367186,pca,beans
+group_by_subregion,2,PLS,Acholi,2020,0.8570862730857126,0.8013171329085645,pca,beans
+group_by_subregion,2,PLS,Acholi,2020,0.879146894389113,0.8013171329085645,pca,beans
+group_by_subregion,2,PLS,Acholi,2020,0.8655043603230825,0.8013171329085645,pca,beans
+group_by_subregion,2,PLS,Elgon,2020,0.6700120852270204,0.6477479410946837,pca,beans
+group_by_subregion,2,PLS,Elgon,2020,0.653829971282899,0.6477479410946837,pca,beans
+group_by_subregion,2,PLS,Elgon,2020,0.6636769574159984,0.6477479410946837,pca,beans
+group_by_subregion,2,PLS,Teso,2020,0.4787820909269001,0.6812392294226525,pca,beans
+group_by_subregion,2,PLS,Teso,2020,0.7279249098775472,0.6812392294226525,pca,beans
+group_by_subregion,2,PLS,Teso,2020,0.5480873832187684,0.6812392294226525,pca,beans
+group_by_subregion,2,PLS,Acholi,2018,0.7,0.6033495405776652,pca,beans
+group_by_subregion,2,PLS,Elgon,2018,0.5,0.3393839792326738,pca,beans
+group_by_subregion,2,PLS,Teso,2018,0.4,0.4588137519936718,pca,beans
+group_by_subregion,2,RandomForest,Acholi,2020,0.8570862730857126,0.6715589347034012,pca,beans
+group_by_subregion,2,RandomForest,Acholi,2020,0.879146894389113,0.6715589347034012,pca,beans
+group_by_subregion,2,RandomForest,Acholi,2020,0.8655043603230825,0.6715589347034012,pca,beans
+group_by_subregion,2,RandomForest,Elgon,2020,0.6700120852270204,0.7106000484206784,pca,beans
+group_by_subregion,2,RandomForest,Elgon,2020,0.653829971282899,0.7106000484206784,pca,beans
+group_by_subregion,2,RandomForest,Elgon,2020,0.6636769574159984,0.7106000484206784,pca,beans
+group_by_subregion,2,RandomForest,Teso,2020,0.4787820909269001,0.7169506007924419,pca,beans
+group_by_subregion,2,RandomForest,Teso,2020,0.7279249098775472,0.7169506007924419,pca,beans
+group_by_subregion,2,RandomForest,Teso,2020,0.5480873832187684,0.7169506007924419,pca,beans
+group_by_subregion,2,RandomForest,Acholi,2018,0.7,0.6237695852591263,pca,beans
+group_by_subregion,2,RandomForest,Elgon,2018,0.5,0.45734392686763947,pca,beans
+group_by_subregion,2,RandomForest,Teso,2018,0.4,0.42830806604788146,pca,beans
+group_by_subregion,2,XGBoost,Acholi,2020,0.8570862730857126,0.681837260723114,pca,beans
+group_by_subregion,2,XGBoost,Acholi,2020,0.879146894389113,0.681837260723114,pca,beans
+group_by_subregion,2,XGBoost,Acholi,2020,0.8655043603230825,0.681837260723114,pca,beans
+group_by_subregion,2,XGBoost,Elgon,2020,0.6700120852270204,0.687519371509552,pca,beans
+group_by_subregion,2,XGBoost,Elgon,2020,0.653829971282899,0.687519371509552,pca,beans
+group_by_subregion,2,XGBoost,Elgon,2020,0.6636769574159984,0.687519371509552,pca,beans
+group_by_subregion,2,XGBoost,Teso,2020,0.4787820909269001,0.7829460501670837,pca,beans
+group_by_subregion,2,XGBoost,Teso,2020,0.7279249098775472,0.7829460501670837,pca,beans
+group_by_subregion,2,XGBoost,Teso,2020,0.5480873832187684,0.7829460501670837,pca,beans
+group_by_subregion,2,XGBoost,Acholi,2018,0.7,0.7694731950759888,pca,beans
+group_by_subregion,2,XGBoost,Elgon,2018,0.5,0.4287981688976288,pca,beans
+group_by_subregion,2,XGBoost,Teso,2018,0.4,0.5243771076202393,pca,beans
+group_by_subregion,2,mean_predictor,Acholi,2020,0.8570862730857126,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Acholi,2020,0.879146894389113,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Acholi,2020,0.8655043603230825,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Elgon,2020,0.6700120852270204,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Elgon,2020,0.653829971282899,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Elgon,2020,0.6636769574159984,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Teso,2020,0.4787820909269001,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Teso,2020,0.7279249098775472,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Teso,2020,0.5480873832187684,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Acholi,2018,0.7,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Elgon,2018,0.5,0.7343930218057556,pca,beans
+group_by_subregion,2,mean_predictor,Teso,2018,0.4,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Acholi,2020,0.8570862730857126,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Acholi,2020,0.879146894389113,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Acholi,2020,0.8655043603230825,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Elgon,2020,0.6700120852270204,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Elgon,2020,0.653829971282899,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Elgon,2020,0.6636769574159984,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Teso,2020,0.4787820909269001,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Teso,2020,0.7279249098775472,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Teso,2020,0.5480873832187684,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Acholi,2018,0.7,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Elgon,2018,0.5,0.7343930218057556,pca,beans
+group_by_subregion,2,historical_mean,Teso,2018,0.4,0.7343930218057556,pca,beans
+group_by_subregion,3,OLS,Busoga,2020,0.6401206168693183,0.6592044554635503,pca,beans
+group_by_subregion,3,OLS,Busoga,2020,0.8018694899438292,0.6592044554635503,pca,beans
+group_by_subregion,3,OLS,Busoga,2020,0.6904468967705395,0.6592044554635503,pca,beans
+group_by_subregion,3,OLS,Karamoja,2020,0.5422885207412549,0.7211558421095827,pca,beans
+group_by_subregion,3,OLS,Karamoja,2020,0.5422885207412549,0.7211558421095827,pca,beans
+group_by_subregion,3,OLS,South Buganda,2020,0.6286830497610721,0.5988979204698099,pca,beans
+group_by_subregion,3,OLS,South Buganda,2020,1.1321807165247717,0.5988979204698099,pca,beans
+group_by_subregion,3,OLS,South Buganda,2020,0.8632751628341233,0.5988979204698099,pca,beans
+group_by_subregion,3,OLS,Busoga,2018,0.4,0.41920914692851724,pca,beans
+group_by_subregion,3,OLS,Karamoja,2018,0.4,0.46393499657924026,pca,beans
+group_by_subregion,3,OLS,South Buganda,2018,0.6,0.618742652315426,pca,beans
+group_by_subregion,3,Ridge,Busoga,2020,0.6401206168693183,0.6608594058922432,pca,beans
+group_by_subregion,3,Ridge,Busoga,2020,0.8018694899438292,0.6608594058922432,pca,beans
+group_by_subregion,3,Ridge,Busoga,2020,0.6904468967705395,0.6608594058922432,pca,beans
+group_by_subregion,3,Ridge,Karamoja,2020,0.5422885207412549,0.7214340950572528,pca,beans
+group_by_subregion,3,Ridge,Karamoja,2020,0.5422885207412549,0.7214340950572528,pca,beans
+group_by_subregion,3,Ridge,South Buganda,2020,0.6286830497610721,0.6018930161205861,pca,beans
+group_by_subregion,3,Ridge,South Buganda,2020,1.1321807165247717,0.6018930161205861,pca,beans
+group_by_subregion,3,Ridge,South Buganda,2020,0.8632751628341233,0.6018930161205861,pca,beans
+group_by_subregion,3,Ridge,Busoga,2018,0.4,0.42619732643576647,pca,beans
+group_by_subregion,3,Ridge,Karamoja,2018,0.4,0.46992926831647325,pca,beans
+group_by_subregion,3,Ridge,South Buganda,2018,0.6,0.6212967539251885,pca,beans
+group_by_subregion,3,PCR,Busoga,2020,0.6401206168693183,0.6592044554635503,pca,beans
+group_by_subregion,3,PCR,Busoga,2020,0.8018694899438292,0.6592044554635503,pca,beans
+group_by_subregion,3,PCR,Busoga,2020,0.6904468967705395,0.6592044554635503,pca,beans
+group_by_subregion,3,PCR,Karamoja,2020,0.5422885207412549,0.7211558421095826,pca,beans
+group_by_subregion,3,PCR,Karamoja,2020,0.5422885207412549,0.7211558421095826,pca,beans
+group_by_subregion,3,PCR,South Buganda,2020,0.6286830497610721,0.5988979204698099,pca,beans
+group_by_subregion,3,PCR,South Buganda,2020,1.1321807165247717,0.5988979204698099,pca,beans
+group_by_subregion,3,PCR,South Buganda,2020,0.8632751628341233,0.5988979204698099,pca,beans
+group_by_subregion,3,PCR,Busoga,2018,0.4,0.4192091469285172,pca,beans
+group_by_subregion,3,PCR,Karamoja,2018,0.4,0.46393499657924003,pca,beans
+group_by_subregion,3,PCR,South Buganda,2018,0.6,0.618742652315426,pca,beans
+group_by_subregion,3,PLS,Busoga,2020,0.6401206168693183,0.6592044554635503,pca,beans
+group_by_subregion,3,PLS,Busoga,2020,0.8018694899438292,0.6592044554635503,pca,beans
+group_by_subregion,3,PLS,Busoga,2020,0.6904468967705395,0.6592044554635503,pca,beans
+group_by_subregion,3,PLS,Karamoja,2020,0.5422885207412549,0.7211558421095827,pca,beans
+group_by_subregion,3,PLS,Karamoja,2020,0.5422885207412549,0.7211558421095827,pca,beans
+group_by_subregion,3,PLS,South Buganda,2020,0.6286830497610721,0.5988979204698099,pca,beans
+group_by_subregion,3,PLS,South Buganda,2020,1.1321807165247717,0.5988979204698099,pca,beans
+group_by_subregion,3,PLS,South Buganda,2020,0.8632751628341233,0.5988979204698099,pca,beans
+group_by_subregion,3,PLS,Busoga,2018,0.4,0.4192091469285172,pca,beans
+group_by_subregion,3,PLS,Karamoja,2018,0.4,0.46393499657924026,pca,beans
+group_by_subregion,3,PLS,South Buganda,2018,0.6,0.618742652315426,pca,beans
+group_by_subregion,3,RandomForest,Busoga,2020,0.6401206168693183,0.6578087138667211,pca,beans
+group_by_subregion,3,RandomForest,Busoga,2020,0.8018694899438292,0.6578087138667211,pca,beans
+group_by_subregion,3,RandomForest,Busoga,2020,0.6904468967705395,0.6578087138667211,pca,beans
+group_by_subregion,3,RandomForest,Karamoja,2020,0.5422885207412549,0.7149192125342428,pca,beans
+group_by_subregion,3,RandomForest,Karamoja,2020,0.5422885207412549,0.7149192125342428,pca,beans
+group_by_subregion,3,RandomForest,South Buganda,2020,0.6286830497610721,0.6173444378739377,pca,beans
+group_by_subregion,3,RandomForest,South Buganda,2020,1.1321807165247717,0.6173444378739377,pca,beans
+group_by_subregion,3,RandomForest,South Buganda,2020,0.8632751628341233,0.6173444378739377,pca,beans
+group_by_subregion,3,RandomForest,Busoga,2018,0.4,0.47110698378388355,pca,beans
+group_by_subregion,3,RandomForest,Karamoja,2018,0.4,0.8840756288069194,pca,beans
+group_by_subregion,3,RandomForest,South Buganda,2018,0.6,0.5823168861407692,pca,beans
+group_by_subregion,3,XGBoost,Busoga,2020,0.6401206168693183,0.5220405459403992,pca,beans
+group_by_subregion,3,XGBoost,Busoga,2020,0.8018694899438292,0.5220405459403992,pca,beans
+group_by_subregion,3,XGBoost,Busoga,2020,0.6904468967705395,0.5220405459403992,pca,beans
+group_by_subregion,3,XGBoost,Karamoja,2020,0.5422885207412549,0.738284170627594,pca,beans
+group_by_subregion,3,XGBoost,Karamoja,2020,0.5422885207412549,0.738284170627594,pca,beans
+group_by_subregion,3,XGBoost,South Buganda,2020,0.6286830497610721,0.6551969647407532,pca,beans
+group_by_subregion,3,XGBoost,South Buganda,2020,1.1321807165247717,0.6551969647407532,pca,beans
+group_by_subregion,3,XGBoost,South Buganda,2020,0.8632751628341233,0.6551969647407532,pca,beans
+group_by_subregion,3,XGBoost,Busoga,2018,0.4,0.449270099401474,pca,beans
+group_by_subregion,3,XGBoost,Karamoja,2018,0.4,0.9863061308860779,pca,beans
+group_by_subregion,3,XGBoost,South Buganda,2018,0.6,0.5948330163955688,pca,beans
+group_by_subregion,3,mean_predictor,Busoga,2020,0.6401206168693183,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,Busoga,2020,0.8018694899438292,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,Busoga,2020,0.6904468967705395,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,Karamoja,2020,0.5422885207412549,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,Karamoja,2020,0.5422885207412549,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,South Buganda,2020,0.6286830497610721,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,South Buganda,2020,1.1321807165247717,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,South Buganda,2020,0.8632751628341233,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,Busoga,2018,0.4,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,Karamoja,2018,0.4,0.7336772247547357,pca,beans
+group_by_subregion,3,mean_predictor,South Buganda,2018,0.6,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,Busoga,2020,0.6401206168693183,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,Busoga,2020,0.8018694899438292,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,Busoga,2020,0.6904468967705395,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,Karamoja,2020,0.5422885207412549,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,Karamoja,2020,0.5422885207412549,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,South Buganda,2020,0.6286830497610721,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,South Buganda,2020,1.1321807165247717,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,South Buganda,2020,0.8632751628341233,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,Busoga,2018,0.4,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,Karamoja,2018,0.4,0.7336772247547357,pca,beans
+group_by_subregion,3,historical_mean,South Buganda,2018,0.6,0.7336772247547357,pca,beans
+group_by_subregion,4,OLS,Bunyoro,2020,0.826094714383351,0.7868679316860301,pca,beans
+group_by_subregion,4,OLS,Bunyoro,2020,1.200511704804833,0.7868679316860301,pca,beans
+group_by_subregion,4,OLS,Bunyoro,2020,0.98602045418736,0.7868679316860301,pca,beans
+group_by_subregion,4,OLS,North Buganda,2020,0.6433017110440628,0.7134250873183072,pca,beans
+group_by_subregion,4,OLS,North Buganda,2020,0.9823435270848496,0.7134250873183072,pca,beans
+group_by_subregion,4,OLS,North Buganda,2020,0.7961939204401095,0.7134250873183072,pca,beans
+group_by_subregion,4,OLS,Bunyoro,2018,0.7,0.6534411400251047,pca,beans
+group_by_subregion,4,OLS,North Buganda,2018,0.6,0.5555272197592993,pca,beans
+group_by_subregion,4,Ridge,Bunyoro,2020,0.826094714383351,0.7850087526267245,pca,beans
+group_by_subregion,4,Ridge,Bunyoro,2020,1.200511704804833,0.7850087526267245,pca,beans
+group_by_subregion,4,Ridge,Bunyoro,2020,0.98602045418736,0.7850087526267245,pca,beans
+group_by_subregion,4,Ridge,North Buganda,2020,0.6433017110440628,0.7130959675166625,pca,beans
+group_by_subregion,4,Ridge,North Buganda,2020,0.9823435270848496,0.7130959675166625,pca,beans
+group_by_subregion,4,Ridge,North Buganda,2020,0.7961939204401095,0.7130959675166625,pca,beans
+group_by_subregion,4,Ridge,Bunyoro,2018,0.7,0.6543616857920683,pca,beans
+group_by_subregion,4,Ridge,North Buganda,2018,0.6,0.5584876388651339,pca,beans
+group_by_subregion,4,PCR,Bunyoro,2020,0.826094714383351,0.7868679316860301,pca,beans
+group_by_subregion,4,PCR,Bunyoro,2020,1.200511704804833,0.7868679316860301,pca,beans
+group_by_subregion,4,PCR,Bunyoro,2020,0.98602045418736,0.7868679316860301,pca,beans
+group_by_subregion,4,PCR,North Buganda,2020,0.6433017110440628,0.7134250873183072,pca,beans
+group_by_subregion,4,PCR,North Buganda,2020,0.9823435270848496,0.7134250873183072,pca,beans
+group_by_subregion,4,PCR,North Buganda,2020,0.7961939204401095,0.7134250873183072,pca,beans
+group_by_subregion,4,PCR,Bunyoro,2018,0.7,0.6534411400251047,pca,beans
+group_by_subregion,4,PCR,North Buganda,2018,0.6,0.5555272197592993,pca,beans
+group_by_subregion,4,PLS,Bunyoro,2020,0.826094714383351,0.7868679316860302,pca,beans
+group_by_subregion,4,PLS,Bunyoro,2020,1.200511704804833,0.7868679316860302,pca,beans
+group_by_subregion,4,PLS,Bunyoro,2020,0.98602045418736,0.7868679316860302,pca,beans
+group_by_subregion,4,PLS,North Buganda,2020,0.6433017110440628,0.7134250873183072,pca,beans
+group_by_subregion,4,PLS,North Buganda,2020,0.9823435270848496,0.7134250873183072,pca,beans
+group_by_subregion,4,PLS,North Buganda,2020,0.7961939204401095,0.7134250873183072,pca,beans
+group_by_subregion,4,PLS,Bunyoro,2018,0.7,0.6534411400251047,pca,beans
+group_by_subregion,4,PLS,North Buganda,2018,0.6,0.5555272197592993,pca,beans
+group_by_subregion,4,RandomForest,Bunyoro,2020,0.826094714383351,0.6988412486430761,pca,beans
+group_by_subregion,4,RandomForest,Bunyoro,2020,1.200511704804833,0.6988412486430761,pca,beans
+group_by_subregion,4,RandomForest,Bunyoro,2020,0.98602045418736,0.6988412486430761,pca,beans
+group_by_subregion,4,RandomForest,North Buganda,2020,0.6433017110440628,0.6652383637396325,pca,beans
+group_by_subregion,4,RandomForest,North Buganda,2020,0.9823435270848496,0.6652383637396325,pca,beans
+group_by_subregion,4,RandomForest,North Buganda,2020,0.7961939204401095,0.6652383637396325,pca,beans
+group_by_subregion,4,RandomForest,Bunyoro,2018,0.7,0.6046905253552166,pca,beans
+group_by_subregion,4,RandomForest,North Buganda,2018,0.6,0.5618776248282408,pca,beans
+group_by_subregion,4,XGBoost,Bunyoro,2020,0.826094714383351,0.6780495047569275,pca,beans
+group_by_subregion,4,XGBoost,Bunyoro,2020,1.200511704804833,0.6780495047569275,pca,beans
+group_by_subregion,4,XGBoost,Bunyoro,2020,0.98602045418736,0.6780495047569275,pca,beans
+group_by_subregion,4,XGBoost,North Buganda,2020,0.6433017110440628,0.6544807553291321,pca,beans
+group_by_subregion,4,XGBoost,North Buganda,2020,0.9823435270848496,0.6544807553291321,pca,beans
+group_by_subregion,4,XGBoost,North Buganda,2020,0.7961939204401095,0.6544807553291321,pca,beans
+group_by_subregion,4,XGBoost,Bunyoro,2018,0.7,0.5367157459259033,pca,beans
+group_by_subregion,4,XGBoost,North Buganda,2018,0.6,0.48574328422546387,pca,beans
+group_by_subregion,4,mean_predictor,Bunyoro,2020,0.826094714383351,0.6976273368393611,pca,beans
+group_by_subregion,4,mean_predictor,Bunyoro,2020,1.200511704804833,0.6976273368393611,pca,beans
+group_by_subregion,4,mean_predictor,Bunyoro,2020,0.98602045418736,0.6976273368393611,pca,beans
+group_by_subregion,4,mean_predictor,North Buganda,2020,0.6433017110440628,0.6976273368393611,pca,beans
+group_by_subregion,4,mean_predictor,North Buganda,2020,0.9823435270848496,0.6976273368393611,pca,beans
+group_by_subregion,4,mean_predictor,North Buganda,2020,0.7961939204401095,0.6976273368393611,pca,beans
+group_by_subregion,4,mean_predictor,Bunyoro,2018,0.7,0.6976273368393611,pca,beans
+group_by_subregion,4,mean_predictor,North Buganda,2018,0.6,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,Bunyoro,2020,0.826094714383351,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,Bunyoro,2020,1.200511704804833,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,Bunyoro,2020,0.98602045418736,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,North Buganda,2020,0.6433017110440628,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,North Buganda,2020,0.9823435270848496,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,North Buganda,2020,0.7961939204401095,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,Bunyoro,2018,0.7,0.6976273368393611,pca,beans
+group_by_subregion,4,historical_mean,North Buganda,2018,0.6,0.6976273368393611,pca,beans
+temporal_2018_2020,0,OLS,Acholi,2020,0.8570862730857126,0.8098345587806743,pca,beans
+temporal_2018_2020,0,OLS,Acholi,2020,0.879146894389113,0.8098345587806743,pca,beans
+temporal_2018_2020,0,OLS,Acholi,2020,0.8655043603230825,0.8098345587806743,pca,beans
+temporal_2018_2020,0,OLS,Ankole,2020,0.7107039593083359,0.8727881762990874,pca,beans
+temporal_2018_2020,0,OLS,Ankole,2020,1.3411688832335629,0.8727881762990874,pca,beans
+temporal_2018_2020,0,OLS,Ankole,2020,0.9814360581560068,0.8727881762990874,pca,beans
+temporal_2018_2020,0,OLS,Bukedi,2020,0.5175817230094645,1.1039471391961175,pca,beans
+temporal_2018_2020,0,OLS,Bukedi,2020,0.7056484947012804,1.1039471391961175,pca,beans
+temporal_2018_2020,0,OLS,Bukedi,2020,0.5731757916040728,1.1039471391961175,pca,beans
+temporal_2018_2020,0,OLS,Bunyoro,2020,0.826094714383351,0.7592329906887461,pca,beans
+temporal_2018_2020,0,OLS,Bunyoro,2020,1.200511704804833,0.7592329906887461,pca,beans
+temporal_2018_2020,0,OLS,Bunyoro,2020,0.98602045418736,0.7592329906887461,pca,beans
+temporal_2018_2020,0,OLS,Busoga,2020,0.6401206168693183,1.2069244119189224,pca,beans
+temporal_2018_2020,0,OLS,Busoga,2020,0.8018694899438292,1.2069244119189224,pca,beans
+temporal_2018_2020,0,OLS,Busoga,2020,0.6904468967705395,1.2069244119189224,pca,beans
+temporal_2018_2020,0,OLS,Elgon,2020,0.6700120852270204,1.086439253210683,pca,beans
+temporal_2018_2020,0,OLS,Elgon,2020,0.653829971282899,1.086439253210683,pca,beans
+temporal_2018_2020,0,OLS,Elgon,2020,0.6636769574159984,1.086439253210683,pca,beans
+temporal_2018_2020,0,OLS,Karamoja,2020,0.5422885207412549,0.7425519827362712,pca,beans
+temporal_2018_2020,0,OLS,Karamoja,2020,0.5422885207412549,0.7425519827362712,pca,beans
+temporal_2018_2020,0,OLS,Kigezi,2020,0.6821726355797036,0.7639396762225185,pca,beans
+temporal_2018_2020,0,OLS,Kigezi,2020,1.2309422257456628,0.7639396762225185,pca,beans
+temporal_2018_2020,0,OLS,Kigezi,2020,0.9352419701157908,0.7639396762225185,pca,beans
+temporal_2018_2020,0,OLS,Lango,2020,0.4538514483659435,0.7958223545213875,pca,beans
+temporal_2018_2020,0,OLS,Lango,2020,0.997989808692561,0.7958223545213875,pca,beans
+temporal_2018_2020,0,OLS,Lango,2020,0.5494183061851179,0.7958223545213875,pca,beans
+temporal_2018_2020,0,OLS,North Buganda,2020,0.6433017110440628,0.8891153541784813,pca,beans
+temporal_2018_2020,0,OLS,North Buganda,2020,0.9823435270848496,0.8891153541784813,pca,beans
+temporal_2018_2020,0,OLS,North Buganda,2020,0.7961939204401095,0.8891153541784813,pca,beans
+temporal_2018_2020,0,OLS,South Buganda,2020,0.6286830497610721,0.640893987902028,pca,beans
+temporal_2018_2020,0,OLS,South Buganda,2020,1.1321807165247717,0.640893987902028,pca,beans
+temporal_2018_2020,0,OLS,South Buganda,2020,0.8632751628341233,0.640893987902028,pca,beans
+temporal_2018_2020,0,OLS,Teso,2020,0.4787820909269001,0.8001905255988588,pca,beans
+temporal_2018_2020,0,OLS,Teso,2020,0.7279249098775472,0.8001905255988588,pca,beans
+temporal_2018_2020,0,OLS,Teso,2020,0.5480873832187684,0.8001905255988588,pca,beans
+temporal_2018_2020,0,OLS,Tooro,2020,0.5714159022282193,0.7409487504919331,pca,beans
+temporal_2018_2020,0,OLS,Tooro,2020,1.1835686146592244,0.7409487504919331,pca,beans
+temporal_2018_2020,0,OLS,Tooro,2020,0.8099944456086376,0.7409487504919331,pca,beans
+temporal_2018_2020,0,OLS,West Nile,2020,0.5251432400895707,0.8514106180623211,pca,beans
+temporal_2018_2020,0,OLS,West Nile,2020,0.7559563988183644,0.8514106180623211,pca,beans
+temporal_2018_2020,0,OLS,West Nile,2020,0.6778710254152407,0.8514106180623211,pca,beans
+temporal_2018_2020,0,Ridge,Acholi,2020,0.8570862730857126,0.7925122548619628,pca,beans
+temporal_2018_2020,0,Ridge,Acholi,2020,0.879146894389113,0.7925122548619628,pca,beans
+temporal_2018_2020,0,Ridge,Acholi,2020,0.8655043603230825,0.7925122548619628,pca,beans
+temporal_2018_2020,0,Ridge,Ankole,2020,0.7107039593083359,0.8512689645458149,pca,beans
+temporal_2018_2020,0,Ridge,Ankole,2020,1.3411688832335629,0.8512689645458149,pca,beans
+temporal_2018_2020,0,Ridge,Ankole,2020,0.9814360581560068,0.8512689645458149,pca,beans
+temporal_2018_2020,0,Ridge,Bukedi,2020,0.5175817230094645,1.0670173299163765,pca,beans
+temporal_2018_2020,0,Ridge,Bukedi,2020,0.7056484947012804,1.0670173299163765,pca,beans
+temporal_2018_2020,0,Ridge,Bukedi,2020,0.5731757916040728,1.0670173299163765,pca,beans
+temporal_2018_2020,0,Ridge,Bunyoro,2020,0.826094714383351,0.7452841246428297,pca,beans
+temporal_2018_2020,0,Ridge,Bunyoro,2020,1.200511704804833,0.7452841246428297,pca,beans
+temporal_2018_2020,0,Ridge,Bunyoro,2020,0.98602045418736,0.7452841246428297,pca,beans
+temporal_2018_2020,0,Ridge,Busoga,2020,0.6401206168693183,1.1631294511243275,pca,beans
+temporal_2018_2020,0,Ridge,Busoga,2020,0.8018694899438292,1.1631294511243275,pca,beans
+temporal_2018_2020,0,Ridge,Busoga,2020,0.6904468967705395,1.1631294511243275,pca,beans
+temporal_2018_2020,0,Ridge,Elgon,2020,0.6700120852270204,1.050676636329971,pca,beans
+temporal_2018_2020,0,Ridge,Elgon,2020,0.653829971282899,1.050676636329971,pca,beans
+temporal_2018_2020,0,Ridge,Elgon,2020,0.6636769574159984,1.050676636329971,pca,beans
+temporal_2018_2020,0,Ridge,Karamoja,2020,0.5422885207412549,0.7297151838871865,pca,beans
+temporal_2018_2020,0,Ridge,Karamoja,2020,0.5422885207412549,0.7297151838871865,pca,beans
+temporal_2018_2020,0,Ridge,Kigezi,2020,0.6821726355797036,0.7496770311410172,pca,beans
+temporal_2018_2020,0,Ridge,Kigezi,2020,1.2309422257456628,0.7496770311410172,pca,beans
+temporal_2018_2020,0,Ridge,Kigezi,2020,0.9352419701157908,0.7496770311410172,pca,beans
+temporal_2018_2020,0,Ridge,Lango,2020,0.4538514483659435,0.779434197553295,pca,beans
+temporal_2018_2020,0,Ridge,Lango,2020,0.997989808692561,0.779434197553295,pca,beans
+temporal_2018_2020,0,Ridge,Lango,2020,0.5494183061851179,0.779434197553295,pca,beans
+temporal_2018_2020,0,Ridge,North Buganda,2020,0.6433017110440628,0.866507663899916,pca,beans
+temporal_2018_2020,0,Ridge,North Buganda,2020,0.9823435270848496,0.866507663899916,pca,beans
+temporal_2018_2020,0,Ridge,North Buganda,2020,0.7961939204401095,0.866507663899916,pca,beans
+temporal_2018_2020,0,Ridge,South Buganda,2020,0.6286830497610721,0.6348343887085595,pca,beans
+temporal_2018_2020,0,Ridge,South Buganda,2020,1.1321807165247717,0.6348343887085595,pca,beans
+temporal_2018_2020,0,Ridge,South Buganda,2020,0.8632751628341233,0.6348343887085595,pca,beans
+temporal_2018_2020,0,Ridge,Teso,2020,0.4787820909269001,0.7835111572256016,pca,beans
+temporal_2018_2020,0,Ridge,Teso,2020,0.7279249098775472,0.7835111572256016,pca,beans
+temporal_2018_2020,0,Ridge,Teso,2020,0.5480873832187684,0.7835111572256016,pca,beans
+temporal_2018_2020,0,Ridge,Tooro,2020,0.5714159022282193,0.7282188337924709,pca,beans
+temporal_2018_2020,0,Ridge,Tooro,2020,1.1835686146592244,0.7282188337924709,pca,beans
+temporal_2018_2020,0,Ridge,Tooro,2020,0.8099944456086376,0.7282188337924709,pca,beans
+temporal_2018_2020,0,Ridge,West Nile,2020,0.5251432400895707,0.8313165768581663,pca,beans
+temporal_2018_2020,0,Ridge,West Nile,2020,0.7559563988183644,0.8313165768581663,pca,beans
+temporal_2018_2020,0,Ridge,West Nile,2020,0.6778710254152407,0.8313165768581663,pca,beans
+temporal_2018_2020,0,PCR,Acholi,2020,0.8570862730857126,0.8098345587806743,pca,beans
+temporal_2018_2020,0,PCR,Acholi,2020,0.879146894389113,0.8098345587806743,pca,beans
+temporal_2018_2020,0,PCR,Acholi,2020,0.8655043603230825,0.8098345587806743,pca,beans
+temporal_2018_2020,0,PCR,Ankole,2020,0.7107039593083359,0.8727881762990876,pca,beans
+temporal_2018_2020,0,PCR,Ankole,2020,1.3411688832335629,0.8727881762990876,pca,beans
+temporal_2018_2020,0,PCR,Ankole,2020,0.9814360581560068,0.8727881762990876,pca,beans
+temporal_2018_2020,0,PCR,Bukedi,2020,0.5175817230094645,1.103947139196118,pca,beans
+temporal_2018_2020,0,PCR,Bukedi,2020,0.7056484947012804,1.103947139196118,pca,beans
+temporal_2018_2020,0,PCR,Bukedi,2020,0.5731757916040728,1.103947139196118,pca,beans
+temporal_2018_2020,0,PCR,Bunyoro,2020,0.826094714383351,0.7592329906887461,pca,beans
+temporal_2018_2020,0,PCR,Bunyoro,2020,1.200511704804833,0.7592329906887461,pca,beans
+temporal_2018_2020,0,PCR,Bunyoro,2020,0.98602045418736,0.7592329906887461,pca,beans
+temporal_2018_2020,0,PCR,Busoga,2020,0.6401206168693183,1.2069244119189226,pca,beans
+temporal_2018_2020,0,PCR,Busoga,2020,0.8018694899438292,1.2069244119189226,pca,beans
+temporal_2018_2020,0,PCR,Busoga,2020,0.6904468967705395,1.2069244119189226,pca,beans
+temporal_2018_2020,0,PCR,Elgon,2020,0.6700120852270204,1.0864392532106835,pca,beans
+temporal_2018_2020,0,PCR,Elgon,2020,0.653829971282899,1.0864392532106835,pca,beans
+temporal_2018_2020,0,PCR,Elgon,2020,0.6636769574159984,1.0864392532106835,pca,beans
+temporal_2018_2020,0,PCR,Karamoja,2020,0.5422885207412549,0.7425519827362713,pca,beans
+temporal_2018_2020,0,PCR,Karamoja,2020,0.5422885207412549,0.7425519827362713,pca,beans
+temporal_2018_2020,0,PCR,Kigezi,2020,0.6821726355797036,0.7639396762225185,pca,beans
+temporal_2018_2020,0,PCR,Kigezi,2020,1.2309422257456628,0.7639396762225185,pca,beans
+temporal_2018_2020,0,PCR,Kigezi,2020,0.9352419701157908,0.7639396762225185,pca,beans
+temporal_2018_2020,0,PCR,Lango,2020,0.4538514483659435,0.7958223545213875,pca,beans
+temporal_2018_2020,0,PCR,Lango,2020,0.997989808692561,0.7958223545213875,pca,beans
+temporal_2018_2020,0,PCR,Lango,2020,0.5494183061851179,0.7958223545213875,pca,beans
+temporal_2018_2020,0,PCR,North Buganda,2020,0.6433017110440628,0.8891153541784815,pca,beans
+temporal_2018_2020,0,PCR,North Buganda,2020,0.9823435270848496,0.8891153541784815,pca,beans
+temporal_2018_2020,0,PCR,North Buganda,2020,0.7961939204401095,0.8891153541784815,pca,beans
+temporal_2018_2020,0,PCR,South Buganda,2020,0.6286830497610721,0.640893987902028,pca,beans
+temporal_2018_2020,0,PCR,South Buganda,2020,1.1321807165247717,0.640893987902028,pca,beans
+temporal_2018_2020,0,PCR,South Buganda,2020,0.8632751628341233,0.640893987902028,pca,beans
+temporal_2018_2020,0,PCR,Teso,2020,0.4787820909269001,0.800190525598859,pca,beans
+temporal_2018_2020,0,PCR,Teso,2020,0.7279249098775472,0.800190525598859,pca,beans
+temporal_2018_2020,0,PCR,Teso,2020,0.5480873832187684,0.800190525598859,pca,beans
+temporal_2018_2020,0,PCR,Tooro,2020,0.5714159022282193,0.7409487504919331,pca,beans
+temporal_2018_2020,0,PCR,Tooro,2020,1.1835686146592244,0.7409487504919331,pca,beans
+temporal_2018_2020,0,PCR,Tooro,2020,0.8099944456086376,0.7409487504919331,pca,beans
+temporal_2018_2020,0,PCR,West Nile,2020,0.5251432400895707,0.8514106180623211,pca,beans
+temporal_2018_2020,0,PCR,West Nile,2020,0.7559563988183644,0.8514106180623211,pca,beans
+temporal_2018_2020,0,PCR,West Nile,2020,0.6778710254152407,0.8514106180623211,pca,beans
+temporal_2018_2020,0,PLS,Acholi,2020,0.8570862730857126,0.8098345587806743,pca,beans
+temporal_2018_2020,0,PLS,Acholi,2020,0.879146894389113,0.8098345587806743,pca,beans
+temporal_2018_2020,0,PLS,Acholi,2020,0.8655043603230825,0.8098345587806743,pca,beans
+temporal_2018_2020,0,PLS,Ankole,2020,0.7107039593083359,0.8727881762990874,pca,beans
+temporal_2018_2020,0,PLS,Ankole,2020,1.3411688832335629,0.8727881762990874,pca,beans
+temporal_2018_2020,0,PLS,Ankole,2020,0.9814360581560068,0.8727881762990874,pca,beans
+temporal_2018_2020,0,PLS,Bukedi,2020,0.5175817230094645,1.1039471391961178,pca,beans
+temporal_2018_2020,0,PLS,Bukedi,2020,0.7056484947012804,1.1039471391961178,pca,beans
+temporal_2018_2020,0,PLS,Bukedi,2020,0.5731757916040728,1.1039471391961178,pca,beans
+temporal_2018_2020,0,PLS,Bunyoro,2020,0.826094714383351,0.7592329906887462,pca,beans
+temporal_2018_2020,0,PLS,Bunyoro,2020,1.200511704804833,0.7592329906887462,pca,beans
+temporal_2018_2020,0,PLS,Bunyoro,2020,0.98602045418736,0.7592329906887462,pca,beans
+temporal_2018_2020,0,PLS,Busoga,2020,0.6401206168693183,1.2069244119189224,pca,beans
+temporal_2018_2020,0,PLS,Busoga,2020,0.8018694899438292,1.2069244119189224,pca,beans
+temporal_2018_2020,0,PLS,Busoga,2020,0.6904468967705395,1.2069244119189224,pca,beans
+temporal_2018_2020,0,PLS,Elgon,2020,0.6700120852270204,1.0864392532106832,pca,beans
+temporal_2018_2020,0,PLS,Elgon,2020,0.653829971282899,1.0864392532106832,pca,beans
+temporal_2018_2020,0,PLS,Elgon,2020,0.6636769574159984,1.0864392532106832,pca,beans
+temporal_2018_2020,0,PLS,Karamoja,2020,0.5422885207412549,0.7425519827362712,pca,beans
+temporal_2018_2020,0,PLS,Karamoja,2020,0.5422885207412549,0.7425519827362712,pca,beans
+temporal_2018_2020,0,PLS,Kigezi,2020,0.6821726355797036,0.7639396762225185,pca,beans
+temporal_2018_2020,0,PLS,Kigezi,2020,1.2309422257456628,0.7639396762225185,pca,beans
+temporal_2018_2020,0,PLS,Kigezi,2020,0.9352419701157908,0.7639396762225185,pca,beans
+temporal_2018_2020,0,PLS,Lango,2020,0.4538514483659435,0.7958223545213875,pca,beans
+temporal_2018_2020,0,PLS,Lango,2020,0.997989808692561,0.7958223545213875,pca,beans
+temporal_2018_2020,0,PLS,Lango,2020,0.5494183061851179,0.7958223545213875,pca,beans
+temporal_2018_2020,0,PLS,North Buganda,2020,0.6433017110440628,0.8891153541784814,pca,beans
+temporal_2018_2020,0,PLS,North Buganda,2020,0.9823435270848496,0.8891153541784814,pca,beans
+temporal_2018_2020,0,PLS,North Buganda,2020,0.7961939204401095,0.8891153541784814,pca,beans
+temporal_2018_2020,0,PLS,South Buganda,2020,0.6286830497610721,0.640893987902028,pca,beans
+temporal_2018_2020,0,PLS,South Buganda,2020,1.1321807165247717,0.640893987902028,pca,beans
+temporal_2018_2020,0,PLS,South Buganda,2020,0.8632751628341233,0.640893987902028,pca,beans
+temporal_2018_2020,0,PLS,Teso,2020,0.4787820909269001,0.8001905255988588,pca,beans
+temporal_2018_2020,0,PLS,Teso,2020,0.7279249098775472,0.8001905255988588,pca,beans
+temporal_2018_2020,0,PLS,Teso,2020,0.5480873832187684,0.8001905255988588,pca,beans
+temporal_2018_2020,0,PLS,Tooro,2020,0.5714159022282193,0.7409487504919331,pca,beans
+temporal_2018_2020,0,PLS,Tooro,2020,1.1835686146592244,0.7409487504919331,pca,beans
+temporal_2018_2020,0,PLS,Tooro,2020,0.8099944456086376,0.7409487504919331,pca,beans
+temporal_2018_2020,0,PLS,West Nile,2020,0.5251432400895707,0.8514106180623211,pca,beans
+temporal_2018_2020,0,PLS,West Nile,2020,0.7559563988183644,0.8514106180623211,pca,beans
+temporal_2018_2020,0,PLS,West Nile,2020,0.6778710254152407,0.8514106180623211,pca,beans
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.8570862730857126,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.879146894389113,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.8655043603230825,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,Ankole,2020,0.7107039593083359,0.6811787301587254,pca,beans
+temporal_2018_2020,0,RandomForest,Ankole,2020,1.3411688832335629,0.6811787301587254,pca,beans
+temporal_2018_2020,0,RandomForest,Ankole,2020,0.9814360581560068,0.6811787301587254,pca,beans
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5175817230094645,0.6892087301587251,pca,beans
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.7056484947012804,0.6892087301587251,pca,beans
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5731757916040728,0.6892087301587251,pca,beans
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.826094714383351,0.6944287301587244,pca,beans
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,1.200511704804833,0.6944287301587244,pca,beans
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.98602045418736,0.6944287301587244,pca,beans
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.6401206168693183,0.6883753968253917,pca,beans
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.8018694899438292,0.6883753968253917,pca,beans
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.6904468967705395,0.6883753968253917,pca,beans
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.6700120852270204,0.6639913492063465,pca,beans
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.653829971282899,0.6639913492063465,pca,beans
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.6636769574159984,0.6639913492063465,pca,beans
+temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5422885207412549,0.6829053968253924,pca,beans
+temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5422885207412549,0.6829053968253924,pca,beans
+temporal_2018_2020,0,RandomForest,Kigezi,2020,0.6821726355797036,0.6811787301587254,pca,beans
+temporal_2018_2020,0,RandomForest,Kigezi,2020,1.2309422257456628,0.6811787301587254,pca,beans
+temporal_2018_2020,0,RandomForest,Kigezi,2020,0.9352419701157908,0.6811787301587254,pca,beans
+temporal_2018_2020,0,RandomForest,Lango,2020,0.4538514483659435,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,Lango,2020,0.997989808692561,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,Lango,2020,0.5494183061851179,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.6433017110440628,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.9823435270848496,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.7961939204401095,0.6927753968253915,pca,beans
+temporal_2018_2020,0,RandomForest,South Buganda,2020,0.6286830497610721,0.6551946825396803,pca,beans
+temporal_2018_2020,0,RandomForest,South Buganda,2020,1.1321807165247717,0.6551946825396803,pca,beans
+temporal_2018_2020,0,RandomForest,South Buganda,2020,0.8632751628341233,0.6551946825396803,pca,beans
+temporal_2018_2020,0,RandomForest,Teso,2020,0.4787820909269001,0.6883753968253917,pca,beans
+temporal_2018_2020,0,RandomForest,Teso,2020,0.7279249098775472,0.6883753968253917,pca,beans
+temporal_2018_2020,0,RandomForest,Teso,2020,0.5480873832187684,0.6883753968253917,pca,beans
+temporal_2018_2020,0,RandomForest,Tooro,2020,0.5714159022282193,0.6738887301587262,pca,beans
+temporal_2018_2020,0,RandomForest,Tooro,2020,1.1835686146592244,0.6738887301587262,pca,beans
+temporal_2018_2020,0,RandomForest,Tooro,2020,0.8099944456086376,0.6738887301587262,pca,beans
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.5251432400895707,0.6911887301587248,pca,beans
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.7559563988183644,0.6911887301587248,pca,beans
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.6778710254152407,0.6911887301587248,pca,beans
+temporal_2018_2020,0,XGBoost,Acholi,2020,0.8570862730857126,0.6423803567886353,pca,beans
+temporal_2018_2020,0,XGBoost,Acholi,2020,0.879146894389113,0.6423803567886353,pca,beans
+temporal_2018_2020,0,XGBoost,Acholi,2020,0.8655043603230825,0.6423803567886353,pca,beans
+temporal_2018_2020,0,XGBoost,Ankole,2020,0.7107039593083359,0.6247179508209229,pca,beans
+temporal_2018_2020,0,XGBoost,Ankole,2020,1.3411688832335629,0.6247179508209229,pca,beans
+temporal_2018_2020,0,XGBoost,Ankole,2020,0.9814360581560068,0.6247179508209229,pca,beans
+temporal_2018_2020,0,XGBoost,Bukedi,2020,0.5175817230094645,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Bukedi,2020,0.7056484947012804,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Bukedi,2020,0.5731757916040728,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Bunyoro,2020,0.826094714383351,0.7089564204216003,pca,beans
+temporal_2018_2020,0,XGBoost,Bunyoro,2020,1.200511704804833,0.7089564204216003,pca,beans
+temporal_2018_2020,0,XGBoost,Bunyoro,2020,0.98602045418736,0.7089564204216003,pca,beans
+temporal_2018_2020,0,XGBoost,Busoga,2020,0.6401206168693183,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Busoga,2020,0.8018694899438292,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Busoga,2020,0.6904468967705395,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Elgon,2020,0.6700120852270204,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Elgon,2020,0.653829971282899,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Elgon,2020,0.6636769574159984,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Karamoja,2020,0.5422885207412549,0.6572204232215881,pca,beans
+temporal_2018_2020,0,XGBoost,Karamoja,2020,0.5422885207412549,0.6572204232215881,pca,beans
+temporal_2018_2020,0,XGBoost,Kigezi,2020,0.6821726355797036,0.6740084886550903,pca,beans
+temporal_2018_2020,0,XGBoost,Kigezi,2020,1.2309422257456628,0.6740084886550903,pca,beans
+temporal_2018_2020,0,XGBoost,Kigezi,2020,0.9352419701157908,0.6740084886550903,pca,beans
+temporal_2018_2020,0,XGBoost,Lango,2020,0.4538514483659435,0.6546299457550049,pca,beans
+temporal_2018_2020,0,XGBoost,Lango,2020,0.997989808692561,0.6546299457550049,pca,beans
+temporal_2018_2020,0,XGBoost,Lango,2020,0.5494183061851179,0.6546299457550049,pca,beans
+temporal_2018_2020,0,XGBoost,North Buganda,2020,0.6433017110440628,0.6423803567886353,pca,beans
+temporal_2018_2020,0,XGBoost,North Buganda,2020,0.9823435270848496,0.6423803567886353,pca,beans
+temporal_2018_2020,0,XGBoost,North Buganda,2020,0.7961939204401095,0.6423803567886353,pca,beans
+temporal_2018_2020,0,XGBoost,South Buganda,2020,0.6286830497610721,0.6732164025306702,pca,beans
+temporal_2018_2020,0,XGBoost,South Buganda,2020,1.1321807165247717,0.6732164025306702,pca,beans
+temporal_2018_2020,0,XGBoost,South Buganda,2020,0.8632751628341233,0.6732164025306702,pca,beans
+temporal_2018_2020,0,XGBoost,Teso,2020,0.4787820909269001,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Teso,2020,0.7279249098775472,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Teso,2020,0.5480873832187684,0.6466853618621826,pca,beans
+temporal_2018_2020,0,XGBoost,Tooro,2020,0.5714159022282193,0.6369495391845703,pca,beans
+temporal_2018_2020,0,XGBoost,Tooro,2020,1.1835686146592244,0.6369495391845703,pca,beans
+temporal_2018_2020,0,XGBoost,Tooro,2020,0.8099944456086376,0.6369495391845703,pca,beans
+temporal_2018_2020,0,XGBoost,West Nile,2020,0.5251432400895707,0.6641399264335632,pca,beans
+temporal_2018_2020,0,XGBoost,West Nile,2020,0.7559563988183644,0.6641399264335632,pca,beans
+temporal_2018_2020,0,XGBoost,West Nile,2020,0.6778710254152407,0.6641399264335632,pca,beans
+temporal_2018_2020,0,mean_predictor,Acholi,2020,0.8570862730857126,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Acholi,2020,0.879146894389113,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Acholi,2020,0.8655043603230825,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Ankole,2020,0.7107039593083359,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Ankole,2020,1.3411688832335629,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Ankole,2020,0.9814360581560068,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Bukedi,2020,0.5175817230094645,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Bukedi,2020,0.7056484947012804,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Bukedi,2020,0.5731757916040728,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Bunyoro,2020,0.826094714383351,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Bunyoro,2020,1.200511704804833,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Bunyoro,2020,0.98602045418736,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Busoga,2020,0.6401206168693183,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Busoga,2020,0.8018694899438292,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Busoga,2020,0.6904468967705395,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Elgon,2020,0.6700120852270204,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Elgon,2020,0.653829971282899,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Elgon,2020,0.6636769574159984,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Karamoja,2020,0.5422885207412549,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Karamoja,2020,0.5422885207412549,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Kigezi,2020,0.6821726355797036,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Kigezi,2020,1.2309422257456628,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Kigezi,2020,0.9352419701157908,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Lango,2020,0.4538514483659435,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Lango,2020,0.997989808692561,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Lango,2020,0.5494183061851179,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,North Buganda,2020,0.6433017110440628,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,North Buganda,2020,0.9823435270848496,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,North Buganda,2020,0.7961939204401095,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,South Buganda,2020,0.6286830497610721,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,South Buganda,2020,1.1321807165247717,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,South Buganda,2020,0.8632751628341233,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Teso,2020,0.4787820909269001,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Teso,2020,0.7279249098775472,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Teso,2020,0.5480873832187684,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Tooro,2020,0.5714159022282193,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Tooro,2020,1.1835686146592244,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,Tooro,2020,0.8099944456086376,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,West Nile,2020,0.5251432400895707,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,West Nile,2020,0.7559563988183644,0.55,pca,beans
+temporal_2018_2020,0,mean_predictor,West Nile,2020,0.6778710254152407,0.55,pca,beans
+temporal_2018_2020,0,historical_mean,Acholi,2020,0.8570862730857126,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Acholi,2020,0.879146894389113,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Acholi,2020,0.8655043603230825,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Ankole,2020,0.7107039593083359,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Ankole,2020,1.3411688832335629,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Ankole,2020,0.9814360581560068,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Bukedi,2020,0.5175817230094645,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Bukedi,2020,0.7056484947012804,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Bukedi,2020,0.5731757916040728,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Bunyoro,2020,0.826094714383351,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Bunyoro,2020,1.200511704804833,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Bunyoro,2020,0.98602045418736,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Busoga,2020,0.6401206168693183,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Busoga,2020,0.8018694899438292,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Busoga,2020,0.6904468967705395,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Elgon,2020,0.6700120852270204,0.5,pca,beans
+temporal_2018_2020,0,historical_mean,Elgon,2020,0.653829971282899,0.5,pca,beans
+temporal_2018_2020,0,historical_mean,Elgon,2020,0.6636769574159984,0.5,pca,beans
+temporal_2018_2020,0,historical_mean,Karamoja,2020,0.5422885207412549,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Karamoja,2020,0.5422885207412549,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Kigezi,2020,0.6821726355797036,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,Kigezi,2020,1.2309422257456628,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,Kigezi,2020,0.9352419701157908,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,Lango,2020,0.4538514483659435,0.3,pca,beans
+temporal_2018_2020,0,historical_mean,Lango,2020,0.997989808692561,0.3,pca,beans
+temporal_2018_2020,0,historical_mean,Lango,2020,0.5494183061851179,0.3,pca,beans
+temporal_2018_2020,0,historical_mean,North Buganda,2020,0.6433017110440628,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,North Buganda,2020,0.9823435270848496,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,North Buganda,2020,0.7961939204401095,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,South Buganda,2020,0.6286830497610721,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,South Buganda,2020,1.1321807165247717,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,South Buganda,2020,0.8632751628341233,0.6,pca,beans
+temporal_2018_2020,0,historical_mean,Teso,2020,0.4787820909269001,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Teso,2020,0.7279249098775472,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Teso,2020,0.5480873832187684,0.4,pca,beans
+temporal_2018_2020,0,historical_mean,Tooro,2020,0.5714159022282193,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Tooro,2020,1.1835686146592244,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,Tooro,2020,0.8099944456086376,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,West Nile,2020,0.5251432400895707,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,West Nile,2020,0.7559563988183644,0.7,pca,beans
+temporal_2018_2020,0,historical_mean,West Nile,2020,0.6778710254152407,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Acholi,2020,0.8570862730857126,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Acholi,2020,0.879146894389113,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Acholi,2020,0.8655043603230825,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Ankole,2020,0.7107039593083359,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Ankole,2020,1.3411688832335629,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Ankole,2020,0.9814360581560068,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Bukedi,2020,0.5175817230094645,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Bukedi,2020,0.7056484947012804,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Bukedi,2020,0.5731757916040728,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Bunyoro,2020,0.826094714383351,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Bunyoro,2020,1.200511704804833,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Bunyoro,2020,0.98602045418736,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Busoga,2020,0.6401206168693183,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Busoga,2020,0.8018694899438292,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Busoga,2020,0.6904468967705395,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Elgon,2020,0.6700120852270204,0.5,pca,beans
+temporal_2018_2020,0,previous_year_yield,Elgon,2020,0.653829971282899,0.5,pca,beans
+temporal_2018_2020,0,previous_year_yield,Elgon,2020,0.6636769574159984,0.5,pca,beans
+temporal_2018_2020,0,previous_year_yield,Karamoja,2020,0.5422885207412549,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Karamoja,2020,0.5422885207412549,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Kigezi,2020,0.6821726355797036,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,Kigezi,2020,1.2309422257456628,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,Kigezi,2020,0.9352419701157908,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,Lango,2020,0.4538514483659435,0.3,pca,beans
+temporal_2018_2020,0,previous_year_yield,Lango,2020,0.997989808692561,0.3,pca,beans
+temporal_2018_2020,0,previous_year_yield,Lango,2020,0.5494183061851179,0.3,pca,beans
+temporal_2018_2020,0,previous_year_yield,North Buganda,2020,0.6433017110440628,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,North Buganda,2020,0.9823435270848496,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,North Buganda,2020,0.7961939204401095,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,South Buganda,2020,0.6286830497610721,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,South Buganda,2020,1.1321807165247717,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,South Buganda,2020,0.8632751628341233,0.6,pca,beans
+temporal_2018_2020,0,previous_year_yield,Teso,2020,0.4787820909269001,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Teso,2020,0.7279249098775472,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Teso,2020,0.5480873832187684,0.4,pca,beans
+temporal_2018_2020,0,previous_year_yield,Tooro,2020,0.5714159022282193,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Tooro,2020,1.1835686146592244,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,Tooro,2020,0.8099944456086376,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,West Nile,2020,0.5251432400895707,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,West Nile,2020,0.7559563988183644,0.7,pca,beans
+temporal_2018_2020,0,previous_year_yield,West Nile,2020,0.6778710254152407,0.7,pca,beans
+temporal_2020_2018,0,OLS,Acholi,2018,0.7,0.7590856677904295,pca,beans
+temporal_2020_2018,0,OLS,Ankole,2018,0.7,0.8281683488247932,pca,beans
+temporal_2020_2018,0,OLS,Bukedi,2018,0.4,0.7316962861946432,pca,beans
+temporal_2020_2018,0,OLS,Bunyoro,2018,0.7,0.7863941354947175,pca,beans
+temporal_2020_2018,0,OLS,Busoga,2018,0.4,0.7013458600810559,pca,beans
+temporal_2020_2018,0,OLS,Elgon,2018,0.5,0.6491142332409489,pca,beans
+temporal_2020_2018,0,OLS,Karamoja,2018,0.4,0.7972044424643411,pca,beans
+temporal_2020_2018,0,OLS,Kigezi,2018,0.6,0.767426983202983,pca,beans
+temporal_2020_2018,0,OLS,Lango,2018,0.3,0.7648148394722634,pca,beans
+temporal_2020_2018,0,OLS,North Buganda,2018,0.6,0.7576877976635132,pca,beans
+temporal_2020_2018,0,OLS,South Buganda,2018,0.6,0.781220544349188,pca,beans
+temporal_2020_2018,0,OLS,Teso,2018,0.4,0.7471351041701018,pca,beans
+temporal_2020_2018,0,OLS,Tooro,2018,0.7,0.8198452464036193,pca,beans
+temporal_2020_2018,0,OLS,West Nile,2018,0.7,0.8191619147467637,pca,beans
+temporal_2020_2018,0,Ridge,Acholi,2018,0.7,0.7594924264919317,pca,beans
+temporal_2020_2018,0,Ridge,Ankole,2018,0.7,0.8269302817873819,pca,beans
+temporal_2020_2018,0,Ridge,Bukedi,2018,0.4,0.7327551730293784,pca,beans
+temporal_2020_2018,0,Ridge,Bunyoro,2018,0.7,0.7861506925842129,pca,beans
+temporal_2020_2018,0,Ridge,Busoga,2018,0.4,0.7031273761089718,pca,beans
+temporal_2020_2018,0,Ridge,Elgon,2018,0.5,0.6521393594317244,pca,beans
+temporal_2020_2018,0,Ridge,Karamoja,2018,0.4,0.7967036112926549,pca,beans
+temporal_2020_2018,0,Ridge,Kigezi,2018,0.6,0.7676351391565672,pca,beans
+temporal_2020_2018,0,Ridge,Lango,2018,0.3,0.7650851893241981,pca,beans
+temporal_2020_2018,0,Ridge,North Buganda,2018,0.6,0.7581278389870849,pca,beans
+temporal_2020_2018,0,Ridge,South Buganda,2018,0.6,0.7811002821802435,pca,beans
+temporal_2020_2018,0,Ridge,Teso,2018,0.4,0.7478264001006594,pca,beans
+temporal_2020_2018,0,Ridge,Tooro,2018,0.7,0.8188053484714741,pca,beans
+temporal_2020_2018,0,Ridge,West Nile,2018,0.7,0.8181382866159722,pca,beans
+temporal_2020_2018,0,PCR,Acholi,2018,0.7,0.7590856677904295,pca,beans
+temporal_2020_2018,0,PCR,Ankole,2018,0.7,0.8281683488247931,pca,beans
+temporal_2020_2018,0,PCR,Bukedi,2018,0.4,0.7316962861946432,pca,beans
+temporal_2020_2018,0,PCR,Bunyoro,2018,0.7,0.7863941354947175,pca,beans
+temporal_2020_2018,0,PCR,Busoga,2018,0.4,0.7013458600810559,pca,beans
+temporal_2020_2018,0,PCR,Elgon,2018,0.5,0.6491142332409487,pca,beans
+temporal_2020_2018,0,PCR,Karamoja,2018,0.4,0.7972044424643409,pca,beans
+temporal_2020_2018,0,PCR,Kigezi,2018,0.6,0.7674269832029829,pca,beans
+temporal_2020_2018,0,PCR,Lango,2018,0.3,0.7648148394722634,pca,beans
+temporal_2020_2018,0,PCR,North Buganda,2018,0.6,0.7576877976635132,pca,beans
+temporal_2020_2018,0,PCR,South Buganda,2018,0.6,0.7812205443491879,pca,beans
+temporal_2020_2018,0,PCR,Teso,2018,0.4,0.7471351041701016,pca,beans
+temporal_2020_2018,0,PCR,Tooro,2018,0.7,0.8198452464036192,pca,beans
+temporal_2020_2018,0,PCR,West Nile,2018,0.7,0.8191619147467637,pca,beans
+temporal_2020_2018,0,PLS,Acholi,2018,0.7,0.7590856677904295,pca,beans
+temporal_2020_2018,0,PLS,Ankole,2018,0.7,0.8281683488247931,pca,beans
+temporal_2020_2018,0,PLS,Bukedi,2018,0.4,0.7316962861946432,pca,beans
+temporal_2020_2018,0,PLS,Bunyoro,2018,0.7,0.7863941354947175,pca,beans
+temporal_2020_2018,0,PLS,Busoga,2018,0.4,0.7013458600810559,pca,beans
+temporal_2020_2018,0,PLS,Elgon,2018,0.5,0.6491142332409489,pca,beans
+temporal_2020_2018,0,PLS,Karamoja,2018,0.4,0.797204442464341,pca,beans
+temporal_2020_2018,0,PLS,Kigezi,2018,0.6,0.7674269832029829,pca,beans
+temporal_2020_2018,0,PLS,Lango,2018,0.3,0.7648148394722634,pca,beans
+temporal_2020_2018,0,PLS,North Buganda,2018,0.6,0.7576877976635132,pca,beans
+temporal_2020_2018,0,PLS,South Buganda,2018,0.6,0.7812205443491879,pca,beans
+temporal_2020_2018,0,PLS,Teso,2018,0.4,0.7471351041701016,pca,beans
+temporal_2020_2018,0,PLS,Tooro,2018,0.7,0.8198452464036192,pca,beans
+temporal_2020_2018,0,PLS,West Nile,2018,0.7,0.8191619147467636,pca,beans
+temporal_2020_2018,0,RandomForest,Acholi,2018,0.7,0.7313787214714168,pca,beans
+temporal_2020_2018,0,RandomForest,Ankole,2018,0.7,0.8914845284273433,pca,beans
+temporal_2020_2018,0,RandomForest,Bukedi,2018,0.4,0.7396072369151164,pca,beans
+temporal_2020_2018,0,RandomForest,Bunyoro,2018,0.7,0.7892089589778255,pca,beans
+temporal_2020_2018,0,RandomForest,Busoga,2018,0.4,0.7433080734430538,pca,beans
+temporal_2020_2018,0,RandomForest,Elgon,2018,0.5,0.7098971747827475,pca,beans
+temporal_2020_2018,0,RandomForest,Karamoja,2018,0.4,0.7811588155368951,pca,beans
+temporal_2020_2018,0,RandomForest,Kigezi,2018,0.6,0.7247849401719614,pca,beans
+temporal_2020_2018,0,RandomForest,Lango,2018,0.3,0.7448708475469005,pca,beans
+temporal_2020_2018,0,RandomForest,North Buganda,2018,0.6,0.8309907701705159,pca,beans
+temporal_2020_2018,0,RandomForest,South Buganda,2018,0.6,0.7933460186984086,pca,beans
+temporal_2020_2018,0,RandomForest,Teso,2018,0.4,0.7349652564838554,pca,beans
+temporal_2020_2018,0,RandomForest,Tooro,2018,0.7,0.7366416768539737,pca,beans
+temporal_2020_2018,0,RandomForest,West Nile,2018,0.7,0.7497906301697675,pca,beans
+temporal_2020_2018,0,XGBoost,Acholi,2018,0.7,0.6523411273956299,pca,beans
+temporal_2020_2018,0,XGBoost,Ankole,2018,0.7,0.8370841145515442,pca,beans
+temporal_2020_2018,0,XGBoost,Bukedi,2018,0.4,0.6582342386245728,pca,beans
+temporal_2020_2018,0,XGBoost,Bunyoro,2018,0.7,0.7472081184387207,pca,beans
+temporal_2020_2018,0,XGBoost,Busoga,2018,0.4,0.7269505858421326,pca,beans
+temporal_2020_2018,0,XGBoost,Elgon,2018,0.5,0.6963445544242859,pca,beans
+temporal_2020_2018,0,XGBoost,Karamoja,2018,0.4,0.911819338798523,pca,beans
+temporal_2020_2018,0,XGBoost,Kigezi,2018,0.6,0.6438114643096924,pca,beans
+temporal_2020_2018,0,XGBoost,Lango,2018,0.3,0.660133957862854,pca,beans
+temporal_2020_2018,0,XGBoost,North Buganda,2018,0.6,0.7790193557739258,pca,beans
+temporal_2020_2018,0,XGBoost,South Buganda,2018,0.6,0.7896089553833008,pca,beans
+temporal_2020_2018,0,XGBoost,Teso,2018,0.4,0.6888079643249512,pca,beans
+temporal_2020_2018,0,XGBoost,Tooro,2018,0.7,0.755923867225647,pca,beans
+temporal_2020_2018,0,XGBoost,West Nile,2018,0.7,0.7812493443489075,pca,beans
+temporal_2020_2018,0,mean_predictor,Acholi,2018,0.7,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Ankole,2018,0.7,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Bukedi,2018,0.4,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Bunyoro,2018,0.7,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Busoga,2018,0.4,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Elgon,2018,0.5,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Karamoja,2018,0.4,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Kigezi,2018,0.6,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Lango,2018,0.3,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,North Buganda,2018,0.6,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,South Buganda,2018,0.6,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Teso,2018,0.4,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,Tooro,2018,0.7,0.7761695332535251,pca,beans
+temporal_2020_2018,0,mean_predictor,West Nile,2018,0.7,0.7761695332535251,pca,beans
+temporal_2020_2018,0,historical_mean,Acholi,2018,0.7,0.8672458425993027,pca,beans
+temporal_2020_2018,0,historical_mean,Ankole,2018,0.7,1.011102966899302,pca,beans
+temporal_2020_2018,0,historical_mean,Bukedi,2018,0.4,0.5988020031049393,pca,beans
+temporal_2020_2018,0,historical_mean,Bunyoro,2018,0.7,1.004208957791848,pca,beans
+temporal_2020_2018,0,historical_mean,Busoga,2018,0.4,0.7108123345278957,pca,beans
+temporal_2020_2018,0,historical_mean,Elgon,2018,0.5,0.6625063379753059,pca,beans
+temporal_2020_2018,0,historical_mean,Karamoja,2018,0.4,0.5422885207412549,pca,beans
+temporal_2020_2018,0,historical_mean,Kigezi,2018,0.6,0.9494522771470524,pca,beans
+temporal_2020_2018,0,historical_mean,Lango,2018,0.3,0.6670865210812075,pca,beans
+temporal_2020_2018,0,historical_mean,North Buganda,2018,0.6,0.8072797195230073,pca,beans
+temporal_2020_2018,0,historical_mean,South Buganda,2018,0.6,0.8747129763733223,pca,beans
+temporal_2020_2018,0,historical_mean,Teso,2018,0.4,0.5849314613410719,pca,beans
+temporal_2020_2018,0,historical_mean,Tooro,2018,0.7,0.8549929874986937,pca,beans
+temporal_2020_2018,0,historical_mean,West Nile,2018,0.7,0.6529902214410587,pca,beans
+temporal_2020_2018,0,previous_year_yield,Acholi,2018,0.7,0.8570862730857126,pca,beans
+temporal_2020_2018,0,previous_year_yield,Ankole,2018,0.7,0.7107039593083359,pca,beans
+temporal_2020_2018,0,previous_year_yield,Bukedi,2018,0.4,0.5175817230094645,pca,beans
+temporal_2020_2018,0,previous_year_yield,Bunyoro,2018,0.7,0.826094714383351,pca,beans
+temporal_2020_2018,0,previous_year_yield,Busoga,2018,0.4,0.6401206168693183,pca,beans
+temporal_2020_2018,0,previous_year_yield,Elgon,2018,0.5,0.6700120852270204,pca,beans
+temporal_2020_2018,0,previous_year_yield,Karamoja,2018,0.4,0.5422885207412549,pca,beans
+temporal_2020_2018,0,previous_year_yield,Kigezi,2018,0.6,0.6821726355797036,pca,beans
+temporal_2020_2018,0,previous_year_yield,Lango,2018,0.3,0.4538514483659435,pca,beans
+temporal_2020_2018,0,previous_year_yield,North Buganda,2018,0.6,0.6433017110440628,pca,beans
+temporal_2020_2018,0,previous_year_yield,South Buganda,2018,0.6,0.6286830497610721,pca,beans
+temporal_2020_2018,0,previous_year_yield,Teso,2018,0.4,0.4787820909269001,pca,beans
+temporal_2020_2018,0,previous_year_yield,Tooro,2018,0.7,0.5714159022282193,pca,beans
+temporal_2020_2018,0,previous_year_yield,West Nile,2018,0.7,0.5251432400895707,pca,beans

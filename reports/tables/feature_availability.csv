@@ -1,0 +1,58 @@
+Variable,Source,Coverage,Status
+area_harvested_ha,derived,1.0,usable
+area_planted_ha,derived,1.0,usable
+cv_area_harvested_pct,UBOS AAS survey,0.7485,usable
+cv_area_planted_pct,UBOS AAS survey,0.7485,usable
+cv_production_pct,UBOS AAS survey,1.0,usable
+daily_dry_spell_count_10d,CHIRPS (daily),1.0,usable
+daily_dry_spell_count_7d,CHIRPS (daily),1.0,usable
+daily_false_onset_flag,CHIRPS (daily),1.0,usable
+daily_longest_dry_spell_days,CHIRPS (daily),1.0,usable
+daily_maximum_5day_rainfall,CHIRPS (daily),1.0,usable
+daily_mean_wet_day_rainfall,CHIRPS (daily),1.0,usable
+daily_rain_days_10mm,CHIRPS (daily),1.0,usable
+daily_rain_days_1mm,CHIRPS (daily),1.0,usable
+daily_rain_days_20mm,CHIRPS (daily),1.0,usable
+daily_season_cessation_day,CHIRPS (daily),1.0,usable
+daily_season_length_days,CHIRPS (daily),1.0,usable
+daily_season_onset_day,CHIRPS (daily),1.0,usable
+daily_season_total_mm,CHIRPS (daily),1.0,usable
+daily_year,CHIRPS (daily),1.0,usable
+harvest_loss_ratio,derived,1.0,usable
+high_uncertainty_flag,derived,1.0,usable
+production_mt,derived,1.0,usable
+rain_DJF,CHIRPS (monthly),1.0,usable
+rain_JJA,CHIRPS (monthly),1.0,usable
+rain_MAM,CHIRPS (monthly),1.0,usable
+rain_MAM_anomaly,CHIRPS (monthly),1.0,usable
+rain_MAM_zscore,CHIRPS (monthly),1.0,usable
+rain_SON,CHIRPS (monthly),1.0,usable
+rain_SON_anomaly,CHIRPS (monthly),1.0,usable
+rain_SON_zscore,CHIRPS (monthly),1.0,usable
+rain_annual_rainfall,CHIRPS (monthly),1.0,usable
+rain_max_monthly,CHIRPS (monthly),1.0,usable
+rain_min_monthly,CHIRPS (monthly),1.0,usable
+rain_rain_cv,CHIRPS (monthly),1.0,usable
+rain_rainfall_anomaly,CHIRPS (monthly),1.0,usable
+rain_rainfall_zscore,CHIRPS (monthly),1.0,usable
+rain_rainy_months,CHIRPS (monthly),1.0,usable
+soil_bdod,SoilGrids,1.0,usable
+soil_cec,SoilGrids,1.0,usable
+soil_clay,SoilGrids,1.0,usable
+soil_lat,SoilGrids,1.0,usable
+soil_lon,SoilGrids,1.0,usable
+soil_phh2o,SoilGrids,1.0,usable
+soil_sand,SoilGrids,1.0,usable
+soil_silt,SoilGrids,1.0,usable
+soil_soc,SoilGrids,1.0,usable
+target_cv,derived,1.0,usable
+target_reliability_weight,derived,1.0,usable
+temp_extreme_heat_days,NASA POWER (daily),1.0,usable
+temp_heat_days,NASA POWER (daily),1.0,usable
+temp_heatwave_count,NASA POWER (daily),1.0,usable
+temp_season_gdd,NASA POWER (daily),1.0,usable
+temp_warm_night_days,NASA POWER (daily),1.0,usable
+temp_year,NASA POWER (daily),1.0,usable
+yield_consistency_ok,derived,1.0,usable
+yield_over_harvested,derived,1.0,usable
+yield_over_planted,derived,1.0,usable

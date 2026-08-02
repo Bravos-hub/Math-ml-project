@@ -6,6 +6,43 @@ data version.
 
 ## [Unreleased]
 
+### Added (Phase 5 - review compliance)
+
+- `data/processed/observed/crop_pooled_subregion_panel.csv`: cross-crop
+  panel (167 rows) pooling maize/beans/groundnuts at the subregion x
+  season x year level with `crop` as an explicit predictor
+  (`scripts/build_panels.py`), giving 167 honest samples with 139 unique
+  targets. Repeated subregion-cohort correlations (5-row vintage
+  benchmark) are no longer the only evidence set.
+- `src/cropyield/pca/representations.py`: `RepresentationTransformer`
+  providing `raw`, `pca` and `hybrid` feature representations; PCA
+  components are fit on the training fold only to avoid leakage, and the
+  `hybrid` representation one-hot encodes the pooled `crop` column
+  alongside PC scores (`configs/models.yaml` -> `pca.hybrid_extra`).
+- `scripts/run_models.py`: driver that runs the model matrix across
+  crops x feature sets x representations, rewrites
+  `reports/tables/validation_all.csv` and appends to
+  `reports/tables/experiment_registry.csv`. Default scope (pooled x
+  `full_agroecological` x raw/pca/hybrid) runs in ~2 min; `--full`
+  includes all crops x feature sets.
+- `src/cropyield/reporting/feature_availability.py` +
+  `reports/tables/feature_availability.csv`: Variable / Source / Coverage
+  / Status per modeling column; soil loading is refused if < 80% of soil
+  columns are present (`MIN_SOIL_COVERAGE`).
+- Survey-uncertainty fields on panels (`add_reliability`):
+  `target_cv`, `target_reliability_weight`, `high_uncertainty_flag`,
+  `yield_consistency_ok`. AAS 2020 rows verify production/area equality;
+  AAS 2018 annual rows are flagged rather than hidden.
+- Experiment registry: each validation run records `run_id`, git commit,
+  timestamp, sample size, number of unique targets, feature set,
+  representation, and small-sample warnings
+  (`sample_size < 100`, fewer unique targets) in
+  `reports/tables/experiment_registry.csv`.
+- Legacy 5-row benchmark renamed in its header/summary to
+  `pipeline_smoke_test_2020` with `evaluation_status = "demonstration_only"`;
+  it is explicitly not a performance benchmark. See
+  `scripts/legacy/build_real_2020_benchmark.py`.
+
 ### Added (Phase 0 - scientific restructure)
 
 - Repository reorganized into `data/`, `src/cropyield/`, `scripts/`,
@@ -88,7 +125,12 @@ data version.
   verified against the pipeline SVD and sklearn to machine precision.
 - `tests/test_data_quality.py`: 20 schema/data-quality tests (district
   count, DOY windows, texture sums, yield plausibility, provenance
-  columns, no-NaN feature panels); all pass.
+  columns, no-NaN feature panels); all pass. Expanded in Phase 5 with
+  yield-consistency, survey-uncertainty, pooled-panel, feature
+  availability and representation tests (35 total).
+- Better pooled baseline from a repeated-cohort experiment: pooled
+  `hybrid` RandomForest under grouped CV has R2 ~ 0.65 (vs mean
+  predictor's ~ -0.02).
 
 ### Data quality decisions
 

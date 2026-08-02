@@ -3,7 +3,16 @@
 Build and evaluate the first real-data benchmark for Eastern Uganda maize yield
 using AAS 2020 real yield assignments.
 
-This benchmark is intentionally narrow:
+**evaluation_status = "demonstration_only"**
+
+This is the legacy five-row smoke test (``pipeline_smoke_test_2020``).
+It is intentionally narrow and MUST NOT be treated as a performance
+benchmark: with n=5 rows, seven predictors and only ~3 distinct targets
+(pseudo-replicated subregion assignments), the metrics it produces are
+unstable and are not evidence of district-level yield predictability.
+Formal model comparison uses the subregion x season x year units in
+``reports/tables/validation_all.csv``.
+
   - year: 2020 only
   - geography: Mbale, Kapchorwa, Iganga, Jinja, Tororo
   - target: real AAS 2020 maize yield assigned from sub-region totals
@@ -169,9 +178,14 @@ def evaluate_models(X, y):
 def write_summary(benchmark, explained, results, n_components):
     best = results.iloc[0]
     lines = [
-        "First Real-Data Benchmark",
-        "=" * 30,
-        "Label: Eastern Uganda maize real-data benchmark, 2020 only",
+        "Pipeline smoke test (demonstration only)",
+        "=" * 40,
+        "evaluation_status = demonstration_only",
+        "Label: pipeline_smoke_test_2020 — Eastern Uganda maize, 2020 only",
+        "The five-row benchmark is a pipeline smoke test, NOT a performance",
+        "benchmark: n=5 rows with pseudo-replicated subregion-assigned targets",
+        "and ~3 distinct outcome values are too few for any generalization claim.",
+        "Formal evaluation: reports/tables/validation_all.csv.",
         f"Date built: 2026-07-30",
         f"Input file: {INPUT_FILE}",
         f"Benchmark rows: {len(benchmark)}",
@@ -182,9 +196,10 @@ def write_summary(benchmark, explained, results, n_components):
         f"Variance explained by first {n_components} PCs: "
         f"{explained['cumulative_explained_variance'].iloc[n_components - 1]:.4f}",
         "",
-        "Caution:",
-        "This benchmark uses only five district rows and is intended as a first",
-        "real-data check, not a final generalization claim.",
+        "Note:",
+        "This smoke test uses only five district rows to confirm data loading,",
+        "PCA execution, model fitting and output generation; it is not a valid",
+        "measure of district-level yield predictability.",
         "",
         "Best model:",
         f"  {best['model']}",

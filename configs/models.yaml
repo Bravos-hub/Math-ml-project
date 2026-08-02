@@ -90,6 +90,19 @@ models:
   - RandomForest
   - XGBoost
 
+# Feature representations (review P1 #18): how the same feature set enters a
+# model. "raw" uses the original columns; "pca" uses PC scores of the
+# continuous features; "hybrid" uses PC scores plus variables not in PCA
+# (e.g. crop, season) without duplicating the original inputs.
+representations:
+  - raw
+  - pca
+  - hybrid
+
+pca:
+  n_components: 0.95        # cumulative variance retained for PC scores
+  hybrid_extra: [crop]      # variables kept as-is in the hybrid representation
+
 validation_schemes:
   - random_cv
   - group_by_subregion
@@ -103,3 +116,10 @@ cross_validation:
 uncertainty:
   conformal_alpha: 0.05
   bootstrap_n: 200
+
+# Experiment-tracking thresholds (review P2 #23): emit a warning when the
+# analysis sample or the number of distinct target values is too small for a
+# "final" performance claim.
+experiment_tracking:
+  min_sample_size: 100
+  min_unique_targets: 10

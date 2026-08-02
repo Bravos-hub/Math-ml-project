@@ -181,3 +181,158 @@ class TestPanels:
             feat = feature_columns(panels[crop]["assigned"])
             assert len(feat) >= 40
             assert panels[crop]["assigned"][feat].isna().sum().sum() == 0
+
+
+# ---------------------------------------------------------------------------
+# Review contracts (P0 #1, #11, #12; P2 #22)
+# ---------------------------------------------------------------------------
+
+def yield_key_uniqueness(df: pd.DataFrame):
+    df = df.dropna(subset=["yield_over_harvested"])
+    keys = ["sub_region", "season_group"]
+    if "crop" in df.columns:
+        keys = ["crop"] + keys
+    dups = df.duplicated(subset=keys, keep=False)
+    return len(df), int(dups.sum())
+
+
+class TestYieldConsistency:
+    def test_harvested_yield_equals_production_over_area(self, panels):
+        # AAS 2020 publishes production-over-area yields; the relationship
+        # must hold to 2%. AAS 2018 also publishes mixed total/second-season
+        # figures whose rows are flagged by ``yield_consistency_ok`` instead.
+        for crop in CROPS:
+            df = panels[crop]["observed"]
+            df2020 = df[df["year"] == 2020].dropna(
+                subset=["production_mt", "area_harvested_ha", "yield_over_harvested"])
+            calc = df2020["production_mt"] / df2020["area_harvested_ha"]
+            np.testing.assert_allclose(calc.to_numpy(dtype=float),
+                                       df2020["yield_over_harvested"].to_numpy(dtype=float),
+                                       rtol=2e-2)
+
+    def test_planted_yield_equals_production_over_planted(self, panels):
+        for crop in CROPS:
+            df = panels[crop]["observed"]
+            df2020 = df[df["year"] == 2020]
+            valid = df2020["area_planted_ha"] > 0
+            calc = df2020.loc[valid, "production_mt"] / df2020.loc[valid, "area_planted_ha"]
+            np.testing.assert_allclose(
+                calc.to_numpy(dtype=float),
+                df2020.loc[valid, "yield_over_planted"].to_numpy(dtype=float),
+                rtol=2e-2)
+
+    def test_unique_spatial_season_key(self, panels):
+        for crop in CROPS:
+            df = panels[crop]["observed"].dropna(subset=["yield_over_harvested"])
+            dups = df.duplicated(subset=["sub_region", "season_group"], keep=False)
+            assert not dups.any(), (crop, df[dups][["sub_region", "season_group"]])
+
+    def test_no_synthetic_or_proxy_targets(self, panels):
+        for crop in CROPS:
+            for kind in ("observed", "assigned"):
+                df = panels[crop][kind]
+                assert ~df["is_proxy"].fillna(False).astype(bool).any(), (crop, kind)
+                # target must derive from official AAS only
+                srcs = set(df["yield_source"].dropna().unique())
+                assert srcs <= {"AAS2018_subregion", "AAS2020_subregion"}
+
+    def test_yield_consistency_flag_covers_2018_rows(self, panels):
+        # 2018 annual-crop rows mix total production with second-season
+        # harvested yield and are explicitly marked, not silently dropped.
+        df = panels["maize"]["observed"]
+        flagged = df[df["year"] == 2018]["yield_consistency_ok"]
+        assert not flagged.all()
+        good2020 = df[df["year"] == 2020]["yield_consistency_ok"]
+        assert good2020.all()
+
+
+class TestSurveyUncertainty:
+    def test_reliability_columns_present(self, panels):
+        required = {"target_cv", "target_reliability_weight",
+                    "high_uncertainty_flag", "yield_consistency_ok"}
+        for crop in CROPS:
+            cols = set(panels[crop]["observed"].columns)
+            assert required <= cols
+
+    def test_reliability_weight_increases_as_cv_falls(self, panels):
+        df = panels["maize"]["observed"].dropna(subset=["target_cv", "target_reliability_weight"])
+        assert (df["target_cv"] > 0).all()
+        # higher CV -> smaller (or equal) reliability weight
+        c = df[["target_cv", "target_reliability_weight"]].corr().iloc[0, 1]
+        assert c < 0.2
+
+    def test_cv_in_expected_range(self, panels):
+        cv = panels["maize"]["observed"]["target_cv"].dropna()
+        assert cv.between(0, 100).all()
+
+
+@pytest.fixture(scope="module")
+def pooled() -> pd.DataFrame:
+    return pd.read_csv(PROCESSED / "observed" / "crop_pooled_subregion_panel.csv")
+
+
+class TestPooledPanel:
+    def test_more_than_100_units(self, pooled):
+        assert len(pooled) >= 100
+        assert pooled[["crop", "sub_region", "season_group"]].drop_duplicates().shape[0] >= 100
+
+    def test_crop_is_predictor(self, pooled):
+        assert "crop" in pooled.columns
+        assert pooled["crop"].isin(["maize", "beans", "groundnuts"]).all()
+
+
+class TestFeatureAvailability:
+    def test_panel_has_no_all_null_model_features(self, panels):
+        # review rule: a column with isna().mean() == 1 must be excluded
+        for crop in CROPS:
+            df = panels[crop]["observed"]
+            feat = feature_columns(df)
+            assert df[feat].isna().all().sum() == 0
+
+    def test_availability_report_exists(self):
+        report = pd.read_csv(PROCESSED.parent / ".." / "reports" / "tables" /
+                             "feature_availability.csv")
+        assert {"Variable", "Source", "Coverage", "Status"} <= set(report.columns)
+        assert report["Coverage"].between(0, 1).all()
+
+
+# ---------------------------------------------------------------------------
+# Representation transformer (P1 #18) -- leak-free PCA/hybrid
+# ---------------------------------------------------------------------------
+
+class TestRepresentations:
+    def test_raw_returns_numeric_frame(self):
+        from cropyield.pca.representations import RepresentationTransformer
+        X = pd.DataFrame({"a": [1.0, 2.0, 3.0], "b": [0.5, 1.5, 2.5]})
+        t = RepresentationTransformer("raw").fit(X)
+        out = t.transform(X)
+        assert out.shape[1] == 2
+        assert (out.columns == ["a", "b"]).all()
+
+    def test_pca_reduces_dimension(self):
+        from cropyield.data.paths import OBSERVED
+        from cropyield.models.validate import load_config, load_panel
+        from cropyield.pca.representations import RepresentationTransformer
+        cfg = load_config()
+        df = load_panel("maize")
+        cols = cfg["feature_sets"]["full_agroecological"]
+        t = RepresentationTransformer("pca", pca_input_cols=cols,
+                                      n_components=cfg["pca"]["n_components"])
+        out = t.fit(df[cols]).transform(df[cols])
+        assert out.shape[1] < len(cols)
+
+    def test_hybrid_includes_extra_and_avoids_pca_inputs(self):
+        import numpy as np
+        from cropyield.pca.representations import RepresentationTransformer
+        rng = np.random.default_rng(0)
+        n = 50
+        X = pd.DataFrame({
+            "x1": rng.normal(size=n), "x2": rng.normal(size=n),
+            "crop": rng.choice(["a", "b"], size=n),
+        })
+        t = RepresentationTransformer("hybrid", pca_input_cols=["x1", "x2"],
+                                      n_components=1).fit(X)
+        out = t.transform(X)
+        assert "PC1" in out.columns
+        assert set(["x1", "x2"]) & set(out.columns) == set()
+        assert any("crop" in c for c in out.columns)

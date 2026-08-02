@@ -17,6 +17,9 @@ the per-subregion mean), plus split-conformal prediction-interval coverage.
 from __future__ import annotations
 
 import logging
+import subprocess
+import uuid
+from datetime import UTC, datetime
 from pathlib import Path
 
 import numpy as np
@@ -34,6 +37,7 @@ from sklearn.preprocessing import StandardScaler
 from yaml import safe_load
 
 from cropyield.data.paths import CONFIGS, OBSERVED, TABLES
+from cropyield.pca.representations import RepresentationTransformer
 
 log = logging.getLogger(__name__)
 
@@ -47,12 +51,81 @@ except ImportError:
 RNG = 42
 
 
+def git_commit() -> str:
+    try:
+        out = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True, text=True, check=True)
+        return out.stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return "unknown"
+
+
+def run_id() -> str:
+    stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+    return f"{stamp}-{uuid.uuid4().hex[:6]}"
+
+
+def experiment_banner(df: pd.DataFrame, feature_cols: list[str],
+                      target: str, cfg: dict) -> dict:
+    """Collect the experiment-tracking fields required by review P2 #23 and
+    issue explicit warnings for under-sized samples."""
+    tracking = cfg.get("experiment_tracking", {})
+    min_n = tracking.get("min_sample_size", 100)
+    min_uniq = tracking.get("min_unique_targets", 10)
+    n = len(df)
+    n_unique = int(df[target].dropna().nunique())
+    warnings = []
+    if n < min_n:
+        warnings.append(
+            f"sample_size={n} < min_sample_size={min_n}: metrics are "
+            "demonstration-only, not evidence of generalization")
+    if n_unique < min_uniq:
+        warnings.append(
+            f"unique_targets={n_unique} < min_unique_targets={min_uniq}: "
+            "only a handful of distinct outcomes")
+    for w in warnings:
+        log.warning("EXPERIMENT WARNING: %s", w)
+    return {
+        "run_id": run_id(),
+        "timestamp": datetime.now(UTC).isoformat(),
+        "git_commit": git_commit(),
+        "sample_size": n,
+        "number_of_unique_targets": n_unique,
+        "n_features": len(feature_cols),
+        "feature_set": feature_cols,
+        "target": target,
+        "target_source": str(df.get("yield_source", pd.Series(dtype=str)).mode().iloc[0]) \
+            if "yield_source" in df else "unknown",
+        "warnings": "; ".join(warnings) if warnings else "",
+    }
+
+
+def _representation_pipeline(repr_name: str, pca_input_cols: list[str],
+                             extra_cols: list[str], n_components: float):
+    """Return a function (X_train, X_test) -> (Xtr, Xte) that fits the
+    representation (imputer/scaler/PCA/encoder) on the training fold ONLY.
+
+    ``raw`` returns the original frame unchanged (imputation/scaling happens
+    inside each model pipeline, as before).
+    """
+    if repr_name == "raw":
+        return lambda Xtr, Xte: (Xtr, Xte)
+    tr = RepresentationTransformer(
+        repr_name, pca_input_cols=pca_input_cols,
+        extra_cols=extra_cols, n_components=n_components)
+    return lambda Xtr, Xte: (tr.fit(Xtr).transform(Xtr),
+                             tr.transform(Xte))
+
+
 def load_config() -> dict:
     with open(CONFIGS / "models.yaml") as fh:
         return safe_load(fh)
 
 
 def load_panel(crop: str) -> pd.DataFrame:
+    if crop == "pooled":
+        return pd.read_csv(OBSERVED / "crop_pooled_subregion_panel.csv")
     return pd.read_csv(OBSERVED / f"{crop}_subregion_panel.csv")
 
 
@@ -133,23 +206,35 @@ def conformal_interval(residuals: np.ndarray, alpha: float = 0.05) -> float:
 
 
 def run_scheme(df: pd.DataFrame, scheme: str, feature_cols: list[str],
-               target: str, cfg: dict,
-               models: list[str]) -> pd.DataFrame:
+               target: str, cfg: dict, models: list[str],
+               representation: str = "raw",
+               pca_extra: list[str] | None = None) -> pd.DataFrame:
     """Evaluate all models + baselines for one scheme; returns per-fold
-    predictions with metrics."""
-    X = df[feature_cols]
+    predictions with metrics. ``representation`` selects raw/pca/hybrid
+    features (the transformer is always fit on the training fold only)."""
     y = df[target].to_numpy()
     groups = df["sub_region"].to_numpy()
     years = df["year"].to_numpy()
     splits = split_indices(df, scheme, cfg)
+    pca_cfg = cfg.get("pca", {})
+    n_components = pca_cfg.get("n_components", 0.95)
+    hybrid_extra = pca_cfg.get("hybrid_extra") or pca_extra or []
+    available_extra = [c for c in hybrid_extra if c in df.columns]
     rows = []
     for fold, (tr, te) in enumerate(splits):
+        step = _representation_pipeline(
+            representation, feature_cols, available_extra, n_components)
+        cols = feature_cols
+        if representation == "hybrid":
+            cols = cols + [c for c in available_extra
+                           if c not in feature_cols]
+        Xtr, Xte = step(df.loc[tr, cols], df.loc[te, cols])
         for name in models:
             model = make_model(name)
             if model is None:
                 continue
-            model.fit(X.iloc[tr], y[tr])
-            pred = np.clip(model.predict(X.iloc[te]), 0.0, None)
+            model.fit(Xtr, y[tr])
+            pred = np.clip(model.predict(Xte), 0.0, None)
             _append(rows, scheme, fold, name, groups[te], years[te],
                     y[te], pred)
         # baselines
@@ -220,8 +305,14 @@ def summarize(pred_df: pd.DataFrame, cfg: dict) -> pd.DataFrame:
 
 def run_validation(crop: str = "maize",
                    feature_set: str | None = None,
-                   out_dir: Path = TABLES) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Run the full validation matrix for a crop; returns (summary, preds)."""
+                   representation: str = "raw",
+                   out_dir: Path = TABLES,
+                   ) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
+    """Run the validation matrix for a crop; returns (summary, preds, meta).
+
+    ``representation`` selects raw/pca/hybrid features. The returned ``meta``
+    carries experiment-tracking fields and sample-size warnings.
+    """
     cfg = load_config()
     df = load_panel(crop)
     if "yield_over_harvested" not in df:
@@ -235,18 +326,27 @@ def run_validation(crop: str = "maize",
     models = cfg["models"]
     schemes = cfg["validation_schemes"]
     target = cfg["target"]
+    meta = experiment_banner(df, feature_cols, target, cfg)
+    meta["crop"] = crop
+    meta["feature_set"] = feature_set or "full_agroecological"
+    meta["representation"] = representation
     pred_parts = []
     for scheme in schemes:
         pred_parts.append(run_scheme(df, scheme, feature_cols, target, cfg,
-                                     models))
+                                     models, representation=representation))
     preds = pd.concat(pred_parts, ignore_index=True)
+    preds["representation"] = representation
+    preds["crop"] = crop
     summary = summarize(preds, cfg)
+    summary["crop"] = crop
+    summary["feature_set"] = feature_set or "full_agroecological"
+    summary["representation"] = representation
     out_dir.mkdir(parents=True, exist_ok=True)
     label = feature_set or "full_agroecological"
-    summary.to_csv(out_dir / f"validation_{crop}_{label}.csv", index=False)
-    preds.to_csv(out_dir / f"validation_{crop}_{label}_predictions.csv",
-                 index=False)
-    return summary, preds
+    stem = f"validation_{crop}_{label}_{representation}"
+    summary.to_csv(out_dir / f"{stem}.csv", index=False)
+    preds.to_csv(out_dir / f"{stem}_predictions.csv", index=False)
+    return summary, preds, meta
 
 
 def main() -> None:
@@ -255,8 +355,10 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     crop = sys.argv[1] if len(sys.argv) > 1 else "maize"
     feature_set = sys.argv[2] if len(sys.argv) > 2 else None
-    summary, _ = run_validation(crop, feature_set)
+    representation = sys.argv[3] if len(sys.argv) > 3 else "raw"
+    summary, _, meta = run_validation(crop, feature_set, representation)
     print(summary.sort_values(["scheme", "rmse"]).to_string(index=False))
+    print(meta)
 
 
 if __name__ == "__main__":

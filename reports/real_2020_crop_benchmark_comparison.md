@@ -1,5 +1,16 @@
 # 2020 Real-Data Crop Benchmark Comparison
 
+> **evaluation_status = "demonstration_only"** (review P0 #2)
+>
+> This document describes the first five-row 2020 benchmark (also referred
+> to as `pipeline_smoke_test_2020`) that assigned AAS 2020 sub-region yields
+> to five Eastern Uganda districts. It is **not** a performance benchmark:
+> with `n = 5` rows, seven predictors and only ~3 distinct target values, the
+> R² figures below are an artefact of the tiny, pseudo-replicated sample and
+> must not be cited as evidence of district-level yield predictability.
+> Formal model comparison now lives in `reports/tables/validation_all.csv`
+> (subregion x season x year units, 2018 & 2020).
+
 This memo compares the first three Eastern Uganda `2020` real-data benchmarks
 built from UBOS AAS 2020 sub-region yields assigned to districts.
 
@@ -8,8 +19,9 @@ built from UBOS AAS 2020 sub-region yields assigned to districts.
 - Geography: `Iganga`, `Jinja`, `Kapchorwa`, `Mbale`, `Tororo`
 - Year: `2020`
 - Predictors: `MAM`, `SON`, `annual_rainfall`, `rain_cv`, `annual_gdd`, `elevation_m`, `soil_moisture_index`
-- Yield source: `AAS2020_subregion_assigned_to_district`
+- Yield source: `AAS2020_subregion_assigned_to_district` (pseudo-replicated)
 - Validation: leave-one-out cross-validation on `5` district rows
+- evaluation_status: demonstration_only
 
 ## Benchmark Summary
 

@@ -32,11 +32,11 @@ The study is organized around three objectives:
 
 The corresponding research questions are:
 
-1. How can publicly available agricultural and climate datasets be
-   integrated and prepared for crop-yield analysis in Uganda?
+1. How can publicly available and climate datasets be integrated and
+   prepared for crop-yield analysis in Uganda?
 2. What latent agroclimatic factors can be identified and interpreted
    using PCA?
-3. How does predictive performance differ across algorithms and feature
+3. How does predictive perform and differ across algorithms and feature
    representations under honest (geographic/temporal) validation?
 
 ---
@@ -54,15 +54,14 @@ variable group. Two rules govern interpretation:
 - Formal model comparison runs on the honest subregion-level samples —
   56 rows per crop and 167 rows for the pooled subregion x crop panel —
   under random and grouped-by-subregion CV plus both temporal splits.
-  Every run is recorded in `reports/tables/experiment_registry.csv`
+  Every put-off run is recorded in `reports/tables/experiment_registry.csv`
   (run id, git commit, sample size, number of unique targets, feature
   set, representation, small-sample warnings).
 
 In the pooled panel, the **hybrid** representation (PC scores + one-hot
-crop indicator) is the only model set that beats the mean predictor
-under grouped-by-subregion CV: XGBoost R² = 0.65 (grouped) / 0.60
-(random CV); the raw and PCA representations do not beat the mean
-baseline.
+crop indicator) is the only model set that beats the mean baseline under
+grouped-by-subregion CV: XGBoost R2 = 0.65 (grouped) / 0.60 (random CV);
+the raw and PCA representations do not beat the mean baseline.
 
 ---
 
@@ -71,15 +70,15 @@ baseline.
 | Source | Contribution | Current role |
 |---|---|---|
 | UBOS AAS 2018 (PDF), AAS 2020 (Excel annex) | Planted/harvested area, production, yield, coefficients of variation | Official crop-yield source (14 subregions, 2018 & 2020) |
-| CHIRPS v2.0 | Seasonal, monthly, and annual rainfall | Real climate predictor source |
+| CHIRPS v2.0 | Rainfall seasonal, monthly, daily | Real climate predictor source |
 | NASA POWER (MERRA-2) | Daily T2M_MAX/T2M_MIN, growing degree days, thermal stress | Thermal predictor layer |
 | C3S SOILMOISTURE (Copernicus) | Soil moisture | Climate-predictor layer |
 | ISRIC SoilGrids v2.0 | Clay, sand, silt, SOC, bulk density, CEC, pH (0-30 cm) | Agroecological predictor layer |
-| geoBoundaries OCHA ADM2 | District names and centroid geometry | Geographic covariate layer |
+| geoBoundaries OCHA ADM2 | District names and centroids geometry | Geographic covariate layer |
 
 `reports/tables/feature_availability.csv` records `Variable / Source /
 Coverage / Status` for every modeling column, and the soil-loading step
-refuses to build a panel unless at least 80% of soil columns are present
+refuses to build a panel unless at least 80% of soil columns present
 (`MIN_SOIL_COVERAGE`).
 
 ---
@@ -102,7 +101,7 @@ src/cropyield/      the pipeline package (data, features, pca, models, reporting
 scripts/            pipeline entrypoints; legacy/ holds deprecated scripts
 tests/              data-quality and contract tests (pytest)
 notebooks/          PCA math proof and verification notebooks
-reports/            figures/ and tables/, experiment registry
+reports/            figures/ and tables/, experiments registry
 ```
 
 ## Data classes and quality grades
@@ -114,69 +113,27 @@ Every modeling table carries provenance columns: `yield_source`,
 
 | Grade | Meaning |
 |---|---|
-| A | Directly observed at the matching subregion-year level (official estimate) |
+| A | Direct observed at the matching district/subregion-year level (official estimate) |
 | B | Official value assigned from a larger area (subregion -> district) |
 | C | Derived from official totals |
 | D | Proxy value (station or satellite proxy) |
 | E | Synthetic or demonstration value (pipeline testing only) |
 | F | Failed or missing extraction — never used |
 
-<<<<<<< HEAD
 ---
-=======
-Known data-quality decisions (see `CHANGELOG.md`):
-
-- The legacy 15-district temperature/synthetic tables are superseded by
-  NASA POWER daily temperatures; synthetic tables live only in
-  `data/processed/synthetic/` and are never used in modeling.
-- SoilGrids extraction repaired (single-property API workaround + jitter
-  for mosaic holes); soil properties are complete for all 114 districts
-  with grade A provenance.
-- AAS 2019 PDF is corrupt; the survey panel covers **2018 and 2020**.
-- One OCR-damaged cell in the AAS 2020 groundnuts table (South Buganda
-  second season) was recomputed from official totals and flagged
-  `is_imputed=True`.
->>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 ## Panels
 
 | File | Rows (maize) | Grain | Grade | Content |
 |---|---|---|---|---|
 | `data/processed/observed/maize_subregion_panel.csv` | 56 | subregion x 2020 (3 seasons) + 2018 annual | A | AAS 2018 + 2020 official estimates + CHIRPS/POWER climate |
-<<<<<<< HEAD
-| `data/processed/assigned/maize_district_assigned_panel.csv` | 456 | district x 2020 (3 seasons) + 2018 annual | B | subregion values assigned to 114 members districts |
+| `data/processed/assigned/maize_district_assigned_panel.csv` | 456 | district x 2020 (3 seasons) + 2018 annual | B | subregion values assigned to 114 districts |
 | `data/processed/observed/crop_pooled_subregion_panel.csv` | 167 (all crops) | subregion x crop x season x year | A | pooled panel with `crop` as a hybrid predictor |
-=======
-| `data/processed/assigned/maize_district_assigned_panel.csv` | 456 | district x 2020 (3 seasons) + 2018 annual | B | subregion values assigned to 114 member districts |
->>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 Targets: `yield_over_harvested` (primary, t/ha = production / harvested
 area), `yield_over_planted` (sensitivity), `production_mt`,
 `area_harvested_ha`, plus ~46 climate features (`rain_*`, `daily_*`,
 `temp_*`, `soil_*`).
-<<<<<<< HEAD
-=======
-
-## Validation design
-
-Out-of-sample validation runs on 56 honest samples (14 subregions x
-4 season groups), with four schemes: random CV, grouped-by-subregion CV
-(geographic generalization), and both temporal splits (train 2018 /
-test 2020 and vice versa). Baselines are mean predictor, historical mean
-and previous-year yield; conformal prediction intervals are reported.
-Results in `reports/tables/validation_all.csv`.
-
-## PCA analysis
-
-`make pca` runs a rigorous PCA of the 65-feature district-year climate
-matrix (1019 rows): correlation-matrix PCA with covariance comparison,
-component retention by Kaiser, cumulative variance (0.85) and parallel
-analysis (95th percentile), plus bootstrap confidence intervals for
-eigenvalues and loadings. Results in `reports/tables/pca_v2_*` and
-`reports/figures/pca_v2_scree.png`. The underlying SVD implementation is
-verified against a hand-computed eigendecomposition and sklearn in
-`notebooks/01_pca_math.ipynb`.
->>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 ---
 
@@ -195,20 +152,19 @@ in `reports/tables/validation_all.csv`.
 
 1. **Raw** — cleaned predictors used directly.
 2. **PCA-reduced** — retained principal-component scores (correlation-matrix PCA).
-3. **Hybrid** — PC scores plus contextual variables not included in the PCA
+3. **Hybrid** — PC scores plus contextual variables not in the PCA
    transformation (e.g. one-hot `crop` in the pooled panel).
 
-All preprocessing (imputation, scaling, PCA) is fitted inside each
-training fold only, to prevent leakage. Model matrix: OLS, Ridge, PCR,
-PLS, Random Forest, XGBoost + 3 baselines in `scripts/run_models.py`.
+All preprocessing (imputation, scaling, PCA fitting) is done inside each
+training fold only, to avoid leakage. Model matrix: OLS, Ridge, PCR, PLS,
+Random Forest, XGBoost + 3 baselines in `scripts/run_models.py`.
 
 ### Experiment registry
 
-Each model run records an experiment row in
-`reports/tables/experiment_registry.csv`: `run_id`, timestamp, git commit,
-sample size, number of unique targets, `n_features`, `feature_set`,
-`representation`, and small-sample warnings (sample < 100 or too few
-unique targets).
+Each model run records an experiment row in `reports/tables/experiment_registry.csv`:
+`run_id`, timestamp, git commit, sample size, number of unique targets,
+`n_features`, `feature_set`, representation, and small-sample warnings
+(sample < 100 or too few unique targets).
 
 ---
 
@@ -219,31 +175,18 @@ unique targets).
 retention by Kaiser, cumulative variance (0.85), and parallel analysis
 (95th percentile), plus bootstrap confidence intervals for eigenvalues and
 loadings. Results in `reports/tables/pca_v2_*` and `reports/figures/`. The
-underlying SVD implementation is verified against a hand-computed
-eigendecomposition and sklearn in `notebooks/01_pca_math.ipynb`.
+underlying SVD is verified against a hand-computed eigendecomposition and
+sklearn in `notebooks/01_pca_math.ipynb`.
 
 ---
 
 ## Installation
 
-### 1. Clone
-
 ```bash
 git clone https://github.com/Bravos-hub/Math-ml-project.git
 cd Math-ml-project
-```
-
-### 2. Create a virtual environment
-
-<<<<<<< HEAD
-```bash
 python3 -m venv .venv
 source .venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
 pip install -r requirements.txt   # or make setup
 ```
 
@@ -261,33 +204,14 @@ make report
 make all
 ```
 
-`make data` -> `scripts/build_panels.py` (builds observed/assigned panels
-plus the pooled subregion x crop panel).
+`make data` -> `scripts/build_panels.py` (observed/assigned panels plus the
+pooled sub-region x crop panel).
+
 `make models` -> `scripts/run_models.py`. Default scope is the pooled
 panel x `full_agroecological` features x raw/pca/hybrid representations
-(~2 min). Add `--full` to run all crops x feature sets (raw).
+(~2 min). Add `--full` for all crops x feature sets (raw).
 
-Inspect input-path constants and confirm that required source tables exist
-before running a script.
-
----
-
-## Data management
-
-Large climate and geospatial source files must not live in Git history.
-The repository ignores formats such as `*.nc`, `*.tif`, `*.tiff`, `*.zip`.
-The 7+ GiB CHIRPS NetCDF source stays outside Git and is regenerated with
-documented scripts. GitHub stores code, metadata, lightweight derived
-tables, documentation, and publication-ready outputs.
-
-```text
-data/
-├── raw/          # ignored
-├── external/     # ignored where licensing requires
-├── interim/
-├── processed/    # publish when permitted
-└── public/       # dictionaries, schemas, and small shareable examples
-```
+Check input-path constants and confirm required source tables exist first.
 
 ---
 
@@ -297,15 +221,15 @@ A reproducible run should record source URLs and retrieval dates, dataset
 versions, script/commit version, unit-conversion rules, district/subregion
 mapping rules, missing-data decisions, standardization parameters,
 PCA feature list and retained components, CV folds and random seeds,
-model hyperparameters, and output paths.
+model hyperparameters, output paths.
 
-Recommended automated checks (in `tests/`):
+Automated checks in `tests/` include:
 
 - Unique subregion-season-year keys
-- Nonnegative crop yield
+- Non-negative crop yield
 - Positive harvested area where yield is computed
 - No target leakage into PCA
-- Symmetric covariance matrix, nonnegative eigenvalues within tolerance
+- Symmetric covariance matrix with non-negative eigenvalues
 - Agreement between manual eigenvalues and `numpy.linalg.eigh()`
 - No overlap between grouped training and test entities
 
@@ -313,16 +237,16 @@ Recommended automated checks (in `tests/`):
 
 ## Known limitations
 
-1. The project is based on secondary data and is not yet field validated.
+1. Based on secondary data, not field-validated.
 2. The 5-row benchmark is a smoke test, not a generalization claim.
-3. AAS yield statistics are subregional and assigned to districts for
-   district tables; they are not independent district-level attributes.
-4. AAS 2018 annual-crop rows publish total production with second-season
+3. AAS yield statistics are subregional and assigned to districts; they are
+   not independent district-level attributes.
+4. AAS 2018 annual rows publish total production with second-season
    harvested area; kept with an explicit `yield_consistency_ok` flag.
-5. Soil values are static across years; they do not represent annual change.
+5. Static soil values across years do not reflect annual change.
 6. PCA maximizes explained variance, not yield-prediction accuracy.
 7. The framework supports association and prediction, not causal inference.
-8. Outputs are not suitable for operational farm recommendations yet.
+8. Outputs are not suitable for operational farm recommendations at this stage.
 
 ---
 
@@ -332,7 +256,7 @@ This phase uses secondary data only; no farmer recruitment, interviews, or
 field measurements. When using restricted data: follow the provider's access
 conditions, do not publish direct identifiers or protected coordinates,
 keep restricted sources outside the public repository, and clearly
-distinguish observed, derived, assigned, surrogate, and synthetic values.
+distinguish observed, derived, proxy, and synthetic values.
 
 ---
 
@@ -342,21 +266,9 @@ distinguish observed, derived, assigned, surrogate, and synthetic values.
 Olimi, B. (2026). Uganda Crop-Yield Prediction with PCA and Machine Learning. GitHub repository.
 ```
 
-A formal `CITATION.cff` is present at the repository root.
-
 ---
-=======
-| Data | Source | Access | Coverage |
-|---|---|---|---|
-| Crop area/production/yield | UBOS AAS 2018 (PDF), AAS 2020 (Excel annex) | local files | 14 sub-regions, 2018 & 2020 |
-| Rainfall (monthly) | CHIRPS v2.0 (`chirps-v2.0.monthly.nc`) | local NetCDF | 1981-2026, global 0.05 deg |
-| Rainfall (daily) | CHIRPS v2.0 via ClimateSERV API | API, cached | 2015-2023 |
-| Temperature (daily) | NASA POWER | API, cached | 2015-2023 |
-| Soil moisture | C3S SOILMOISTURE (Copernicus) | local NetCDF | 2020-2024 |
-| Soil properties | ISRIC SoilGrids v2.0 | API, cached | 0-30 cm, 114 districts |
->>>>>>> 0542d98 (Phase 4/5: rigorous PCA (retention, stability, verified SVD) and data-quality test suite)
 
 ## License
 
 MIT — see `LICENSE`. Data remain the property of their respective providers
-(UB, CHC/UCSB, NASA, Copernicus, ISRIC).
+(UBOS, CHC/UCSB, NASA, Copernicus, ISRIC).
