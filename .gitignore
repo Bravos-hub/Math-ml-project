@@ -24,3 +24,14 @@ data/raw/climate_cache/.keep
 data/raw/climate_cache/climateserv/*.json
 data/raw/climate_cache/nasapower/*.json
 data/interim/.aas2018_layout.txt
+
+# Generated validation and diagnostic artifacts. Curated summary tables that
+# are already tracked remain versioned; these rules prevent new run-specific
+# CSVs, manifests, and logs from making the worktree dirty.
+reports/tables/validation_*.csv
+reports/tables/*_predictions.csv
+reports/tables/*_analysis_manifest.json
+reports/tables/*_run.log
+reports/tables/*_spatial_fold_results.csv
+reports/tables/*_spatial_model_comparison.csv
+implement.txt

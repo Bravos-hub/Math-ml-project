@@ -14,6 +14,5 @@ matplotlib>=3.8
 # Validation and testing
 pytest>=8.0
 
-# Optional model / interpretation packages (installed by make setup-optional)
-# xgboost>=2.0
+xgboost>=2.0
 # pandera>=0.20

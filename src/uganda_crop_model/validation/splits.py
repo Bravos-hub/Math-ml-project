@@ -86,6 +86,21 @@ def spatial_group_splits(
     )
 
 
+def leave_one_subregion_out_splits(metadata: pd.DataFrame) -> list[Split]:
+    """Yield one fold per spatial unit, with that unit held out entirely."""
+    units = sorted(metadata["spatial_unit"].astype(str).unique())
+    if len(units) < 2:
+        raise ValueError("At least two spatial groups are required for LOSO.")
+    result = []
+    groups = metadata["spatial_unit"].astype(str)
+    for unit in units:
+        test = np.flatnonzero(groups.eq(unit).to_numpy())
+        train = np.flatnonzero(groups.ne(unit).to_numpy())
+        if train.size and test.size:
+            result.append((train, test))
+    return result
+
+
 def future_unseen_location_splits(
     metadata: pd.DataFrame,
     *,

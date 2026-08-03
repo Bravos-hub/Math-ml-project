@@ -13,6 +13,20 @@ from uganda_crop_model.data.paths import REPORTS, TABLES  # noqa: E402
 
 
 def main() -> None:
+    authoritative = TABLES / "multi_crop_spatial_model_comparison.csv"
+    if authoritative.exists():
+        results = pd.read_csv(authoritative)
+        candidates = results[results.get("target_scale", "raw").eq("raw")] if "target_scale" in results else results
+        lines = [
+            "# Uganda crop-yield prediction technical report", "",
+            "This report reads the authoritative 373-row multi-crop spatial results. "
+            "It is descriptive and does not establish causality.", "", "## Validation results", "",
+        ]
+        for _, row in candidates.head(10).iterrows():
+            lines.append(f"- **{row['model']} / {row['feature_space']}**: RMSE {row['rmse']:.3f}, MAE {row['mae']:.3f}, R² {row['r2']:.3f} (n={int(row['observations'])}).")
+        lines += ["", "## Interpretation limits", "", "Raw tonnes/ha is primary; log1p and crop-normalized results are sensitivities. The panel covers only 2018 and 2020. AAS2019 and validated local elevation are unavailable, so temporal/stress conclusions are limited. Results are not causal or operational forecasts."]
+        output = REPORTS / "technical_report" / "final_report.md"
+        output.parent.mkdir(parents=True, exist_ok=True); output.write_text("\n".join(lines) + "\n"); print(output); return
     results = pd.read_csv(TABLES / "validation_all.csv")
     candidates = results[~results["model"].isin(["mean_predictor", "historical_mean", "previous_year_yield"])]
     lines = [

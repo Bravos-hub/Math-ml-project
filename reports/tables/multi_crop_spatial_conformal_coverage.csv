@@ -1,0 +1,13 @@
+model,feature_space,coverage,observations
+dummy_mean,hybrid,0.900804289544236,373
+dummy_mean,pca,0.900804289544236,373
+dummy_mean,raw,0.900804289544236,373
+historical_subregion_crop_mean,baseline,0.0,373
+historical_subregion_mean,baseline,0.0,373
+ols,hybrid,0.5951742627345844,373
+ols,pca,0.8981233243967829,373
+ols,raw,0.4289544235924933,373
+previous_wave_yield,baseline,0.0,373
+ridge,hybrid,0.8659517426273459,373
+ridge,pca,0.903485254691689,373
+ridge,raw,0.868632707774799,373

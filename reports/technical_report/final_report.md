@@ -1,16 +1,20 @@
 # Uganda crop-yield prediction technical report
 
-This report summarizes held-out validation results. It is descriptive and does not establish causality.
+This report reads the authoritative 373-row multi-crop spatial results. It is descriptive and does not establish causality.
 
 ## Validation results
 
-- **group_by_subregion**: best held-out result was pca/XGBoost (RMSE 0.574, R² 0.679).
-- **random_cv**: best held-out result was raw/RandomForest (RMSE 0.613, R² 0.634).
-- **temporal_2018_2020**: best held-out result was pca/XGBoost (RMSE 0.717, R² 0.570).
-- **temporal_2020_2018**: best held-out result was raw/XGBoost (RMSE 0.430, R² 0.585).
+- **dummy_mean / hybrid**: RMSE 1.072, MAE 1.040, R² -18.340 (n=41).
+- **dummy_mean / hybrid**: RMSE 1.222, MAE 1.207, R² -50.437 (n=42).
+- **dummy_mean / hybrid**: RMSE 3.244, MAE 2.599, R² -1.742 (n=24).
+- **dummy_mean / hybrid**: RMSE 1.314, MAE 0.854, R² -0.197 (n=42).
+- **dummy_mean / hybrid**: RMSE 1.238, MAE 1.193, R² -11.389 (n=39).
+- **dummy_mean / hybrid**: RMSE 0.908, MAE 0.677, R² -0.175 (n=36).
+- **dummy_mean / hybrid**: RMSE 1.417, MAE 1.399, R² -39.572 (n=30).
+- **dummy_mean / hybrid**: RMSE 1.130, MAE 1.051, R² -0.591 (n=41).
+- **dummy_mean / hybrid**: RMSE 7.025, MAE 2.258, R² -0.006 (n=38).
+- **dummy_mean / hybrid**: RMSE 4.867, MAE 3.390, R² -0.934 (n=40).
 
 ## Interpretation limits
 
-The pooled panel contains repeated crop, season, and subregion structure. The representation comparison supplies the same crop and season context to raw, PCA, and hybrid spaces. Results are not causal effects and should not be described as production-ready forecasts.
-
-See `reports/tables/model_agreement.csv`, `residual_diagnostics.csv`, `vif.csv`, and `survey_uncertainty_sensitivity.csv` for supplementary diagnostics.
+Raw tonnes/ha is primary; log1p and crop-normalized results are sensitivities. The panel covers only 2018 and 2020. AAS2019 and validated local elevation are unavailable, so temporal/stress conclusions are limited. Results are not causal or operational forecasts.

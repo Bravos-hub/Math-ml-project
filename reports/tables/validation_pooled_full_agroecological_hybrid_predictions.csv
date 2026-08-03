@@ -135,40 +135,40 @@ random_cv,0,PLS,South Buganda,2020,0.6198068833094819,0.5214130650437083,hybrid,
 random_cv,0,PLS,Tooro,2020,0.4788089757102604,0.9055729453227305,hybrid,pooled
 random_cv,0,PLS,Tooro,2020,0.8188652144271537,1.281142552377135,hybrid,pooled
 random_cv,0,PLS,Kigezi,2018,0.4,0.5306272673939006,hybrid,pooled
-random_cv,0,RandomForest,Bunyoro,2020,2.3426553850030096,2.626179383276784,hybrid,pooled
-random_cv,0,RandomForest,Busoga,2020,1.5222384603844508,1.723766538392871,hybrid,pooled
-random_cv,0,RandomForest,Elgon,2020,2.591624259545572,2.012776272480792,hybrid,pooled
-random_cv,0,RandomForest,Elgon,2020,3.423349924580549,2.148242436397867,hybrid,pooled
-random_cv,0,RandomForest,Karamoja,2020,1.2175480596073385,1.7125353724477668,hybrid,pooled
-random_cv,0,RandomForest,Karamoja,2020,7.244065383360269,1.9362291342048366,hybrid,pooled
-random_cv,0,RandomForest,Lango,2020,1.5321273000173696,2.390833679796539,hybrid,pooled
-random_cv,0,RandomForest,North Buganda,2020,2.404748318614775,1.8270080738604855,hybrid,pooled
-random_cv,0,RandomForest,South Buganda,2020,1.658719821291578,2.4286062376040203,hybrid,pooled
-random_cv,0,RandomForest,South Buganda,2020,2.314641460829224,2.630118534373845,hybrid,pooled
-random_cv,0,RandomForest,Acholi,2018,1.0,1.6658831281815736,hybrid,pooled
-random_cv,0,RandomForest,North Buganda,2018,2.1,1.9485408214006452,hybrid,pooled
-random_cv,0,RandomForest,West Nile,2018,2.1,1.7744718687933458,hybrid,pooled
-random_cv,0,RandomForest,Acholi,2020,0.8570862730857126,0.6154505973745397,hybrid,pooled
-random_cv,0,RandomForest,Ankole,2020,1.3411688832335629,0.8397916316867665,hybrid,pooled
-random_cv,0,RandomForest,Bunyoro,2020,0.98602045418736,0.642609081059803,hybrid,pooled
-random_cv,0,RandomForest,Karamoja,2020,0.5422885207412549,0.6122275642341151,hybrid,pooled
-random_cv,0,RandomForest,Kigezi,2020,0.6821726355797036,0.7904619052817945,hybrid,pooled
-random_cv,0,RandomForest,Kigezi,2020,0.9352419701157908,0.7187513849928977,hybrid,pooled
-random_cv,0,RandomForest,North Buganda,2020,0.6433017110440628,0.7054107267921813,hybrid,pooled
-random_cv,0,RandomForest,Ankole,2018,0.7,0.5606626222876814,hybrid,pooled
-random_cv,0,RandomForest,Busoga,2018,0.4,0.5709960793781604,hybrid,pooled
-random_cv,0,RandomForest,Kigezi,2018,0.6,0.56817491471631,hybrid,pooled
-random_cv,0,RandomForest,Lango,2018,0.3,0.5823683912088964,hybrid,pooled
-random_cv,0,RandomForest,Teso,2018,0.4,0.570808857445418,hybrid,pooled
-random_cv,0,RandomForest,Tooro,2018,0.7,0.5669481668581924,hybrid,pooled
-random_cv,0,RandomForest,Bunyoro,2020,0.6650306538588546,0.675334917782286,hybrid,pooled
-random_cv,0,RandomForest,Kigezi,2020,0.4632654520489824,0.6978451174119994,hybrid,pooled
-random_cv,0,RandomForest,Kigezi,2020,0.7496304931127424,0.8455964750054913,hybrid,pooled
-random_cv,0,RandomForest,Lango,2020,0.6658246650132922,0.6760899138086287,hybrid,pooled
-random_cv,0,RandomForest,South Buganda,2020,0.6198068833094819,0.6331200542970317,hybrid,pooled
-random_cv,0,RandomForest,Tooro,2020,0.4788089757102604,0.6729954335223668,hybrid,pooled
-random_cv,0,RandomForest,Tooro,2020,0.8188652144271537,0.82348686923458,hybrid,pooled
-random_cv,0,RandomForest,Kigezi,2018,0.4,0.5108714907524222,hybrid,pooled
+random_cv,0,RandomForest,Bunyoro,2020,2.3426553850030096,2.637526854247498,hybrid,pooled
+random_cv,0,RandomForest,Busoga,2020,1.5222384603844508,1.7502981430113986,hybrid,pooled
+random_cv,0,RandomForest,Elgon,2020,2.591624259545572,2.0041718051921484,hybrid,pooled
+random_cv,0,RandomForest,Elgon,2020,3.423349924580549,2.1578404178835395,hybrid,pooled
+random_cv,0,RandomForest,Karamoja,2020,1.2175480596073385,1.7131456045595335,hybrid,pooled
+random_cv,0,RandomForest,Karamoja,2020,7.244065383360269,1.9397377646926046,hybrid,pooled
+random_cv,0,RandomForest,Lango,2020,1.5321273000173696,2.404651849217869,hybrid,pooled
+random_cv,0,RandomForest,North Buganda,2020,2.404748318614775,1.823515160684206,hybrid,pooled
+random_cv,0,RandomForest,South Buganda,2020,1.658719821291578,2.475465077736178,hybrid,pooled
+random_cv,0,RandomForest,South Buganda,2020,2.314641460829224,2.665147124053475,hybrid,pooled
+random_cv,0,RandomForest,Acholi,2018,1.0,1.6391745306114374,hybrid,pooled
+random_cv,0,RandomForest,North Buganda,2018,2.1,1.9457407088662468,hybrid,pooled
+random_cv,0,RandomForest,West Nile,2018,2.1,1.7578546858167146,hybrid,pooled
+random_cv,0,RandomForest,Acholi,2020,0.8570862730857126,0.6135955352507815,hybrid,pooled
+random_cv,0,RandomForest,Ankole,2020,1.3411688832335629,0.8380767126359439,hybrid,pooled
+random_cv,0,RandomForest,Bunyoro,2020,0.98602045418736,0.6444269239385892,hybrid,pooled
+random_cv,0,RandomForest,Karamoja,2020,0.5422885207412549,0.6144266740423794,hybrid,pooled
+random_cv,0,RandomForest,Kigezi,2020,0.6821726355797036,0.8003811083270924,hybrid,pooled
+random_cv,0,RandomForest,Kigezi,2020,0.9352419701157908,0.7262348318512332,hybrid,pooled
+random_cv,0,RandomForest,North Buganda,2020,0.6433017110440628,0.711939561018008,hybrid,pooled
+random_cv,0,RandomForest,Ankole,2018,0.7,0.5661625926249811,hybrid,pooled
+random_cv,0,RandomForest,Busoga,2018,0.4,0.5779381999420886,hybrid,pooled
+random_cv,0,RandomForest,Kigezi,2018,0.6,0.5744635809595691,hybrid,pooled
+random_cv,0,RandomForest,Lango,2018,0.3,0.5847987322058341,hybrid,pooled
+random_cv,0,RandomForest,Teso,2018,0.4,0.5745657525828392,hybrid,pooled
+random_cv,0,RandomForest,Tooro,2018,0.7,0.5748423954444594,hybrid,pooled
+random_cv,0,RandomForest,Bunyoro,2020,0.6650306538588546,0.6744487006047759,hybrid,pooled
+random_cv,0,RandomForest,Kigezi,2020,0.4632654520489824,0.7022789792229495,hybrid,pooled
+random_cv,0,RandomForest,Kigezi,2020,0.7496304931127424,0.8416862488507759,hybrid,pooled
+random_cv,0,RandomForest,Lango,2020,0.6658246650132922,0.6646745288048246,hybrid,pooled
+random_cv,0,RandomForest,South Buganda,2020,0.6198068833094819,0.6279589607091434,hybrid,pooled
+random_cv,0,RandomForest,Tooro,2020,0.4788089757102604,0.6769823053243215,hybrid,pooled
+random_cv,0,RandomForest,Tooro,2020,0.8188652144271537,0.8137235461619088,hybrid,pooled
+random_cv,0,RandomForest,Kigezi,2018,0.4,0.5128024195418387,hybrid,pooled
 random_cv,0,XGBoost,Bunyoro,2020,2.3426553850030096,2.3860023021698,hybrid,pooled
 random_cv,0,XGBoost,Busoga,2020,1.5222384603844508,1.572829246520996,hybrid,pooled
 random_cv,0,XGBoost,Elgon,2020,2.591624259545572,1.8370099067687988,hybrid,pooled
@@ -407,40 +407,40 @@ random_cv,1,PLS,South Buganda,2020,0.7696938879034653,0.6734571707960302,hybrid,
 random_cv,1,PLS,Teso,2020,0.3687334249789068,0.23745436605466286,hybrid,pooled
 random_cv,1,PLS,Teso,2020,0.3707166752248346,0.4002502935920612,hybrid,pooled
 random_cv,1,PLS,Elgon,2018,0.5,0.34925704773913224,hybrid,pooled
-random_cv,1,RandomForest,Acholi,2020,1.6750870924050658,2.0392125011063786,hybrid,pooled
-random_cv,1,RandomForest,Ankole,2020,4.746403988018382,2.710974002549437,hybrid,pooled
-random_cv,1,RandomForest,Bukedi,2020,1.5470171390615697,1.9445464747921224,hybrid,pooled
-random_cv,1,RandomForest,Bunyoro,2020,3.0549264654046246,2.465821413296316,hybrid,pooled
-random_cv,1,RandomForest,Bunyoro,2020,2.5954365128642194,2.2469463347985017,hybrid,pooled
-random_cv,1,RandomForest,Kigezi,2020,4.580426866194772,2.602479018651028,hybrid,pooled
-random_cv,1,RandomForest,Lango,2020,2.235407081928281,2.105123826043917,hybrid,pooled
-random_cv,1,RandomForest,North Buganda,2020,2.169407944352197,2.156266598996095,hybrid,pooled
-random_cv,1,RandomForest,South Buganda,2020,1.9348144714872644,1.9707469554676698,hybrid,pooled
-random_cv,1,RandomForest,Tooro,2020,3.0038294115831783,2.2826338667757353,hybrid,pooled
-random_cv,1,RandomForest,Tooro,2020,3.592580248493403,2.606104011814642,hybrid,pooled
-random_cv,1,RandomForest,West Nile,2020,1.4980452432828957,1.8755326141622266,hybrid,pooled
-random_cv,1,RandomForest,Bunyoro,2018,1.7,1.7379155137561904,hybrid,pooled
-random_cv,1,RandomForest,Bunyoro,2020,0.826094714383351,0.6770789436015063,hybrid,pooled
-random_cv,1,RandomForest,Bunyoro,2020,1.200511704804833,0.8380002202643605,hybrid,pooled
-random_cv,1,RandomForest,Busoga,2020,0.6401206168693183,0.5941411443032706,hybrid,pooled
-random_cv,1,RandomForest,Busoga,2020,0.8018694899438292,0.7317324849762268,hybrid,pooled
-random_cv,1,RandomForest,South Buganda,2020,0.6286830497610721,0.6410349450346916,hybrid,pooled
-random_cv,1,RandomForest,West Nile,2020,0.5251432400895707,0.6312082518331859,hybrid,pooled
-random_cv,1,RandomForest,West Nile,2020,0.7559563988183644,0.7784276669196163,hybrid,pooled
-random_cv,1,RandomForest,West Nile,2020,0.6778710254152407,0.5960208605720563,hybrid,pooled
-random_cv,1,RandomForest,Acholi,2018,0.7,0.587129252846245,hybrid,pooled
-random_cv,1,RandomForest,Bunyoro,2018,0.7,0.6143791982158818,hybrid,pooled
-random_cv,1,RandomForest,Acholi,2020,0.774283389787513,0.6749076797441006,hybrid,pooled
-random_cv,1,RandomForest,Bukedi,2020,0.5641103408681047,0.6184052561070235,hybrid,pooled
-random_cv,1,RandomForest,Bukedi,2020,0.4869183122414556,0.5385156357325754,hybrid,pooled
-random_cv,1,RandomForest,Elgon,2020,0.4950587775158489,0.5874869235916717,hybrid,pooled
-random_cv,1,RandomForest,Karamoja,2020,0.5592824320954186,0.5746329681517526,hybrid,pooled
-random_cv,1,RandomForest,Lango,2020,0.3602760666772656,0.5750935058762644,hybrid,pooled
-random_cv,1,RandomForest,North Buganda,2020,0.4953986447362168,0.6110187487529486,hybrid,pooled
-random_cv,1,RandomForest,South Buganda,2020,0.7696938879034653,0.6031320432654261,hybrid,pooled
-random_cv,1,RandomForest,Teso,2020,0.3687334249789068,0.536068134048697,hybrid,pooled
-random_cv,1,RandomForest,Teso,2020,0.3707166752248346,0.5351442886280363,hybrid,pooled
-random_cv,1,RandomForest,Elgon,2018,0.5,0.5422969103873555,hybrid,pooled
+random_cv,1,RandomForest,Acholi,2020,1.6750870924050658,1.9929079233053952,hybrid,pooled
+random_cv,1,RandomForest,Ankole,2020,4.746403988018382,2.7194606348369974,hybrid,pooled
+random_cv,1,RandomForest,Bukedi,2020,1.5470171390615697,1.9550576706026235,hybrid,pooled
+random_cv,1,RandomForest,Bunyoro,2020,3.0549264654046246,2.4869935151396696,hybrid,pooled
+random_cv,1,RandomForest,Bunyoro,2020,2.5954365128642194,2.224896768887514,hybrid,pooled
+random_cv,1,RandomForest,Kigezi,2020,4.580426866194772,2.690728699479904,hybrid,pooled
+random_cv,1,RandomForest,Lango,2020,2.235407081928281,2.07128780395401,hybrid,pooled
+random_cv,1,RandomForest,North Buganda,2020,2.169407944352197,2.158494471105424,hybrid,pooled
+random_cv,1,RandomForest,South Buganda,2020,1.9348144714872644,1.9431416597871791,hybrid,pooled
+random_cv,1,RandomForest,Tooro,2020,3.0038294115831783,2.3029727856292084,hybrid,pooled
+random_cv,1,RandomForest,Tooro,2020,3.592580248493403,2.586682979243291,hybrid,pooled
+random_cv,1,RandomForest,West Nile,2020,1.4980452432828957,1.8480148608623896,hybrid,pooled
+random_cv,1,RandomForest,Bunyoro,2018,1.7,1.7424232383941556,hybrid,pooled
+random_cv,1,RandomForest,Bunyoro,2020,0.826094714383351,0.6787943519022521,hybrid,pooled
+random_cv,1,RandomForest,Bunyoro,2020,1.200511704804833,0.829582716859374,hybrid,pooled
+random_cv,1,RandomForest,Busoga,2020,0.6401206168693183,0.5989952088266984,hybrid,pooled
+random_cv,1,RandomForest,Busoga,2020,0.8018694899438292,0.7207005012343773,hybrid,pooled
+random_cv,1,RandomForest,South Buganda,2020,0.6286830497610721,0.639402163195721,hybrid,pooled
+random_cv,1,RandomForest,West Nile,2020,0.5251432400895707,0.6339532212080179,hybrid,pooled
+random_cv,1,RandomForest,West Nile,2020,0.7559563988183644,0.7741632058451935,hybrid,pooled
+random_cv,1,RandomForest,West Nile,2020,0.6778710254152407,0.5949930865928243,hybrid,pooled
+random_cv,1,RandomForest,Acholi,2018,0.7,0.5831646496150169,hybrid,pooled
+random_cv,1,RandomForest,Bunyoro,2018,0.7,0.6155371892064294,hybrid,pooled
+random_cv,1,RandomForest,Acholi,2020,0.774283389787513,0.6699009551597866,hybrid,pooled
+random_cv,1,RandomForest,Bukedi,2020,0.5641103408681047,0.6112384959957766,hybrid,pooled
+random_cv,1,RandomForest,Bukedi,2020,0.4869183122414556,0.5408790408113684,hybrid,pooled
+random_cv,1,RandomForest,Elgon,2020,0.4950587775158489,0.5838160295129623,hybrid,pooled
+random_cv,1,RandomForest,Karamoja,2020,0.5592824320954186,0.5770615087833693,hybrid,pooled
+random_cv,1,RandomForest,Lango,2020,0.3602760666772656,0.5784333400026404,hybrid,pooled
+random_cv,1,RandomForest,North Buganda,2020,0.4953986447362168,0.611015259624972,hybrid,pooled
+random_cv,1,RandomForest,South Buganda,2020,0.7696938879034653,0.6005313343615742,hybrid,pooled
+random_cv,1,RandomForest,Teso,2020,0.3687334249789068,0.5383260977053218,hybrid,pooled
+random_cv,1,RandomForest,Teso,2020,0.3707166752248346,0.5370679336448596,hybrid,pooled
+random_cv,1,RandomForest,Elgon,2018,0.5,0.5355764195752739,hybrid,pooled
 random_cv,1,XGBoost,Acholi,2020,1.6750870924050658,2.022156000137329,hybrid,pooled
 random_cv,1,XGBoost,Ankole,2020,4.746403988018382,2.6072282791137695,hybrid,pooled
 random_cv,1,XGBoost,Bukedi,2020,1.5470171390615697,1.564982533454895,hybrid,pooled
@@ -675,39 +675,39 @@ random_cv,2,PLS,Bukedi,2018,0.4,0.0,hybrid,pooled
 random_cv,2,PLS,Bunyoro,2018,0.8,0.13995434450230593,hybrid,pooled
 random_cv,2,PLS,North Buganda,2018,0.6,0.28642441464440893,hybrid,pooled
 random_cv,2,PLS,Tooro,2018,0.6,0.40820416820403904,hybrid,pooled
-random_cv,2,RandomForest,Acholi,2020,1.6268858066002263,1.8887106306733574,hybrid,pooled
-random_cv,2,RandomForest,Kigezi,2020,2.9826713553861293,3.0221881540869386,hybrid,pooled
-random_cv,2,RandomForest,Lango,2020,2.9489717758099068,2.2021878778841755,hybrid,pooled
-random_cv,2,RandomForest,North Buganda,2020,2.686740331121587,2.637706910391233,hybrid,pooled
-random_cv,2,RandomForest,Teso,2020,1.3718829183654722,1.8935738603478827,hybrid,pooled
-random_cv,2,RandomForest,West Nile,2020,1.2660956469166913,1.889676226346914,hybrid,pooled
-random_cv,2,RandomForest,West Nile,2020,2.6368413584111803,2.2385484594577063,hybrid,pooled
-random_cv,2,RandomForest,Bukedi,2018,1.0,1.8284981749199334,hybrid,pooled
-random_cv,2,RandomForest,Elgon,2018,3.0,1.8874440993674788,hybrid,pooled
-random_cv,2,RandomForest,Ankole,2020,0.9814360581560068,0.5833931573241111,hybrid,pooled
-random_cv,2,RandomForest,Bukedi,2020,0.5175817230094645,0.6079807014645693,hybrid,pooled
-random_cv,2,RandomForest,Bukedi,2020,0.5731757916040728,0.5353312912711571,hybrid,pooled
-random_cv,2,RandomForest,Elgon,2020,0.6636769574159984,0.6193319778164362,hybrid,pooled
-random_cv,2,RandomForest,Lango,2020,0.4538514483659435,0.5800096555890754,hybrid,pooled
-random_cv,2,RandomForest,Lango,2020,0.5494183061851179,0.5441051099293098,hybrid,pooled
-random_cv,2,RandomForest,North Buganda,2020,0.7961939204401095,0.6325644169407191,hybrid,pooled
-random_cv,2,RandomForest,South Buganda,2020,1.1321807165247717,0.9136938241137148,hybrid,pooled
-random_cv,2,RandomForest,Teso,2020,0.5480873832187684,0.5285132053756082,hybrid,pooled
-random_cv,2,RandomForest,Tooro,2020,0.8099944456086376,0.6678267761124157,hybrid,pooled
-random_cv,2,RandomForest,Acholi,2020,0.579730411471064,0.6012270888400217,hybrid,pooled
-random_cv,2,RandomForest,Ankole,2020,0.4892093570559104,0.6427650112285295,hybrid,pooled
-random_cv,2,RandomForest,Ankole,2020,0.5561447310735069,0.9074980244926272,hybrid,pooled
-random_cv,2,RandomForest,Bukedi,2020,0.4770632662036267,0.5716834951818013,hybrid,pooled
-random_cv,2,RandomForest,Bunyoro,2020,0.7333233775958355,0.608541201876247,hybrid,pooled
-random_cv,2,RandomForest,Busoga,2020,0.3322482939632105,0.6082633064293397,hybrid,pooled
-random_cv,2,RandomForest,Busoga,2020,0.4062549460293829,0.7052822128757984,hybrid,pooled
-random_cv,2,RandomForest,Elgon,2020,0.7530910039174339,0.7093761789535197,hybrid,pooled
-random_cv,2,RandomForest,Kigezi,2020,0.5633174517358029,0.6686700178915761,hybrid,pooled
-random_cv,2,RandomForest,North Buganda,2020,0.6052217822979895,0.8576459807349631,hybrid,pooled
-random_cv,2,RandomForest,Bukedi,2018,0.4,0.4816984488963704,hybrid,pooled
-random_cv,2,RandomForest,Bunyoro,2018,0.8,0.5879667185350517,hybrid,pooled
-random_cv,2,RandomForest,North Buganda,2018,0.6,0.5749791132653429,hybrid,pooled
-random_cv,2,RandomForest,Tooro,2018,0.6,0.5220054142955886,hybrid,pooled
+random_cv,2,RandomForest,Acholi,2020,1.6268858066002263,1.8692204486497528,hybrid,pooled
+random_cv,2,RandomForest,Kigezi,2020,2.9826713553861293,3.058315947335828,hybrid,pooled
+random_cv,2,RandomForest,Lango,2020,2.9489717758099068,2.2376707193427428,hybrid,pooled
+random_cv,2,RandomForest,North Buganda,2020,2.686740331121587,2.7156669327227623,hybrid,pooled
+random_cv,2,RandomForest,Teso,2020,1.3718829183654722,1.9090636872546012,hybrid,pooled
+random_cv,2,RandomForest,West Nile,2020,1.2660956469166913,1.8859902125256287,hybrid,pooled
+random_cv,2,RandomForest,West Nile,2020,2.6368413584111803,2.272810609758653,hybrid,pooled
+random_cv,2,RandomForest,Bukedi,2018,1.0,1.8635130878832846,hybrid,pooled
+random_cv,2,RandomForest,Elgon,2018,3.0,1.9073450357277186,hybrid,pooled
+random_cv,2,RandomForest,Ankole,2020,0.9814360581560068,0.578993878540793,hybrid,pooled
+random_cv,2,RandomForest,Bukedi,2020,0.5175817230094645,0.6110889400879019,hybrid,pooled
+random_cv,2,RandomForest,Bukedi,2020,0.5731757916040728,0.5360850105183548,hybrid,pooled
+random_cv,2,RandomForest,Elgon,2020,0.6636769574159984,0.6224010879300301,hybrid,pooled
+random_cv,2,RandomForest,Lango,2020,0.4538514483659435,0.5754597260319346,hybrid,pooled
+random_cv,2,RandomForest,Lango,2020,0.5494183061851179,0.546398967358971,hybrid,pooled
+random_cv,2,RandomForest,North Buganda,2020,0.7961939204401095,0.636637367032025,hybrid,pooled
+random_cv,2,RandomForest,South Buganda,2020,1.1321807165247717,0.9261333402709712,hybrid,pooled
+random_cv,2,RandomForest,Teso,2020,0.5480873832187684,0.5290549584158463,hybrid,pooled
+random_cv,2,RandomForest,Tooro,2020,0.8099944456086376,0.6694695601715699,hybrid,pooled
+random_cv,2,RandomForest,Acholi,2020,0.579730411471064,0.6038008378194004,hybrid,pooled
+random_cv,2,RandomForest,Ankole,2020,0.4892093570559104,0.6403202154588692,hybrid,pooled
+random_cv,2,RandomForest,Ankole,2020,0.5561447310735069,0.917594458055829,hybrid,pooled
+random_cv,2,RandomForest,Bukedi,2020,0.4770632662036267,0.5682901352018381,hybrid,pooled
+random_cv,2,RandomForest,Bunyoro,2020,0.7333233775958355,0.6131246584388235,hybrid,pooled
+random_cv,2,RandomForest,Busoga,2020,0.3322482939632105,0.6076344831737834,hybrid,pooled
+random_cv,2,RandomForest,Busoga,2020,0.4062549460293829,0.7027515375789456,hybrid,pooled
+random_cv,2,RandomForest,Elgon,2020,0.7530910039174339,0.7097813701712619,hybrid,pooled
+random_cv,2,RandomForest,Kigezi,2020,0.5633174517358029,0.6667848459447108,hybrid,pooled
+random_cv,2,RandomForest,North Buganda,2020,0.6052217822979895,0.873926410347761,hybrid,pooled
+random_cv,2,RandomForest,Bukedi,2018,0.4,0.4811945564101781,hybrid,pooled
+random_cv,2,RandomForest,Bunyoro,2018,0.8,0.5906952993394252,hybrid,pooled
+random_cv,2,RandomForest,North Buganda,2018,0.6,0.5752412646647309,hybrid,pooled
+random_cv,2,RandomForest,Tooro,2018,0.6,0.5174399574699459,hybrid,pooled
 random_cv,2,XGBoost,Acholi,2020,1.6268858066002263,1.8584039211273193,hybrid,pooled
 random_cv,2,XGBoost,Kigezi,2020,2.9826713553861293,3.0203773975372314,hybrid,pooled
 random_cv,2,XGBoost,Lango,2020,2.9489717758099068,2.396449565887451,hybrid,pooled
@@ -939,39 +939,39 @@ random_cv,3,PLS,Acholi,2018,0.6,0.13675936751370044,hybrid,pooled
 random_cv,3,PLS,Ankole,2018,0.5,0.4418299717289149,hybrid,pooled
 random_cv,3,PLS,Karamoja,2018,0.4,0.0002477083882348463,hybrid,pooled
 random_cv,3,PLS,South Buganda,2018,0.5,0.6355165763070291,hybrid,pooled
-random_cv,3,RandomForest,Ankole,2020,2.291177593433027,2.2357075617365765,hybrid,pooled
-random_cv,3,RandomForest,Ankole,2020,3.474743554785576,2.008756688807632,hybrid,pooled
-random_cv,3,RandomForest,Bukedi,2020,2.594196684748674,3.020534361629365,hybrid,pooled
-random_cv,3,RandomForest,Bukedi,2020,1.8697114647833253,2.0067435853319733,hybrid,pooled
-random_cv,3,RandomForest,Busoga,2020,1.723713168491681,3.047059217233356,hybrid,pooled
-random_cv,3,RandomForest,Elgon,2020,2.6510166735556018,2.710911885543508,hybrid,pooled
-random_cv,3,RandomForest,Teso,2020,1.540156423059482,2.6396353610793937,hybrid,pooled
-random_cv,3,RandomForest,Teso,2020,1.4308611121074777,1.935593729101783,hybrid,pooled
-random_cv,3,RandomForest,Ankole,2018,2.3,1.9142666438699805,hybrid,pooled
-random_cv,3,RandomForest,Busoga,2018,1.3,2.3190771178209584,hybrid,pooled
-random_cv,3,RandomForest,Kigezi,2018,1.1,1.8686732211292238,hybrid,pooled
-random_cv,3,RandomForest,Teso,2018,1.2,1.7534238137613585,hybrid,pooled
-random_cv,3,RandomForest,Ankole,2020,0.7107039593083359,0.7125934741749266,hybrid,pooled
-random_cv,3,RandomForest,Busoga,2020,0.6904468967705395,0.5894882310531494,hybrid,pooled
-random_cv,3,RandomForest,Elgon,2020,0.653829971282899,0.7668879192515422,hybrid,pooled
-random_cv,3,RandomForest,Kigezi,2020,1.2309422257456628,0.8882763600104043,hybrid,pooled
-random_cv,3,RandomForest,Lango,2020,0.997989808692561,0.7725926066940381,hybrid,pooled
-random_cv,3,RandomForest,North Buganda,2020,0.9823435270848496,0.8435347600098707,hybrid,pooled
-random_cv,3,RandomForest,Teso,2020,0.7279249098775472,0.7420461207431334,hybrid,pooled
-random_cv,3,RandomForest,Tooro,2020,0.5714159022282193,0.7488048887006226,hybrid,pooled
-random_cv,3,RandomForest,West Nile,2018,0.7,0.6168419210148354,hybrid,pooled
-random_cv,3,RandomForest,Acholi,2020,0.6391522952809118,0.5947724853947427,hybrid,pooled
-random_cv,3,RandomForest,Busoga,2020,0.3649043656974847,0.5571971301369003,hybrid,pooled
-random_cv,3,RandomForest,Elgon,2020,0.5950828682883496,0.5849959403457171,hybrid,pooled
-random_cv,3,RandomForest,Lango,2020,0.4243713490577802,0.5726598308104576,hybrid,pooled
-random_cv,3,RandomForest,North Buganda,2020,0.4198664546099319,0.6093907403818399,hybrid,pooled
-random_cv,3,RandomForest,South Buganda,2020,1.0649682679639256,0.6545183984916316,hybrid,pooled
-random_cv,3,RandomForest,Teso,2020,0.4313168954422955,0.6126664849008463,hybrid,pooled
-random_cv,3,RandomForest,West Nile,2020,0.4055485017270916,0.5732402051899848,hybrid,pooled
-random_cv,3,RandomForest,Acholi,2018,0.6,0.5957253981533848,hybrid,pooled
-random_cv,3,RandomForest,Ankole,2018,0.5,0.5523465224544677,hybrid,pooled
-random_cv,3,RandomForest,Karamoja,2018,0.4,0.4920891051351755,hybrid,pooled
-random_cv,3,RandomForest,South Buganda,2018,0.5,0.6052183846999525,hybrid,pooled
+random_cv,3,RandomForest,Ankole,2020,2.291177593433027,2.2822102714892867,hybrid,pooled
+random_cv,3,RandomForest,Ankole,2020,3.474743554785576,2.055462423581862,hybrid,pooled
+random_cv,3,RandomForest,Bukedi,2020,2.594196684748674,2.881249745527857,hybrid,pooled
+random_cv,3,RandomForest,Bukedi,2020,1.8697114647833253,1.9790275080718644,hybrid,pooled
+random_cv,3,RandomForest,Busoga,2020,1.723713168491681,2.873636960104885,hybrid,pooled
+random_cv,3,RandomForest,Elgon,2020,2.6510166735556018,2.790981973529906,hybrid,pooled
+random_cv,3,RandomForest,Teso,2020,1.540156423059482,2.563112900171029,hybrid,pooled
+random_cv,3,RandomForest,Teso,2020,1.4308611121074777,1.9258016533190285,hybrid,pooled
+random_cv,3,RandomForest,Ankole,2018,2.3,1.9533100604065712,hybrid,pooled
+random_cv,3,RandomForest,Busoga,2018,1.3,2.4301783372532353,hybrid,pooled
+random_cv,3,RandomForest,Kigezi,2018,1.1,1.88495127588005,hybrid,pooled
+random_cv,3,RandomForest,Teso,2018,1.2,1.752338827330337,hybrid,pooled
+random_cv,3,RandomForest,Ankole,2020,0.7107039593083359,0.7151046126233489,hybrid,pooled
+random_cv,3,RandomForest,Busoga,2020,0.6904468967705395,0.5886670879436833,hybrid,pooled
+random_cv,3,RandomForest,Elgon,2020,0.653829971282899,0.7560038443430772,hybrid,pooled
+random_cv,3,RandomForest,Kigezi,2020,1.2309422257456628,0.8869500492392368,hybrid,pooled
+random_cv,3,RandomForest,Lango,2020,0.997989808692561,0.7599020100895199,hybrid,pooled
+random_cv,3,RandomForest,North Buganda,2020,0.9823435270848496,0.8330037882340317,hybrid,pooled
+random_cv,3,RandomForest,Teso,2020,0.7279249098775472,0.7302508203404336,hybrid,pooled
+random_cv,3,RandomForest,Tooro,2020,0.5714159022282193,0.7485479432357951,hybrid,pooled
+random_cv,3,RandomForest,West Nile,2018,0.7,0.6197120856731072,hybrid,pooled
+random_cv,3,RandomForest,Acholi,2020,0.6391522952809118,0.5932597133363712,hybrid,pooled
+random_cv,3,RandomForest,Busoga,2020,0.3649043656974847,0.5578938667397247,hybrid,pooled
+random_cv,3,RandomForest,Elgon,2020,0.5950828682883496,0.5923749196986273,hybrid,pooled
+random_cv,3,RandomForest,Lango,2020,0.4243713490577802,0.5718787393004016,hybrid,pooled
+random_cv,3,RandomForest,North Buganda,2020,0.4198664546099319,0.6069540332996918,hybrid,pooled
+random_cv,3,RandomForest,South Buganda,2020,1.0649682679639256,0.6594965350909847,hybrid,pooled
+random_cv,3,RandomForest,Teso,2020,0.4313168954422955,0.6112202887882398,hybrid,pooled
+random_cv,3,RandomForest,West Nile,2020,0.4055485017270916,0.5755957531489407,hybrid,pooled
+random_cv,3,RandomForest,Acholi,2018,0.6,0.6048941044811166,hybrid,pooled
+random_cv,3,RandomForest,Ankole,2018,0.5,0.5529421085507583,hybrid,pooled
+random_cv,3,RandomForest,Karamoja,2018,0.4,0.49130518687356717,hybrid,pooled
+random_cv,3,RandomForest,South Buganda,2018,0.5,0.6011630359228298,hybrid,pooled
 random_cv,3,XGBoost,Ankole,2020,2.291177593433027,2.3392210006713867,hybrid,pooled
 random_cv,3,XGBoost,Ankole,2020,3.474743554785576,2.1432363986968994,hybrid,pooled
 random_cv,3,XGBoost,Bukedi,2020,2.594196684748674,2.721003770828247,hybrid,pooled
@@ -1203,39 +1203,39 @@ random_cv,4,PLS,Busoga,2018,0.5,0.13639926996442608,hybrid,pooled
 random_cv,4,PLS,Lango,2018,0.3,0.04160167178339158,hybrid,pooled
 random_cv,4,PLS,Teso,2018,0.4,0.0,hybrid,pooled
 random_cv,4,PLS,West Nile,2018,0.6,0.0,hybrid,pooled
-random_cv,4,RandomForest,Acholi,2020,1.9919193221111424,2.8177955475404146,hybrid,pooled
-random_cv,4,RandomForest,Busoga,2020,1.60003238244435,2.1279151231337132,hybrid,pooled
-random_cv,4,RandomForest,Karamoja,2020,1.4355644271735015,2.432378759887248,hybrid,pooled
-random_cv,4,RandomForest,Kigezi,2020,1.6788303054282812,2.923039707896032,hybrid,pooled
-random_cv,4,RandomForest,Tooro,2020,4.280134298861751,2.8132389355635286,hybrid,pooled
-random_cv,4,RandomForest,Karamoja,2018,1.0,2.021052674242002,hybrid,pooled
-random_cv,4,RandomForest,Lango,2018,1.3,1.7266948566291946,hybrid,pooled
-random_cv,4,RandomForest,South Buganda,2018,2.5,2.7501847525268714,hybrid,pooled
-random_cv,4,RandomForest,Tooro,2018,2.1,2.1938951338765493,hybrid,pooled
-random_cv,4,RandomForest,Acholi,2020,0.879146894389113,0.8239982233154112,hybrid,pooled
-random_cv,4,RandomForest,Acholi,2020,0.8655043603230825,0.6366443131485915,hybrid,pooled
-random_cv,4,RandomForest,Bukedi,2020,0.7056484947012804,0.7569119028524527,hybrid,pooled
-random_cv,4,RandomForest,Elgon,2020,0.6700120852270204,0.6464030186625174,hybrid,pooled
-random_cv,4,RandomForest,Karamoja,2020,0.5422885207412549,0.6127303693541082,hybrid,pooled
-random_cv,4,RandomForest,South Buganda,2020,0.8632751628341233,0.6871727862501333,hybrid,pooled
-random_cv,4,RandomForest,Teso,2020,0.4787820909269001,0.5879031756253902,hybrid,pooled
-random_cv,4,RandomForest,Tooro,2020,1.1835686146592244,0.8342341746665433,hybrid,pooled
-random_cv,4,RandomForest,Bukedi,2018,0.4,0.6086606682943936,hybrid,pooled
-random_cv,4,RandomForest,Elgon,2018,0.5,0.5989701187566455,hybrid,pooled
-random_cv,4,RandomForest,Karamoja,2018,0.4,0.6083056252709665,hybrid,pooled
-random_cv,4,RandomForest,North Buganda,2018,0.6,0.6231504832267326,hybrid,pooled
-random_cv,4,RandomForest,South Buganda,2018,0.6,0.673840485532489,hybrid,pooled
-random_cv,4,RandomForest,Ankole,2020,0.5048175502104532,0.5986888129775377,hybrid,pooled
-random_cv,4,RandomForest,Bunyoro,2020,0.7713261452057005,0.7665498537268643,hybrid,pooled
-random_cv,4,RandomForest,Karamoja,2020,0.5747979489963491,0.536485873296315,hybrid,pooled
-random_cv,4,RandomForest,Karamoja,2020,0.1047330767226874,0.7536970323595008,hybrid,pooled
-random_cv,4,RandomForest,Tooro,2020,0.5842063659602571,0.5668054060291626,hybrid,pooled
-random_cv,4,RandomForest,West Nile,2020,0.6957406402698985,0.6896117492465648,hybrid,pooled
-random_cv,4,RandomForest,West Nile,2020,0.5562316869210366,0.5744565074125739,hybrid,pooled
-random_cv,4,RandomForest,Busoga,2018,0.5,0.5435051820245621,hybrid,pooled
-random_cv,4,RandomForest,Lango,2018,0.3,0.5398327260813249,hybrid,pooled
-random_cv,4,RandomForest,Teso,2018,0.4,0.5221499709804099,hybrid,pooled
-random_cv,4,RandomForest,West Nile,2018,0.6,0.5688175206572149,hybrid,pooled
+random_cv,4,RandomForest,Acholi,2020,1.9919193221111424,2.880700774858964,hybrid,pooled
+random_cv,4,RandomForest,Busoga,2020,1.60003238244435,2.0871066998414007,hybrid,pooled
+random_cv,4,RandomForest,Karamoja,2020,1.4355644271735015,2.577384770641844,hybrid,pooled
+random_cv,4,RandomForest,Kigezi,2020,1.6788303054282812,2.927804332478589,hybrid,pooled
+random_cv,4,RandomForest,Tooro,2020,4.280134298861751,2.8124575175700444,hybrid,pooled
+random_cv,4,RandomForest,Karamoja,2018,1.0,2.006561238800665,hybrid,pooled
+random_cv,4,RandomForest,Lango,2018,1.3,1.7378938625921785,hybrid,pooled
+random_cv,4,RandomForest,South Buganda,2018,2.5,2.8336929610160864,hybrid,pooled
+random_cv,4,RandomForest,Tooro,2018,2.1,2.186187147185401,hybrid,pooled
+random_cv,4,RandomForest,Acholi,2020,0.879146894389113,0.8162974888039267,hybrid,pooled
+random_cv,4,RandomForest,Acholi,2020,0.8655043603230825,0.634587710957652,hybrid,pooled
+random_cv,4,RandomForest,Bukedi,2020,0.7056484947012804,0.753580218715869,hybrid,pooled
+random_cv,4,RandomForest,Elgon,2020,0.6700120852270204,0.6603569178801988,hybrid,pooled
+random_cv,4,RandomForest,Karamoja,2020,0.5422885207412549,0.6174771828844947,hybrid,pooled
+random_cv,4,RandomForest,South Buganda,2020,0.8632751628341233,0.6884157991630621,hybrid,pooled
+random_cv,4,RandomForest,Teso,2020,0.4787820909269001,0.5843833617251111,hybrid,pooled
+random_cv,4,RandomForest,Tooro,2020,1.1835686146592244,0.8395476060842307,hybrid,pooled
+random_cv,4,RandomForest,Bukedi,2018,0.4,0.601831859025017,hybrid,pooled
+random_cv,4,RandomForest,Elgon,2018,0.5,0.5951665387459942,hybrid,pooled
+random_cv,4,RandomForest,Karamoja,2018,0.4,0.610181579169746,hybrid,pooled
+random_cv,4,RandomForest,North Buganda,2018,0.6,0.6203277630177327,hybrid,pooled
+random_cv,4,RandomForest,South Buganda,2018,0.6,0.6715134057283273,hybrid,pooled
+random_cv,4,RandomForest,Ankole,2020,0.5048175502104532,0.6166025378081144,hybrid,pooled
+random_cv,4,RandomForest,Bunyoro,2020,0.7713261452057005,0.7718829381314077,hybrid,pooled
+random_cv,4,RandomForest,Karamoja,2020,0.5747979489963491,0.5466554936578798,hybrid,pooled
+random_cv,4,RandomForest,Karamoja,2020,0.1047330767226874,0.7938320148238621,hybrid,pooled
+random_cv,4,RandomForest,Tooro,2020,0.5842063659602571,0.5734487040401678,hybrid,pooled
+random_cv,4,RandomForest,West Nile,2020,0.6957406402698985,0.686970761119457,hybrid,pooled
+random_cv,4,RandomForest,West Nile,2020,0.5562316869210366,0.5779165392555482,hybrid,pooled
+random_cv,4,RandomForest,Busoga,2018,0.5,0.5427639170655452,hybrid,pooled
+random_cv,4,RandomForest,Lango,2018,0.3,0.5431674991016421,hybrid,pooled
+random_cv,4,RandomForest,Teso,2018,0.4,0.5221904180645213,hybrid,pooled
+random_cv,4,RandomForest,West Nile,2018,0.6,0.571749566012418,hybrid,pooled
 random_cv,4,XGBoost,Acholi,2020,1.9919193221111424,2.5510337352752686,hybrid,pooled
 random_cv,4,XGBoost,Busoga,2020,1.60003238244435,2.00903058052063,hybrid,pooled
 random_cv,4,XGBoost,Karamoja,2020,1.4355644271735015,2.543457269668579,hybrid,pooled
@@ -1479,42 +1479,42 @@ group_by_subregion,0,PLS,West Nile,2020,0.5562316869210366,0.40067632438694534,h
 group_by_subregion,0,PLS,Bukedi,2018,0.4,0.13142257256801448,hybrid,pooled
 group_by_subregion,0,PLS,Lango,2018,0.3,0.06263979741519066,hybrid,pooled
 group_by_subregion,0,PLS,West Nile,2018,0.6,0.21118450379797382,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,1.5470171390615697,1.8927762967062824,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,2.594196684748674,2.25779473951964,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,1.8697114647833253,2.0759865514687625,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,1.5321273000173696,1.9805640981680588,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,2.9489717758099068,2.2480178182338992,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,2.235407081928281,2.3433630452214804,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,1.2660956469166913,1.9636510311809463,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,2.6368413584111803,2.3864161954445002,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,1.4980452432828957,1.998964996724824,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2018,1.0,1.9861390771929432,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2018,1.3,1.7716209143148791,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2018,2.1,1.8555855758349558,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,0.5175817230094645,0.5901818807631312,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,0.7056484947012804,0.7067786496026685,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,0.5731757916040728,0.6021534537323506,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,0.4538514483659435,0.7229853914161446,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,0.997989808692561,0.8891968432735395,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,0.5494183061851179,0.702890899002295,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,0.5251432400895707,0.7506386732727166,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,0.7559563988183644,0.9162484612154429,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,0.6778710254152407,0.7070836117742157,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2018,0.4,0.6284107086771271,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2018,0.3,0.6962440546856214,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2018,0.7,0.6951061351791199,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,0.4770632662036267,0.5111029004640504,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,0.5641103408681047,0.5667965056940613,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2020,0.4869183122414556,0.5230744734332697,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,0.3602760666772656,0.6688013326597914,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,0.6658246650132922,0.7729578813783042,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2020,0.4243713490577802,0.6687522273013253,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,0.4055485017270916,0.7002241872440126,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,0.6957406402698985,0.8011612388495634,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2020,0.5562316869210366,0.6763376028993221,hybrid,pooled
-group_by_subregion,0,RandomForest,Bukedi,2018,0.4,0.5614082770820606,hybrid,pooled
-group_by_subregion,0,RandomForest,Lango,2018,0.3,0.6736342256018395,hybrid,pooled
-group_by_subregion,0,RandomForest,West Nile,2018,0.6,0.6701976372044826,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,1.5470171390615697,1.8945588866728416,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,2.594196684748674,2.353167930994846,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,1.8697114647833253,2.0294766071679007,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,1.5321273000173696,1.967855635405552,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,2.9489717758099068,2.284611416298917,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,2.235407081928281,2.304748933550423,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,1.2660956469166913,1.9715419579547477,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,2.6368413584111803,2.414880849347255,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,1.4980452432828957,1.9635102200624768,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2018,1.0,1.9955204820048993,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2018,1.3,1.7836622034318108,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2018,2.1,1.8388776547175103,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,0.5175817230094645,0.5895527356216543,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,0.7056484947012804,0.7227445037107337,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,0.5731757916040728,0.599257186088285,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,0.4538514483659435,0.7173167707733895,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,0.997989808692561,0.888712837200869,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,0.5494183061851179,0.6922311219531919,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,0.5251432400895707,0.7548603370451655,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,0.7559563988183644,0.9111666289995259,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,0.6778710254152407,0.7067194828100551,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2018,0.4,0.6264972072576284,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2018,0.3,0.7000770189358578,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2018,0.7,0.6982652505975261,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,0.4770632662036267,0.513007104762003,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,0.5641103408681047,0.5757513906266063,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2020,0.4869183122414556,0.5220298284837773,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,0.3602760666772656,0.6589206763084995,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,0.6658246650132922,0.7598897374197106,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2020,0.4243713490577802,0.6509526137939117,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,0.4055485017270916,0.6983007437419904,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,0.6957406402698985,0.783114018361985,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2020,0.5562316869210366,0.6684380637961751,hybrid,pooled
+group_by_subregion,0,RandomForest,Bukedi,2018,0.4,0.566258459108333,hybrid,pooled
+group_by_subregion,0,RandomForest,Lango,2018,0.3,0.6669882357276039,hybrid,pooled
+group_by_subregion,0,RandomForest,West Nile,2018,0.6,0.6648952935543804,hybrid,pooled
 group_by_subregion,0,XGBoost,Bukedi,2020,1.5470171390615697,1.8450648784637451,hybrid,pooled
 group_by_subregion,0,XGBoost,Bukedi,2020,2.594196684748674,2.6822497844696045,hybrid,pooled
 group_by_subregion,0,XGBoost,Bukedi,2020,1.8697114647833253,2.2302660942077637,hybrid,pooled
@@ -1767,42 +1767,42 @@ group_by_subregion,1,PLS,Tooro,2020,0.5842063659602571,0.6511218588727432,hybrid
 group_by_subregion,1,PLS,Ankole,2018,0.5,0.7558602682737932,hybrid,pooled
 group_by_subregion,1,PLS,Kigezi,2018,0.4,0.6924665965621278,hybrid,pooled
 group_by_subregion,1,PLS,Tooro,2018,0.6,0.7423598396552464,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,2.291177593433027,2.5181304407009235,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,4.746403988018382,2.669175680722424,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,3.474743554785576,2.5022414397574004,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,1.6788303054282812,2.40965714027283,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,4.580426866194772,2.519269228225358,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,2.9826713553861293,2.365834689323356,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,3.0038294115831783,2.378836345415325,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,4.280134298861751,2.4733511014921934,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,3.592580248493403,2.3463069279237034,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2018,2.3,2.3615275737315238,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2018,1.1,2.3609167245116076,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2018,2.1,2.295878351463798,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,0.7107039593083359,0.6278692421375909,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,1.3411688832335629,0.7220323543934655,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,0.9814360581560068,0.6298907360601527,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,0.6821726355797036,0.5818338345054915,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,1.2309422257456628,0.648532136509618,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,0.9352419701157908,0.5659312438752483,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,0.5714159022282193,0.8101344620987024,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,1.1835686146592244,0.8881769759997595,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,0.8099944456086376,0.6948141992040533,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2018,0.7,0.5596169984066488,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2018,0.6,0.5204780464403271,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2018,0.7,0.6077647498003305,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,0.4892093570559104,0.6036161691418108,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,0.5561447310735069,0.6916560867487379,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2020,0.5048175502104532,0.6084709749677163,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,0.4632654520489824,0.5615492246824819,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,0.7496304931127424,0.6247744080176891,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2020,0.5633174517358029,0.5523336421400716,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,0.4788089757102604,0.7646339249048509,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,0.8188652144271537,0.8416725581486233,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2020,0.5842063659602571,0.6670790310541864,hybrid,pooled
-group_by_subregion,1,RandomForest,Ankole,2018,0.5,0.5460193966714723,hybrid,pooled
-group_by_subregion,1,RandomForest,Kigezi,2018,0.4,0.5093496827167853,hybrid,pooled
-group_by_subregion,1,RandomForest,Tooro,2018,0.6,0.5930389536912782,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,2.291177593433027,2.555015485145984,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,4.746403988018382,2.682253476226856,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,3.474743554785576,2.558166364651911,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,1.6788303054282812,2.4648908202039146,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,4.580426866194772,2.571661963887128,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,2.9826713553861293,2.420310966775989,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,3.0038294115831783,2.3616341265507392,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,4.280134298861751,2.4545474551132163,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,3.592580248493403,2.3433314110472425,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2018,2.3,2.4077493050092884,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2018,1.1,2.414970777730308,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2018,2.1,2.2950654739156993,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,0.7107039593083359,0.6551841074929542,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,1.3411688832335629,0.7588715092551872,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,0.9814360581560068,0.6512766716407211,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,0.6821726355797036,0.597313804969688,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,1.2309422257456628,0.6559960636231918,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,0.9352419701157908,0.5783358001799337,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,0.5714159022282193,0.8130106519550858,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,1.1835686146592244,0.8804660675901129,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,0.8099944456086376,0.7111779219196135,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2018,0.7,0.5761706259709127,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2018,0.6,0.5346351542892054,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2018,0.7,0.6012657653680252,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,0.4892093570559104,0.6280469260181104,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,0.5561447310735069,0.7226290243330096,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2020,0.5048175502104532,0.6284101048371271,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,0.4632654520489824,0.5756725732456969,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,0.7496304931127424,0.6307507241566995,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2020,0.5633174517358029,0.5663225563010635,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,0.4788089757102604,0.7655280678442403,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,0.8188652144271537,0.83036707094142,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2020,0.5842063659602571,0.6788699968664761,hybrid,pooled
+group_by_subregion,1,RandomForest,Ankole,2018,0.5,0.5630965923557972,hybrid,pooled
+group_by_subregion,1,RandomForest,Kigezi,2018,0.4,0.5236096056149891,hybrid,pooled
+group_by_subregion,1,RandomForest,Tooro,2018,0.6,0.5873347436328935,hybrid,pooled
 group_by_subregion,1,XGBoost,Ankole,2020,2.291177593433027,2.798692464828491,hybrid,pooled
 group_by_subregion,1,XGBoost,Ankole,2020,4.746403988018382,3.7161223888397217,hybrid,pooled
 group_by_subregion,1,XGBoost,Ankole,2020,3.474743554785576,3.0094268321990967,hybrid,pooled
@@ -2055,42 +2055,42 @@ group_by_subregion,2,PLS,Teso,2020,0.3707166752248346,0.3470026109326365,hybrid,
 group_by_subregion,2,PLS,Acholi,2018,0.6,0.0,hybrid,pooled
 group_by_subregion,2,PLS,Elgon,2018,0.5,0.21874099034468975,hybrid,pooled
 group_by_subregion,2,PLS,Teso,2018,0.4,0.0,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,1.6268858066002263,1.701048085409749,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,1.9919193221111424,2.887884665596921,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,1.6750870924050658,2.086351155571038,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,2.591624259545572,3.2959665707903496,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,3.423349924580549,4.162398020317442,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,2.6510166735556018,3.689157197059085,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,1.3718829183654722,1.713797772918943,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,1.540156423059482,2.7575977234293076,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,1.4308611121074777,2.0720793687539456,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2018,1.0,1.6743835959091158,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2018,3.0,1.680749246523357,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2018,1.2,1.650980510799576,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,0.8570862730857126,0.6059806568744874,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,0.879146894389113,0.9203312283287921,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,0.8655043603230825,0.5788985843436235,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,0.6700120852270204,0.6148131181127879,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,0.653829971282899,0.8478288214038001,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,0.6636769574159984,0.6096976493120644,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,0.4787820909269001,0.5845212133044516,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,0.7279249098775472,0.857880003778403,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,0.5480873832187684,0.5896156017913249,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2018,0.7,0.566454819736962,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2018,0.5,0.570182973901371,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2018,0.4,0.549865275672594,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,0.579730411471064,0.5494107356309846,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,0.774283389787513,0.6806502230492097,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2020,0.6391522952809118,0.5275545803203066,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,0.4950587775158489,0.5497150931119443,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,0.7530910039174339,0.6013670777805087,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2020,0.5950828682883496,0.5421329605938198,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,0.3687334249789068,0.5369693495924835,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,0.4313168954422955,0.6208358656884984,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2020,0.3707166752248346,0.5373850297086769,hybrid,pooled
-group_by_subregion,2,RandomForest,Acholi,2018,0.6,0.5174961490971949,hybrid,pooled
-group_by_subregion,2,RandomForest,Elgon,2018,0.5,0.5246993635312365,hybrid,pooled
-group_by_subregion,2,RandomForest,Teso,2018,0.4,0.4987390527012707,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,1.6268858066002263,1.7025638340637324,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,1.9919193221111424,2.8001587079671335,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,1.6750870924050658,2.0951198323937046,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,2.591624259545572,3.3899205820731004,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,3.423349924580549,4.256998161595718,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,2.6510166735556018,3.7601560174967883,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,1.3718829183654722,1.7002785445436357,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,1.540156423059482,2.7037330417157506,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,1.4308611121074777,2.0863309700027495,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2018,1.0,1.6795071706483542,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2018,3.0,1.7146952163714004,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2018,1.2,1.6645116659731973,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,0.8570862730857126,0.6078115522615878,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,0.879146894389113,0.8991700433399453,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,0.8655043603230825,0.5734707615083302,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,0.6700120852270204,0.6272419048717115,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,0.653829971282899,0.8443025833030291,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,0.6636769574159984,0.616279818690774,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,0.4787820909269001,0.577876114099555,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,0.7279249098775472,0.8430637631287086,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,0.5480873832187684,0.5843994311441456,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2018,0.7,0.5605449385849617,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2018,0.5,0.5651394951846601,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2018,0.4,0.5402237622203799,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,0.579730411471064,0.5522458547718522,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,0.774283389787513,0.6791633740300523,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2020,0.6391522952809118,0.527558402581607,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,0.4950587775158489,0.5577387798951362,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,0.7530910039174339,0.6173456926136975,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2020,0.5950828682883496,0.5541838475155345,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,0.3687334249789068,0.5316726347572222,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,0.4313168954422955,0.6228669184159737,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2020,0.3707166752248346,0.5369709996142638,hybrid,pooled
+group_by_subregion,2,RandomForest,Acholi,2018,0.6,0.5162238813305778,hybrid,pooled
+group_by_subregion,2,RandomForest,Elgon,2018,0.5,0.5215212583907143,hybrid,pooled
+group_by_subregion,2,RandomForest,Teso,2018,0.4,0.49468501438017953,hybrid,pooled
 group_by_subregion,2,XGBoost,Acholi,2020,1.6268858066002263,1.5771610736846924,hybrid,pooled
 group_by_subregion,2,XGBoost,Acholi,2020,1.9919193221111424,3.0720043182373047,hybrid,pooled
 group_by_subregion,2,XGBoost,Acholi,2020,1.6750870924050658,2.213526725769043,hybrid,pooled
@@ -2339,41 +2339,41 @@ group_by_subregion,3,PLS,South Buganda,2020,0.7696938879034653,0.685179427083389
 group_by_subregion,3,PLS,Busoga,2018,0.5,0.3569085678047428,hybrid,pooled
 group_by_subregion,3,PLS,Karamoja,2018,0.4,0.0,hybrid,pooled
 group_by_subregion,3,PLS,South Buganda,2018,0.5,0.7179211003478001,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,1.5222384603844508,1.98232815889003,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,1.723713168491681,2.640072910947467,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,1.60003238244435,2.0103984100860735,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,1.2175480596073385,1.7975567291770564,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,7.244065383360269,2.220681328688398,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,1.4355644271735015,1.777135635969839,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,1.658719821291578,2.262353146121307,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,2.314641460829224,2.2722651981137587,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,1.9348144714872644,2.0737754198890426,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2018,1.3,2.005990908385289,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2018,1.0,1.8947939511175986,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2018,2.5,2.120703734317506,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,0.6401206168693183,0.5858040535060344,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,0.8018694899438292,0.7988453604565962,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,0.6904468967705395,0.5799936553312802,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,0.5422885207412549,0.6533497373626294,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,0.5422885207412549,0.6418800015378793,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,0.6286830497610721,0.583953921111945,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,1.1321807165247717,0.8157997025120127,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,0.8632751628341233,0.6325399094143801,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2018,0.4,0.5657984013190028,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2018,0.4,0.6471615354694924,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2018,0.6,0.6672577014898802,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,0.3322482939632105,0.534112729118135,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,0.4062549460293829,0.6424253203883721,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2020,0.3649043656974847,0.5220285856324803,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,0.5747979489963491,0.5890569740204344,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,0.1047330767226874,0.6544370332064221,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2020,0.5592824320954186,0.5828369274160956,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,0.6198068833094819,0.5339118135476779,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,1.0649682679639256,0.6672952183958811,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2020,0.7696938879034653,0.5818730449825901,hybrid,pooled
-group_by_subregion,3,RandomForest,Busoga,2018,0.5,0.5189089697061187,hybrid,pooled
-group_by_subregion,3,RandomForest,Karamoja,2018,0.4,0.5957195548484225,hybrid,pooled
-group_by_subregion,3,RandomForest,South Buganda,2018,0.5,0.6116193334813473,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,1.5222384603844508,2.0156702027325433,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,1.723713168491681,2.6115313473682185,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,1.60003238244435,1.983364104641631,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,1.2175480596073385,1.7826084944909724,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,7.244065383360269,2.170326422029427,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,1.4355644271735015,1.7471515074438224,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,1.658719821291578,2.3194743506731856,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,2.314641460829224,2.2288276437278824,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,1.9348144714872644,2.117535853569673,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2018,1.3,2.0152634871472346,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2018,1.0,1.8877120351200671,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2018,2.5,2.1379394696441723,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,0.6401206168693183,0.5965429632646174,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,0.8018694899438292,0.7907751138873247,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,0.6904468967705395,0.5885237596622159,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,0.5422885207412549,0.6474874717739941,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,0.5422885207412549,0.6353719498251876,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,0.6286830497610721,0.5977401602510689,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,1.1321807165247717,0.8057377587095296,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,0.8632751628341233,0.6332761459143329,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2018,0.4,0.5744747988410004,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2018,0.4,0.6475698256462082,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2018,0.6,0.6731370476015444,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,0.3322482939632105,0.5374249997594467,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,0.4062549460293829,0.6323224573849636,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2020,0.3649043656974847,0.5256932243823461,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,0.5747979489963491,0.5811083637975156,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,0.1047330767226874,0.6459892348598653,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2020,0.5592824320954186,0.5739395141632833,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,0.6198068833094819,0.5385932750321263,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,1.0649682679639256,0.6522146252157052,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2020,0.7696938879034653,0.5741565257984023,hybrid,pooled
+group_by_subregion,3,RandomForest,Busoga,2018,0.5,0.5187557588836574,hybrid,pooled
+group_by_subregion,3,RandomForest,Karamoja,2018,0.4,0.5875832821058106,hybrid,pooled
+group_by_subregion,3,RandomForest,South Buganda,2018,0.5,0.6097886931025435,hybrid,pooled
 group_by_subregion,3,XGBoost,Busoga,2020,1.5222384603844508,1.9062354564666748,hybrid,pooled
 group_by_subregion,3,XGBoost,Busoga,2020,1.723713168491681,2.7782928943634033,hybrid,pooled
 group_by_subregion,3,XGBoost,Busoga,2020,1.60003238244435,1.873010277748108,hybrid,pooled
@@ -2575,30 +2575,30 @@ group_by_subregion,4,PLS,North Buganda,2020,0.6052217822979895,1.026462314906135
 group_by_subregion,4,PLS,North Buganda,2020,0.4953986447362168,0.5474950359349473,hybrid,pooled
 group_by_subregion,4,PLS,Bunyoro,2018,0.8,0.11784263022551422,hybrid,pooled
 group_by_subregion,4,PLS,North Buganda,2018,0.6,0.22967003194562463,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,2.3426553850030096,1.9474743390313918,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,3.0549264654046246,2.638939207411008,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,2.5954365128642194,1.9089677547849815,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,2.169407944352197,2.18705700360265,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,2.686740331121587,3.0282740248199698,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,2.404748318614775,1.9033422730284846,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2018,1.7,1.682772471169239,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2018,2.1,1.75902151630579,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,0.826094714383351,0.6660289101009131,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,1.200511704804833,0.7792033116741104,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,0.98602045418736,0.6278479463796086,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,0.6433017110440628,0.6542290368751829,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,0.9823435270848496,0.8479816278308023,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,0.7961939204401095,0.6310224201890273,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2018,0.7,0.5806737096749367,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2018,0.6,0.5955765400080242,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,0.6650306538588546,0.6184485848155234,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,0.7713261452057005,0.7068866032321115,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2020,0.7333233775958355,0.5934233865407834,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,0.4198664546099319,0.5985303791176532,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,0.6052217822979895,0.7664129427165282,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2020,0.4953986447362168,0.5842714388134466,hybrid,pooled
-group_by_subregion,4,RandomForest,Bunyoro,2018,0.8,0.5409540184530632,hybrid,pooled
-group_by_subregion,4,RandomForest,North Buganda,2018,0.6,0.5567315017797086,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,2.3426553850030096,1.923196337660414,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,3.0549264654046246,2.65884387784243,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,2.5954365128642194,1.9101297980111276,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,2.169407944352197,2.1712262571159795,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,2.686740331121587,2.9434952795076716,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,2.404748318614775,1.9231822541797579,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2018,1.7,1.6988819004639055,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2018,2.1,1.771099128350829,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,0.826094714383351,0.6602782142476658,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,1.200511704804833,0.7771047035136728,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,0.98602045418736,0.6295115245470706,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,0.6433017110440628,0.6525867315835462,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,0.9823435270848496,0.8406931725431486,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,0.7961939204401095,0.6380514182675607,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2018,0.7,0.5770803258770889,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2018,0.6,0.5953394045216606,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,0.6650306538588546,0.6067771608921448,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,0.7713261452057005,0.6960648643084562,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2020,0.7333233775958355,0.5935327005752615,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,0.4198664546099319,0.5972345561568185,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,0.6052217822979895,0.7539871893931777,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2020,0.4953986447362168,0.5914712676914218,hybrid,pooled
+group_by_subregion,4,RandomForest,Bunyoro,2018,0.8,0.5367732092249599,hybrid,pooled
+group_by_subregion,4,RandomForest,North Buganda,2018,0.6,0.5559584053176021,hybrid,pooled
 group_by_subregion,4,XGBoost,Bunyoro,2020,2.3426553850030096,2.0101094245910645,hybrid,pooled
 group_by_subregion,4,XGBoost,Bunyoro,2020,3.0549264654046246,2.913785696029663,hybrid,pooled
 group_by_subregion,4,XGBoost,Bunyoro,2020,2.5954365128642194,2.329404830932617,hybrid,pooled
@@ -3171,131 +3171,131 @@ temporal_2018_2020,0,PLS,Tooro,2020,0.5842063659602571,0.7450264841028744,hybrid
 temporal_2018_2020,0,PLS,West Nile,2020,0.4055485017270916,0.0,hybrid,pooled
 temporal_2018_2020,0,PLS,West Nile,2020,0.6957406402698985,0.0,hybrid,pooled
 temporal_2018_2020,0,PLS,West Nile,2020,0.5562316869210366,0.8444866517870919,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,1.6268858066002263,2.095364285714287,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,1.9919193221111424,2.1490845238095257,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,1.6750870924050658,2.1358259920634937,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,2.291177593433027,2.142223809523811,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,4.746403988018382,2.142223809523811,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,3.474743554785576,2.1634148809523825,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,1.5470171390615697,2.1778321428571448,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,2.594196684748674,1.8613825216450237,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,1.8697114647833253,1.8835515692640712,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,2.3426553850030096,2.113392857142858,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,3.0549264654046246,2.1498345238095258,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,2.5954365128642194,2.1499730158730173,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,1.5222384603844508,2.1778321428571448,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,1.723713168491681,2.081645833333336,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,1.60003238244435,2.1179291666666686,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,2.591624259545572,1.8133354978354992,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,3.423349924580549,1.8133354978354992,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,2.6510166735556018,1.8630854978354991,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,1.2175480596073385,1.7651527597402612,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,7.244065383360269,1.7679027597402612,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,1.4355644271735015,1.7623593073593085,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,1.6788303054282812,2.142223809523811,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,4.580426866194772,2.142223809523811,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,2.9826713553861293,2.142223809523811,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,1.5321273000173696,2.113392857142858,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,2.9489717758099068,2.1498345238095258,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,2.235407081928281,2.1245882936507954,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,2.169407944352197,2.178769642857145,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,2.686740331121587,2.178769642857145,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,2.404748318614775,2.1943011904761924,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,1.658719821291578,2.176751190476193,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,2.314641460829224,2.1817696428571445,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,1.9348144714872644,2.2318815476190488,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,1.3718829183654722,1.7797521645021666,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,1.540156423059482,1.7797521645021666,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,1.4308611121074777,1.712357521645023,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,3.0038294115831783,2.177915476190478,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,4.280134298861751,2.173540476190478,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,3.592580248493403,1.9433900793650807,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,1.2660956469166913,2.0538059523809538,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,2.6368413584111803,2.098907142857145,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,1.4980452432828957,2.185566269841271,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,0.8570862730857126,0.6567055351983759,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,0.879146894389113,0.6402130847566607,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,0.8655043603230825,0.6548064129970479,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,0.7107039593083359,0.6529291463094872,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,1.3411688832335629,0.6538874796428205,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,0.9814360581560068,0.6523800662229068,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5175817230094645,0.5984461754340433,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,0.7056484947012804,0.5172167111483289,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5731757916040728,0.5360809073687752,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.826094714383351,0.6546097018650427,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,1.200511704804833,0.6146190737839734,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.98602045418736,0.6258559598554182,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,0.6401206168693183,0.5984461754340433,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,0.8018694899438292,0.5588164466252702,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,0.6904468967705395,0.5705567792093528,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,0.6700120852270204,0.46742409673659674,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,0.653829971282899,0.4681611201298702,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,0.6636769574159984,0.49060393446422873,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5422885207412549,0.49184846849057384,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5422885207412549,0.4848667661651217,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,0.6821726355797036,0.6538874796428205,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,1.2309422257456628,0.6538874796428205,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,0.9352419701157908,0.6538874796428205,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,0.4538514483659435,0.6550263685317093,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,0.997989808692561,0.6144524071173066,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,0.5494183061851179,0.6256659373778958,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,0.6433017110440628,0.6115843515617511,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,0.9823435270848496,0.5980295087673766,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,0.7961939204401095,0.5976689207442887,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,0.6286830497610721,0.568587315754421,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,1.1321807165247717,0.6067922159196154,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,0.8632751628341233,0.5627029053054788,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,0.4787820909269001,0.5142835695414837,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,0.7279249098775472,0.511264247435571,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,0.5480873832187684,0.491967055819997,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,0.5714159022282193,0.6224492055802816,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,1.1835686146592244,0.6133135182284177,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,0.8099944456086376,0.6249788598312594,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,0.5251432400895707,0.663943035198376,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,0.7559563988183644,0.6144926848950845,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,0.6778710254152407,0.658406338071973,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,0.579730411471064,0.6401720756024162,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,0.774283389787513,0.623679625160701,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Acholi,2020,0.6391522952809118,0.6382729534010881,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,0.4892093570559104,0.6363956867135272,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,0.5561447310735069,0.6373540200468605,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Ankole,2020,0.5048175502104532,0.6364132732936137,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,0.4770632662036267,0.5833418825047502,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5641103408681047,0.510355221249339,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bukedi,2020,0.4869183122414556,0.5292194174697852,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.6650306538588546,0.6380762422690828,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.7713261452057005,0.5995147808546801,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.7333233775958355,0.6113183335927918,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,0.3322482939632105,0.5833418825047502,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,0.4062549460293829,0.5458609632197868,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Busoga,2020,0.3649043656974847,0.5576012958038693,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,0.4950587775158489,0.46618243006993004,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,0.7530910039174339,0.4669194534632035,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Elgon,2020,0.5950828682883496,0.489362267797562,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5747979489963491,0.4891776351572405,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,0.1047330767226874,0.48739382521718055,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5592824320954186,0.4821959328317883,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,0.4632654520489824,0.6373540200468605,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,0.7496304931127424,0.6373540200468605,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Kigezi,2020,0.5633174517358029,0.6373540200468605,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,0.3602760666772656,0.6384929089357494,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,0.6658246650132922,0.5993481141880135,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Lango,2020,0.4243713490577802,0.6105616444486025,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,0.4198664546099319,0.5964800586324579,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,0.6052217822979895,0.5829252158380835,hybrid,pooled
-temporal_2018_2020,0,RandomForest,North Buganda,2020,0.4953986447362168,0.5831312944816623,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,0.6198068833094819,0.5550496894917948,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,1.0649682679639256,0.592254589656989,hybrid,pooled
-temporal_2018_2020,0,RandomForest,South Buganda,2020,0.7696938879034653,0.5491652790428526,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,0.3687334249789068,0.5110706907536048,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,0.4313168954422955,0.5063194242032477,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Teso,2020,0.3707166752248346,0.4887541770321181,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,0.4788089757102604,0.6080199126509885,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,0.8188652144271537,0.5982092252991246,hybrid,pooled
-temporal_2018_2020,0,RandomForest,Tooro,2020,0.5842063659602571,0.6098745669019663,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,0.4055485017270916,0.6474095756024163,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,0.6957406402698985,0.5993883919657913,hybrid,pooled
-temporal_2018_2020,0,RandomForest,West Nile,2020,0.5562316869210366,0.6418728784760132,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,1.6268858066002263,2.107278650793653,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,1.9919193221111424,2.1775643650793652,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,1.6750870924050658,2.131975555555558,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,2.291177593433027,2.16557507936508,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,4.746403988018382,2.16557507936508,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,3.474743554785576,2.190924841269842,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,1.5470171390615697,2.201058412698414,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,2.594196684748674,1.9194036435786437,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,1.8697114647833253,1.9497958658008645,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,2.3426553850030096,2.1419776984127,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,3.0549264654046246,2.1778643650793654,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,2.5954365128642194,2.136476269841272,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,1.5222384603844508,2.201058412698414,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,1.723713168491681,2.129381666666667,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,1.60003238244435,2.1617433333333347,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,2.591624259545572,1.830566738816739,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,3.423349924580549,1.8308334054834057,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,2.6510166735556018,1.8834625324675311,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,1.2175480596073385,1.7856645959595963,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,7.244065383360269,1.7888598340548343,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,1.4355644271735015,1.7938048340548334,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,1.6788303054282812,2.16557507936508,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,4.580426866194772,2.16557507936508,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,2.9826713553861293,2.16557507936508,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,1.5321273000173696,2.142411031746033,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,2.9489717758099068,2.1760910317460325,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,2.235407081928281,2.125795714285717,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,2.169407944352197,2.201833412698414,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,2.686740331121587,2.201433412698414,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,2.404748318614775,2.2150338095238102,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,1.658719821291578,2.213262698412699,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,2.314641460829224,2.20442007936508,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,1.9348144714872644,2.25288261904762,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,1.3718829183654722,1.8076441197691195,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,1.540156423059482,1.8179641197691199,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,1.4308611121074777,1.704471024531026,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,3.0038294115831783,2.2007284126984135,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,4.280134298861751,2.1977050793650803,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,3.592580248493403,1.979468239538239,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,1.2660956469166913,2.049971984126987,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,2.6368413584111803,2.1007776984127005,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,1.4980452432828957,2.1740423809523826,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.8570862730857126,0.6556702656682842,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.879146894389113,0.6396962784635388,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.8655043603230825,0.6560760184621022,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,0.7107039593083359,0.6531981228111415,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,1.3411688832335629,0.6535814561444748,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,0.9814360581560068,0.652884782262801,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5175817230094645,0.6014708149049095,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.7056484947012804,0.5187673931117047,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5731757916040728,0.5405916879018817,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.826094714383351,0.6542770117000304,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,1.200511704804833,0.6129688813671711,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.98602045418736,0.6261278915400047,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.6401206168693183,0.6014708149049095,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.8018694899438292,0.5615669893324774,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.6904468967705395,0.5738330950894658,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.6700120852270204,0.46823551678713504,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.653829971282899,0.46648873884285685,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.6636769574159984,0.4934319484110664,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5422885207412549,0.4938811686052172,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5422885207412549,0.485917545063184,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,0.6821726355797036,0.6535814561444748,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,1.2309422257456628,0.6539881228111415,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,0.9352419701157908,0.6538814561444748,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,0.4538514483659435,0.6544436783666971,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,0.997989808692561,0.6128777702560598,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,0.5494183061851179,0.6235849633570764,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.6433017110440628,0.6110900718433615,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.9823435270848496,0.6013041482382427,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.7961939204401095,0.6043080587721535,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,0.6286830497610721,0.5663811521983354,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,1.1321807165247717,0.6072782392315289,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,0.8632751628341233,0.5632486314613067,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,0.4787820909269001,0.5101947507729632,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,0.7279249098775472,0.5119096199698139,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,0.5480873832187684,0.48887443996137164,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,0.5714159022282193,0.618322734507495,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,1.1835686146592244,0.61273650041479,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,0.8099944456086376,0.6251278368561265,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.5251432400895707,0.6641006230886419,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.7559563988183644,0.6118757861290758,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.6778710254152407,0.6617441680902518,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.579730411471064,0.6381731083811272,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.774283389787513,0.6221991211763815,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Acholi,2020,0.6391522952809118,0.638378861174945,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,0.4892093570559104,0.6357009655239844,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,0.5561447310735069,0.6360842988573177,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Ankole,2020,0.5048175502104532,0.6357342916423104,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.4770632662036267,0.5857017889308832,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.5641103408681047,0.5121488144681258,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bukedi,2020,0.4869183122414556,0.533773109258303,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.6650306538588546,0.6367798544128732,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.7713261452057005,0.5969533907466805,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Bunyoro,2020,0.7333233775958355,0.6102590675861808,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.3322482939632105,0.5857017889308832,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.4062549460293829,0.547657487167975,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Busoga,2020,0.3649043656974847,0.5599235929249635,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.4950587775158489,0.4670874215490398,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.7530910039174339,0.4653206436047616,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Elgon,2020,0.5950828682883496,0.49226385317297117,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5747979489963491,0.4910049420539906,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,0.1047330767226874,0.487665227601776,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Karamoja,2020,0.5592824320954186,0.48302131851195745,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,0.4632654520489824,0.6360842988573177,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,0.7496304931127424,0.6364909655239843,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Kigezi,2020,0.5633174517358029,0.6363842988573176,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,0.3602760666772656,0.6369465210795399,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,0.6658246650132922,0.5968622796355693,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Lango,2020,0.4243713490577802,0.6073694727365857,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.4198664546099319,0.5953210458693355,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.6052217822979895,0.5855351222642166,hybrid,pooled
+temporal_2018_2020,0,RandomForest,North Buganda,2020,0.4953986447362168,0.5888856994647941,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,0.6198068833094819,0.5525254595576425,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,1.0649682679639256,0.5918558799241695,hybrid,pooled
+temporal_2018_2020,0,RandomForest,South Buganda,2020,0.7696938879034653,0.5493929388206137,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,0.3687334249789068,0.507194548752761,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,0.4313168954422955,0.5066196127548065,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Teso,2020,0.3707166752248346,0.48592070258763426,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,0.4788089757102604,0.6025772438870042,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,0.8188652144271537,0.5967210097942994,hybrid,pooled
+temporal_2018_2020,0,RandomForest,Tooro,2020,0.5842063659602571,0.6089623462356359,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.4055485017270916,0.6466034658014845,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.6957406402698985,0.5958602955085851,hybrid,pooled
+temporal_2018_2020,0,RandomForest,West Nile,2020,0.5562316869210366,0.6440470108030947,hybrid,pooled
 temporal_2018_2020,0,XGBoost,Acholi,2020,1.6268858066002263,2.110380172729492,hybrid,pooled
 temporal_2018_2020,0,XGBoost,Acholi,2020,1.9919193221111424,2.0932517051696777,hybrid,pooled
 temporal_2018_2020,0,XGBoost,Acholi,2020,1.6750870924050658,2.089594602584839,hybrid,pooled
@@ -3964,48 +3964,48 @@ temporal_2020_2018,0,PLS,South Buganda,2018,0.5,1.0527984039212521,hybrid,pooled
 temporal_2020_2018,0,PLS,Teso,2018,0.4,0.03846934957662573,hybrid,pooled
 temporal_2020_2018,0,PLS,Tooro,2018,0.6,0.7135822154072776,hybrid,pooled
 temporal_2020_2018,0,PLS,West Nile,2018,0.6,0.0,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Acholi,2018,1.0,2.4186198930553577,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Ankole,2018,2.3,2.8148451694318952,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Bukedi,2018,1.0,2.0178531101061905,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Bunyoro,2018,1.7,1.9136315186691626,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Busoga,2018,1.3,2.230562915370881,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Elgon,2018,3.0,2.157201247375581,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Karamoja,2018,1.0,2.0874372527256715,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Kigezi,2018,1.1,2.2362940880525004,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Lango,2018,1.3,2.026812739933808,hybrid,pooled
-temporal_2020_2018,0,RandomForest,North Buganda,2018,2.1,1.9901003581928092,hybrid,pooled
-temporal_2020_2018,0,RandomForest,South Buganda,2018,2.5,2.6424598690800387,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Teso,2018,1.2,2.013689059081201,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Tooro,2018,2.1,2.2465284760393645,hybrid,pooled
-temporal_2020_2018,0,RandomForest,West Nile,2018,2.1,1.934672567025436,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Acholi,2018,0.7,0.7992009895188096,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Ankole,2018,0.7,0.6844282539221132,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Bukedi,2018,0.4,0.6511400219133577,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Bunyoro,2018,0.7,0.7185839382135444,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Busoga,2018,0.4,0.7632433645428894,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Elgon,2018,0.5,0.6943326741650848,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Karamoja,2018,0.4,0.7501331754642118,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Kigezi,2018,0.6,0.6840314145379277,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Lango,2018,0.3,0.7404317766903388,hybrid,pooled
-temporal_2020_2018,0,RandomForest,North Buganda,2018,0.6,0.6730097147572762,hybrid,pooled
-temporal_2020_2018,0,RandomForest,South Buganda,2018,0.6,0.8144216913417793,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Teso,2018,0.4,0.7302717157450601,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Tooro,2018,0.7,0.6885150094950832,hybrid,pooled
-temporal_2020_2018,0,RandomForest,West Nile,2018,0.7,0.7148367583440196,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Acholi,2018,0.6,0.6103600109711372,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Ankole,2018,0.5,0.5312354772251048,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Bukedi,2018,0.4,0.5213058025811909,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Bunyoro,2018,0.8,0.6020942964889588,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Busoga,2018,0.5,0.6053946044364387,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Elgon,2018,0.5,0.5668851231879838,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Karamoja,2018,0.4,0.5812469363985053,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Kigezi,2018,0.4,0.5637820309712671,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Lango,2018,0.3,0.6021771783693892,hybrid,pooled
-temporal_2020_2018,0,RandomForest,North Buganda,2018,0.6,0.5708667467250145,hybrid,pooled
-temporal_2020_2018,0,RandomForest,South Buganda,2018,0.5,0.650915771105726,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Teso,2018,0.4,0.5809426363086285,hybrid,pooled
-temporal_2020_2018,0,RandomForest,Tooro,2018,0.6,0.5557707494135241,hybrid,pooled
-temporal_2020_2018,0,RandomForest,West Nile,2018,0.6,0.5741781344770032,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Acholi,2018,1.0,2.5198542568039595,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Ankole,2018,2.3,2.775541976087455,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Bukedi,2018,1.0,2.0011861790712095,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Bunyoro,2018,1.7,1.9126866346399285,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Busoga,2018,1.3,2.282500112485564,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Elgon,2018,3.0,2.1750169792800524,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Karamoja,2018,1.0,2.1029172059053662,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Kigezi,2018,1.1,2.2787389708990844,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Lango,2018,1.3,2.041788788740685,hybrid,pooled
+temporal_2020_2018,0,RandomForest,North Buganda,2018,2.1,2.007598953182143,hybrid,pooled
+temporal_2020_2018,0,RandomForest,South Buganda,2018,2.5,2.749239996425027,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Teso,2018,1.2,2.013265215374888,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Tooro,2018,2.1,2.221986791573583,hybrid,pooled
+temporal_2020_2018,0,RandomForest,West Nile,2018,2.1,1.936579814222883,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Acholi,2018,0.7,0.7888135243454196,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Ankole,2018,0.7,0.6849546808364001,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Bukedi,2018,0.4,0.6552843409603456,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Bunyoro,2018,0.7,0.7150994603178523,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Busoga,2018,0.4,0.7669434180991964,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Elgon,2018,0.5,0.6937185343931651,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Karamoja,2018,0.4,0.7500366903231289,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Kigezi,2018,0.6,0.6841549703717186,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Lango,2018,0.3,0.7367815547214835,hybrid,pooled
+temporal_2020_2018,0,RandomForest,North Buganda,2018,0.6,0.6741135382243569,hybrid,pooled
+temporal_2020_2018,0,RandomForest,South Buganda,2018,0.6,0.8089934729238613,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Teso,2018,0.4,0.7261809517107786,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Tooro,2018,0.7,0.6900420627460607,hybrid,pooled
+temporal_2020_2018,0,RandomForest,West Nile,2018,0.7,0.7185653809020156,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Acholi,2018,0.6,0.602650928517927,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Ankole,2018,0.5,0.5337264316787903,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Bukedi,2018,0.4,0.5238627611723407,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Bunyoro,2018,0.8,0.5950474831399722,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Busoga,2018,0.5,0.6026428088659413,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Elgon,2018,0.5,0.5669705118919293,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Karamoja,2018,0.4,0.5853116936312248,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Kigezi,2018,0.4,0.5605690628564944,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Lango,2018,0.3,0.5947007411919336,hybrid,pooled
+temporal_2020_2018,0,RandomForest,North Buganda,2018,0.6,0.5681741521566249,hybrid,pooled
+temporal_2020_2018,0,RandomForest,South Buganda,2018,0.5,0.6481091427342636,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Teso,2018,0.4,0.5733680483207918,hybrid,pooled
+temporal_2020_2018,0,RandomForest,Tooro,2018,0.6,0.5565725482936942,hybrid,pooled
+temporal_2020_2018,0,RandomForest,West Nile,2018,0.6,0.5720268381609865,hybrid,pooled
 temporal_2020_2018,0,XGBoost,Acholi,2018,1.0,2.385530710220337,hybrid,pooled
 temporal_2020_2018,0,XGBoost,Ankole,2018,2.3,2.7721054553985596,hybrid,pooled
 temporal_2020_2018,0,XGBoost,Bukedi,2018,1.0,1.9510926008224487,hybrid,pooled

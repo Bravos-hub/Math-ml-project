@@ -49,9 +49,18 @@ STATIC_FEATURES = [
     "soil_organic_carbon",
     "clay_pct",
     "sand_pct",
+    "silt_pct",
     "bulk_density",
     "cation_exchange_capacity",
     "elevation_m",
+    "soil_ph_sd",
+    "soil_organic_carbon_sd",
+    "clay_pct_sd",
+    "sand_pct_sd",
+    "silt_pct_sd",
+    "bulk_density_sd",
+    "cation_exchange_capacity_sd",
+    "elevation_m_sd",
 ]
 
 CATEGORICAL_FEATURES = [
