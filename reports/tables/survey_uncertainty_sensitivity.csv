@@ -1,0 +1,2 @@
+rule,rows_retained,rows_excluded,retention_fraction
+cv_production_pct <= 30,176,197,0.4718498659517426

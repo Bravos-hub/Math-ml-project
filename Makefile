@@ -13,7 +13,7 @@
 PYTHON ?= .venv/bin/python
 PIP ?= .venv/bin/pip
 
-.PHONY: setup data data-final models-final models-final-quick validate pca models figures report all clean
+.PHONY: setup data data-final models-final models-final-quick validate pca models diagnostics figures report all clean
 
 setup:
 	python3 -m venv .venv
@@ -40,6 +40,9 @@ pca:
 
 models:
 	$(PYTHON) scripts/run_models.py
+
+diagnostics:
+	$(PYTHON) scripts/run_diagnostics.py
 
 figures:
 	$(PYTHON) scripts/make_figures.py

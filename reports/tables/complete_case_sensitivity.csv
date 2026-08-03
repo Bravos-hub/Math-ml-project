@@ -1,0 +1,13 @@
+feature,complete_case_coverage,complete_case_eligible
+rain_total_mm,1.0,True
+rain_mean_daily_mm,1.0,True
+temperature_mean_c,1.0,True
+temperature_maximum_c,1.0,True
+temperature_minimum_c,1.0,True
+temperature_range_c,1.0,True
+temperature_source,1.0,True
+soil_source,1.0,True
+soil_source_version,1.0,True
+soil_depth_cm,1.0,True
+soil_extraction_date,0.0,False
+soil_quality_flag,1.0,True

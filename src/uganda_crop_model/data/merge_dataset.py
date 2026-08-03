@@ -158,6 +158,7 @@ def pin_order(df: pd.DataFrame, data_version: str = "aas-chirps-v1") -> pd.DataF
         "target_source", "target_source_type",
         "target_geographic_level", "predictor_geographic_level",
         "target_definition", "target_year",
+        "target_season",
         "is_proxy", "is_synthetic", "is_geographically_assigned",
         "season_definition", "yield_consistency_ok",
         "rainfall_source", "temperature_source",
