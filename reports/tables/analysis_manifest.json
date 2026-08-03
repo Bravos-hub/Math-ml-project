@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-08-02T222454Z",
+  "dataset": "final_maize_subregion_season_year.csv",
+  "analysis_mode": "final",
+  "rows": 42,
+  "spatial_units": 14,
+  "years": [
+    2018,
+    2020
+  ],
+  "validation": "spatial",
+  "models_evaluated": 5,
+  "feature_spaces_evaluated": [
+    "hybrid",
+    "pca",
+    "raw"
+  ]
+}

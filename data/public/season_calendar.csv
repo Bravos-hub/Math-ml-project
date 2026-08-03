@@ -1,0 +1,85 @@
+spatial_unit,year,season,start_date,end_date
+Acholi,2018,first_season,2018-03-01,2018-07-15
+Acholi,2018,second_season,2018-08-15,2018-12-15
+Acholi,2018,annual,2018-01-01,2018-12-31
+Acholi,2020,first_season,2020-03-01,2020-07-15
+Acholi,2020,second_season,2020-08-15,2020-12-15
+Acholi,2020,annual,2020-01-01,2020-12-31
+Ankole,2018,first_season,2018-03-01,2018-07-15
+Ankole,2018,second_season,2018-08-15,2018-12-15
+Ankole,2018,annual,2018-01-01,2018-12-31
+Ankole,2020,first_season,2020-03-01,2020-07-15
+Ankole,2020,second_season,2020-08-15,2020-12-15
+Ankole,2020,annual,2020-01-01,2020-12-31
+Bukedi,2018,first_season,2018-03-01,2018-07-15
+Bukedi,2018,second_season,2018-08-15,2018-12-15
+Bukedi,2018,annual,2018-01-01,2018-12-31
+Bukedi,2020,first_season,2020-03-01,2020-07-15
+Bukedi,2020,second_season,2020-08-15,2020-12-15
+Bukedi,2020,annual,2020-01-01,2020-12-31
+Bunyoro,2018,first_season,2018-03-01,2018-07-15
+Bunyoro,2018,second_season,2018-08-15,2018-12-15
+Bunyoro,2018,annual,2018-01-01,2018-12-31
+Bunyoro,2020,first_season,2020-03-01,2020-07-15
+Bunyoro,2020,second_season,2020-08-15,2020-12-15
+Bunyoro,2020,annual,2020-01-01,2020-12-31
+Busoga,2018,first_season,2018-03-01,2018-07-15
+Busoga,2018,second_season,2018-08-15,2018-12-15
+Busoga,2018,annual,2018-01-01,2018-12-31
+Busoga,2020,first_season,2020-03-01,2020-07-15
+Busoga,2020,second_season,2020-08-15,2020-12-15
+Busoga,2020,annual,2020-01-01,2020-12-31
+Elgon,2018,first_season,2018-03-01,2018-07-15
+Elgon,2018,second_season,2018-08-15,2018-12-15
+Elgon,2018,annual,2018-01-01,2018-12-31
+Elgon,2020,first_season,2020-03-01,2020-07-15
+Elgon,2020,second_season,2020-08-15,2020-12-15
+Elgon,2020,annual,2020-01-01,2020-12-31
+Karamoja,2018,first_season,2018-03-01,2018-07-15
+Karamoja,2018,second_season,2018-08-15,2018-12-15
+Karamoja,2018,annual,2018-01-01,2018-12-31
+Karamoja,2020,first_season,2020-03-01,2020-07-15
+Karamoja,2020,second_season,2020-08-15,2020-12-15
+Karamoja,2020,annual,2020-01-01,2020-12-31
+Kigezi,2018,first_season,2018-03-01,2018-07-15
+Kigezi,2018,second_season,2018-08-15,2018-12-15
+Kigezi,2018,annual,2018-01-01,2018-12-31
+Kigezi,2020,first_season,2020-03-01,2020-07-15
+Kigezi,2020,second_season,2020-08-15,2020-12-15
+Kigezi,2020,annual,2020-01-01,2020-12-31
+Lango,2018,first_season,2018-03-01,2018-07-15
+Lango,2018,second_season,2018-08-15,2018-12-15
+Lango,2018,annual,2018-01-01,2018-12-31
+Lango,2020,first_season,2020-03-01,2020-07-15
+Lango,2020,second_season,2020-08-15,2020-12-15
+Lango,2020,annual,2020-01-01,2020-12-31
+North Buganda,2018,first_season,2018-03-01,2018-07-15
+North Buganda,2018,second_season,2018-08-15,2018-12-15
+North Buganda,2018,annual,2018-01-01,2018-12-31
+North Buganda,2020,first_season,2020-03-01,2020-07-15
+North Buganda,2020,second_season,2020-08-15,2020-12-15
+North Buganda,2020,annual,2020-01-01,2020-12-31
+South Buganda,2018,first_season,2018-03-01,2018-07-15
+South Buganda,2018,second_season,2018-08-15,2018-12-15
+South Buganda,2018,annual,2018-01-01,2018-12-31
+South Buganda,2020,first_season,2020-03-01,2020-07-15
+South Buganda,2020,second_season,2020-08-15,2020-12-15
+South Buganda,2020,annual,2020-01-01,2020-12-31
+Teso,2018,first_season,2018-03-01,2018-07-15
+Teso,2018,second_season,2018-08-15,2018-12-15
+Teso,2018,annual,2018-01-01,2018-12-31
+Teso,2020,first_season,2020-03-01,2020-07-15
+Teso,2020,second_season,2020-08-15,2020-12-15
+Teso,2020,annual,2020-01-01,2020-12-31
+Tooro,2018,first_season,2018-03-01,2018-07-15
+Tooro,2018,second_season,2018-08-15,2018-12-15
+Tooro,2018,annual,2018-01-01,2018-12-31
+Tooro,2020,first_season,2020-03-01,2020-07-15
+Tooro,2020,second_season,2020-08-15,2020-12-15
+Tooro,2020,annual,2020-01-01,2020-12-31
+West Nile,2018,first_season,2018-03-01,2018-07-15
+West Nile,2018,second_season,2018-08-15,2018-12-15
+West Nile,2018,annual,2018-01-01,2018-12-31
+West Nile,2020,first_season,2020-03-01,2020-07-15
+West Nile,2020,second_season,2020-08-15,2020-12-15
+West Nile,2020,annual,2020-01-01,2020-12-31

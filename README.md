@@ -180,6 +180,78 @@ sklearn in `notebooks/01_pca_math.ipynb`.
 
 ---
 
+## Final-mode milestone dataset (sub-region season-year)
+
+The project is moving its scientific evaluation to a dedicated final-analysis
+pipeline in `src/uganda_crop_model/`.  The analytical grain is
+
+```text
+sub_region x year x season x crop
+```
+
+The authoritative dataset is `data/processed/final_maize_subregion_season_year.csv`
+(42 maize rows: AAS 2018 annual 14, AAS 2020 first-season 14, AAS 2020
+second-season 14).  Target and predictors are both at the sub-region level;
+rainfall and temperature are summarised over documented season windows from
+the daily ClimateSERV / NASA POWER series aggregated from member districts to
+each sub-region.  Every row carries full provenance
+(`target_source`, `target_source_type`, `target_geographic_level`,
+`is_proxy`, `is_synthetic`, `is_geographically_assigned`, ...).
+
+The final-mode quality gate (`src/uganda_crop_model/quality/dataset.py`)
+fails honestly when the sample is too small for a "final"
+experiment: the current AAS sample (2 years, 42 maize rows) is below the
+blueprint target of 100+ rows / 4+ years, so it is kept for development and
+regression purposes but is explicitly not reported as a final model result.
+
+```bash
+make data-final        # rebuild data/processed/final_maize_subregion_season_year.csv
+PYTHONPATH=src pytest tests/test_scientific_contract.py -q
+```
+
+## Final-analysis modeling pipeline
+
+The `uganda_crop_model` package now ships a leakage-safe modeling stack that
+reads only the authoritative final dataset:
+
+```bash
+PYTHONPATH=src .venv/bin/python scripts/run_final_analysis.py --mode spatial --quick
+PYTHONPATH=src .venv/bin/python scripts/run_final_analysis.py --mode spatial   # full grid
+```
+
+What it produces (in `reports/tables/`):
+
+| File                          | Contents                                             |
+| ----------------------------- | ---------------------------------------------------- |
+| `missingness_report.csv`      | per-column missing count / fraction                   |
+| `pca_diagnostics.csv`         | PC1 loadings, contributions, parallel analysis,      |
+|                               | bootstrap stability (mean + 95% CI per loading)      |
+| `spatial_model_comparison.csv`| out-of-fold RMSE/MAE/R²/skill vs mean baseline        |
+| `spatial_fold_results.csv`    | per-fold metrics + best tuned parameters              |
+| `analysis_manifest.json`      | run id, dataset, rows, units, years, validation mode  |
+
+Design contract (blueprint sections 15-18):
+
+* Three feature representations: `raw`, `pca`, `hybrid` (PCA of climate +
+  categories; static features are included if the dataset provides them).
+* Imputation (median / most-frequent), scaling, one-hot encoding, and PCA
+  are fitted *inside* each training fold only.
+* Model registry: `dummy_mean`, `ols`, `ridge`, `random_forest`, `xgboost`
+  with conservative, pre-declared parameter grids.
+* Outer validation is `GroupKFold` by spatial unit (spatial generalization)
+  or rolling-origin by year (temporal generalization); hyperparameters are
+  selected in an inner loop that never touches the outer test fold.
+* Temporal splits on the current AAS sample (2 years) cannot be built and
+  the pipeline says so explicitly instead of faking a shuffled split.
+
+Component selection for PCA happens inside every training fold; parallel
+analysis and loading tables in `pca_diagnostics.csv` are descriptive only.
+
+Configuration lives in `configs/final_maize_aas.yaml` (analysis mode, minimum
+sample, season/temperature thresholds).
+
+---
+
 ## Installation
 
 ```bash

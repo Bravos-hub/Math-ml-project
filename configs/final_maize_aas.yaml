@@ -1,0 +1,93 @@
+# Final-analysis configuration: maize, AAS subregion-season-year.
+# In final mode the pipeline must FAIL rather than fall back to proxy,
+# synthetic, or geographically-assigned targets.
+
+project:
+  name: uganda_maize_pca
+  analysis_mode: final
+  random_seed: 42
+
+observation:
+  grain: subregion_season_year_crop
+  spatial_column: spatial_unit
+  spatial_level: sub_region
+  temporal_column: year
+  season_column: season
+  crop: maize
+
+target:
+  column: yield_tons_ha
+  source: aas
+  source_type: official_aggregate
+  geographic_level: sub_region
+  definition: production_mt_divided_by_harvested_area_ha
+  allow_proxy: false
+  allow_synthetic: false
+  allow_geographic_assignment: false
+
+data_quality:
+  minimum_rows: 100
+  minimum_spatial_units: 5
+  minimum_years: 4
+  minimum_feature_coverage: 0.80
+  fail_on_all_null_feature: true
+  fail_on_duplicate_key: true
+
+pca:
+  block: climate_and_soil
+  standardize: true
+  variance_thresholds:
+    - 0.80
+    - 0.90
+    - 0.95
+
+validation:
+  temporal:
+    enabled: true
+    minimum_training_years: 3
+  spatial:
+    enabled: true
+    folds: 5
+  spatial_temporal_stress_test:
+    enabled: true
+
+models:
+  - dummy_mean
+  - ols
+  - ridge
+  - random_forest
+  - xgboost
+
+feature_spaces:
+  - raw
+  - pca
+  - hybrid
+
+# Seasonal windows used to build the agronomic calendar when real calendar
+# dates are not available from a specific agricultural-season publication.
+# These windows encode the long-term Ugandan first/second rain pattern and
+# are researchable assumptions to be tested via sensitivity analysis.
+seasons:
+  first_season:
+    start_month_day: "03-01"
+    end_month_day: "07-15"
+  second_season:
+    start_month_day: "08-15"
+    end_month_day: "12-15"
+  annual:
+    start_date_override_full_year: true
+
+rainfall:
+  onset:
+    accumulation_mm: 20
+    accumulation_days: 3
+    future_dry_spell_days: 7
+    followup_days: 15
+  dry_day_threshold_mm: 1.0
+  wet_day_threshold_mm: 1.0
+
+temperature:
+  base_temperature_c: 10.0
+  heat_threshold_c: 32.0
+  extreme_heat_threshold_c: 35.0
+  cold_threshold_c: 10.0
