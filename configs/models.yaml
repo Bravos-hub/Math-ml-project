@@ -101,7 +101,9 @@ representations:
 
 pca:
   n_components: 0.95        # cumulative variance retained for PC scores
-  hybrid_extra: [crop]      # variables kept as-is in the hybrid representation
+  # Context variables are held outside PCA and supplied to every
+  # representation so the comparison is fair.
+  context_features: [crop, season_group]
 
 validation_schemes:
   - random_cv

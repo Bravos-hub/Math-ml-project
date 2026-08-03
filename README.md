@@ -58,10 +58,15 @@ variable group. Two rules govern interpretation:
   (run id, git commit, sample size, number of unique targets, feature
   set, representation, small-sample warnings).
 
-In the pooled panel, the **hybrid** representation (PC scores + one-hot
-crop indicator) is the only model set that beats the mean baseline under
-grouped-by-subregion CV: XGBoost R2 = 0.65 (grouped) / 0.60 (random CV);
-the raw and PCA representations do not beat the mean baseline.
+The corrected pooled-panel comparison gives every representation the same
+context variables (`crop` and `season_group`), encoded within each training
+fold. Under grouped-by-subregion CV, the best result is XGBoost with PCA and
+hybrid representations (identical here because no static soil variables are
+available): RMSE = 0.574 and R2 = 0.679. Raw PCR is close behind (R2 = 0.641).
+Under random CV, raw Random Forest is best (RMSE = 0.613, R2 = 0.634), while
+PCA/hybrid Random Forest reaches R2 = 0.624. The mean baseline has grouped
+R2 = -0.020 and random-CV R2 = -0.015. Therefore, the evidence does not
+support the claim that hybrid is the only representation that generalizes.
 
 ---
 
@@ -128,7 +133,7 @@ Every modeling table carries provenance columns: `yield_source`,
 |---|---|---|---|---|
 | `data/processed/observed/maize_subregion_panel.csv` | 56 | subregion x 2020 (3 seasons) + 2018 annual | A | AAS 2018 + 2020 official estimates + CHIRPS/POWER climate |
 | `data/processed/assigned/maize_district_assigned_panel.csv` | 456 | district x 2020 (3 seasons) + 2018 annual | B | subregion values assigned to 114 districts |
-| `data/processed/observed/crop_pooled_subregion_panel.csv` | 167 (all crops) | subregion x crop x season x year | A | pooled panel with `crop` as a hybrid predictor |
+| `data/processed/observed/crop_pooled_subregion_panel.csv` | 167 (all crops) | subregion x crop x season x year | A | pooled panel with crop and season context predictors |
 
 Targets: `yield_over_harvested` (primary, t/ha = production / harvested
 area), `yield_over_planted` (sensitivity), `production_mt`,
@@ -146,14 +151,24 @@ vice versa). Baselines are mean predictor, historical mean, and
 previous-year yield; conformal prediction intervals are reported. Results
 in `reports/tables/validation_all.csv`.
 
+Run `make diagnostics` for held-out residuals, model agreement, complete-case
+and survey-uncertainty sensitivity tables, season-window sensitivity, VIFs,
+and held-out permutation importance. `make figures` and `make report` generate
+the reproducible figures and conservative technical report under `reports/`.
+
 ### Feature representations
 
 `make models` compares three feature representations at the modeling step:
 
 1. **Raw** — cleaned predictors used directly.
 2. **PCA-reduced** — retained principal-component scores (correlation-matrix PCA).
-3. **Hybrid** — PC scores plus contextual variables not in the PCA
-   transformation (e.g. one-hot `crop` in the pooled panel).
+3. **Hybrid** — climate PC scores plus original static variables and the
+   same contextual variables held outside PCA.
+
+For a fair comparison, all three representations receive the same contextual
+variables (`crop` and `season_group` in the pooled panel); only the continuous
+environmental representation changes. In this milestone the hybrid and PCA
+spaces coincide because static soil variables are unavailable.
 
 All preprocessing (imputation, scaling, PCA fitting) is done inside each
 training fold only, to avoid leakage. Model matrix: OLS, Ridge, PCR, PLS,

@@ -106,11 +106,10 @@ def _representation_pipeline(repr_name: str, pca_input_cols: list[str],
     """Return a function (X_train, X_test) -> (Xtr, Xte) that fits the
     representation (imputer/scaler/PCA/encoder) on the training fold ONLY.
 
-    ``raw`` returns the original frame unchanged (imputation/scaling happens
-    inside each model pipeline, as before).
+    Raw still passes through the representation transformer when contextual
+    columns are present, so categorical context is encoded before the numeric
+    model pipeline.  With no extras it remains the original numeric frame.
     """
-    if repr_name == "raw":
-        return lambda Xtr, Xte: (Xtr, Xte)
     tr = RepresentationTransformer(
         repr_name, pca_input_cols=pca_input_cols,
         extra_cols=extra_cols, n_components=n_components)
@@ -145,8 +144,10 @@ def make_model(name: str, seed: int = RNG):
         model = PLSRegression(n_components=3)
     elif name == "RandomForest":
         model = RandomForestRegressor(
-            n_estimators=500, max_depth=3, min_samples_leaf=2,
-            random_state=seed, n_jobs=-1)
+            # The panel is small; 200 trees is sufficient here and avoids
+            # spawning one worker per CPU during the full validation matrix.
+            n_estimators=200, max_depth=3, min_samples_leaf=2,
+            random_state=seed, n_jobs=1)
     elif name == "XGBoost":
         if not HAS_XGBOOST:
             return None
@@ -218,16 +219,34 @@ def run_scheme(df: pd.DataFrame, scheme: str, feature_cols: list[str],
     splits = split_indices(df, scheme, cfg)
     pca_cfg = cfg.get("pca", {})
     n_components = pca_cfg.get("n_components", 0.95)
-    hybrid_extra = pca_cfg.get("hybrid_extra") or pca_extra or []
-    available_extra = [c for c in hybrid_extra if c in df.columns]
+    # Context is not an environmental representation.  It must therefore be
+    # supplied identically to raw, PCA, and hybrid runs.  Older configs only
+    # listed crop as ``hybrid_extra``; retain that option as an additive
+    # override, but never let it make hybrid the only contextual model.
+    configured_context = pca_cfg.get("context_features")
+    if configured_context is None:
+        configured_context = ["crop", "season_group"]
+    context_candidates = list(configured_context)
+    # ``hybrid_extra`` was the old configuration key. Treat it as a
+    # backwards-compatible additive context list, never as hybrid-only data.
+    context_candidates += pca_cfg.get("hybrid_extra") or []
+    context_candidates += pca_extra or []
+    if "season_group" in context_candidates and "season_group" not in df:
+        if "season" in df:
+            context_candidates[context_candidates.index("season_group")] = "season"
+    context_cols = list(dict.fromkeys(
+        [c for c in context_candidates if c in df.columns]
+    ))
+    available_extra = context_cols
     rows = []
     for fold, (tr, te) in enumerate(splits):
         step = _representation_pipeline(
             representation, feature_cols, available_extra, n_components)
-        cols = feature_cols
-        if representation == "hybrid":
-            cols = cols + [c for c in available_extra
-                           if c not in feature_cols]
+        # ``feature_cols`` are continuous environmental predictors.  Context
+        # is passed to the representation transformer for all three spaces;
+        # the transformer one-hot encodes it using training-fold categories.
+        cols = feature_cols + [c for c in available_extra
+                               if c not in feature_cols]
         Xtr, Xte = step(df.loc[tr, cols], df.loc[te, cols])
         for name in models:
             model = make_model(name)

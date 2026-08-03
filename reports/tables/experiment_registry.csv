@@ -1,4 +1,2 @@
 run_id,timestamp,git_commit,sample_size,number_of_unique_targets,n_features,feature_set,target,target_source,warnings,crop,representation
-20260802T193544Z-b31c0c,2026-08-02T19:35:44.918472+00:00,0542d98,167,139,34,full_agroecological,yield_over_harvested,AAS2020_subregion,,pooled,raw
-20260802T193607Z-1be015,2026-08-02T19:36:07.099973+00:00,0542d98,167,139,34,full_agroecological,yield_over_harvested,AAS2020_subregion,,pooled,pca
-20260802T193623Z-5064c2,2026-08-02T19:36:23.577045+00:00,0542d98,167,139,34,full_agroecological,yield_over_harvested,AAS2020_subregion,,pooled,hybrid
+20260803T091922Z-3c3e17,2026-08-03T09:19:22.187050+00:00,c96611a,56,51,4,rainfall_only,yield_over_harvested,AAS2020_subregion,"sample_size=56 < min_sample_size=100: metrics are demonstration-only, not evidence of generalization",maize,raw

@@ -26,6 +26,23 @@ DEFAULT_YEARS = [2018, 2020]
 DEFAULT_SEASONS = ["first_season", "second_season", "annual"]
 
 
+def make_sensitivity_calendars(
+    district_map_file: Path = DISTRICT_MAP,
+    *,
+    shifts: tuple[int, ...] = (-14, 0, 14),
+    years: list[int] | None = None,
+) -> dict[int, pd.DataFrame]:
+    """Return season calendars shifted by predeclared days for sensitivity."""
+    base = make_season_calendar(district_map_file, years=years)
+    calendars = {}
+    for shift in shifts:
+        candidate = base.copy()
+        for column in ("start_date", "end_date"):
+            candidate[column] = pd.to_datetime(candidate[column]) + pd.to_timedelta(shift, unit="D")
+        calendars[shift] = candidate
+    return calendars
+
+
 def make_season_calendar(
     district_map_file: Path = DISTRICT_MAP,
     *,

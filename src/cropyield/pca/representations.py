@@ -5,10 +5,10 @@ Three leak-free representations, applied inside each training fold:
 * ``raw``   - the original feature columns (only imputation/scaling in-fold).
 * ``pca``   - PCA scores computed from the training fold only, with n_components
               chosen by cumulative-variance (or a fixed integer).
-* ``hybrid``- PCA scores from the continuous climate features **plus** the
-              original variables that were NOT included in the PCA (e.g. crop,
-              season, survey reliability). The PCA inputs are never added a
-              second time, which would create exact collinearity.
+* ``hybrid``- PCA scores from the continuous climate features plus the
+              original continuous variables that were NOT included in the
+              PCA. Context variables (e.g. crop and season) are kept outside
+              PCA for all three representations, so comparisons are fair.
 
 All transformations (imputer, scaler, PCA, one-hot) are fit on the training
 indices and applied to the test fold, so no test-fold information leaks.
@@ -16,7 +16,6 @@ indices and applied to the test fold, so no test-fold information leaks.
 
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.impute import SimpleImputer
@@ -57,6 +56,7 @@ class RepresentationTransformer:
         self._encoder: OneHotEncoder | None = None
         self._encoded_cols: list[str] = []
         self._pca_cols: list[str] = []
+        self._extra_cols: list[str] = []
 
     def fit(self, X_train: pd.DataFrame) -> "RepresentationTransformer":
         if self.pca_input_cols is None:
@@ -65,6 +65,23 @@ class RepresentationTransformer:
                 if pd.api.types.is_numeric_dtype(X_train[c])
             ]
         self._pca_cols = list(self.pca_input_cols)
+        # Context columns are deliberately kept outside PCA for every
+        # representation.  This makes raw, PCA, and hybrid comparisons
+        # differ only in how continuous environmental predictors are
+        # represented.
+        if self.extra_cols is None and self.representation == "hybrid":
+            extra = [c for c in X_train.columns if c not in self._pca_cols]
+        else:
+            extra = [c for c in (self.extra_cols or []) if c in X_train.columns]
+        self._extra_cols = extra
+        if extra:
+            self._encoder = OneHotEncoder(
+                handle_unknown="ignore", sparse_output=False
+            )
+            self._encoder.fit(X_train[extra])
+            self._encoded_cols = (
+                self._encoder.get_feature_names_out(extra).tolist()
+            )
         if self.representation == "raw":
             return self
         self._imputer = SimpleImputer(strategy="median")
@@ -74,22 +91,18 @@ class RepresentationTransformer:
             cont = self._scaler.fit_transform(cont)
         self._pca = PCA(n_components=self.n_components)
         self._pca.fit(cont)
-        if self.representation == "hybrid":
-            extra = self.extra_cols or [
-                c for c in X_train.columns if c not in self._pca_cols
-            ]
-            extra = [c for c in extra if c in X_train.columns]
-            if extra:
-                self._encoder = OneHotEncoder(handle_unknown="ignore",
-                                              sparse_output=False)
-                self._encoder.fit(X_train[extra])
-                self._encoded_cols = (
-                    self._encoder.get_feature_names_out(extra).tolist())
         return self
 
     def transform(self, X: pd.DataFrame) -> pd.DataFrame:
         if self.representation == "raw":
-            return X[self._pca_cols].copy()
+            parts = [X[self._pca_cols].copy()]
+            if self._encoder is not None:
+                extra = [c for c in self._extra_cols if c in X.columns]
+                encoded = self._encoder.transform(X[extra])
+                parts.append(pd.DataFrame(
+                    encoded, index=X.index, columns=self._encoded_cols
+                ))
+            return pd.concat(parts, axis=1)
         cont = X[self._pca_cols]
         if self._imputer is not None:
             cont = self._imputer.transform(cont)
@@ -98,12 +111,9 @@ class RepresentationTransformer:
         scores = self._pca.transform(cont)
         parts = [pd.Series(scores[:, i], index=X.index, name=f"PC{i + 1}")
                  for i in range(scores.shape[1])]
-        if self.representation == "hybrid" and self._encoder is not None:
-            extra = [c for c in X.columns
-                     if c not in self._pca_cols
-                     and c in X.columns]
-            encoded = self._encoder.transform(X[extra]) if extra else \
-                np.zeros((len(X), 0))
+        if self._encoder is not None:
+            extra = [c for c in self._extra_cols if c in X.columns]
+            encoded = self._encoder.transform(X[extra])
             for name, values in zip(self._encoded_cols, encoded.T):
                 parts.append(pd.Series(values, index=X.index, name=name))
         return pd.concat(parts, axis=1)

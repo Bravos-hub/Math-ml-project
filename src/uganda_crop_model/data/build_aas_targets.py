@@ -86,6 +86,7 @@ def _build_provenance(
     df["predictor_geographic_level"] = "sub_region"
     df["target_definition"] = target_definition
     df["target_year"] = year
+    df["target_season"] = df["season"]
     df["is_proxy"] = False
     df["is_synthetic"] = False
     df["is_geographically_assigned"] = False
@@ -188,6 +189,7 @@ def build_aas2020_subregion_target(
             "predictor_geographic_level",
             "target_definition",
             "target_year",
+            "target_season",
             "is_proxy",
             "is_synthetic",
             "is_geographically_assigned",
@@ -290,6 +292,7 @@ def build_aas2018_subregion_target(
         "predictor_geographic_level",
         "target_definition",
         "target_year",
+        "target_season",
         "is_proxy",
         "is_synthetic",
         "is_geographically_assigned",
