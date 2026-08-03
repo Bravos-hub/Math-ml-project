@@ -1,0 +1,149 @@
+{
+  "generated_at": "2026-08-03T10:44:54.163389+00:00",
+  "dataset": "final_multi_crop_subregion_season_year.csv",
+  "rows": 373,
+  "spatial_units": 14,
+  "years": [
+    2018,
+    2020
+  ],
+  "validation": "spatial",
+  "status": "available",
+  "models": [
+    "dummy_mean",
+    "historical_subregion_crop_mean",
+    "historical_subregion_mean",
+    "ols",
+    "previous_wave_yield",
+    "ridge"
+  ],
+  "feature_spaces": [
+    "baseline",
+    "hybrid",
+    "pca",
+    "raw"
+  ],
+  "target_primary": "raw tonnes/ha",
+  "target_sensitivities": [
+    "log1p",
+    "crop_normalized"
+  ],
+  "elevation": {
+    "status": "unavailable",
+    "reason": "no validated local elevation file"
+  },
+  "baseline_fallbacks": [
+    {
+      "model": "historical_subregion_mean",
+      "fold": 1,
+      "fallback_count": 84,
+      "test_rows": 84
+    },
+    {
+      "model": "historical_subregion_crop_mean",
+      "fold": 1,
+      "fallback_count": 84,
+      "test_rows": 84
+    },
+    {
+      "model": "previous_wave_yield",
+      "fold": 1,
+      "fallback_count": 84,
+      "test_rows": 84
+    },
+    {
+      "model": "historical_subregion_mean",
+      "fold": 2,
+      "fallback_count": 84,
+      "test_rows": 84
+    },
+    {
+      "model": "historical_subregion_crop_mean",
+      "fold": 2,
+      "fallback_count": 84,
+      "test_rows": 84
+    },
+    {
+      "model": "previous_wave_yield",
+      "fold": 2,
+      "fallback_count": 84,
+      "test_rows": 84
+    },
+    {
+      "model": "historical_subregion_mean",
+      "fold": 3,
+      "fallback_count": 80,
+      "test_rows": 80
+    },
+    {
+      "model": "historical_subregion_crop_mean",
+      "fold": 3,
+      "fallback_count": 80,
+      "test_rows": 80
+    },
+    {
+      "model": "previous_wave_yield",
+      "fold": 3,
+      "fallback_count": 80,
+      "test_rows": 80
+    },
+    {
+      "model": "historical_subregion_mean",
+      "fold": 4,
+      "fallback_count": 80,
+      "test_rows": 80
+    },
+    {
+      "model": "historical_subregion_crop_mean",
+      "fold": 4,
+      "fallback_count": 80,
+      "test_rows": 80
+    },
+    {
+      "model": "previous_wave_yield",
+      "fold": 4,
+      "fallback_count": 80,
+      "test_rows": 80
+    },
+    {
+      "model": "historical_subregion_mean",
+      "fold": 5,
+      "fallback_count": 45,
+      "test_rows": 45
+    },
+    {
+      "model": "historical_subregion_crop_mean",
+      "fold": 5,
+      "fallback_count": 45,
+      "test_rows": 45
+    },
+    {
+      "model": "previous_wave_yield",
+      "fold": 5,
+      "fallback_count": 45,
+      "test_rows": 45
+    }
+  ],
+  "additional_wave_validation": [
+    {
+      "path": "data/raw/Area_planted_for_selected_Food_Crops,_2015-2021(Ha).xlsx",
+      "valid": false,
+      "reason": "missing required panel columns: ['crop', 'season', 'subregion', 'year', 'yield_tons_ha']"
+    },
+    {
+      "path": "data/raw/Crop_production_for_selected_Food_Crops,_2015-2021_(MT).xlsx",
+      "valid": false,
+      "reason": "missing required panel columns: ['crop', 'season', 'subregion', 'year', 'yield_tons_ha']"
+    },
+    {
+      "path": "data/raw/AAS2019.pdf",
+      "valid": false,
+      "reason": "PDF is not a machine-readable validated panel source"
+    }
+  ],
+  "outputs": {
+    "predictions": "multi_crop_spatial_predictions.csv",
+    "comparison": "multi_crop_spatial_model_comparison.csv",
+    "coverage": "multi_crop_spatial_conformal_coverage.csv"
+  }
+}

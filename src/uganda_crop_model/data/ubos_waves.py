@@ -17,7 +17,14 @@ def validate_wave_source(path: Path) -> dict:
         return result
     try:
         if path.suffix.lower() == ".pdf":
-            result["reason"] = "PDF is not a machine-readable validated panel source"
+            from cropyield.data.aas2018 import load_aas2018_subregion
+            panel = load_aas2018_subregion(path)
+            required = {"sub_region", "year", "crop", "production_mt"}
+            missing = required - set(panel.columns)
+            if missing or panel.empty:
+                result["reason"] = f"parsed PDF lacks required fields: {sorted(missing)}"
+                return result
+            result.update(valid=True, reason="validated with layout-adaptive AAS parser", rows=len(panel))
             return result
         frame = pd.read_excel(path) if path.suffix.lower() in {".xls", ".xlsx"} else pd.read_csv(path)
     except Exception as exc:

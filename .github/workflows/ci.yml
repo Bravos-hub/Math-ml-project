@@ -11,4 +11,12 @@ jobs:
       - run: pip install -r requirements.lock
       - run: python -m compileall -q src scripts
       - run: PYTHONPATH=src pytest -q
-      - run: PYTHONPATH=src python scripts/build_final_dataset.py
+      # The full build needs external raw climate caches. CI always verifies
+      # code and contracts; rebuild only when the small aggregated inputs are
+      # present in the checkout.
+      - run: |
+          if test -f data/interim/subregion_daily_rainfall.csv && test -f data/interim/subregion_daily_temperature.csv; then
+            PYTHONPATH=src python scripts/build_final_dataset.py
+          else
+            echo "Aggregated climate inputs unavailable; dataset rebuild deferred."
+          fi

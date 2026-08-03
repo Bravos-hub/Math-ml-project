@@ -36,7 +36,7 @@ VALIDATION_MODES = ("spatial", "temporal", "loso", "stress")
 
 def build_pca_report(data):
     cols = resolve_feature_columns(data)
-    continuous = cols["climate"] + cols["static"]
+    continuous = cols["climate"]
     pca, scaled = fit_standardized_pca(data, continuous)
     loading, contribution = build_pca_loading_tables(pca, continuous)
     report = pd.DataFrame({
@@ -141,18 +141,22 @@ def main():
         manifest = {"dataset": path.name, "validation": args.mode, "status": "unavailable", "reason": str(exc)}
         (TABLES / f"{prefix}analysis_manifest.json").write_text(json.dumps(manifest, indent=2))
         return
-    registry = get_model_registry(random_seed=args.random_seed)
+    registry = get_model_registry(
+        random_seed=args.random_seed,
+        load_optional=not args.quick,
+    )
     if args.quick:
         registry = {k: v for k, v in registry.items() if k in {"dummy_mean", "ols", "ridge"}}
     elif args.models:
         registry = {k: registry[k] for k in args.models if k in registry}
-    predictions, fold_results, permutation = [], [], []
+    predictions, fold_results, permutation, execution_status = [], [], [], []
     for space in ("raw", "pca", "hybrid"):
         for name, spec in registry.items():
             try:
                 pred, folds = run_nested_evaluation(data, feature_space=space, model_name=name, model_spec=spec,
                                                     outer_splits=splits, inner_mode=inner_mode, random_seed=args.random_seed)
                 predictions.append(pred); fold_results.append(folds)
+                execution_status.append({"model": name, "feature_space": space, "status": "completed", "reason": ""})
                 importance = heldout_permutation_diagnostics(data, feature_space=space, model_spec=spec,
                                                              outer_splits=splits, random_seed=args.random_seed)
                 importance["model"] = name; importance["feature_space"] = space
@@ -160,6 +164,7 @@ def main():
                 pred.to_csv(TABLES / f"{prefix}{args.mode}_{name}_{space}_predictions.csv", index=False)
             except Exception as exc:
                 log.warning("checkpoint skipped for %s/%s: %s", name, space, exc)
+                execution_status.append({"model": name, "feature_space": space, "status": "unavailable", "reason": str(exc)})
     if not predictions:
         raise SystemExit("No model/feature-space evaluation completed")
     pred = pd.concat(predictions, ignore_index=True)
@@ -172,8 +177,10 @@ def main():
     pred.to_csv(TABLES / f"{prefix}{args.mode}_predictions.csv", index=False)
     summary.to_csv(TABLES / f"{prefix}{args.mode}_model_comparison.csv", index=False)
     fold.to_csv(TABLES / f"{prefix}{args.mode}_fold_results.csv", index=False)
+    pd.DataFrame(execution_status).to_csv(TABLES / f"{prefix}{args.mode}_execution_status.csv", index=False)
     # Diagnostics consume the same OOF predictions and never delete rows.
-    coverage = pred.assign(covered=lambda x: x.observed_yield.between(x.conformal_lower, x.conformal_upper) if "conformal_lower" in x else False)
+    coverage_pred = pred[pred["feature_space"].ne("baseline")].copy()
+    coverage = coverage_pred.assign(covered=lambda x: x.observed_yield.between(x.conformal_lower, x.conformal_upper))
     coverage.groupby(["model", "feature_space"]).agg(coverage=("covered", "mean"), observations=("covered", "size")).reset_index().to_csv(TABLES / f"{prefix}spatial_conformal_coverage.csv", index=False)
     feat = cols["climate"] + cols["static"]
     try:
@@ -186,7 +193,7 @@ def main():
     pd.concat(permutation, ignore_index=True).to_csv(TABLES / f"{prefix}heldout_permutation_importance.csv", index=False)
     wave_checks = [validate_wave_source(p) for p in sorted(Path("data/raw").glob("*2015-2021*.xlsx"))]
     wave_checks.append(validate_wave_source(Path("data/raw/AAS2019.pdf")))
-    manifest = {"generated_at": datetime.now(timezone.utc).isoformat(), "dataset": path.name, "rows": len(data), "spatial_units": int(data.spatial_unit.nunique()), "years": sorted(map(int, data.year.unique())), "validation": args.mode, "status": "available", "models": sorted(pred.model.unique()), "feature_spaces": sorted(pred.feature_space.unique()), "target_primary": "raw tonnes/ha", "target_sensitivities": ["log1p", "crop_normalized"], "elevation": {"status": "unavailable", "reason": "no validated local elevation file"}, "baseline_fallbacks": fallback.to_dict(orient="records"), "additional_wave_validation": wave_checks, "outputs": {"predictions": f"{prefix}{args.mode}_predictions.csv", "comparison": f"{prefix}{args.mode}_model_comparison.csv", "coverage": f"{prefix}spatial_conformal_coverage.csv"}}
+    manifest = {"generated_at": datetime.now(timezone.utc).isoformat(), "dataset": path.name, "rows": len(data), "spatial_units": int(data.spatial_unit.nunique()), "years": sorted(map(int, data.year.unique())), "validation": args.mode, "status": "available", "models": sorted(pred.model.unique()), "feature_spaces": sorted(pred.feature_space.unique()), "target_primary": "raw tonnes/ha", "target_sensitivities": ["log1p", "crop_normalized"], "elevation": {"status": "unavailable", "reason": "no validated local elevation file"}, "baseline_fallbacks": fallback.to_dict(orient="records"), "execution_status": execution_status, "additional_wave_validation": wave_checks, "outputs": {"predictions": f"{prefix}{args.mode}_predictions.csv", "comparison": f"{prefix}{args.mode}_model_comparison.csv", "coverage": f"{prefix}spatial_conformal_coverage.csv", "execution_status": f"{prefix}{args.mode}_execution_status.csv"}}
     (TABLES / f"{prefix}analysis_manifest.json").write_text(json.dumps(manifest, indent=2, default=str))
     print(summary.to_string(index=False))
 
