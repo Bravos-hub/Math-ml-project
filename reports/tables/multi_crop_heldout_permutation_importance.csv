@@ -1,0 +1,2 @@
+status,reason
+not_available_without_fold_fitted_estimators,Permutation diagnostics require explicit held-out fitted pipelines

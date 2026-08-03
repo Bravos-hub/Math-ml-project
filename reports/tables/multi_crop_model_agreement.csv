@@ -1,0 +1,7 @@
+model,mae,n
+ridge,1.1791687942538258,1119
+dummy_mean,1.5253001533496298,1119
+historical_subregion_mean,1.52530015334963,373
+historical_subregion_crop_mean,1.52530015334963,373
+previous_wave_yield,1.52530015334963,373
+ols,2.0211191017595325,1119

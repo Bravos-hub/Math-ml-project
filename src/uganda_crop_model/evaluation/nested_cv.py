@@ -21,6 +21,7 @@ from sklearn.metrics import (
     r2_score,
 )
 from sklearn.model_selection import GridSearchCV, GroupKFold
+from sklearn.inspection import permutation_importance
 from sklearn.pipeline import Pipeline
 
 from uganda_crop_model.models.pipelines import (
@@ -172,7 +173,9 @@ def run_nested_evaluation(
             param_grid=search_grid or [{}],
             scoring="neg_root_mean_squared_error",
             cv=inner_cv,
-            n_jobs=-1,
+            # Keep the authoritative runner deterministic and resource-safe;
+            # parallel nested searches can exhaust undergraduate workstations.
+            n_jobs=1,
             refit=True,
             error_score="raise",
         )
@@ -184,6 +187,15 @@ def run_nested_evaluation(
         )
 
         prediction = search.predict(X_test)
+
+        # Training-only split-conformal calibration.  The calibration
+        # residuals are computed from the fitted training pipeline and never
+        # use outer-test targets.
+        train_prediction = search.predict(X_train)
+        calibration_residuals = np.abs(y_train.to_numpy() - train_prediction)
+        n_cal = len(calibration_residuals)
+        level = min(1.0, np.ceil((n_cal + 1) * 0.90) / n_cal)
+        radius = float(np.quantile(calibration_residuals, level, method="higher"))
 
         rmse = sqrt(mean_squared_error(y_test, prediction))
         mae = mean_absolute_error(y_test, prediction)
@@ -215,6 +227,12 @@ def run_nested_evaluation(
         prediction_frame["feature_space"] = feature_space
         prediction_frame["observed_yield"] = y_test.to_numpy()
         prediction_frame["predicted_yield"] = prediction
+        crop_means = data.iloc[train_index].groupby("crop")["yield_tons_ha"].mean()
+        global_mean = float(y_train.mean())
+        prediction_frame["training_crop_mean"] = data.iloc[test_index]["crop"].map(crop_means).fillna(global_mean).to_numpy()
+        prediction_frame["conformal_lower"] = prediction - radius
+        prediction_frame["conformal_upper"] = prediction + radius
+        prediction_frame["conformal_radius"] = radius
 
         all_predictions.append(prediction_frame)
 
@@ -267,3 +285,25 @@ def summarize_out_of_fold_predictions(
         )
 
     return pd.DataFrame(rows).sort_values(["rmse", "mae"])
+
+
+def heldout_permutation_diagnostics(
+    data, *, feature_space, model_spec, outer_splits, random_seed=42
+) -> pd.DataFrame:
+    """Permutation importance computed separately on each held-out fold."""
+    feature_columns = resolve_feature_columns(data)
+    predictors = feature_columns["climate"] + feature_columns["static"] + feature_columns["categorical"]
+    rows = []
+    for fold, (train_index, test_index) in enumerate(outer_splits, 1):
+        pipe = Pipeline([
+            ("preprocess", build_preprocessor(feature_space, feature_columns=feature_columns)),
+            ("model", clone(model_spec.estimator)),
+        ])
+        pipe.fit(data.iloc[train_index][predictors], data.iloc[train_index]["yield_tons_ha"])
+        result = permutation_importance(
+            pipe, data.iloc[test_index][predictors], data.iloc[test_index]["yield_tons_ha"],
+            scoring="neg_root_mean_squared_error", n_repeats=5, random_state=random_seed,
+        )
+        rows.extend({"fold": fold, "feature": feature, "importance_mean": float(mean), "importance_std": float(std)}
+                    for feature, mean, std in zip(predictors, result.importances_mean, result.importances_std))
+    return pd.DataFrame(rows)

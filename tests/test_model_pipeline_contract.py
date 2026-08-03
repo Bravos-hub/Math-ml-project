@@ -112,8 +112,7 @@ class TestFeatureColumns:
         resolved = resolve_feature_columns(final_dataset)
         assert set(resolved["climate"]) <= set(final_dataset.columns)
         assert set(resolved["climate"]) <= set(CLIMATE_FEATURES)
-        # Milestone dataset has no soil, so static should be empty
-        assert resolved["static"] == []
+        assert "soil_ph" in resolved["static"]
 
     def test_resolve_raises_without_climate(self):
         df = pd.DataFrame({"x": [1.0]})
@@ -160,6 +159,14 @@ class TestPreprocessors:
         )
         out = pre.fit_transform(final_dataset[predictors])
         assert out.shape[0] == len(final_dataset)
+
+    def test_hybrid_and_pca_are_distinct_after_soil_integration(self, final_dataset):
+        resolved = resolve_feature_columns(final_dataset)
+        predictors = resolved["climate"] + resolved["static"] + resolved["categorical"]
+        pca = build_preprocessor("pca", feature_columns=resolved).fit_transform(final_dataset[predictors])
+        hybrid = build_preprocessor("hybrid", feature_columns=resolved).fit_transform(final_dataset[predictors])
+        assert resolved["static"]
+        assert pca.shape != hybrid.shape or not np.allclose(pca, hybrid)
 
 
 class TestSplits:

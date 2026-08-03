@@ -47,6 +47,7 @@ from uganda_crop_model.quality.dataset import (  # noqa: E402
     AnalysisPolicy,
     validate_final_dataset,
 )
+from uganda_crop_model.models.pipelines import STATIC_FEATURES  # noqa: E402
 
 CLIMATE_FEATURES = [
     "rain_total_mm",
@@ -101,9 +102,12 @@ def main() -> int:
         print(f"\n-- {name} --")
         print(df.groupby(["year", "season"]).size().to_string())
         try:
+            available_features = [
+                c for c in CLIMATE_FEATURES + STATIC_FEATURES if c in df
+            ]
             validate_final_dataset(
                 df,
-                CLIMATE_FEATURES,
+                available_features,
                 AnalysisPolicy(),
             )
             print("final_mode gate: PASSED")

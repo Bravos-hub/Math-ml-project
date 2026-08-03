@@ -32,6 +32,7 @@ from .paths import (
     PUBLIC,
 )
 from .season_calendar import make_season_calendar
+from .subregion_soil import build_optional_elevation_features, build_subregion_soil_features
 from ..features.rainfall import build_seasonal_rainfall_features
 from ..features.temperature import build_seasonal_temperature_features
 
@@ -43,6 +44,8 @@ def build_final_maize_dataset(
     district_map_file: Path = INTERIM / "uganda_districts_114.csv",
     daily_rain_file: Path = INTERIM / "subregion_daily_rainfall.csv",
     daily_temp_file: Path = INTERIM / "subregion_daily_temperature.csv",
+    soil_file: Path = INTERIM / "uganda_soil_features_114.csv",
+    elevation_file: Path | None = INTERIM / "uganda_elevation_features_114.csv",
     years: list[int] | None = None,
 ) -> pd.DataFrame:
     """Assemble the final sub-region season-year maize dataset."""
@@ -53,6 +56,8 @@ def build_final_maize_dataset(
         district_map_file=district_map_file,
         daily_rain_file=daily_rain_file,
         daily_temp_file=daily_temp_file,
+        soil_file=soil_file,
+        elevation_file=elevation_file,
         years=years,
     )
 
@@ -64,6 +69,8 @@ def build_final_multi_crop_dataset(
     district_map_file: Path = INTERIM / "uganda_districts_114.csv",
     daily_rain_file: Path = INTERIM / "subregion_daily_rainfall.csv",
     daily_temp_file: Path = INTERIM / "subregion_daily_temperature.csv",
+    soil_file: Path = INTERIM / "uganda_soil_features_114.csv",
+    elevation_file: Path | None = INTERIM / "uganda_elevation_features_114.csv",
     years: list[int] | None = None,
 ) -> pd.DataFrame:
     """Assemble the final sub-region season-year multi-crop dataset.
@@ -83,6 +90,8 @@ def build_final_multi_crop_dataset(
         district_map_file=district_map_file,
         daily_rain_file=daily_rain_file,
         daily_temp_file=daily_temp_file,
+        soil_file=soil_file,
+        elevation_file=elevation_file,
         years=years,
     )
 
@@ -93,6 +102,8 @@ def _merge_climate_and_targets(
     district_map_file: Path,
     daily_rain_file: Path,
     daily_temp_file: Path,
+    soil_file: Path,
+    elevation_file: Path | None,
     years: list[int] | None,
 ) -> pd.DataFrame:
     """Attach the shared sub-region climate blocks to a target frame."""
@@ -128,12 +139,13 @@ def _merge_climate_and_targets(
         how="left",
     )
 
+    soil = build_subregion_soil_features(soil_file, district_map_file)
+    elevation = build_optional_elevation_features(elevation_file, district_map_file)
+    merged = merged.merge(soil, on="spatial_unit", how="left", validate="many_to_one")
+    if not elevation.empty:
+        merged = merged.merge(elevation, on="spatial_unit", how="left", validate="many_to_one")
     merged["predictor_geographic_level"] = "sub_region"
-    merged["soil_source"] = "not_included"
-    merged["soil_source_version"] = "none"
-    merged["soil_depth_cm"] = 30
-    merged["soil_extraction_date"] = pd.NaT
-    merged["soil_quality_flag"] = "soil_not_included_for_milestone"
+    merged["elevation_source"] = merged.get("elevation_source", "not_available")
 
     return pin_order(merged)
 
@@ -163,7 +175,11 @@ def pin_order(df: pd.DataFrame, data_version: str = "aas-chirps-v1") -> pd.DataF
         "season_definition", "yield_consistency_ok",
         "rainfall_source", "temperature_source",
         "soil_source", "soil_source_version", "soil_depth_cm",
-        "soil_extraction_date", "soil_quality_flag",
+        "soil_quality_flag", "soil_district_count",
+        "soil_ph", "soil_ph_sd", "soil_organic_carbon", "soil_organic_carbon_sd",
+        "clay_pct", "clay_pct_sd", "sand_pct", "sand_pct_sd", "silt_pct", "silt_pct_sd",
+        "bulk_density", "bulk_density_sd", "cation_exchange_capacity", "cation_exchange_capacity_sd",
+        "elevation_m", "elevation_m_sd", "elevation_source",
         "data_version", "processing_version",
     ]
 

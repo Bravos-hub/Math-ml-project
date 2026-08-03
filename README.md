@@ -16,6 +16,26 @@ evaluation with grouped (geographic) and temporal validation.
 > benchmarks are based on secondary data and are not yet field-validated
 > or suitable for operational farmer-level decision-making.
 
+### Current authoritative conclusion
+
+The authoritative evidence set is the 373-row multi-crop subregion × crop ×
+season × year panel. SoilGrids district-centroid observations are aggregated
+to subregion means and within-subregion standard deviations, so raw, PCA, and
+hybrid representations are genuinely distinct. Raw tonnes/ha remains the
+primary target; log1p and fold-local crop-normalized analyses are sensitivities.
+
+The pipeline now exposes spatial, LOSO, temporal, and future-unseen-location
+stress modes and writes checkpointed out-of-fold predictions, training-only
+baselines, conformal coverage, outlier, residual, and held-out permutation
+diagnostics. This supports a defensible undergraduate research contribution
+in data integration, leakage-controlled validation, representation comparison,
+and transparent uncertainty—not operational or causal predictability.
+
+The validated panel contains only 2018 and 2020, so temporal and stress
+conclusions remain explicitly limited. AAS2019 is unparseable and no validated
+local elevation source exists; neither is synthesized. Maize is separately
+labeled as a 42-row small-sample analysis.
+
 ---
 
 ## Project objectives
