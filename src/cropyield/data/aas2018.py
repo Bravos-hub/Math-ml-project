@@ -103,17 +103,19 @@ TYPE2_SEMANTICS = [
 ]
 
 
-def extract_text() -> str:
+def extract_text(pdf_path: Path = AAS2018_PDF, cache_path: Path | None = None) -> str:
     """Run pdftotext -layout and cache the result under data/interim/."""
-    if TEXT_CACHE.exists():
-        return TEXT_CACHE.read_text(encoding="utf-8")
+    cache = cache_path if cache_path is not None else (TEXT_CACHE if pdf_path == AAS2018_PDF else None)
+    if cache is not None and cache.exists():
+        return cache.read_text(encoding="utf-8")
     result = subprocess.run(
-        ["pdftotext", "-layout", str(AAS2018_PDF), "-"],
+        ["pdftotext", "-layout", str(pdf_path), "-"],
         capture_output=True,
         text=True,
         check=True,
     )
-    TEXT_CACHE.write_text(result.stdout, encoding="utf-8")
+    if cache is not None:
+        cache.write_text(result.stdout, encoding="utf-8")
     return result.stdout
 
 
@@ -287,9 +289,9 @@ def parse_table(crop: str, lines: list[str]) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def load_aas2018_subregion() -> pd.DataFrame:
+def load_aas2018_subregion(pdf_path: Path = AAS2018_PDF) -> pd.DataFrame:
     """Parse all 14 sub-region yield tables from the AAS 2018 PDF."""
-    text = extract_text()
+    text = extract_text(pdf_path)
     blocks = split_table_blocks(text)
     frames = []
     checks = []
@@ -338,9 +340,12 @@ def load_aas2018_subregion() -> pd.DataFrame:
     )
 
 
-def save_aas2018_subregion(output: Path | None = None) -> pd.DataFrame:
+def save_aas2018_subregion(
+    output: Path | None = None,
+    pdf_path: Path = AAS2018_PDF,
+) -> pd.DataFrame:
     output = output or INTERIM / "aas2018_subregion_consolidated.csv"
-    panel = load_aas2018_subregion()
+    panel = load_aas2018_subregion(pdf_path)
     panel.to_csv(output, index=False)
     return panel
 

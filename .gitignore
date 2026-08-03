@@ -34,4 +34,6 @@ reports/tables/*_analysis_manifest.json
 reports/tables/*_run.log
 reports/tables/*_spatial_fold_results.csv
 reports/tables/*_spatial_model_comparison.csv
+!reports/tables/multi_crop_spatial_model_comparison.csv
+!reports/tables/multi_crop_analysis_manifest.json
 implement.txt

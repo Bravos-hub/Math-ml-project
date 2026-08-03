@@ -129,6 +129,11 @@ notebooks/          PCA math proof and verification notebooks
 reports/            figures/ and tables/, experiments registry
 ```
 
+Package ownership: `uganda_crop_model` is the authoritative final-analysis
+pipeline and source of truth for published results. `cropyield` is retained
+as the legacy/data-engineering and exploratory compatibility layer, including
+the layout-adaptive UBOS PDF parser used to validate candidate survey waves.
+
 ## Data classes and quality grades
 
 Every modeling table carries provenance columns: `yield_source`,

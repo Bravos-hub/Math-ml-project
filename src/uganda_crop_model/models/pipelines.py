@@ -167,7 +167,10 @@ def build_preprocessor(
             )
 
     elif feature_space == "pca":
-        continuous_columns = climate + static
+        # PCA is the climate-only comparison space. Static soil/terrain is
+        # deliberately reserved for the hybrid branch so the scientific
+        # question is whether static agroecology adds value beyond climate PCs.
+        continuous_columns = climate
         if continuous_columns:
             if len(continuous_columns) < 2:
                 raise ValueError(

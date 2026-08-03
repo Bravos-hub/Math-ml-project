@@ -12,7 +12,22 @@ from typing import Any
 from sklearn.dummy import DummyRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression, Ridge
-from xgboost import XGBRegressor
+from sklearn.cross_decomposition import PLSRegression
+
+
+class UnavailableEstimator:
+    """Explicit placeholder used when an optional binary is unavailable."""
+    def fit(self, X, y):
+        raise RuntimeError("XGBoost is unavailable; install requirements.lock")
+
+    def get_params(self, deep=True):
+        return {}
+
+    def set_params(self, **params):
+        return self
+
+    def predict(self, X):
+        raise RuntimeError("XGBoost is unavailable; install requirements.lock")
 
 
 @dataclass(frozen=True)
@@ -23,8 +38,9 @@ class ModelSpec:
 
 def get_model_registry(
     random_seed: int = 42,
+    load_optional: bool = False,
 ) -> dict[str, ModelSpec]:
-    return {
+    registry = {
         "dummy_mean": ModelSpec(
             estimator=DummyRegressor(strategy="mean"),
             parameter_grid={},
@@ -45,6 +61,10 @@ def get_model_registry(
                 ],
             },
         ),
+        "pls": ModelSpec(
+            estimator=PLSRegression(scale=False),
+            parameter_grid={"model__n_components": [2, 4]},
+        ),
         "random_forest": ModelSpec(
             estimator=RandomForestRegressor(
                 random_state=random_seed,
@@ -57,8 +77,16 @@ def get_model_registry(
                 "model__max_features": ["sqrt"],
             },
         ),
-        "xgboost": ModelSpec(
-            estimator=XGBRegressor(
+    }
+    xgb = None
+    if load_optional:
+        try:
+            from xgboost import XGBRegressor as xgb
+        except Exception:
+            xgb = None
+    if xgb is not None:
+        registry["xgboost"] = ModelSpec(
+            estimator=xgb(
                 objective="reg:squarederror",
                 tree_method="hist",
                 random_state=random_seed,
@@ -74,5 +102,10 @@ def get_model_registry(
                 "model__min_child_weight": [1],
                 "model__reg_lambda": [1.0],
             },
-        ),
-    }
+        )
+    else:
+        registry["xgboost"] = ModelSpec(
+            estimator=UnavailableEstimator(),
+            parameter_grid={},
+        )
+    return registry
