@@ -2,7 +2,7 @@
 #
 #   make setup    create venv and install dependencies
 #   make data     build all real-data panels (AAS 2018/2020 + climate)
-#   make data-final  build the validated subregion-season-year maize dataset
+#   make data-final  build the validated subregion-season-year datasets (maize + multi-crop)
 #   make validate run data-quality and schema tests
 #   make pca      run PCA analysis (retention, stability, loadings)
 #   make models   run model comparison with grouped/temporal validation

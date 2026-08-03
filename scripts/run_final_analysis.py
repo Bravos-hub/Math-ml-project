@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Build the final-analysis model tables and diagnostic reports.
 
-Runs on the single authoritative dataset
-``data/processed/final_maize_subregion_season_year.csv``:
+Runs on the authoritative datasets
+``data/processed/final_maize_subregion_season_year.csv`` (default) or
+``data/processed/final_multi_crop_subregion_season_year.csv``
+(``--dataset multi_crop``):
 
 1. Missingness report.
 2. Descriptive PCA diagnostics (parallel analysis, loading tables).
@@ -13,7 +15,8 @@ The current AAS milestone has only two years, so rolling-origin temporal
 splits (needing > 3 years) cannot be built; the script reports that
 explicitly rather than falling back to a leaky shuffled split.
 
-Writes (always to ``reports/tables/``):
+Writes (always to ``reports/tables/``; multi-crop runs are prefixed with
+``multi_crop_``):
   * missingness_report.csv
   * pca_diagnostics.csv
   * spatial_model_comparison.csv  (or temporal_model_comparison.csv)
@@ -21,6 +24,7 @@ Writes (always to ``reports/tables/``):
 
 Run:
   PYTHONPATH=src .venv/bin/python scripts/run_final_analysis.py --mode spatial
+  PYTHONPATH=src .venv/bin/python scripts/run_final_analysis.py --mode spatial --dataset multi_crop
 """
 
 from __future__ import annotations
@@ -41,6 +45,7 @@ sys.path.insert(
 
 from uganda_crop_model.data.paths import (  # noqa: E402
     FINAL_MAIZE_DATASET,
+    FINAL_MULTI_CROP_DATASET,
     TABLES,
 )
 from uganda_crop_model.evaluation.metadata import (  # noqa: E402
@@ -188,12 +193,13 @@ def analysis_manifest(
     data: pd.DataFrame,
     summary: pd.DataFrame,
     mode: str,
+    dataset_name: str,
 ) -> dict:
     return {
         "generated_at": datetime.now(timezone.utc).strftime(
             "%Y-%m-%dT%H%M%SZ"
         ),
-        "dataset": FINAL_MAIZE_DATASET.name,
+        "dataset": dataset_name,
         "analysis_mode": "final",
         "rows": int(len(data)),
         "spatial_units": int(data["spatial_unit"].nunique()),
@@ -215,6 +221,12 @@ def main() -> None:
         "--mode",
         choices=VALIDATION_MODES,
         default="spatial",
+    )
+    parser.add_argument(
+        "--dataset",
+        choices=("maize", "multi_crop"),
+        default="maize",
+        help="which authoritative dataset to analyse (default: maize)",
     )
     parser.add_argument(
         "--random-seed",
@@ -240,11 +252,18 @@ def main() -> None:
         format="%(levelname)s %(message)s",
     )
 
-    if not FINAL_MAIZE_DATASET.exists():
+    dataset_path = (
+        FINAL_MAIZE_DATASET
+        if args.dataset == "maize"
+        else FINAL_MULTI_CROP_DATASET
+    )
+    prefix = "" if args.dataset == "maize" else "multi_crop_"
+
+    if not dataset_path.exists():
         log.error("final dataset not found; run make data-final first")
         sys.exit(1)
 
-    data = pd.read_csv(FINAL_MAIZE_DATASET)
+    data = pd.read_csv(dataset_path)
     registry = get_model_registry(random_seed=args.random_seed)
 
     if args.quick:
@@ -269,17 +288,17 @@ def main() -> None:
         columns={"index": "column"}
     )
     missingness.to_csv(
-        TABLES / "missingness_report.csv",
+        TABLES / f"{prefix}missingness_report.csv",
         index=False,
     )
-    log.info("wrote missingness_report.csv")
+    log.info("wrote %smissingness_report.csv", prefix)
 
     pca_report = build_pca_report(data)
     pca_report.to_csv(
-        TABLES / "pca_diagnostics.csv",
+        TABLES / f"{prefix}pca_diagnostics.csv",
         index=False,
     )
-    log.info("wrote pca_diagnostics.csv")
+    log.info("wrote %spca_diagnostics.csv", prefix)
 
     summary = None
     metrics = None
@@ -314,21 +333,26 @@ def main() -> None:
         )
 
     if summary is not None:
-        comparison_name = f"{args.mode}_model_comparison.csv"
+        comparison_name = f"{prefix}{args.mode}_model_comparison.csv"
         summary.to_csv(
             TABLES / comparison_name,
             index=False,
         )
         metrics.to_csv(
-            TABLES / f"{args.mode}_fold_results.csv",
+            TABLES / f"{prefix}{args.mode}_fold_results.csv",
             index=False,
         )
         log.info("wrote %s", comparison_name)
 
-        manifest = analysis_manifest(data, summary, args.mode)
-        with (TABLES / "analysis_manifest.json").open("w") as fh:
+        manifest = analysis_manifest(
+            data,
+            summary,
+            args.mode,
+            dataset_path.name,
+        )
+        with (TABLES / f"{prefix}analysis_manifest.json").open("w") as fh:
             json.dump(manifest, fh, indent=2)
-        log.info("wrote analysis_manifest.json")
+        log.info("wrote %sanalysis_manifest.json", prefix)
 
         print(summary.to_string(index=False))
 

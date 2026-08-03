@@ -14,6 +14,21 @@ observation:
   temporal_column: year
   season_column: season
   crop: maize
+  # Eligible food crops for the multi-crop expansion (production and
+  # harvested area both reported in AAS 2018 and AAS 2020).  Perennial
+  # crops (banana, coffee, cassava) are excluded because AAS 2020 only
+  # publishes their production over planted area.
+  crops:
+    - maize
+    - beans
+    - groundnuts
+    - sorghum
+    - millet
+    - rice
+    - soya_beans
+    - simsim
+    - irish_potatoes
+    - sweet_potatoes
 
 target:
   column: yield_tons_ha

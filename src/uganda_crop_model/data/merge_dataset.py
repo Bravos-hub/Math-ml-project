@@ -18,11 +18,16 @@ from pathlib import Path
 
 import pandas as pd
 
-from .build_aas_targets import build_combined_maize_targets
+from .build_aas_targets import (
+    build_combined_maize_targets,
+    build_combined_multi_crop_targets,
+)
 from .paths import (
     AAS2018_MAIZE,
+    AAS2020_CROP_TABLES,
     AAS2020_MAIZE,
     FINAL_MAIZE_DATASET,
+    FINAL_MULTI_CROP_DATASET,
     INTERIM,
     PUBLIC,
 )
@@ -43,6 +48,54 @@ def build_final_maize_dataset(
     """Assemble the final sub-region season-year maize dataset."""
 
     targets = build_combined_maize_targets(aas2020_file, aas2018_file)
+    return _merge_climate_and_targets(
+        targets,
+        district_map_file=district_map_file,
+        daily_rain_file=daily_rain_file,
+        daily_temp_file=daily_temp_file,
+        years=years,
+    )
+
+
+def build_final_multi_crop_dataset(
+    *,
+    aas2020_crop_tables: dict[str, Path] | None = None,
+    aas2018_file: Path = AAS2018_MAIZE,
+    district_map_file: Path = INTERIM / "uganda_districts_114.csv",
+    daily_rain_file: Path = INTERIM / "subregion_daily_rainfall.csv",
+    daily_temp_file: Path = INTERIM / "subregion_daily_temperature.csv",
+    years: list[int] | None = None,
+) -> pd.DataFrame:
+    """Assemble the final sub-region season-year multi-crop dataset.
+
+    The eligible crop set is the ten food crops that report both production
+    and harvested area in AAS 2018 and AAS 2020, so every row uses the same
+    ``production / harvested area`` yield definition.
+    """
+
+    crop_tables = aas2020_crop_tables or dict(AAS2020_CROP_TABLES)
+    targets = build_combined_multi_crop_targets(
+        crop_tables,
+        aas2018_file,
+    )
+    return _merge_climate_and_targets(
+        targets,
+        district_map_file=district_map_file,
+        daily_rain_file=daily_rain_file,
+        daily_temp_file=daily_temp_file,
+        years=years,
+    )
+
+
+def _merge_climate_and_targets(
+    targets: pd.DataFrame,
+    *,
+    district_map_file: Path,
+    daily_rain_file: Path,
+    daily_temp_file: Path,
+    years: list[int] | None,
+) -> pd.DataFrame:
+    """Attach the shared sub-region climate blocks to a target frame."""
 
     calendar = make_season_calendar(
         district_map_file,
@@ -131,6 +184,16 @@ def save_final_maize_dataset(output: Path | None = None) -> pd.DataFrame:
     ensure_dirs()
     df = build_final_maize_dataset()
     output = output or FINAL_MAIZE_DATASET
+    df.to_csv(output, index=False)
+    return df
+
+
+def save_final_multi_crop_dataset(output: Path | None = None) -> pd.DataFrame:
+    from uganda_crop_model.data.paths import ensure_dirs
+
+    ensure_dirs()
+    df = build_final_multi_crop_dataset()
+    output = output or FINAL_MULTI_CROP_DATASET
     df.to_csv(output, index=False)
     return df
 

@@ -189,24 +189,41 @@ pipeline in `src/uganda_crop_model/`.  The analytical grain is
 sub_region x year x season x crop
 ```
 
-The authoritative dataset is `data/processed/final_maize_subregion_season_year.csv`
-(42 maize rows: AAS 2018 annual 14, AAS 2020 first-season 14, AAS 2020
-second-season 14).  Target and predictors are both at the sub-region level;
-rainfall and temperature are summarised over documented season windows from
-the daily ClimateSERV / NASA POWER series aggregated from member districts to
-each sub-region.  Every row carries full provenance
-(`target_source`, `target_source_type`, `target_geographic_level`,
-`is_proxy`, `is_synthetic`, `is_geographically_assigned`, ...).
+Two authoritative datasets are produced by `make data-final`:
+
+| Dataset | File | Rows | Grain |
+| ------- | ---- | ---- | ----- |
+| Maize-only (legacy) | `data/processed/final_maize_subregion_season_year.csv` | 42 | sub_region x year x season x crop(maize) |
+| Multi-crop (expansion) | `data/processed/final_multi_crop_subregion_season_year.csv` | 373 | sub_region x year x season x crop |
+
+The multi-crop dataset covers ten food crops (maize, beans, groundnuts,
+sorghum, millet, rice, soya_beans, simsim, irish_potatoes,
+sweet_potatoes) across 14 sub-regions and both AAS waves (2018 annual 124,
+2020 first-season 129, 2020 second-season 120).  Every crop shares the same
+`production / harvested area` yield definition in both waves.  Perennial
+crops (banana, coffee, cassava) are excluded because AAS 2020 publishes
+their production over planted, not harvested, area.  Target and predictors
+are both at the sub-region level; rainfall and temperature are summarised
+over documented season windows from the daily ClimateSERV / NASA POWER
+series aggregated from member districts to each sub-region.  Every row
+carries full provenance (`target_source`, `target_source_type`,
+`target_geographic_level`, `is_proxy`, `is_synthetic`,
+`is_geographically_assigned`, ...).
 
 The final-mode quality gate (`src/uganda_crop_model/quality/dataset.py`)
-fails honestly when the sample is too small for a "final"
-experiment: the current AAS sample (2 years, 42 maize rows) is below the
-blueprint target of 100+ rows / 4+ years, so it is kept for development and
-regression purposes but is explicitly not reported as a final model result.
+fails honestly when the sample is too small for a "final" experiment:
+- the maize-only sample (2 years, 42 rows) is below the blueprint target of
+  100+ rows / 4+ years;
+- the multi-crop sample now satisfies the 100-row and 5-unit requirements
+  but still has only 2 years (AAS 2018 and 2020 are the only published
+  waves), so it fails honestly on temporal coverage.
+
+Both are kept for development and regression purposes but are explicitly
+not reported as a final model result.
 
 ```bash
-make data-final        # rebuild data/processed/final_maize_subregion_season_year.csv
-PYTHONPATH=src pytest tests/test_scientific_contract.py -q
+make data-final        # rebuild both validated subregion-season-year datasets
+PYTHONPATH=src pytest tests/test_scientific_contract.py tests/test_multi_crop_contract.py -q
 ```
 
 ## Final-analysis modeling pipeline

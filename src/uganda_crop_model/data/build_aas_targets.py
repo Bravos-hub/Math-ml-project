@@ -113,12 +113,13 @@ def build_aas2020_subregion_target(
     source_file: Path,
     *,
     year: int = 2020,
-    crop: str = "maize",
+    crop: str | None = "maize",
 ) -> pd.DataFrame:
     """Build first/second-season sub-region targets from an AAS 2020 table.
 
     ``total_2020`` rows are dropped (they are derived from the seasonal
-    blocks).  The single "Uganda" national row is dropped as well.
+    blocks).  The single "Uganda" national row is dropped as well.  Pass
+    ``crop=None`` to keep every crop present in the table.
     """
     df = pd.read_csv(source_file)
 
@@ -128,7 +129,8 @@ def build_aas2020_subregion_target(
 
     df = df.copy()
     df["crop"] = df["crop"].astype(str).str.strip().str.lower()
-    df = df[df["crop"].eq(crop.lower())].copy()
+    if crop is not None:
+        df = df[df["crop"].eq(crop.lower())].copy()
 
     df["season_group"] = df["season_group"].astype(str)
     df = df[~df["season_group"].str.startswith("total")].copy()
@@ -200,13 +202,14 @@ def build_aas2018_subregion_target(
     source_file: Path,
     *,
     year: int = 2018,
-    crop: str = "maize",
+    crop: str | None = "maize",
 ) -> pd.DataFrame:
     """Build annual sub-region targets from the AAS 2018 consolidated table.
 
     AAS 2018 does not release separate first/second targets; the consolidated
     table merges total production with the second's harvested area.  These
     rows are kept at ``season`` and flagged ``yield_consistency_ok = False``.
+    Pass ``crop=None`` to keep every crop present in the table.
     """
     df = pd.read_csv(source_file)
 
@@ -216,7 +219,8 @@ def build_aas2018_subregion_target(
 
     df = df.copy()
     df["crop"] = df["crop"].astype(str).str.strip().str.lower()
-    df = df[df["crop"].eq(crop.lower())].copy()
+    if crop is not None:
+        df = df[df["crop"].eq(crop.lower())].copy()
 
     numeric = [
         "area_planted_ha",
@@ -310,6 +314,77 @@ def build_combined_maize_targets(
     key = ["spatial_unit", "year", "season", "crop"]
     if targets.duplicated(key).any():
         raise ValueError("Combined targets contain duplicate analytical keys.")
+    return targets.sort_values(key).reset_index(drop=True)
+
+
+def build_aas2020_multi_crop_target(
+    crop_tables: dict[str, Path],
+    *,
+    year: int = 2020,
+) -> pd.DataFrame:
+    """Combine first/second-season targets across the eligible food crops.
+
+    Only crops that report both production and harvested area are eligible
+    (``REQUIRED2020``), so every row has the same
+    ``production / harvested area`` target definition.
+    """
+    frames = []
+    for crop, path in crop_tables.items():
+        frame = build_aas2020_subregion_target(
+            path,
+            year=year,
+            crop=crop,
+        )
+        frames.append(frame)
+
+    targets = pd.concat(frames, ignore_index=True)
+
+    key = ["spatial_unit", "year", "season", "crop"]
+    if targets.duplicated(key).any():
+        raise ValueError("Multi-crop targets contain duplicate analytical keys.")
+    return targets.sort_values(key).reset_index(drop=True)
+
+
+def build_aas2018_multi_crop_target(
+    source_file: Path,
+    crops: list[str],
+    *,
+    year: int = 2018,
+) -> pd.DataFrame:
+    """Build annual targets for the same food-crop set from AAS 2018."""
+    all_rows = build_aas2018_subregion_target(
+        source_file,
+        year=year,
+        crop=None,
+    )
+    allowed = {crop.lower() for crop in crops}
+    targets = all_rows[all_rows["crop"].isin(allowed)].copy()
+
+    if targets.empty:
+        raise ValueError("No AAS 2018 rows remain for the requested crops.")
+
+    key = ["spatial_unit", "year", "season", "crop"]
+    if targets.duplicated(key).any():
+        raise ValueError("AAS 2018 multi-crop targets contain duplicate keys.")
+    return targets.sort_values(key).reset_index(drop=True)
+
+
+def build_combined_multi_crop_targets(
+    aas2020_crop_tables: dict[str, Path],
+    aas2018_file: Path,
+) -> pd.DataFrame:
+    """Combine AAS 2020 seasonal and AAS 2018 annual multi-crop targets."""
+    crops = list(aas2020_crop_tables)
+    targets = pd.concat(
+        [
+            build_aas2020_multi_crop_target(aas2020_crop_tables),
+            build_aas2018_multi_crop_target(aas2018_file, crops),
+        ],
+        ignore_index=True,
+    )
+    key = ["spatial_unit", "year", "season", "crop"]
+    if targets.duplicated(key).any():
+        raise ValueError("Combined multi-crop targets contain duplicate keys.")
     return targets.sort_values(key).reset_index(drop=True)
 
 
