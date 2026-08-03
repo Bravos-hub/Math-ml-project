@@ -192,6 +192,7 @@ def main():
     model_agreement(pred).to_csv(TABLES / f"{prefix}model_agreement.csv", index=False)
     pd.concat(permutation, ignore_index=True).to_csv(TABLES / f"{prefix}heldout_permutation_importance.csv", index=False)
     wave_checks = [validate_wave_source(p) for p in sorted(Path("data/raw").glob("*2015-2021*.xlsx"))]
+    wave_checks += [validate_wave_source(p) for p in sorted(Path(".").glob("UGA-UBOS-AAS-*.xml"))]
     wave_checks.append(validate_wave_source(Path("data/raw/AAS2019.pdf")))
     manifest = {"generated_at": datetime.now(timezone.utc).isoformat(), "dataset": path.name, "rows": len(data), "spatial_units": int(data.spatial_unit.nunique()), "years": sorted(map(int, data.year.unique())), "validation": args.mode, "status": "available", "models": sorted(pred.model.unique()), "feature_spaces": sorted(pred.feature_space.unique()), "target_primary": "raw tonnes/ha", "target_sensitivities": ["log1p", "crop_normalized"], "elevation": {"status": "unavailable", "reason": "no validated local elevation file"}, "baseline_fallbacks": fallback.to_dict(orient="records"), "execution_status": execution_status, "additional_wave_validation": wave_checks, "outputs": {"predictions": f"{prefix}{args.mode}_predictions.csv", "comparison": f"{prefix}{args.mode}_model_comparison.csv", "coverage": f"{prefix}spatial_conformal_coverage.csv", "execution_status": f"{prefix}{args.mode}_execution_status.csv"}}
     (TABLES / f"{prefix}analysis_manifest.json").write_text(json.dumps(manifest, indent=2, default=str))

@@ -7,6 +7,7 @@ from uganda_crop_model.data.subregion_soil import (
 )
 from uganda_crop_model.validation.splits import leave_one_subregion_out_splits
 from uganda_crop_model.evaluation.baselines import predict_training_baselines
+from uganda_crop_model.data.ubos_waves import validate_ddi_codebook
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -42,3 +43,14 @@ def test_crop_baseline_is_training_only_and_informative_under_spatial_holdout():
     crop_values, fallback_count = result["crop_mean"]
     assert fallback_count == 0
     assert crop_values.tolist() == [1.0, 10.0]
+
+
+def test_ubos_codebooks_are_metadata_only_not_target_panels():
+    codebook = ROOT / "UGA-UBOS-AAS-2019-v01 (1).xml"
+    if not codebook.exists():
+        pytest.skip("study codebook not present")
+    result = validate_ddi_codebook(codebook)
+    assert result["status"] == "metadata_only"
+    assert result["year"] == 2019
+    assert result["signals"]["production_metadata"]
+    assert "microdata" in result["reason"]
