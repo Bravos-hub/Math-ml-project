@@ -15,6 +15,8 @@ evaluation with grouped (geographic) and temporal validation.
 > **Research status:** active undergraduate proof of concept. The current
 > benchmarks are based on secondary data and are not yet field-validated
 > or suitable for operational farmer-level decision-making.
+> This study developed and evaluated a reproducible, leakage-controlled framework for crop-yield prediction using geographically matched agricultural and environmental data from Ugandan subregions. All preprocessing transformations were fitted within training folds, geographic validation isolated subregions between training and test data, and temporal split analyses isolated observations across survey years where the available data permitted. Raw, PCA-reduced, and hybrid environmental representations were compared across linear and tree-based models against transparent baseline predictors.
+> The results demonstrate that the framework can support auditable undergraduate research on crop-yield prediction, but they do not establish production-ready forecasting or broad temporal generalization. The evidence is limited by the small number of survey years, repeated subregion structure, uneven seasonal definitions between 2018 and 2020, and the absence of a larger independent validation sample. The contribution is therefore methodological and empirical: it shows how a small agricultural dataset can be analyzed transparently, with explicit leakage controls, provenance, uncertainty diagnostics, and honest acceptance criteria.
 
 ---
 
