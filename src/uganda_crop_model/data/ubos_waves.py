@@ -33,7 +33,21 @@ def validate_wave_source(path: Path) -> dict:
     normalized = {str(c).strip().lower().replace(" ", "_") for c in frame.columns}
     missing = REQUIRED_GRAIN - normalized
     if missing:
-        result["reason"] = f"missing required panel columns: {sorted(missing)}"
+        reason = f"missing required panel columns: {sorted(missing)}"
+        if path.suffix.lower() in {".xls", ".xlsx"}:
+            try:
+                from uganda_crop_model.data.aas_2015_2021 import detect_grain
+                grain = detect_grain(path)
+                reason += f"; detected grain: {grain.grain} ({grain.evidence})"
+                if grain.grain != "subregion":
+                    reason += (
+                        " — a {0}-grain series cannot enter the subregion panel; "
+                        "national abstract tables can still serve via "
+                        "aas_2015_2021.build_national_yield_panel".format(grain.grain)
+                    )
+            except Exception:
+                pass  # grain detection is advisory; never mask the real reason
+        result["reason"] = reason
         return result
     result.update(valid=True, reason="validated authoritative panel grain", rows=len(frame))
     return result
