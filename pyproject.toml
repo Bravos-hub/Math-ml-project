@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cropyield-uganda"
-version = "0.1.0"
+version = "0.2.0"
 description = "Crop-yield prediction for Uganda using AAS survey data, CHIRPS rainfall, and PCA-based agroclimatic factors"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "Research project" }]
+authors = [{ name = "BRAVE OLIMI" }]
 dependencies = [
     "numpy>=2.0",
     "pandas>=2.2",
@@ -26,10 +26,18 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=6.0",
+    "ruff>=0.12",
+    "mypy>=1.17",
+    "pre-commit>=4.0",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["uganda_crop_model*"]
+exclude = ["cropyield*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -16,4 +16,9 @@ Design contract (see configs/final_maize_aas.yaml):
 
 from __future__ import annotations
 
-__version__ = "0.2.0"
+from importlib.metadata import PackageNotFoundError, version
+
+try:
+    __version__ = version("cropyield-uganda")
+except PackageNotFoundError:
+    __version__ = "0+unknown"

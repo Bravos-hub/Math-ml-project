@@ -53,7 +53,8 @@ CLIMATE_FEATURES = [
 # AAS data cannot satisfy; everything else uses final-mode defaults.
 RELAXED_POLICY = AnalysisPolicy(
     minimum_rows=10,
-    minimum_years=2,
+    minimum_environmental_units=10,
+    minimum_years=1,
 )
 
 
@@ -62,6 +63,13 @@ def final_dataset() -> pd.DataFrame:
     if not FINAL_MAIZE_DATASET.exists():
         pytest.skip("final dataset not built yet (run make data-final)")
     return pd.read_csv(FINAL_MAIZE_DATASET)
+
+
+@pytest.fixture(scope="module")
+def homogeneous_dataset(final_dataset) -> pd.DataFrame:
+    return final_dataset[
+        final_dataset["target_temporal_granularity"].eq("seasonal")
+    ].reset_index(drop=True)
 
 
 def test_no_duplicate_analytical_keys(final_dataset):
@@ -93,7 +101,9 @@ def test_no_mixed_season_rows(final_dataset):
     # total_2020 rows must not be combined with the seasonal rows
     assert not final_dataset["season"].isin(["total"]).any()
     by_year_season = final_dataset.groupby(["year", "season"]).size()
-    assert {"first_season", "second_season"} <= set(by_year_season.index.get_level_values("season"))
+    assert {"first_season", "second_season"} <= set(
+        by_year_season.index.get_level_values("season")
+    )
 
 
 def test_target_and_predictor_levels_match(final_dataset):
@@ -108,8 +118,21 @@ def test_no_target_derived_leakage(final_dataset):
     assert features.isdisjoint(TARGET_DERIVED_COLUMNS)
 
 
-def test_full_feature_coverage_under_relaxed_policy(final_dataset):
-    validate_final_dataset(final_dataset, CLIMATE_FEATURES, RELAXED_POLICY)
+def test_full_feature_coverage_under_relaxed_policy(homogeneous_dataset):
+    validate_final_dataset(homogeneous_dataset, CLIMATE_FEATURES, RELAXED_POLICY)
+
+
+def test_gate_rejects_mixed_temporal_granularity(final_dataset):
+    with pytest.raises(ValueError, match="mix annual and seasonal"):
+        validate_final_dataset(
+            final_dataset,
+            CLIMATE_FEATURES,
+            AnalysisPolicy(
+                minimum_rows=10,
+                minimum_environmental_units=10,
+                minimum_years=1,
+            ),
+        )
 
 
 def test_final_policy_fails_honestly_on_small_sample(final_dataset):
@@ -117,26 +140,30 @@ def test_final_policy_fails_honestly_on_small_sample(final_dataset):
         validate_final_dataset(final_dataset, CLIMATE_FEATURES, AnalysisPolicy())
 
 
-@pytest.mark.parametrize("leak_col", ["yield_tons_ha", "production_mt", "area_harvested_ha"])
-def test_gate_rejects_target_derived_predictor(final_dataset, leak_col):
+@pytest.mark.parametrize(
+    "leak_col", ["yield_tons_ha", "production_mt", "area_harvested_ha"]
+)
+def test_gate_rejects_target_derived_predictor(homogeneous_dataset, leak_col):
     with pytest.raises(ValueError, match="Target-derived"):
-        validate_final_dataset(final_dataset, [leak_col], RELAXED_POLICY)
+        validate_final_dataset(homogeneous_dataset, [leak_col], RELAXED_POLICY)
 
 
-def test_gate_rejects_missing_feature(final_dataset):
+def test_gate_rejects_missing_feature(homogeneous_dataset):
     with pytest.raises(ValueError, match="Requested features"):
-        validate_final_dataset(final_dataset, ["rain_total_mm", "definitely_missing"], RELAXED_POLICY)
+        validate_final_dataset(
+            homogeneous_dataset, ["rain_total_mm", "definitely_missing"], RELAXED_POLICY
+        )
 
 
-def test_gate_rejects_proxy_target(final_dataset):
-    bad = final_dataset.copy()
+def test_gate_rejects_proxy_target(homogeneous_dataset):
+    bad = homogeneous_dataset.copy()
     bad.loc[0, "is_proxy"] = True
     with pytest.raises(ValueError, match="Proxy targets"):
         validate_final_dataset(bad, CLIMATE_FEATURES, RELAXED_POLICY)
 
 
-def test_gate_rejects_geographically_assigned_target(final_dataset):
-    bad = final_dataset.copy()
+def test_gate_rejects_geographically_assigned_target(homogeneous_dataset):
+    bad = homogeneous_dataset.copy()
     bad.loc[0, "is_geographically_assigned"] = True
     with pytest.raises(ValueError, match="assigned from a higher geography"):
         validate_final_dataset(bad, CLIMATE_FEATURES, RELAXED_POLICY)

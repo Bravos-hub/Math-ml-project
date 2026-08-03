@@ -1,0 +1,295 @@
+{
+  "run_id": "20260803T132528Z-multi_crop_seasonal-spatial-4ade998d",
+  "generated_at": "2026-08-03T13:25:28.660061+00:00",
+  "git_commit": "d4643a502e1da5c4b68be426714746bf7a62975f",
+  "working_tree_dirty": true,
+  "dataset": "final_multi_crop_seasonal.csv",
+  "dataset_sha256": "4ade998d358007de9a3c5014c43b5d41c2bff1d86cf7582a725098454557c37b",
+  "config_sha256": "043c6986ce07157db82ce907b9aa05859b4cdae4150e889ed40b8a2455f5621d",
+  "package_version": "0.2.0",
+  "Python_version": "3.14.4",
+  "random_seed": 42,
+  "row_count": 249,
+  "crop_environment_unit_count": 249,
+  "environmental_unit_count": 28,
+  "independent_environmental_unit_count": 28,
+  "spatial_unit_count": 14,
+  "years": [
+    2020
+  ],
+  "models_requested": [
+    "dummy_mean",
+    "ridge"
+  ],
+  "models_completed": 12,
+  "models_failed": 0,
+  "validation_scheme": "spatial",
+  "conformal_alpha": 0.1,
+  "calibration_scheme": "held_out_spatial_groups_within_outer_training",
+  "metric_ci_method": "spatial_unit_cluster_bootstrap",
+  "metric_ci_iterations": 200,
+  "target_temporal_granularity": "seasonal",
+  "analysis_status": "interim_spatial_only",
+  "final_acceptance_gate_passed": false,
+  "acceptance_gate_reason": "Insufficient independent environmental units: 28 < 50.",
+  "prediction_horizon": "season_end_retrospective",
+  "feature_timing": "multi_crop_seasonal_feature_timing.csv",
+  "baseline_fallbacks": [
+    {
+      "model": "training_global_mean",
+      "fold": 1,
+      "fallback_count": 0,
+      "test_rows": 56,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_mean",
+      "fold": 1,
+      "fallback_count": 0,
+      "test_rows": 56,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_season_mean",
+      "fold": 1,
+      "fallback_count": 0,
+      "test_rows": 56,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_global_mean",
+      "fold": 2,
+      "fallback_count": 0,
+      "test_rows": 57,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_mean",
+      "fold": 2,
+      "fallback_count": 0,
+      "test_rows": 57,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_season_mean",
+      "fold": 2,
+      "fallback_count": 0,
+      "test_rows": 57,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_global_mean",
+      "fold": 3,
+      "fallback_count": 0,
+      "test_rows": 53,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_mean",
+      "fold": 3,
+      "fallback_count": 0,
+      "test_rows": 53,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_season_mean",
+      "fold": 3,
+      "fallback_count": 0,
+      "test_rows": 53,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_global_mean",
+      "fold": 4,
+      "fallback_count": 0,
+      "test_rows": 52,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_mean",
+      "fold": 4,
+      "fallback_count": 0,
+      "test_rows": 52,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_season_mean",
+      "fold": 4,
+      "fallback_count": 0,
+      "test_rows": 52,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_global_mean",
+      "fold": 5,
+      "fallback_count": 0,
+      "test_rows": 31,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_mean",
+      "fold": 5,
+      "fallback_count": 0,
+      "test_rows": 31,
+      "fallback_rate": 0.0
+    },
+    {
+      "model": "training_crop_season_mean",
+      "fold": 5,
+      "fallback_count": 0,
+      "test_rows": 31,
+      "fallback_rate": 0.0
+    }
+  ],
+  "execution_status": [
+    {
+      "model": "dummy_mean",
+      "feature_space": "raw",
+      "target_scale": "raw",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "ridge",
+      "feature_space": "raw",
+      "target_scale": "raw",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "dummy_mean",
+      "feature_space": "pca",
+      "target_scale": "raw",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "ridge",
+      "feature_space": "pca",
+      "target_scale": "raw",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "dummy_mean",
+      "feature_space": "hybrid",
+      "target_scale": "raw",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "ridge",
+      "feature_space": "hybrid",
+      "target_scale": "raw",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "dummy_mean",
+      "feature_space": "raw",
+      "target_scale": "crop_centered",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "ridge",
+      "feature_space": "raw",
+      "target_scale": "crop_centered",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "dummy_mean",
+      "feature_space": "pca",
+      "target_scale": "crop_centered",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "ridge",
+      "feature_space": "pca",
+      "target_scale": "crop_centered",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "dummy_mean",
+      "feature_space": "hybrid",
+      "target_scale": "crop_centered",
+      "status": "completed",
+      "reason": ""
+    },
+    {
+      "model": "ridge",
+      "feature_space": "hybrid",
+      "target_scale": "crop_centered",
+      "status": "completed",
+      "reason": ""
+    }
+  ],
+  "additional_wave_validation": [
+    {
+      "path": "data/raw/Area_planted_for_selected_Food_Crops,_2015-2021(Ha).xlsx",
+      "valid": false,
+      "reason": "missing required panel columns: ['crop', 'season', 'subregion', 'year', 'yield_tons_ha']"
+    },
+    {
+      "path": "data/raw/Crop_production_for_selected_Food_Crops,_2015-2021_(MT).xlsx",
+      "valid": false,
+      "reason": "missing required panel columns: ['crop', 'season', 'subregion', 'year', 'yield_tons_ha']"
+    },
+    {
+      "path": "UGA-UBOS-AAS-2018-v01.xml",
+      "valid": true,
+      "status": "metadata_only",
+      "reason": "DDI codebook confirms survey metadata; microdata or published target tables are still required",
+      "title": "Annual Agricultural Survey - 2018",
+      "year": 2018,
+      "file_count": 25,
+      "signals": {
+        "subregion_metadata": true,
+        "crop_metadata": true,
+        "production_metadata": true,
+        "area_metadata": true,
+        "season_metadata": true
+      }
+    },
+    {
+      "path": "UGA-UBOS-AAS-2019-v01 (1).xml",
+      "valid": true,
+      "status": "metadata_only",
+      "reason": "DDI codebook confirms survey metadata; microdata or published target tables are still required",
+      "title": "Annual Agricultural Survey - 2019",
+      "year": 2019,
+      "file_count": 37,
+      "signals": {
+        "subregion_metadata": true,
+        "crop_metadata": true,
+        "production_metadata": true,
+        "area_metadata": true,
+        "season_metadata": true
+      }
+    },
+    {
+      "path": "UGA-UBOS-AAS-2020-v01.xml",
+      "valid": true,
+      "status": "metadata_only",
+      "reason": "DDI codebook confirms survey metadata; microdata or published target tables are still required",
+      "title": "Annual Agricultural Survey - 2020",
+      "year": 2020,
+      "file_count": 7,
+      "signals": {
+        "subregion_metadata": true,
+        "crop_metadata": true,
+        "production_metadata": true,
+        "area_metadata": true,
+        "season_metadata": true
+      }
+    },
+    {
+      "path": "data/raw/AAS2019.pdf",
+      "valid": false,
+      "reason": "unparseable: Command '['pdftotext', '-layout', 'data/raw/AAS2019.pdf', '-']' returned non-zero exit status 99."
+    }
+  ]
+}

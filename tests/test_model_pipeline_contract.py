@@ -127,9 +127,7 @@ class TestPreprocessors:
             "raw",
             feature_columns=resolved,
         )
-        predictors = (
-            resolved["climate"] + resolved["static"] + resolved["categorical"]
-        )
+        predictors = resolved["climate"] + resolved["static"] + resolved["categorical"]
         out = pre.fit_transform(final_dataset[predictors])
         assert out.shape[0] == len(final_dataset)
         assert np.isfinite(out).all()
@@ -141,9 +139,7 @@ class TestPreprocessors:
             feature_columns=resolved,
             pca_variance=0.90,
         )
-        predictors = (
-            resolved["climate"] + resolved["static"] + resolved["categorical"]
-        )
+        predictors = resolved["climate"] + resolved["static"] + resolved["categorical"]
         out = pre.fit_transform(final_dataset[predictors])
         n_climate = len(resolved["climate"])
         assert out.shape[1] <= n_climate + len(resolved["categorical"])
@@ -154,17 +150,19 @@ class TestPreprocessors:
             "hybrid",
             feature_columns=resolved,
         )
-        predictors = (
-            resolved["climate"] + resolved["static"] + resolved["categorical"]
-        )
+        predictors = resolved["climate"] + resolved["static"] + resolved["categorical"]
         out = pre.fit_transform(final_dataset[predictors])
         assert out.shape[0] == len(final_dataset)
 
     def test_hybrid_and_pca_are_distinct_after_soil_integration(self, final_dataset):
         resolved = resolve_feature_columns(final_dataset)
         predictors = resolved["climate"] + resolved["static"] + resolved["categorical"]
-        pca = build_preprocessor("pca", feature_columns=resolved).fit_transform(final_dataset[predictors])
-        hybrid = build_preprocessor("hybrid", feature_columns=resolved).fit_transform(final_dataset[predictors])
+        pca = build_preprocessor("pca", feature_columns=resolved).fit_transform(
+            final_dataset[predictors]
+        )
+        hybrid = build_preprocessor("hybrid", feature_columns=resolved).fit_transform(
+            final_dataset[predictors]
+        )
         assert resolved["static"]
         assert pca.shape != hybrid.shape or not np.allclose(pca, hybrid)
 
@@ -181,9 +179,7 @@ class TestSplits:
 
     def test_temporal_folds_never_train_on_future(self):
         df = _synthetic_year(years=6)
-        splits = list(
-            rolling_origin_year_splits(df, minimum_training_years=3)
-        )
+        splits = list(rolling_origin_year_splits(df, minimum_training_years=3))
         assert len(splits) >= 2
         for train_index, test_index in splits:
             max_train_year = df.iloc[train_index]["year"].max()
@@ -209,9 +205,7 @@ class TestSplits:
             test = df.iloc[test_index]
             assert (train["year"] < test["year"].min()).all()
             test_unit = str(test["spatial_unit"].iloc[0])
-            assert not {
-                str(u) for u in train["spatial_unit"]
-            }.intersection({test_unit})
+            assert not {str(u) for u in train["spatial_unit"]}.intersection({test_unit})
 
 
 def synthetic_registry_panel() -> pd.DataFrame:
@@ -317,10 +311,25 @@ class TestNestedEvaluation:
         assert "observed_yield" in predictions.columns
         assert "predicted_yield" in predictions.columns
         assert np.isfinite(predictions["predicted_yield"]).all()
+        assert (predictions["calibration_size"] > 0).all()
+        assert (predictions["calibration_group_count"] > 0).all()
+        assert (predictions["calibration_size"] < len(df)).all()
+        assert {
+            "training_global_mean",
+            "training_crop_mean",
+            "observed_evaluation_target",
+            "predicted_evaluation_target",
+        } <= set(predictions.columns)
 
         summary = summarize_out_of_fold_predictions(predictions)
         assert not summary.empty
         assert set(["rmse", "mae", "r2"]).issubset(summary.columns)
+        assert {
+            "skill_vs_training_global_mean",
+            "skill_vs_training_crop_mean",
+            "result_scope",
+            "registered_primary_metric",
+        } <= set(summary.columns)
 
     def test_inner_temporal_split_requires_years(self):
         from uganda_crop_model.evaluation.nested_cv import (

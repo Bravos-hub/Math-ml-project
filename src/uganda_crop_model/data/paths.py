@@ -27,6 +27,7 @@ SYNTHETIC = PROCESSED / "synthetic"
 PUBLIC = DATA / "public"
 CONFIGS = REPO_ROOT / "configs"
 REPORTS = REPO_ROOT / "reports"
+RUNS = REPORTS / "runs"
 FIGURES = REPORTS / "figures"
 TABLES = REPORTS / "tables"
 TECHNICAL_REPORT = REPORTS / "technical_report"
@@ -76,12 +77,27 @@ MULTI_CROP = (
 # Final analysis outputs ---------------------------------------------------
 FINAL_MAIZE_DATASET = PROCESSED / "final_maize_subregion_season_year.csv"
 FINAL_MULTI_CROP_DATASET = PROCESSED / "final_multi_crop_subregion_season_year.csv"
+FINAL_MULTI_CROP_SEASONAL_DATASET = PROCESSED / "final_multi_crop_seasonal.csv"
+FINAL_MULTI_CROP_ANNUAL_DATASET = PROCESSED / "final_multi_crop_annual.csv"
 
 
 def ensure_dirs() -> None:
     for path in (
-        DATA, RAW, EXTERNAL, INTERIM, PROCESSED, OBSERVED, ASSIGNED, PROXY,
-        SYNTHETIC, PUBLIC, REPORTS, FIGURES, TABLES, TECHNICAL_REPORT,
+        DATA,
+        RAW,
+        EXTERNAL,
+        INTERIM,
+        PROCESSED,
+        OBSERVED,
+        ASSIGNED,
+        PROXY,
+        SYNTHETIC,
+        PUBLIC,
+        REPORTS,
+        RUNS,
+        FIGURES,
+        TABLES,
+        TECHNICAL_REPORT,
         CONFIGS,
     ):
         path.mkdir(parents=True, exist_ok=True)
