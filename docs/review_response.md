@@ -9,6 +9,6 @@
 | Crop and target sensitivity | Crop-stratified tables plus raw/log1p/crop-normalized outputs; crop means are fold-local; raw remains primary | Implemented |
 | Historical baselines | Training-fold subregion, subregion×crop, crop mean, and previous-wave fallback tables; spatial subregion baselines are degenerate by design | Partial: temporal validation awaits more years |
 | LOSO/stress | `--mode loso`, `--mode stress`, explicit unavailable manifest for insufficient years | Implemented |
-| Additional UBOS waves | `data/ubos_waves.py` now invokes the layout-adaptive AAS parser for PDFs; AAS2019 remains unparseable and workbooks fail the panel-grain contract | Documented blocker; next step is obtain a valid AAS2019 PDF |
+| Additional UBOS waves | `data/ubos_waves.py` invokes the layout-adaptive AAS parser for PDFs and records DDI XML codebooks as metadata-only; AAS2019 PDF remains unparseable and workbooks lack panel grain | Documented blocker; next step is obtain matching AAS2019 microdata or published subregion target tables |
 | CI and reproducibility | `.github/workflows/ci.yml`, `requirements.lock`, generated-output ignore rules | Implemented |
 | Research interpretation | 373-row multi-crop evidence is primary; maize is small-sample exploratory; two-year limitation retained | Implemented |

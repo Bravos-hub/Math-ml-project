@@ -7,8 +7,8 @@ falling back to proxy, synthetic, or geographically assigned targets.
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Sequence
 
 import numpy as np
 import pandas as pd
@@ -34,6 +34,7 @@ TARGET_DERIVED_COLUMNS = {
 @dataclass(frozen=True)
 class AnalysisPolicy:
     minimum_rows: int = 100
+    minimum_environmental_units: int = 50
     minimum_spatial_units: int = 5
     minimum_years: int = 4
     minimum_feature_coverage: float = 0.80
@@ -43,16 +44,20 @@ class AnalysisPolicy:
     )
 
 
+DEFAULT_ANALYSIS_POLICY = AnalysisPolicy()
+
+
 def validate_final_dataset(
     df: pd.DataFrame,
     feature_columns: Sequence[str],
-    policy: AnalysisPolicy = AnalysisPolicy(),
+    policy: AnalysisPolicy = DEFAULT_ANALYSIS_POLICY,
 ) -> None:
     """Fail fast when a dataset is not suitable for final analysis."""
 
     required = {
         *KEY_COLUMNS,
         "yield_tons_ha",
+        "target_temporal_granularity",
         "target_source_type",
         "target_geographic_level",
         "predictor_geographic_level",
@@ -79,6 +84,20 @@ def validate_final_dataset(
         raise ValueError(
             f"Only {len(df)} rows are available; "
             f"final mode requires at least {policy.minimum_rows}."
+        )
+
+    granularities = set(df["target_temporal_granularity"].dropna().unique())
+    if len(granularities) != 1:
+        raise ValueError("Primary modeling data mix annual and seasonal targets.")
+    if not granularities.issubset({"seasonal", "annual"}):
+        raise ValueError("target_temporal_granularity must be seasonal or annual.")
+
+    environmental_key = ["spatial_unit", "year", "season"]
+    environmental_units = df[environmental_key].drop_duplicates().shape[0]
+    if environmental_units < policy.minimum_environmental_units:
+        raise ValueError(
+            "Insufficient independent environmental units: "
+            f"{environmental_units} < {policy.minimum_environmental_units}."
         )
 
     if df["spatial_unit"].nunique() < policy.minimum_spatial_units:
@@ -110,19 +129,14 @@ def validate_final_dataset(
             "as lower-level observations."
         )
 
-    invalid_source_types = set(
-        df["target_source_type"].dropna().unique()
-    ).difference(policy.allowed_target_source_types)
+    invalid_source_types = set(df["target_source_type"].dropna().unique()).difference(
+        policy.allowed_target_source_types
+    )
 
     if invalid_source_types:
-        raise ValueError(
-            f"Invalid target source types: {sorted(invalid_source_types)}"
-        )
+        raise ValueError(f"Invalid target source types: {sorted(invalid_source_types)}")
 
-    level_mismatch = (
-        df["target_geographic_level"]
-        != df["predictor_geographic_level"]
-    )
+    level_mismatch = df["target_geographic_level"] != df["predictor_geographic_level"]
 
     if level_mismatch.any():
         bad = df.loc[
@@ -141,8 +155,7 @@ def validate_final_dataset(
     leakage = set(feature_columns).intersection(TARGET_DERIVED_COLUMNS)
     if leakage:
         raise ValueError(
-            "Target-derived columns were included as predictors: "
-            f"{sorted(leakage)}"
+            f"Target-derived columns were included as predictors: {sorted(leakage)}"
         )
 
     unavailable = [c for c in feature_columns if c not in df.columns]

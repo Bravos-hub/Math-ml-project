@@ -18,6 +18,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from ..features.rainfall import build_seasonal_rainfall_features
+from ..features.temperature import build_seasonal_temperature_features
 from .build_aas_targets import (
     build_combined_maize_targets,
     build_combined_multi_crop_targets,
@@ -27,14 +29,16 @@ from .paths import (
     AAS2020_CROP_TABLES,
     AAS2020_MAIZE,
     FINAL_MAIZE_DATASET,
+    FINAL_MULTI_CROP_ANNUAL_DATASET,
     FINAL_MULTI_CROP_DATASET,
+    FINAL_MULTI_CROP_SEASONAL_DATASET,
     INTERIM,
-    PUBLIC,
 )
 from .season_calendar import make_season_calendar
-from .subregion_soil import build_optional_elevation_features, build_subregion_soil_features
-from ..features.rainfall import build_seasonal_rainfall_features
-from ..features.temperature import build_seasonal_temperature_features
+from .subregion_soil import (
+    build_optional_elevation_features,
+    build_subregion_soil_features,
+)
 
 
 def build_final_maize_dataset(
@@ -143,7 +147,9 @@ def _merge_climate_and_targets(
     elevation = build_optional_elevation_features(elevation_file, district_map_file)
     merged = merged.merge(soil, on="spatial_unit", how="left", validate="many_to_one")
     if not elevation.empty:
-        merged = merged.merge(elevation, on="spatial_unit", how="left", validate="many_to_one")
+        merged = merged.merge(
+            elevation, on="spatial_unit", how="left", validate="many_to_one"
+        )
     merged["predictor_geographic_level"] = "sub_region"
     merged["elevation_source"] = merged.get("elevation_source", "not_available")
 
@@ -153,46 +159,97 @@ def _merge_climate_and_targets(
 def pin_order(df: pd.DataFrame, data_version: str = "aas-chirps-v1") -> pd.DataFrame:
     """Assign a stable column order and recorded data versions."""
     same_column_order = [
-        "spatial_unit", "year", "season", "crop",
-        "yield_tons_ha", "yield_tons_ha_planted", "harvested_fraction",
-        "area_planted_ha", "area_harvested_ha", "production_mt",
-        "cv_area_planted_pct", "cv_area_harvested_pct", "cv_production_pct",
-        "rain_total_mm", "rain_mean_daily_mm",
-        "rainy_days_1mm", "rainy_days_10mm", "heavy_rain_days_20mm",
-        "maximum_1day_rainfall_mm", "maximum_5day_rainfall_mm",
-        "longest_dry_spell_days", "wet_day_rainfall_cv",
-        "rainfall_onset_date", "rainfall_cessation_date",
-        "onset_day_of_year", "cessation_day_of_year", "season_length_days",
-        "temperature_mean_c", "temperature_maximum_c",
-        "temperature_minimum_c", "temperature_range_c",
-        "growing_degree_days", "heat_days_32c",
-        "extreme_heat_days_35c", "cold_days_10c",
-        "target_source", "target_source_type",
-        "target_geographic_level", "predictor_geographic_level",
-        "target_definition", "target_year",
+        "spatial_unit",
+        "year",
+        "season",
+        "crop",
+        "target_temporal_granularity",
+        "yield_tons_ha",
+        "yield_tons_ha_planted",
+        "harvested_fraction",
+        "area_planted_ha",
+        "area_harvested_ha",
+        "production_mt",
+        "cv_area_planted_pct",
+        "cv_area_harvested_pct",
+        "cv_production_pct",
+        "rain_total_mm",
+        "rain_mean_daily_mm",
+        "rainy_days_1mm",
+        "rainy_days_10mm",
+        "heavy_rain_days_20mm",
+        "maximum_1day_rainfall_mm",
+        "maximum_5day_rainfall_mm",
+        "longest_dry_spell_days",
+        "wet_day_rainfall_cv",
+        "rainfall_onset_date",
+        "rainfall_cessation_date",
+        "onset_day_of_year",
+        "cessation_day_of_year",
+        "season_length_days",
+        "temperature_mean_c",
+        "temperature_maximum_c",
+        "temperature_minimum_c",
+        "temperature_range_c",
+        "growing_degree_days",
+        "heat_days_32c",
+        "extreme_heat_days_35c",
+        "cold_days_10c",
+        "target_source",
+        "target_source_type",
+        "target_geographic_level",
+        "predictor_geographic_level",
+        "target_definition",
+        "target_year",
         "target_season",
-        "is_proxy", "is_synthetic", "is_geographically_assigned",
-        "season_definition", "yield_consistency_ok",
-        "rainfall_source", "temperature_source",
-        "soil_source", "soil_source_version", "soil_depth_cm",
-        "soil_quality_flag", "soil_district_count",
-        "soil_ph", "soil_ph_sd", "soil_organic_carbon", "soil_organic_carbon_sd",
-        "clay_pct", "clay_pct_sd", "sand_pct", "sand_pct_sd", "silt_pct", "silt_pct_sd",
-        "bulk_density", "bulk_density_sd", "cation_exchange_capacity", "cation_exchange_capacity_sd",
-        "elevation_m", "elevation_m_sd", "elevation_source",
-        "data_version", "processing_version",
+        "is_proxy",
+        "is_synthetic",
+        "is_geographically_assigned",
+        "season_definition",
+        "yield_consistency_ok",
+        "rainfall_source",
+        "temperature_source",
+        "soil_source",
+        "soil_source_version",
+        "soil_depth_cm",
+        "soil_quality_flag",
+        "soil_district_count",
+        "soil_ph",
+        "soil_ph_sd",
+        "soil_organic_carbon",
+        "soil_organic_carbon_sd",
+        "clay_pct",
+        "clay_pct_sd",
+        "sand_pct",
+        "sand_pct_sd",
+        "silt_pct",
+        "silt_pct_sd",
+        "bulk_density",
+        "bulk_density_sd",
+        "cation_exchange_capacity",
+        "cation_exchange_capacity_sd",
+        "elevation_m",
+        "elevation_m_sd",
+        "elevation_source",
+        "data_version",
+        "processing_version",
     ]
 
     df = df.copy()
+    df["target_temporal_granularity"] = df["season"].map(
+        lambda value: "annual" if value == "annual" else "seasonal"
+    )
     df["data_version"] = data_version
     df["processing_version"] = "uganda_crop_model-0.2.0"
 
     missing = [c for c in df.columns if c not in set(same_column_order)]
     order = [c for c in same_column_order if c in df.columns] + missing
 
-    return df[order].sort_values(
-        ["spatial_unit", "year", "season", "crop"]
-    ).reset_index(drop=True)
+    return (
+        df[order]
+        .sort_values(["spatial_unit", "year", "season", "crop"])
+        .reset_index(drop=True)
+    )
 
 
 def save_final_maize_dataset(output: Path | None = None) -> pd.DataFrame:
@@ -212,6 +269,12 @@ def save_final_multi_crop_dataset(output: Path | None = None) -> pd.DataFrame:
     df = build_final_multi_crop_dataset()
     output = output or FINAL_MULTI_CROP_DATASET
     df.to_csv(output, index=False)
+    df.loc[df["target_temporal_granularity"].eq("seasonal")].to_csv(
+        FINAL_MULTI_CROP_SEASONAL_DATASET, index=False
+    )
+    df.loc[df["target_temporal_granularity"].eq("annual")].to_csv(
+        FINAL_MULTI_CROP_ANNUAL_DATASET, index=False
+    )
     return df
 
 

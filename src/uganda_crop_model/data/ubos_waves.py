@@ -6,15 +6,53 @@ files are documented as unavailable rather than coerced into the panel.
 """
 from __future__ import annotations
 from pathlib import Path
+import xml.etree.ElementTree as ET
 import pandas as pd
 
 REQUIRED_GRAIN = {"subregion", "year", "season", "crop", "yield_tons_ha"}
+
+
+def validate_ddi_codebook(path: Path) -> dict:
+    """Inspect a UBOS DDI codebook without mistaking metadata for data."""
+    result = {"path": str(path), "valid": False, "status": "unavailable", "reason": ""}
+    if not path.exists():
+        result["reason"] = "missing codebook"
+        return result
+    try:
+        root = ET.parse(path).getroot()
+    except (ET.ParseError, OSError) as exc:
+        result["reason"] = f"unparseable XML: {exc}"
+        return result
+    labels = [text.text.strip() for text in root.iter() if text.tag.endswith("labl") and text.text]
+    files = [text.text.strip() for text in root.iter() if text.tag.endswith("fileName") and text.text]
+    title = next((text.text.strip() for text in root.iter() if text.tag.endswith("titl") and text.text), "")
+    year = next((int(token) for token in title.split() if token.isdigit() and len(token) == 4), None)
+    lower = " ".join(labels + files).lower()
+    signals = {
+        "subregion_metadata": "sub-region" in lower or "sub_region" in lower,
+        "crop_metadata": "crop" in lower,
+        "production_metadata": "production" in lower,
+        "area_metadata": "area" in lower or "harvest" in lower,
+        "season_metadata": "season" in lower or "first season" in lower,
+    }
+    result.update(
+        valid=True,
+        status="metadata_only",
+        title=title,
+        year=year,
+        file_count=len(files),
+        signals=signals,
+        reason="DDI codebook confirms survey metadata; microdata or published target tables are still required",
+    )
+    return result
 
 def validate_wave_source(path: Path) -> dict:
     result = {"path": str(path), "valid": False, "reason": ""}
     if not path.exists():
         result["reason"] = "missing source"
         return result
+    if path.suffix.lower() == ".xml":
+        return validate_ddi_codebook(path)
     try:
         if path.suffix.lower() == ".pdf":
             from cropyield.data.aas2018 import load_aas2018_subregion

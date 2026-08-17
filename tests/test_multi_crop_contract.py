@@ -24,6 +24,8 @@ from uganda_crop_model.quality.dataset import (
 
 PROCESSED = Path(__file__).resolve().parents[1] / "data" / "processed"
 MULTI_CROP_DATASET = PROCESSED / "final_multi_crop_subregion_season_year.csv"
+MULTI_CROP_SEASONAL_DATASET = PROCESSED / "final_multi_crop_seasonal.csv"
+MULTI_CROP_ANNUAL_DATASET = PROCESSED / "final_multi_crop_annual.csv"
 
 EXPECTED_CROPS = {
     "maize",
@@ -43,7 +45,8 @@ EXPECTED_CROPS = {
 # AAS 2020 are the only published waves).
 RELAXED_POLICY = AnalysisPolicy(
     minimum_rows=100,
-    minimum_years=2,
+    minimum_environmental_units=20,
+    minimum_years=1,
 )
 
 KEY = ["spatial_unit", "year", "season", "crop"]
@@ -54,6 +57,13 @@ def multi_crop_dataset() -> pd.DataFrame:
     if not MULTI_CROP_DATASET.exists():
         pytest.skip("multi-crop dataset not built yet (run make data-final)")
     return pd.read_csv(MULTI_CROP_DATASET)
+
+
+@pytest.fixture(scope="module")
+def seasonal_dataset() -> pd.DataFrame:
+    if not MULTI_CROP_SEASONAL_DATASET.exists():
+        pytest.skip("seasonal dataset not built yet")
+    return pd.read_csv(MULTI_CROP_SEASONAL_DATASET)
 
 
 def test_sample_size_exceeds_100(multi_crop_dataset):
@@ -79,23 +89,15 @@ def test_no_proxy_or_synthetic_targets(multi_crop_dataset):
 
 
 def test_single_target_definition(multi_crop_dataset):
-    definitions = dict(
-        multi_crop_dataset.groupby("year")["target_definition"].unique()
-    )
+    definitions = dict(multi_crop_dataset.groupby("year")["target_definition"].unique())
     # AAS 2018 publishes the official yield (total production over the
     # second-season harvested area); AAS 2020 recomputes production over
     # harvested area from the seasonal blocks.  Each year must use exactly
     # one documented definition.
     assert len(definitions[2018]) == 1
     assert len(definitions[2020]) == 1
-    assert (
-        definitions[2018][0]
-        == "published_official_subregion_yield_over_harvested"
-    )
-    assert (
-        definitions[2020][0]
-        == "production_mt_divided_by_area_harvested_ha"
-    )
+    assert definitions[2018][0] == "published_official_subregion_yield_over_harvested"
+    assert definitions[2020][0] == "production_mt_divided_by_area_harvested_ha"
 
 
 def test_yield_recalculation(multi_crop_dataset):
@@ -117,37 +119,51 @@ def test_years_are_2018_and_2020(multi_crop_dataset):
 
 def test_2018_rows_are_annual(multi_crop_dataset):
     assert (
-        multi_crop_dataset.loc[
-            multi_crop_dataset["year"] == 2018, "season"
-        ]
-        == "annual"
+        multi_crop_dataset.loc[multi_crop_dataset["year"] == 2018, "season"] == "annual"
     ).all()
 
 
 def test_2020_rows_are_seasonal(multi_crop_dataset):
-    seasons = set(
-        multi_crop_dataset.loc[
-            multi_crop_dataset["year"] == 2020, "season"
-        ]
-    )
+    seasons = set(multi_crop_dataset.loc[multi_crop_dataset["year"] == 2020, "season"])
     assert {"first_season", "second_season"}.issubset(seasons)
 
 
-def test_gate_passes_at_100_rows(multi_crop_dataset):
-    resolved = resolve_feature_columns(multi_crop_dataset)
+def test_gate_passes_at_100_rows(seasonal_dataset):
+    resolved = resolve_feature_columns(seasonal_dataset)
     features = resolved["climate"] + resolved["categorical"]
-    validate_final_dataset(multi_crop_dataset, features, RELAXED_POLICY)
+    validate_final_dataset(seasonal_dataset, features, RELAXED_POLICY)
 
 
-def test_final_policy_fails_honestly_on_years(multi_crop_dataset):
-    resolved = resolve_feature_columns(multi_crop_dataset)
+def test_final_policy_fails_honestly_on_environment_count(seasonal_dataset):
+    resolved = resolve_feature_columns(seasonal_dataset)
     features = resolved["climate"] + resolved["categorical"]
     with pytest.raises(ValueError, match="[Ii]nsufficient|requires at least"):
         validate_final_dataset(
-            multi_crop_dataset,
+            seasonal_dataset,
             features,
             AnalysisPolicy(),
         )
+
+
+def test_combined_gate_rejects_mixed_temporal_granularity(multi_crop_dataset):
+    resolved = resolve_feature_columns(multi_crop_dataset)
+    with pytest.raises(ValueError, match="mix annual and seasonal"):
+        validate_final_dataset(
+            multi_crop_dataset,
+            resolved["climate"],
+            AnalysisPolicy(
+                minimum_rows=100,
+                minimum_environmental_units=10,
+                minimum_years=1,
+            ),
+        )
+
+
+def test_split_datasets_are_homogeneous():
+    seasonal = pd.read_csv(MULTI_CROP_SEASONAL_DATASET)
+    annual = pd.read_csv(MULTI_CROP_ANNUAL_DATASET)
+    assert set(seasonal["target_temporal_granularity"]) == {"seasonal"}
+    assert set(annual["target_temporal_granularity"]) == {"annual"}
 
 
 def test_no_all_null_features(multi_crop_dataset):

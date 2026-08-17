@@ -1,61 +1,159 @@
-"""Training-fold-only baselines for the authoritative panel."""
+"""Training-fold-only baselines for spatial and temporal validation."""
+
 from __future__ import annotations
+
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
 
 
-def predict_training_baselines(data, train_index, test_index):
+@dataclass(frozen=True)
+class BaselinePrediction:
+    """One baseline's predictions and row-level applicability metadata."""
+
+    values: np.ndarray
+    baseline_applicable: np.ndarray
+    fallback_used: np.ndarray
+    fallback_level: np.ndarray
+
+
+def _lookup_mean(
+    test: pd.DataFrame,
+    table: pd.Series,
+    keys: tuple[str, ...],
+    *,
+    crop_mean: pd.Series,
+    global_mean: float,
+) -> BaselinePrediction:
+    values: list[float] = []
+    applicable: list[bool] = []
+    fallback_levels: list[str] = []
+
+    for row in test.itertuples(index=False):
+        key: object = tuple(getattr(row, name) for name in keys)
+        if len(keys) == 1:
+            key = key[0]
+        value = table.get(key, np.nan)
+        if pd.notna(value):
+            values.append(float(value))
+            applicable.append(True)
+            fallback_levels.append("none")
+            continue
+
+        crop_value = crop_mean.get(row.crop, np.nan)
+        if pd.notna(crop_value):
+            values.append(float(crop_value))
+            fallback_levels.append("training_crop_mean")
+        else:
+            values.append(global_mean)
+            fallback_levels.append("training_global_mean")
+        applicable.append(False)
+
+    applicable_array = np.asarray(applicable, dtype=bool)
+    return BaselinePrediction(
+        values=np.asarray(values, dtype=float),
+        baseline_applicable=applicable_array,
+        fallback_used=~applicable_array,
+        fallback_level=np.asarray(fallback_levels, dtype=object),
+    )
+
+
+def previous_available_wave(
+    train: pd.DataFrame,
+    test: pd.DataFrame,
+    *,
+    target: str = "yield_tons_ha",
+) -> BaselinePrediction:
+    """Predict from the closest strictly earlier matching survey wave."""
+
+    crop_mean = train.groupby("crop")[target].mean()
+    global_mean = float(train[target].mean())
+    values: list[float] = []
+    applicable: list[bool] = []
+    fallback_levels: list[str] = []
+
+    for row in test.itertuples(index=False):
+        candidates = train[
+            train["spatial_unit"].eq(row.spatial_unit)
+            & train["crop"].eq(row.crop)
+            & train["season"].eq(row.season)
+            & train["year"].lt(row.year)
+        ].sort_values("year")
+        if not candidates.empty:
+            values.append(float(candidates.iloc[-1][target]))
+            applicable.append(True)
+            fallback_levels.append("none")
+            continue
+
+        crop_value = crop_mean.get(row.crop, np.nan)
+        if pd.notna(crop_value):
+            values.append(float(crop_value))
+            fallback_levels.append("training_crop_mean")
+        else:
+            values.append(global_mean)
+            fallback_levels.append("training_global_mean")
+        applicable.append(False)
+
+    applicable_array = np.asarray(applicable, dtype=bool)
+    return BaselinePrediction(
+        values=np.asarray(values, dtype=float),
+        baseline_applicable=applicable_array,
+        fallback_used=~applicable_array,
+        fallback_level=np.asarray(fallback_levels, dtype=object),
+    )
+
+
+def predict_training_baselines(
+    data: pd.DataFrame,
+    train_index,
+    test_index,
+    *,
+    validation_mode: str = "spatial",
+) -> dict[str, BaselinePrediction]:
+    """Return baselines that are meaningful for the validation design."""
+
     train = data.iloc[train_index]
     test = data.iloc[test_index]
     y = pd.to_numeric(train["yield_tons_ha"], errors="raise")
     global_mean = float(y.mean())
-    sub_mean = train.groupby("spatial_unit")["yield_tons_ha"].mean()
-    sub_crop = train.groupby(["spatial_unit", "crop"])["yield_tons_ha"].mean()
-    previous = train.groupby(["spatial_unit", "crop", "season"])["yield_tons_ha"].mean()
     crop_mean = train.groupby("crop")["yield_tons_ha"].mean()
+    crop_season_mean = train.groupby(["crop", "season"])["yield_tons_ha"].mean()
 
-    def lookup(table, keys, fallback, secondary=None):
-        values = []
-        fallbacks = 0
-        for row in test.itertuples(index=False):
-            key = tuple(getattr(row, k) for k in keys)
-            if len(key) == 1:
-                key = key[0]
-            try:
-                value = table.loc[key]
-                if pd.isna(value):
-                    raise KeyError
-            except KeyError:
-                if callable(secondary):
-                    value = secondary(row)
-                elif secondary is not None:
-                    secondary_key = getattr(row, "crop")
-                    value = secondary.get(secondary_key, fallback)
-                else:
-                    value = fallback
-                fallbacks += 1
-            values.append(float(value))
-        return np.asarray(values), fallbacks
-
-    # Historical means are fit only on training observations. Previous-wave
-    # matching is exact on available historical rows; unseen matches use the
-    # corresponding subregion/crop mean, then the global training mean.
-    sub_pred, sub_fb = lookup(sub_mean, ("spatial_unit",), global_mean, crop_mean)
-    sub_crop_pred, sc_fb = lookup(sub_crop, ("spatial_unit", "crop"), global_mean, crop_mean)
-    prev_pred, prev_fb = lookup(
-        previous,
-        ("spatial_unit", "crop", "season"),
-        global_mean,
-        lambda row: sub_crop.get(
-            (getattr(row, "spatial_unit"), getattr(row, "crop")),
-            crop_mean.get(getattr(row, "crop"), global_mean),
+    n_test = len(test)
+    no_fallback = np.zeros(n_test, dtype=bool)
+    results = {
+        "training_global_mean": BaselinePrediction(
+            values=np.repeat(global_mean, n_test),
+            baseline_applicable=np.ones(n_test, dtype=bool),
+            fallback_used=no_fallback,
+            fallback_level=np.repeat("none", n_test),
         ),
-    )
-    crop_pred, crop_fb = lookup(crop_mean, ("crop",), global_mean)
-    return {
-        "historical_subregion_mean": (sub_pred, sub_fb),
-        "historical_subregion_crop_mean": (sub_crop_pred, sc_fb),
-        "previous_wave_yield": (prev_pred, prev_fb),
-        "crop_mean": (crop_pred, crop_fb),
+        "training_crop_mean": _lookup_mean(
+            test,
+            crop_mean,
+            ("crop",),
+            crop_mean=crop_mean,
+            global_mean=global_mean,
+        ),
+        "training_crop_season_mean": _lookup_mean(
+            test,
+            crop_season_mean,
+            ("crop", "season"),
+            crop_mean=crop_mean,
+            global_mean=global_mean,
+        ),
     }
+
+    if validation_mode in {"temporal", "stress"}:
+        subregion_crop = train.groupby(["spatial_unit", "crop"])["yield_tons_ha"].mean()
+        results["historical_subregion_crop_mean"] = _lookup_mean(
+            test,
+            subregion_crop,
+            ("spatial_unit", "crop"),
+            crop_mean=crop_mean,
+            global_mean=global_mean,
+        )
+        results["previous_available_wave"] = previous_available_wave(train, test)
+
+    return results

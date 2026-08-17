@@ -7,7 +7,9 @@ Entry point for the milestone analysis datasets:
 
 Produces:
 1. ``final_maize_subregion_season_year.csv`` (maize only, 42 rows)
-2. ``final_multi_crop_subregion_season_year.csv`` (10 food crops, ~370 rows)
+2. ``final_multi_crop_subregion_season_year.csv`` (audit-only combined table)
+3. ``final_multi_crop_seasonal.csv`` (homogeneous seasonal targets)
+4. ``final_multi_crop_annual.csv`` (homogeneous annual targets)
 
 Steps:
 1. Aggregate district daily rainfall/temperature to the sub-region series.
@@ -36,7 +38,9 @@ from uganda_crop_model.data.merge_dataset import (  # noqa: E402
 )
 from uganda_crop_model.data.paths import (  # noqa: E402
     FINAL_MAIZE_DATASET,
+    FINAL_MULTI_CROP_ANNUAL_DATASET,
     FINAL_MULTI_CROP_DATASET,
+    FINAL_MULTI_CROP_SEASONAL_DATASET,
     TABLES,
 )
 from uganda_crop_model.data.subregion_climate import (  # noqa: E402
@@ -74,12 +78,16 @@ CLIMATE_FEATURES = [
 
 
 def _summarise(df: pd.DataFrame) -> pd.DataFrame:
-    return df.groupby(["year", "season"]).agg(
-        spatial_units=("spatial_unit", "nunique"),
-        rows=("crop", "size"),
-        crops=("crop", "nunique"),
-        yield_mean_t_ha=("yield_tons_ha", "mean"),
-    ).reset_index()
+    return (
+        df.groupby(["year", "season"])
+        .agg(
+            spatial_units=("spatial_unit", "nunique"),
+            rows=("crop", "size"),
+            crops=("crop", "nunique"),
+            yield_mean_t_ha=("yield_tons_ha", "mean"),
+        )
+        .reset_index()
+    )
 
 
 def main() -> int:
@@ -92,12 +100,21 @@ def main() -> int:
     multi_crop = save_final_multi_crop_dataset()
 
     print(f"[3/3] final_maize: {len(maize)} rows x {maize.shape[1]} cols")
-    print(f"      final_multi_crop: {len(multi_crop)} rows x "
-          f"{multi_crop.shape[1]} cols")
+    print(
+        f"      final_multi_crop: {len(multi_crop)} rows x {multi_crop.shape[1]} cols"
+    )
 
     for name, df in (
-        ("maize", maize),
-        ("multi_crop", multi_crop),
+        ("maize_combined_audit", maize),
+        ("multi_crop_combined_audit", multi_crop),
+        (
+            "multi_crop_seasonal",
+            multi_crop[multi_crop["target_temporal_granularity"].eq("seasonal")],
+        ),
+        (
+            "multi_crop_annual",
+            multi_crop[multi_crop["target_temporal_granularity"].eq("annual")],
+        ),
     ):
         print(f"\n-- {name} --")
         print(df.groupby(["year", "season"]).size().to_string())
@@ -116,8 +133,7 @@ def main() -> int:
             print(f"  {exc}")
             print("  -> The current AAS sample does not meet the blueprint's")
             print("     minimum-year targets; it is kept as the authoritative")
-            print("     dataset but cannot yet support a final model "
-                  "comparison.")
+            print("     dataset but cannot yet support a final model comparison.")
 
     TABLES.mkdir(parents=True, exist_ok=True)
     _summarise(maize).to_csv(
@@ -128,8 +144,16 @@ def main() -> int:
         TABLES / "final_multi_crop_dataset_summary.csv",
         index=False,
     )
-    print(f"Summary tables: {TABLES / 'final_maize_dataset_summary.csv'}, "
-          f"{TABLES / 'final_multi_crop_dataset_summary.csv'}")
+    _summarise(
+        multi_crop[multi_crop["target_temporal_granularity"].eq("seasonal")]
+    ).to_csv(TABLES / "final_multi_crop_seasonal_summary.csv", index=False)
+    _summarise(
+        multi_crop[multi_crop["target_temporal_granularity"].eq("annual")]
+    ).to_csv(TABLES / "final_multi_crop_annual_summary.csv", index=False)
+    print(
+        f"Summary tables: {TABLES / 'final_maize_dataset_summary.csv'}, "
+        f"{TABLES / 'final_multi_crop_dataset_summary.csv'}"
+    )
 
     return 0
 
