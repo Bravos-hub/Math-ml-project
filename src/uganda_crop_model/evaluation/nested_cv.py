@@ -49,7 +49,7 @@ def skill_score(
 def _cluster_bootstrap_intervals(
     group: pd.DataFrame,
     *,
-    iterations: int = 200,
+    iterations: int = 2_000,
     random_seed: int = 42,
 ) -> dict[str, float]:
     """Bootstrap metrics by spatial unit to preserve within-unit dependence."""
@@ -358,11 +358,27 @@ def run_nested_evaluation(
         prediction_frame["target_scale"] = target_scale
         prediction_frame["observed_yield"] = y_test.to_numpy()
         prediction_frame["predicted_yield"] = prediction
-        crop_means = data.iloc[train_index].groupby("crop")["yield_tons_ha"].mean()
-        global_mean = float(y_train.mean())
-        prediction_frame["training_global_mean"] = global_mean
+        # Like-for-like baselines use only the proper-training observations
+        # available to the fitted model. Full outer-training comparators are
+        # retained separately as deliberately better-informed benchmarks.
+        proper_frame = metadata_proper.assign(yield_tons_ha=y_proper_raw.to_numpy())
+        proper_crop_means = proper_frame.groupby("crop")["yield_tons_ha"].mean()
+        proper_global_mean = float(y_proper_raw.mean())
+        full_crop_means = data.iloc[train_index].groupby("crop")["yield_tons_ha"].mean()
+        full_global_mean = float(y_train.mean())
+        prediction_frame["training_global_mean"] = proper_global_mean
         prediction_frame["training_crop_mean"] = (
-            data.iloc[test_index]["crop"].map(crop_means).fillna(global_mean).to_numpy()
+            data.iloc[test_index]["crop"]
+            .map(proper_crop_means)
+            .fillna(proper_global_mean)
+            .to_numpy()
+        )
+        prediction_frame["full_outer_training_global_mean"] = full_global_mean
+        prediction_frame["full_outer_training_crop_mean"] = (
+            data.iloc[test_index]["crop"]
+            .map(full_crop_means)
+            .fillna(full_global_mean)
+            .to_numpy()
         )
         if target_scale == "crop_centered":
             prediction_frame["observed_evaluation_target"] = (
@@ -391,6 +407,8 @@ def run_nested_evaluation(
 
 def summarize_out_of_fold_predictions(
     predictions: pd.DataFrame,
+    *,
+    bootstrap_iterations: int = 2_000,
 ) -> pd.DataFrame:
     rows: list[dict[str, object]] = []
 
@@ -447,11 +465,29 @@ def summarize_out_of_fold_predictions(
             "r2": r2,
             "skill_vs_training_global_mean": global_skill,
             "skill_vs_training_crop_mean": crop_skill,
+            "skill_vs_full_outer_training_global_mean": (
+                skill_score(
+                    observed_raw,
+                    predicted_raw,
+                    group["full_outer_training_global_mean"].to_numpy(),
+                )
+                if "full_outer_training_global_mean" in group
+                else np.nan
+            ),
+            "skill_vs_full_outer_training_crop_mean": (
+                skill_score(
+                    observed_raw,
+                    predicted_raw,
+                    group["full_outer_training_crop_mean"].to_numpy(),
+                )
+                if "full_outer_training_crop_mean" in group
+                else np.nan
+            ),
             "target_scale": target_scale,
             "result_scope": "overall",
             "registered_primary_metric": target_scale == "raw",
         }
-        row.update(_cluster_bootstrap_intervals(group))
+        row.update(_cluster_bootstrap_intervals(group, iterations=bootstrap_iterations))
         rows.append(row)
 
     return pd.DataFrame(rows).sort_values(["rmse", "mae"])
@@ -483,6 +519,7 @@ def summarize_conformal_coverage(predictions: pd.DataFrame) -> pd.DataFrame:
                 "mean_interval_width": float(group["interval_width"].mean()),
                 "observations": len(group),
                 "calibration_size_min": int(group["calibration_size"].min()),
+                "calibration_size_max": int(group["calibration_size"].max()),
                 "calibration_group_count_min": int(
                     group["calibration_group_count"].min()
                 ),

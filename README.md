@@ -10,6 +10,14 @@ work is retained as a small-sample supplementary analysis.
 > operational forecast, early-warning system, causal study, or farmer-level
 > decision tool.
 
+The current lifecycle state is **INTERIM_RESEARCH**. The repository retains
+the required scientific features—data contracts, PCA/raw/hybrid comparisons,
+spatial validation, uncertainty, baselines, diagnostics, and immutable run
+manifests—but deliberately provides no prediction API, deployment container,
+production promotion, or operational monitoring. Passing the thesis evidence
+gate establishes reproducible research evidence; it does not authorize
+production use.
+
 ## Current authoritative conclusion
 
 The project has built a geographically aligned multi-crop secondary dataset
@@ -413,6 +421,13 @@ additional harmonized target years, not adding another algorithm.
   validation.
 
 ## Citation and license
+
+The MIT license covers repository code and original documentation, not
+third-party datasets. See [DATA_GOVERNANCE.md](DATA_GOVERNANCE.md) for the
+source/terms register and release checklist, and
+[ETHICS_AND_DATA_GOVERNANCE.md](ETHICS_AND_DATA_GOVERNANCE.md) for the current
+aggregate-secondary-data scope, pending institutional determination, and
+mandatory re-review triggers.
 
 Olimi, B. (2026). *PCA-Based Machine Learning for Predicting Selected Food-Crop
 Yields in Uganda Using Secondary Agricultural and Climate Data*.

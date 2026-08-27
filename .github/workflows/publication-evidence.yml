@@ -1,0 +1,49 @@
+name: Thesis Research Evidence Gate
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  thesis-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install pinned research environment
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.lock
+          pip install -e . --no-deps
+      - name: Rebuild authoritative dataset
+        run: python scripts/build_final_dataset.py
+      - name: Run full registry and representations
+        run: |
+          python scripts/run_authoritative_analysis.py \
+            --bootstrap-iterations 2000
+      - name: Enforce thesis-evidence acceptance manifest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("reports/tables/multi_crop_seasonal_analysis_manifest.json")
+          manifest = json.loads(path.read_text())
+          assert manifest["project_stage"] == "research"
+          assert manifest["model_lifecycle_state"] == "RESEARCH_VALIDATED"
+          assert manifest["working_tree_dirty"] is False
+          assert manifest["final_acceptance_gate_passed"] is True, manifest["acceptance_gate_reason"]
+          assert manifest["metric_ci_iterations"] >= 2000
+          assert set(manifest["models_requested"]) == {
+              "dummy_mean", "ols", "ridge", "pls", "random_forest", "xgboost"
+          }
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: immutable-thesis-research-evidence
+          path: reports/runs/
+          if-no-files-found: error

@@ -46,5 +46,5 @@ pca:
   correlation_pca: true       # primary PCA on standardized (correlation) data
   covariance_pca_comparison: true
   variance_threshold: 0.85
-  n_bootstrap: 500
+  n_bootstrap: 2000
   n_permutations: 200         # parallel analysis

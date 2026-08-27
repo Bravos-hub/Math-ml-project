@@ -9,5 +9,5 @@ from run_final_analysis import main
 
 if __name__ == "__main__":
     raise SystemExit(
-        main(["--dataset", "multi_crop_seasonal", "--quick", *sys.argv[1:]])
+        main(["--dataset", "multi_crop_seasonal", *sys.argv[1:]])
     )

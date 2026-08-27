@@ -117,7 +117,7 @@ cross_validation:
 
 uncertainty:
   conformal_alpha: 0.05
-  bootstrap_n: 200
+  bootstrap_n: 2000
 
 # Experiment-tracking thresholds (review P2 #23): emit a warning when the
 # analysis sample or the number of distinct target values is too small for a

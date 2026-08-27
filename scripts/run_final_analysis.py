@@ -17,6 +17,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.model_selection import GroupShuffleSplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from uganda_crop_model import __version__
@@ -272,42 +273,105 @@ def macro_average(crop_summary: pd.DataFrame) -> pd.DataFrame:
     return macro
 
 
-def baseline_predictions(data: pd.DataFrame, splits, validation_mode: str):
+def subgroup_error_summary(predictions: pd.DataFrame) -> pd.DataFrame:
+    """Expose geographic, agronomic, seasonal, and yield-level error patterns."""
+
+    raw = predictions[predictions["target_scale"].eq("raw")].copy()
+    raw["yield_level"] = pd.qcut(
+        raw["observed_yield"],
+        q=3,
+        labels=["low", "middle", "high"],
+        duplicates="drop",
+    )
+    rows = []
+    for dimension in ("spatial_unit", "crop", "season", "yield_level"):
+        for keys, group in raw.groupby(
+            ["model", "feature_space", dimension], observed=True
+        ):
+            model, feature_space, subgroup = keys
+            metrics = safe_metrics(group["observed_yield"], group["predicted_yield"])
+            metrics.update(
+                model=model,
+                feature_space=feature_space,
+                subgroup_dimension=dimension,
+                subgroup=str(subgroup),
+                observations=len(group),
+                mean_error=float(
+                    (group["predicted_yield"] - group["observed_yield"]).mean()
+                ),
+            )
+            rows.append(metrics)
+    return pd.DataFrame(rows)
+
+
+def baseline_predictions(
+    data: pd.DataFrame,
+    splits,
+    validation_mode: str,
+    *,
+    random_seed: int = 42,
+):
     rows, fallback_rows = [], []
     for fold, (train, test) in enumerate(splits, 1):
         training = data.iloc[train]
         global_mean = float(training["yield_tons_ha"].mean())
         crop_means = training.groupby("crop")["yield_tons_ha"].mean()
-        outputs = predict_training_baselines(
+        full_outputs = predict_training_baselines(
             data, train, test, validation_mode=validation_mode
         )
-        for name, output in outputs.items():
-            part = data.iloc[test][["spatial_unit", "year", "season", "crop"]].copy()
-            part["fold"] = fold
-            part["model"] = name
-            part["feature_space"] = "baseline"
-            part["target_scale"] = "raw"
-            part["observed_yield"] = data.iloc[test].yield_tons_ha.to_numpy()
-            part["predicted_yield"] = output.values
-            part["observed_evaluation_target"] = part["observed_yield"]
-            part["predicted_evaluation_target"] = part["predicted_yield"]
-            part["training_global_mean"] = global_mean
-            part["training_crop_mean"] = (
-                data.iloc[test]["crop"].map(crop_means).fillna(global_mean).to_numpy()
-            )
-            part["baseline_applicable"] = output.baseline_applicable
-            part["fallback_used"] = output.fallback_used
-            part["fallback_level"] = output.fallback_level
-            rows.append(part)
-            fallback_rows.append(
-                {
-                    "model": name,
-                    "fold": fold,
-                    "fallback_count": int(output.fallback_used.sum()),
-                    "test_rows": len(test),
-                    "fallback_rate": float(output.fallback_used.mean()),
-                }
-            )
+        splitter = GroupShuffleSplit(
+            n_splits=1, test_size=0.20, random_state=random_seed + fold
+        )
+        proper_local, _ = next(
+            splitter.split(training, groups=training["spatial_unit"].astype(str))
+        )
+        proper_train = np.asarray(train)[proper_local]
+        proper_outputs = predict_training_baselines(
+            data,
+            proper_train,
+            test,
+            validation_mode=validation_mode,
+        )
+        for family_prefix, outputs in (
+            ("proper_", proper_outputs),
+            ("full_outer_", full_outputs),
+        ):
+            reference = data.iloc[proper_train] if family_prefix == "proper_" else training
+            reference_global = float(reference["yield_tons_ha"].mean())
+            reference_crop = reference.groupby("crop")["yield_tons_ha"].mean()
+            for name, output in outputs.items():
+                registered_name = f"{family_prefix}{name}"
+                part = data.iloc[test][
+                    ["spatial_unit", "year", "season", "crop"]
+                ].copy()
+                part["fold"] = fold
+                part["model"] = registered_name
+                part["feature_space"] = "baseline"
+                part["target_scale"] = "raw"
+                part["observed_yield"] = data.iloc[test].yield_tons_ha.to_numpy()
+                part["predicted_yield"] = output.values
+                part["observed_evaluation_target"] = part["observed_yield"]
+                part["predicted_evaluation_target"] = part["predicted_yield"]
+                part["training_global_mean"] = reference_global
+                part["training_crop_mean"] = (
+                    data.iloc[test]["crop"]
+                    .map(reference_crop)
+                    .fillna(reference_global)
+                    .to_numpy()
+                )
+                part["baseline_applicable"] = output.baseline_applicable
+                part["fallback_used"] = output.fallback_used
+                part["fallback_level"] = output.fallback_level
+                rows.append(part)
+                fallback_rows.append(
+                    {
+                        "model": registered_name,
+                        "fold": fold,
+                        "fallback_count": int(output.fallback_used.sum()),
+                        "test_rows": len(test),
+                        "fallback_rate": float(output.fallback_used.mean()),
+                    }
+                )
     return pd.concat(rows, ignore_index=True), pd.DataFrame(fallback_rows)
 
 
@@ -345,8 +409,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--random-seed", type=int, default=42)
     parser.add_argument("--models", nargs="*", default=None)
     parser.add_argument("--quick", action="store_true")
+    parser.add_argument(
+        "--bootstrap-iterations",
+        type=int,
+        default=2_000,
+        help="Spatial-unit cluster bootstrap replicates (final default: 2000).",
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+    # Capture source/input state before this runner writes any generated
+    # diagnostics. Runtime artifacts must not make an initially clean run look
+    # dirty, while pre-existing changes must remain approval-blocking.
+    git_commit, dirty = _git_metadata()
 
     path, prefix = DATASETS[args.dataset]
     if not path.exists():
@@ -462,11 +536,15 @@ def main(argv: list[str] | None = None) -> int:
         raise SystemExit("No model/feature-space evaluation completed")
 
     model_predictions = pd.concat(predictions, ignore_index=True)
-    baseline, fallback = baseline_predictions(data, splits, args.mode)
+    baseline, fallback = baseline_predictions(
+        data, splits, args.mode, random_seed=args.random_seed
+    )
     all_predictions = pd.concat(
         [model_predictions, baseline], ignore_index=True, sort=False
     )
-    overall = summarize_out_of_fold_predictions(all_predictions)
+    overall = summarize_out_of_fold_predictions(
+        all_predictions, bootstrap_iterations=args.bootstrap_iterations
+    )
     per_crop = crop_metrics(all_predictions)
     summary = pd.concat(
         [overall, per_crop, macro_average(per_crop)], ignore_index=True, sort=False
@@ -504,6 +582,8 @@ def main(argv: list[str] | None = None) -> int:
     model_agreement(raw_diagnostics).to_csv(
         TABLES / f"{prefix}model_agreement.csv", index=False
     )
+    subgroup_path = TABLES / f"{prefix}subgroup_error_summary.csv"
+    subgroup_error_summary(model_predictions).to_csv(subgroup_path, index=False)
 
     wave_checks = [
         validate_wave_source(p)
@@ -514,13 +594,38 @@ def main(argv: list[str] | None = None) -> int:
     ]
     wave_checks.append(validate_wave_source(Path("data/raw/AAS2019.pdf")))
     gate_passed, gate_reason = _acceptance_gate(data, features)
-    git_commit, dirty = _git_metadata()
     generated_at = datetime.now(UTC)
     run_id = (
         f"{generated_at.strftime('%Y%m%dT%H%M%SZ')}-"
         f"{args.dataset}-{args.mode}-{_sha256(path)[:8]}"
     )
     status_frame = pd.DataFrame(execution_status)
+    required_models = set(get_model_registry(args.random_seed, load_optional=True))
+    requested_models = set(registry)
+    completed_models = set(
+        status_frame.loc[status_frame["status"].eq("completed"), "model"]
+    )
+    evidence_failures = []
+    if dirty:
+        evidence_failures.append("working tree is dirty")
+    if requested_models != required_models:
+        evidence_failures.append(
+            "full model registry was not requested: "
+            + ", ".join(sorted(required_models - requested_models))
+        )
+    if (
+        not required_models.issubset(completed_models)
+        or status_frame["status"].ne("completed").any()
+    ):
+        evidence_failures.append(
+            "required models did not all complete: "
+            + ", ".join(sorted(required_models - completed_models))
+        )
+    if evidence_failures:
+        gate_passed = False
+        gate_reason = (
+            gate_reason + " Evidence gate: " + "; ".join(evidence_failures) + "."
+        )
     environment_count = (
         data[["spatial_unit", "year", "season"]].drop_duplicates().shape[0]
     )
@@ -548,12 +653,17 @@ def main(argv: list[str] | None = None) -> int:
         "conformal_alpha": 0.10,
         "calibration_scheme": "held_out_spatial_groups_within_outer_training",
         "metric_ci_method": "spatial_unit_cluster_bootstrap",
-        "metric_ci_iterations": 200,
+        "metric_ci_iterations": args.bootstrap_iterations,
         "target_temporal_granularity": data["target_temporal_granularity"].iloc[0],
         "analysis_status": "final" if gate_passed else "interim_spatial_only",
         "final_acceptance_gate_passed": gate_passed,
         "acceptance_gate_reason": gate_reason,
         "prediction_horizon": "season_end_retrospective",
+        "project_stage": "research",
+        "model_lifecycle_state": (
+            "RESEARCH_VALIDATED" if gate_passed else "INTERIM_RESEARCH"
+        ),
+        "deployment_authorized": False,
         "feature_timing": feature_timing_path.name,
         "baseline_fallbacks": fallback.to_dict(orient="records"),
         "execution_status": execution_status,
@@ -575,6 +685,7 @@ def main(argv: list[str] | None = None) -> int:
             "fold_results.csv": fold_path,
             "conformal_coverage.csv": coverage_path,
             "pca_diagnostics.csv": pca_path,
+            "subgroup_error_summary.csv": subgroup_path,
             "report.md": report_path,
         },
     )

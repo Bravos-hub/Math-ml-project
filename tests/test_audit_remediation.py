@@ -15,6 +15,7 @@ from uganda_crop_model.evaluation.baselines import (
     predict_training_baselines,
     previous_available_wave,
 )
+from uganda_crop_model.evaluation.nested_cv import summarize_conformal_coverage
 from uganda_crop_model.models import build_preprocessor, get_model_registry
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -149,3 +150,38 @@ def test_accepted_manifest_matches_dataset_hash_when_present():
         text=True,
     ).stdout.strip()
     assert manifest["git_commit"] == commit
+
+
+def test_conformal_summary_reports_calibration_and_test_support():
+    frame = pd.DataFrame(
+        {
+            "model": ["ridge"] * 2,
+            "feature_space": ["pca"] * 2,
+            "target_scale": ["raw"] * 2,
+            "crop": ["maize", "beans"],
+            "season": ["first", "first"],
+            "observed_yield": [1.0, 2.0],
+            "conformal_lower": [0.5, 1.5],
+            "conformal_upper": [1.5, 2.5],
+            "conformal_alpha": [0.1, 0.1],
+            "calibration_size": [10, 12],
+            "calibration_group_count": [2, 3],
+        }
+    )
+    result = summarize_conformal_coverage(frame)
+    assert {
+        "observations",
+        "calibration_size_min",
+        "calibration_size_max",
+        "calibration_group_count_min",
+        "calibration_group_count_max",
+        "actual_coverage",
+        "mean_interval_width",
+    }.issubset(result.columns)
+
+
+def test_model_card_keeps_project_in_research_scope():
+    card = (ROOT / "docs" / "MODEL_CARD.md").read_text(encoding="utf-8")
+    assert "INTERIM_RESEARCH" in card
+    assert "Deployment authorized: **no**" in card
+    assert "Prohibited uses" in card
