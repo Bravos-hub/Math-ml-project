@@ -37,8 +37,18 @@ jobs:
           ! git grep -nE \
             '^(<<<<<<< |=======$|>>>>>>> )'
 
-      - name: Run interim authoritative smoke test
+      - name: Run fast interim smoke test
         run: |
           python scripts/build_final_dataset.py
           python scripts/run_authoritative_analysis.py \
-            --models dummy_mean ridge
+            --quick --models dummy_mean ridge --bootstrap-iterations 200
+
+      - name: Verify smoke evidence cannot be accepted
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path("reports/tables/multi_crop_seasonal_analysis_manifest.json").read_text())
+          assert manifest["final_acceptance_gate_passed"] is False
+          assert manifest["analysis_status"] != "final"
+          PY
